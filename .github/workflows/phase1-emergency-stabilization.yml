@@ -1,0 +1,437 @@
+# Phase 1: 緊急安定化 CI/CDパイプライン
+# PostgreSQL + Redis統合とパフォーマンス監視
+name: Phase 1 Emergency Stabilization
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+env:
+  NODE_VERSION: '18.x'
+  PYTHON_VERSION: '3.11'
+  
+  # PostgreSQL 設定
+  POSTGRES_DB: recipe_test_db
+  POSTGRES_USER: test_user
+  POSTGRES_PASSWORD: test_password
+  
+  # Redis 設定
+  REDIS_PASSWORD: test_redis_pass
+  JWT_CACHE_ENABLED: 'true'
+  JWT_CACHE_TTL: '3600'
+
+jobs:
+  # ===============================
+  # 依存関係インストール・キャッシュ
+  # ===============================
+  dependencies:
+    runs-on: ubuntu-latest
+    outputs:
+      cache-key: ${{ steps.cache-key.outputs.key }}
+      
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Generate cache key
+      id: cache-key
+      run: |
+        echo "key=deps-${{ hashFiles('**/package-lock.json', '**/requirements.txt') }}" >> $GITHUB_OUTPUT
+        
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        
+    - name: Cache dependencies
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.npm
+          ~/.cache/pip
+          backend/node_modules
+          frontend/node_modules
+        key: ${{ steps.cache-key.outputs.key }}
+        
+    - name: Install dependencies
+      run: |
+        # Backend
+        cd backend && npm ci
+        
+        # Frontend
+        cd ../frontend && npm ci
+        
+        # API
+        cd ../api && pip install -r requirements.txt
+
+  # ===============================
+  # データベース統合テスト
+  # ===============================
+  database-integration:
+    runs-on: ubuntu-latest
+    needs: dependencies
+    
+    services:
+      postgres:
+        image: postgres:15-alpine
+        env:
+          POSTGRES_DB: ${{ env.POSTGRES_DB }}
+          POSTGRES_USER: ${{ env.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+          
+      redis:
+        image: redis:7-alpine
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 3s
+          --health-retries 5
+        ports:
+          - 6379:6379
+          
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        
+    - name: Cache dependencies
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.npm
+          backend/node_modules
+        key: ${{ needs.dependencies.outputs.cache-key }}
+        
+    - name: Install dependencies
+      run: cd backend && npm ci
+      
+    - name: Database migration test
+      env:
+        DB_TYPE: postgresql
+        DB_HOST: localhost
+        DB_PORT: 5432
+        DB_NAME: ${{ env.POSTGRES_DB }}
+        DB_USER: ${{ env.POSTGRES_USER }}
+        DB_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
+        REDIS_URL: redis://localhost:6379
+        REDIS_PASSWORD: ${{ env.REDIS_PASSWORD }}
+        JWT_SECRET: test_jwt_secret_key_for_ci_cd
+      run: |
+        cd backend
+        node -e "
+          const db = require('./src/config/database-postgresql');
+          (async () => {
+            try {
+              console.log('🚀 データベース移行テスト開始...');
+              const result = await db.initialize();
+              console.log('✅ PostgreSQL + Redis初期化成功');
+              await db.close();
+              console.log('✅ 接続クリーンアップ完了');
+            } catch (error) {
+              console.error('❌ データベース移行テスト失敗:', error.message);
+              process.exit(1);
+            }
+          })();
+        "
+
+  # ===============================
+  # 認証パフォーマンステスト
+  # ===============================
+  auth-performance-test:
+    runs-on: ubuntu-latest
+    needs: dependencies
+    
+    services:
+      redis:
+        image: redis:7-alpine
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 3s
+          --health-retries 5
+        ports:
+          - 6379:6379
+          
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        
+    - name: Cache dependencies
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.npm
+          backend/node_modules
+        key: ${{ needs.dependencies.outputs.cache-key }}
+        
+    - name: Install dependencies
+      run: cd backend && npm ci
+      
+    - name: JWT認証パフォーマンステスト
+      env:
+        REDIS_URL: redis://localhost:6379
+        REDIS_PASSWORD: ${{ env.REDIS_PASSWORD }}
+        JWT_SECRET: test_jwt_secret_key_for_ci_cd
+        JWT_CACHE_ENABLED: 'true'
+        JWT_CACHE_TTL: '3600'
+      run: |
+        cd backend
+        timeout 60s node -e "
+          const auth = require('./src/middleware/auth-optimized');
+          (async () => {
+            const testUser = { id: 1, username: 'testuser', email: 'test@example.com' };
+            const iterations = 100;
+            const startTime = Date.now();
+            
+            console.log('🚀 JWT認証パフォーマンステスト開始...');
+            console.log('📊 目標: 平均500ms以下、100回実行');
+            
+            let totalTime = 0;
+            let successCount = 0;
+            
+            for (let i = 0; i < iterations; i++) {
+              const testStart = Date.now();
+              
+              try {
+                // JWT生成テスト
+                const token = await auth.generateToken(testUser);
+                
+                // JWT検証テスト
+                const decoded = await auth.verifyToken(token);
+                
+                const testTime = Date.now() - testStart;
+                totalTime += testTime;
+                successCount++;
+                
+                if (testTime > 500) {
+                  console.warn(\`⚠️ 遅いリクエスト: \${testTime}ms (回数: \${i+1})\`);
+                }
+                
+              } catch (error) {
+                console.error(\`❌ テスト失敗 (回数: \${i+1}):\`, error.message);
+              }
+            }
+            
+            const avgTime = totalTime / successCount;
+            const overallTime = Date.now() - startTime;
+            
+            console.log('📊 パフォーマンステスト結果:');
+            console.log(\`   成功率: \${successCount}/\${iterations} (\${(successCount/iterations*100).toFixed(1)}%)\`);
+            console.log(\`   平均時間: \${avgTime.toFixed(1)}ms\`);
+            console.log(\`   全体時間: \${overallTime}ms\`);
+            
+            // パフォーマンス品質ゲート
+            if (avgTime > 500) {
+              console.error(\`🚨 パフォーマンス要件未達成: \${avgTime.toFixed(1)}ms > 500ms\`);
+              process.exit(1);
+            }
+            
+            if (successCount < iterations * 0.95) {
+              console.error(\`🚨 成功率要件未達成: \${(successCount/iterations*100).toFixed(1)}% < 95%\`);
+              process.exit(1);
+            }
+            
+            console.log('✅ 認証パフォーマンステスト成功');
+          })();
+        "
+
+  # ===============================
+  # バックエンドテスト (改良版)
+  # ===============================
+  backend-tests:
+    runs-on: ubuntu-latest
+    needs: dependencies
+    
+    services:
+      postgres:
+        image: postgres:15-alpine
+        env:
+          POSTGRES_DB: ${{ env.POSTGRES_DB }}
+          POSTGRES_USER: ${{ env.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+          
+      redis:
+        image: redis:7-alpine
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 3s
+          --health-retries 5
+        ports:
+          - 6379:6379
+          
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        
+    - name: Cache dependencies
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.npm
+          backend/node_modules
+        key: ${{ needs.dependencies.outputs.cache-key }}
+        
+    - name: Install dependencies
+      run: cd backend && npm ci
+      
+    - name: Run tests with coverage
+      env:
+        NODE_ENV: test
+        DB_TYPE: postgresql
+        DB_HOST: localhost
+        DB_PORT: 5432
+        DB_NAME: ${{ env.POSTGRES_DB }}
+        DB_USER: ${{ env.POSTGRES_USER }}
+        DB_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
+        REDIS_URL: redis://localhost:6379
+        REDIS_PASSWORD: ${{ env.REDIS_PASSWORD }}
+        JWT_SECRET: test_jwt_secret_key_for_ci_cd
+      run: |
+        cd backend
+        npm test -- --coverage --passWithNoTests
+        
+    - name: Coverage quality gate
+      run: |
+        cd backend
+        if [ -f coverage/coverage-summary.json ]; then
+          node -e "
+            const fs = require('fs');
+            const coverage = JSON.parse(fs.readFileSync('coverage/coverage-summary.json', 'utf8'));
+            const threshold = 50; // 現状37.36%から段階的に向上
+            const actual = coverage.total.lines.pct;
+            
+            console.log(\`📊 コードカバレッジ: \${actual}% (目標: \${threshold}%)\`);
+            
+            if (actual < threshold) {
+              console.error(\`🚨 カバレッジ要件未達成: \${actual}% < \${threshold}%\`);
+              process.exit(1);
+            }
+            
+            console.log('✅ カバレッジ要件達成');
+          "
+        fi
+
+  # ===============================
+  # システム統合テスト
+  # ===============================
+  system-integration:
+    runs-on: ubuntu-latest
+    needs: [database-integration, auth-performance-test, backend-tests]
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Start services with docker-compose
+      run: |
+        # PostgreSQL版でテスト
+        docker-compose -f docker-compose.postgresql.yml up -d postgres redis
+        
+        # サービス起動待機
+        sleep 30
+        
+    - name: Health check all services
+      run: |
+        echo "🏥 サービスヘルスチェック開始..."
+        
+        # PostgreSQL接続テスト
+        docker-compose -f docker-compose.postgresql.yml exec -T postgres \
+          psql -U recipe_user -d recipe_db -c "SELECT 1;" || exit 1
+        echo "✅ PostgreSQL接続成功"
+        
+        # Redis接続テスト
+        docker-compose -f docker-compose.postgresql.yml exec -T redis \
+          redis-cli ping || exit 1
+        echo "✅ Redis接続成功"
+        
+        echo "✅ 全サービス稼働確認完了"
+        
+    - name: Cleanup
+      if: always()
+      run: |
+        docker-compose -f docker-compose.postgresql.yml down -v
+
+  # ===============================
+  # 品質サマリーレポート
+  # ===============================
+  quality-report:
+    runs-on: ubuntu-latest
+    needs: [database-integration, auth-performance-test, backend-tests, system-integration]
+    if: always()
+    
+    steps:
+    - name: Generate Quality Report
+      run: |
+        echo "# 📊 Phase 1 品質レポート" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "## 🎯 緊急安定化結果" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        if [[ "${{ needs.database-integration.result }}" == "success" ]]; then
+          echo "✅ **データベース移行**: PostgreSQL + Redis統合成功" >> $GITHUB_STEP_SUMMARY
+        else
+          echo "❌ **データベース移行**: 失敗 - 修正が必要" >> $GITHUB_STEP_SUMMARY
+        fi
+        
+        if [[ "${{ needs.auth-performance-test.result }}" == "success" ]]; then
+          echo "✅ **認証パフォーマンス**: 目標達成（<500ms）" >> $GITHUB_STEP_SUMMARY
+        else
+          echo "❌ **認証パフォーマンス**: 目標未達成 - 最適化が必要" >> $GITHUB_STEP_SUMMARY
+        fi
+        
+        if [[ "${{ needs.backend-tests.result }}" == "success" ]]; then
+          echo "✅ **バックエンドテスト**: 品質基準クリア" >> $GITHUB_STEP_SUMMARY
+        else
+          echo "❌ **バックエンドテスト**: 修正が必要" >> $GITHUB_STEP_SUMMARY
+        fi
+        
+        if [[ "${{ needs.system-integration.result }}" == "success" ]]; then
+          echo "✅ **システム統合**: 全サービス連携確認" >> $GITHUB_STEP_SUMMARY
+        else
+          echo "❌ **システム統合**: サービス間連携に問題あり" >> $GITHUB_STEP_SUMMARY
+        fi
+        
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "## 📈 次ステップ" >> $GITHUB_STEP_SUMMARY
+        echo "- Phase 2: 品質・パフォーマンス改善 (2-4週間)" >> $GITHUB_STEP_SUMMARY
+        echo "- テストカバレッジ向上 (37% → 80%)" >> $GITHUB_STEP_SUMMARY
+        echo "- API最適化とキャッシング戦略実装" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "---" >> $GITHUB_STEP_SUMMARY
+        echo "*PersonalCookingRecipe CI/CD Pipeline*" >> $GITHUB_STEP_SUMMARY

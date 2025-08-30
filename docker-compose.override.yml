@@ -1,0 +1,68 @@
+# Docker Compose Override - 開発環境用設定
+# このファイルは開発環境での追加設定用です
+
+version: '3.8'
+
+services:
+  # 開発環境用フロントエンド設定
+  frontend:
+    build:
+      target: deps  # 開発用ビルドステージ
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - NEXT_TELEMETRY_DISABLED=1
+    command: npm run dev
+    ports:
+      - "3000:3000"  # 直接アクセス用
+
+  # 開発環境用バックエンド設定
+  backend:
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - DEBUG=app:*
+    command: npm run dev
+    ports:
+      - "5000:5000"  # 直接アクセス用
+
+  # 開発環境用API設定
+  api:
+    build:
+      target: base  # 開発用ベースステージ
+    volumes:
+      - ./api:/app
+    environment:
+      - PYTHONPATH=/app
+      - DEBUG=true
+      - RELOAD=true
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+    ports:
+      - "8000:8000"  # 直接アクセス用
+
+  # 開発用データベース管理ツール
+  adminer:
+    image: adminer
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    networks:
+      - recipe-network
+    profiles:
+      - development
+
+  # 開発用メール送信テスト
+  mailhog:
+    image: mailhog/mailhog
+    restart: unless-stopped
+    ports:
+      - "1025:1025"  # SMTP
+      - "8025:8025"  # Web UI
+    networks:
+      - recipe-network
+    profiles:
+      - development

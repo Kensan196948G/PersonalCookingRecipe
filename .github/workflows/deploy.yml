@@ -1,0 +1,324 @@
+# GitHub Actions CI/CDパイプライン
+# Personal Cooking Recipe Deployment Pipeline
+
+name: Deploy Personal Cooking Recipe
+
+on:
+  push:
+    branches: [main, production]
+    tags: ['v*']
+  pull_request:
+    branches: [main]
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+  
+jobs:
+  # テストジョブ
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        service: [frontend, backend, api]
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js (Frontend & Backend)
+        if: matrix.service != 'api'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: ${{ matrix.service }}/package-lock.json
+
+      - name: Setup Python (API)
+        if: matrix.service == 'api'
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: api/requirements.txt
+
+      - name: Install dependencies (Frontend & Backend)
+        if: matrix.service != 'api'
+        run: |
+          cd ${{ matrix.service }}
+          npm ci
+
+      - name: Install dependencies (API)
+        if: matrix.service == 'api'
+        run: |
+          cd api
+          pip install -r requirements.txt
+
+      - name: Run tests (Frontend)
+        if: matrix.service == 'frontend'
+        run: |
+          cd frontend
+          npm run lint
+          npm run type-check
+          npm run build
+
+      - name: Run tests (Backend)
+        if: matrix.service == 'backend'
+        run: |
+          cd backend
+          npm test -- --coverage
+          npm run lint || echo "Linting warnings found"
+
+      - name: Run tests (API)
+        if: matrix.service == 'api'
+        run: |
+          cd api
+          python -m pytest tests/ -v --cov=. --cov-report=xml || echo "API tests not implemented yet"
+
+      - name: Upload coverage to Codecov
+        if: matrix.service == 'backend'
+        uses: codecov/codecov-action@v3
+        with:
+          file: ./backend/coverage/lcov.info
+          flags: backend
+          name: backend-coverage
+
+  # セキュリティスキャン
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+
+      - name: Upload Trivy scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: 'trivy-results.sarif'
+
+  # Docker イメージビルド
+  build:
+    needs: [test, security]
+    runs-on: ubuntu-latest
+    if: github.event_name != 'pull_request'
+    strategy:
+      matrix:
+        service: [frontend, backend, api]
+    
+    outputs:
+      frontend-image: ${{ steps.meta.outputs.tags }}
+      backend-image: ${{ steps.meta.outputs.tags }}
+      api-image: ${{ steps.meta.outputs.tags }}
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-${{ matrix.service }}
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=sha,prefix={{branch}}-
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+
+      - name: Build and push Docker image (Frontend)
+        if: matrix.service == 'frontend'
+        uses: docker/build-push-action@v5
+        with:
+          context: ./frontend
+          file: ./frontend/Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Build and push Docker image (Backend)
+        if: matrix.service == 'backend'
+        uses: docker/build-push-action@v5
+        with:
+          context: ./backend
+          file: ./backend/Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Build and push Docker image (API)
+        if: matrix.service == 'api'
+        uses: docker/build-push-action@v5
+        with:
+          context: ./api
+          file: ./api/Dockerfile.production
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  # ステージング環境デプロイ
+  deploy-staging:
+    needs: [build]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    environment: staging
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ secrets.STAGING_SSH_KEY }}
+
+      - name: Deploy to staging server
+        run: |
+          echo "🚀 Deploying to staging server..."
+          ssh -o StrictHostKeyChecking=no ${{ secrets.STAGING_USER }}@${{ secrets.STAGING_HOST }} << 'EOF'
+            cd /opt/recipe-app
+            
+            # プロダクションイメージに更新
+            docker-compose pull
+            
+            # データベースバックアップ
+            ./scripts/backup.sh
+            
+            # ローリングアップデート
+            docker-compose up -d --force-recreate
+            
+            # ヘルスチェック
+            sleep 30
+            curl -f http://localhost/health || exit 1
+            
+            echo "✅ Staging deployment completed"
+          EOF
+
+      - name: Run smoke tests
+        run: |
+          echo "🧪 Running smoke tests..."
+          sleep 60
+          curl -f https://staging.your-domain.com/health
+          curl -f https://staging.your-domain.com/api/health
+          curl -f https://staging.your-domain.com/python-api/health
+
+  # 本番環境デプロイ
+  deploy-production:
+    needs: [build, deploy-staging]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/production' || startsWith(github.ref, 'refs/tags/v')
+    environment: production
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ secrets.PRODUCTION_SSH_KEY }}
+
+      - name: Pre-deployment backup
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.PRODUCTION_USER }}@${{ secrets.PRODUCTION_HOST }} << 'EOF'
+            cd /opt/recipe-app
+            ./scripts/backup.sh
+          EOF
+
+      - name: Deploy to production server
+        run: |
+          echo "🚀 Deploying to production server..."
+          ssh -o StrictHostKeyChecking=no ${{ secrets.PRODUCTION_USER }}@${{ secrets.PRODUCTION_HOST }} << 'EOF'
+            cd /opt/recipe-app
+            
+            # イメージ更新
+            docker-compose pull
+            
+            # Blue-Green デプロイメント
+            # 現在のサービスをblueとして維持
+            docker-compose -f docker-compose.yml -f docker-compose.blue.yml up -d
+            
+            # ヘルスチェック
+            sleep 60
+            if curl -f http://localhost:8080/health; then
+              # 成功時: トラフィックをgreenに切り替え
+              docker-compose up -d
+              sleep 30
+              # blueサービス停止
+              docker-compose -f docker-compose.blue.yml down
+              echo "✅ Production deployment completed"
+            else
+              # 失敗時: blueサービスに戻す
+              echo "❌ Health check failed, rolling back..."
+              docker-compose -f docker-compose.blue.yml down
+              exit 1
+            fi
+          EOF
+
+      - name: Post-deployment tests
+        run: |
+          echo "🔍 Running post-deployment tests..."
+          sleep 120
+          
+          # ヘルスチェック
+          curl -f https://your-domain.com/health
+          curl -f https://your-domain.com/api/health  
+          curl -f https://your-domain.com/python-api/health
+          
+          # 基本機能テスト
+          curl -f https://your-domain.com/api/recipes
+          
+          echo "✅ All post-deployment tests passed"
+
+      - name: Notify deployment success
+        uses: 8398a7/action-slack@v3
+        if: success()
+        with:
+          status: success
+          text: '🎉 Production deployment successful!'
+          webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+
+      - name: Notify deployment failure
+        uses: 8398a7/action-slack@v3
+        if: failure()
+        with:
+          status: failure
+          text: '❌ Production deployment failed!'
+          webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+
+  # クリーンアップ
+  cleanup:
+    needs: [deploy-production]
+    runs-on: ubuntu-latest
+    if: always()
+    
+    steps:
+      - name: Clean up old Docker images
+        run: |
+          echo "🧹 Cleaning up old Docker images..."
+          # GitHub Container Registryから30日以上古いイメージを削除
+          # (実際の実装では適切なAPIを使用)

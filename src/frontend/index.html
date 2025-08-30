@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#FF6B35" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Recipe Monitor" />
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Personal Cooking Recipe Monitor - 3チャンネル統合レシピ監視システム" />
+    <meta name="keywords" content="recipes, cooking, youtube, monitoring, dashboard" />
+    <meta name="author" content="Recipe Monitor" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Recipe Monitor Dashboard" />
+    <meta property="og:description" content="3チャンネル統合レシピ監視システム" />
+    <meta property="og:type" content="website" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="mask-icon" href="/masked-icon.svg" color="#FF6B35" />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    
+    <title>Recipe Monitor - Dashboard</title>
+    
+    <style>
+      /* Loading Screen */
+      #loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        color: white;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      }
+      
+      .loading-spinner {
+        width: 50px;
+        height: 50px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: white;
+        animation: spin 1s ease-in-out infinite;
+        margin-bottom: 20px;
+      }
+      
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+      
+      /* Hide loading screen when React app loads */
+      .loaded #loading-screen {
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.5s ease-out;
+      }
+      
+      /* Safari-specific optimizations */
+      @supports (-webkit-backdrop-filter: blur(20px)) {
+        .loading-screen {
+          -webkit-backdrop-filter: blur(20px);
+          backdrop-filter: blur(20px);
+        }
+      }
+      
+      /* Prevent FOUC */
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background-color: #F8F9FA;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+      <div class="loading-spinner"></div>
+      <h2>Recipe Monitor</h2>
+      <p>Loading dashboard...</p>
+    </div>
+    
+    <!-- React App Root -->
+    <div id="root"></div>
+    
+    <script>
+      // Hide loading screen when React app mounts
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          document.body.classList.add('loaded');
+        }, 500);
+      });
+      
+      // Performance monitoring
+      if ('performance' in window) {
+        window.addEventListener('load', function() {
+          setTimeout(function() {
+            const perfData = performance.getEntriesByType('navigation')[0];
+            console.log('Page Load Performance:', {
+              domContentLoaded: Math.round(perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart),
+              loadComplete: Math.round(perfData.loadEventEnd - perfData.loadEventStart),
+              total: Math.round(perfData.loadEventEnd - perfData.navigationStart)
+            });
+          }, 0);
+        });
+      }
+      
+      // Register service worker
+      if ('serviceWorker' in navigator && location.protocol === 'https:') {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/sw.js')
+            .then(function(registration) {
+              console.log('SW registered: ', registration);
+            })
+            .catch(function(registrationError) {
+              console.log('SW registration failed: ', registrationError);
+            });
+        });
+      }
+    </script>
+    
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

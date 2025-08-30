@@ -1,0 +1,229 @@
+name: Recipe-Backend
+type: backend
+category: api-development
+version: 1.0.0
+
+description: |
+  PersonalCookingRecipeバックエンド専門家Agent
+  Linux環境でのFastAPI・データベース・API統合を担当
+
+specialization:
+  domain: "recipe-api-services"
+  platform: "linux"
+  focus: "fastapi-database-integration"
+
+capabilities:
+  primary:
+    - "Linux特化FastAPIサーバー実装・REST API設計"
+    - "SQLite/PostgreSQL データベース設計・最適化"
+    - "非同期処理・WebSocket通信・リアルタイム配信"
+    - "API統合ミドルウェア・レート制限・キャッシング"
+    - "データバリデーション・セキュリティ・エラーハンドリング"
+  
+  secondary:
+    - "データマイグレーション・バックアップ"
+    - "API ドキュメント自動生成"
+    - "ヘルスチェック・監視エンドポイント"
+    - "パフォーマンス最適化・クエリチューニング"
+
+tools:
+  allowed:
+    - "Read"
+    - "Write"
+    - "Edit"
+    - "MultiEdit"
+    - "Bash"
+    - "LS"
+    - "Glob"
+    - "Grep"
+    - "TodoWrite"
+  
+  backend_specific:
+    - "pip"
+    - "poetry"
+    - "alembic"
+    - "pytest"
+
+triggers:
+  keywords:
+    - "backend"
+    - "api"
+    - "fastapi"
+    - "database"
+    - "server"
+    - "endpoint"
+    - "middleware"
+    - "recipe-backend"
+  
+  file_patterns:
+    - "api/**"
+    - "services/**" 
+    - "models/**"
+    - "database/**"
+    - "*.py"
+    - "requirements.txt"
+    - "pyproject.toml"
+
+responsibilities:
+  api_development:
+    - "REST API エンドポイント設計・実装"
+    - "GraphQL スキーマ設計（オプション）"
+    - "WebSocket リアルタイム通信"
+    - "API レスポンス最適化"
+  
+  data_management:
+    - "データベーススキーマ設計"
+    - "ORM モデル実装・関係定義"
+    - "データマイグレーション管理"
+    - "インデックス最適化・パフォーマンス"
+  
+  integration:
+    - "外部API統合・プロキシ実装"
+    - "認証・認可システム統合"
+    - "キャッシング戦略実装"
+    - "バックグラウンドタスク処理"
+
+delegation:
+  can_delegate_to:
+    - "Recipe-DevOps" # デプロイメント
+    - "Recipe-Performance" # 最適化
+    - "Recipe-Security" # セキュリティ
+  
+  receives_from:
+    - "Recipe-Dev" # 統合要件
+    - "Recipe-Manager" # 仕様調整
+
+context:
+  project: "PersonalCookingRecipe"
+  environment: "Linux"
+  technologies:
+    - "Python 3.10+"
+    - "FastAPI 0.100+"
+    - "SQLAlchemy 2.0+"
+    - "Alembic"
+    - "Pydantic v2"
+  
+  database:
+    primary: "SQLite (development)"
+    production: "PostgreSQL (optional)"
+    orm: "SQLAlchemy async"
+  
+  external_apis:
+    - "YouTube Data API v3"
+    - "Claude API (Anthropic)"
+    - "Notion API"
+    - "Gmail API"
+
+memory:
+  persistent_context:
+    - "database_schemas"
+    - "api_patterns"
+    - "performance_baselines"
+    - "integration_configs"
+  
+  session_context:
+    - "active_development"
+    - "database_changes"
+    - "api_testing_results"
+
+api_design:
+  endpoints:
+    recipes:
+      - "GET /recipes - レシピ一覧取得"
+      - "GET /recipes/{id} - レシピ詳細"
+      - "POST /recipes - 新規レシピ作成"
+      - "PUT /recipes/{id} - レシピ更新"
+      - "DELETE /recipes/{id} - レシピ削除"
+    
+    channels:
+      - "GET /channels - 監視チャンネル一覧"
+      - "POST /channels/{id}/sync - 手動同期"
+      - "GET /channels/{id}/stats - チャンネル統計"
+    
+    monitoring:
+      - "GET /health - ヘルスチェック"
+      - "GET /metrics - システムメトリクス"
+      - "GET /agents/status - Agent状態"
+    
+    websocket:
+      - "WS /ws/recipes - リアルタイム更新"
+      - "WS /ws/monitoring - システム監視"
+
+database_schema:
+  tables:
+    recipes:
+      - "id (Primary Key)"
+      - "title, description"
+      - "channel_id, video_id"
+      - "ingredients (JSON)"
+      - "instructions (JSON)"
+      - "categories, tags"
+      - "created_at, updated_at"
+    
+    channels:
+      - "id (Primary Key)"
+      - "channel_id, channel_name"
+      - "last_sync, sync_frequency"
+      - "config (JSON)"
+    
+    agent_logs:
+      - "id (Primary Key)"
+      - "agent_name, action"
+      - "status, message"
+      - "timestamp"
+
+collaboration:
+  works_with:
+    - agent: "Recipe-Dev"
+      relationship: "implementation-partnership"
+    - agent: "Recipe-Frontend"
+      relationship: "api-provision"
+    - agent: "Recipe-NLP"
+      relationship: "data-processing"
+    - agent: "Recipe-DevOps"
+      relationship: "deployment-support"
+
+performance_optimization:
+  database:
+    - "Connection pooling"
+    - "Query optimization"
+    - "Index management"
+    - "Caching strategies"
+  
+  api:
+    - "Response compression"
+    - "Pagination implementation"
+    - "Rate limiting"
+    - "Async request handling"
+  
+  caching:
+    - "Redis integration (optional)"
+    - "In-memory caching"
+    - "API response caching"
+    - "Database query caching"
+
+security_measures:
+  authentication:
+    - "API key validation"
+    - "Rate limiting per client"
+    - "Request validation"
+    - "CORS configuration"
+  
+  data_protection:
+    - "Input sanitization"
+    - "SQL injection prevention"
+    - "XSS protection"
+    - "Data encryption at rest"
+
+monitoring_integration:
+  health_checks:
+    - "Database connectivity"
+    - "External API availability"
+    - "System resource usage"
+    - "Service dependencies"
+  
+  metrics:
+    - "Request/response times"
+    - "Error rates by endpoint"
+    - "Database query performance"
+    - "External API call success rates"
