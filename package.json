@@ -8,12 +8,19 @@
     "frontend:dev": "cd frontend && npm start",
     "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
     "build": "cd frontend && npm run build",
-    "start": "cd backend && npm start"
+    "start": "cd backend && npm start",
+    "claude-start": "node /mnt/Linux-ExHDD/Claude-GlobalSettings/scripts/start-integrated.js",
+    "claude-flow": "npx claude-flow@alpha swarm --claude",
+    "claude-status": "node /mnt/Linux-ExHDD/Claude-GlobalSettings/scripts/system-status.js"
   },
-  "keywords": ["recipe", "cooking", "management"],
+  "keywords": [
+    "recipe",
+    "cooking",
+    "management"
+  ],
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "concurrently": "^8.2.0"
+    "concurrently": "^9.2.1"
   }
 }

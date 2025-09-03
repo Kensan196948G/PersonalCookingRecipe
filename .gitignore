@@ -97,6 +97,23 @@ claude-flow.bat
 claude-flow.ps1
 hive-mind-prompt-*.txt
 
+# Claude-Flow メトリクスと実行時データ
+.claude-flow/metrics/
+.claude-flow/cache/
+.claude-flow/runtime/
+.claude-flow/sessions/
+.claude-flow/logs/
+
+# Claude エージェント実行時データ
+.claude/logs/
+.claude/cache/
+.claude/runtime/
+.claude/sessions/
+
+# バックアップディレクトリ（実行時生成）
+backup-*
+deprecated-*
+
 # Reports
 reports/*.html
 reports/*.json
