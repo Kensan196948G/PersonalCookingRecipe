@@ -13,6 +13,16 @@ export interface Recipe {
   createdAt: string;
   updatedAt: string;
   userId: number;
+  // 旧版から統合する追加フィールド
+  thumbnailUrl?: string;
+  videoUrl?: string;
+  videoId?: string;
+  channelName?: string;
+  channelId?: string;
+  publishedAt?: string;
+  duration?: string;
+  viewCount?: number;
+  likeCount?: number;
 }
 
 export interface RecipeCreateInput {
@@ -95,6 +105,15 @@ export interface RecipeFilters {
   cookingTimeMax?: number;
   servingsMin?: number;
   servingsMax?: number;
+  // 旧版から統合する検索フィルター
+  query?: string;
+  channel?: string;
+  cookingTime?: {
+    min: number;
+    max: number;
+  };
+  publishedAfter?: string;
+  publishedBefore?: string;
 }
 
 // 外部サービス統合型
@@ -116,4 +135,45 @@ export interface NotionPage {
 export interface ExternalIntegration {
   youtube?: YouTubeVideo[];
   notion?: NotionPage[];
+}
+
+// 旧版から統合する追加型定義
+export interface Channel {
+  id: string;
+  name: string;
+  displayName: string;
+  thumbnailUrl: string;
+  subscriberCount: number;
+  videoCount: number;
+  description: string;
+  isActive: boolean;
+  lastChecked: string;
+  apiQuota: {
+    daily: number;
+    remaining: number;
+    resetTime: string;
+  };
+}
+
+export interface SystemStatus {
+  isOnline: boolean;
+  lastUpdate: string;
+  activeChannels: number;
+  totalRecipes: number;
+  pendingTasks: number;
+  apiStatus: {
+    youtube: 'connected' | 'error' | 'quota_exceeded';
+    notion: 'connected' | 'error' | 'unauthorized';
+    tasty: 'connected' | 'error' | 'rate_limited';
+  };
+  errors: SystemError[];
+}
+
+export interface SystemError {
+  id: string;
+  type: 'api_error' | 'network_error' | 'system_error';
+  message: string;
+  timestamp: string;
+  resolved: boolean;
+  channel?: string;
 }

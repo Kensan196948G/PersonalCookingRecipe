@@ -1,190 +1,123 @@
-import axios, { AxiosInstance, AxiosResponse } from 'axios';
-import {
-  Recipe,
-  RecipeCreateInput,
-  RecipeUpdateInput,
-  User,
-  UserCreateInput,
-  LoginInput,
-  LoginResponse,
-  ApiResponse,
-  PaginatedResponse,
-  RecipeFilters,
-  ExternalIntegration,
-} from '@/types/api';
+import axios, { AxiosResponse } from 'axios';
+import { Recipe, SearchFilters, PaginatedResponse, ApiResponse, SystemStatus, Channel } from '@/types/recipe';
 
-class ApiService {
-  private client: AxiosInstance;
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || '/api';
 
-  constructor() {
-    this.client = axios.create({
-      baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000',
-      timeout: 10000,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+const apiClient = axios.create({
+  baseURL: API_BASE_URL,
+  timeout: 30000, // 30 seconds
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
 
-    // リクエストインターセプター（認証トークン追加）
-    this.client.interceptors.request.use(
-      (config) => {
-        const token = localStorage.getItem('authToken');
-        if (token) {
-          config.headers.Authorization = `Bearer ${token}`;
-        }
-        return config;
-      },
-      (error) => {
-        return Promise.reject(error);
-      }
-    );
-
-    // レスポンスインターセプター（エラーハンドリング）
-    this.client.interceptors.response.use(
-      (response) => response,
-      (error) => {
-        if (error.response?.status === 401) {
-          // トークン無効の場合、ログアウト処理
-          localStorage.removeItem('authToken');
-          window.location.href = '/login';
-        }
-        return Promise.reject(error);
-      }
-    );
-  }
-
-  // 認証関連
-  async login(credentials: LoginInput): Promise<LoginResponse> {
-    const response: AxiosResponse<ApiResponse<LoginResponse>> = await this.client.post(
-      '/auth/login',
-      credentials
-    );
-    
-    // トークンをローカルストレージに保存
-    localStorage.setItem('authToken', response.data.data.token);
-    
-    return response.data.data;
-  }
-
-  async register(userData: UserCreateInput): Promise<User> {
-    const response: AxiosResponse<ApiResponse<User>> = await this.client.post(
-      '/auth/register',
-      userData
-    );
-    return response.data.data;
-  }
-
-  async getCurrentUser(): Promise<User> {
-    const response: AxiosResponse<ApiResponse<User>> = await this.client.get('/auth/me');
-    return response.data.data;
-  }
-
-  async logout(): Promise<void> {
-    await this.client.post('/auth/logout');
-    localStorage.removeItem('authToken');
-  }
-
-  // レシピ関連
-  async getRecipes(filters?: RecipeFilters): Promise<PaginatedResponse<Recipe>> {
-    const params = new URLSearchParams();
-    if (filters) {
-      Object.entries(filters).forEach(([key, value]) => {
-        if (value !== undefined) {
-          if (Array.isArray(value)) {
-            value.forEach((item) => params.append(key, item.toString()));
-          } else {
-            params.append(key, value.toString());
-          }
-        }
-      });
+// Request interceptor for adding auth token
+apiClient.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem('authToken');
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
     }
-
-    const response: AxiosResponse<PaginatedResponse<Recipe>> = await this.client.get(
-      `/api/recipes?${params.toString()}`
-    );
-    return response.data;
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
   }
+);
 
-  async getRecipe(id: number): Promise<Recipe> {
-    const response: AxiosResponse<ApiResponse<Recipe>> = await this.client.get(
-      `/api/recipes/${id}`
-    );
-    return response.data.data;
+// Response interceptor for handling errors
+apiClient.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response?.status === 401) {
+      localStorage.removeItem('authToken');
+      window.location.href = '/login';
+    }
+    return Promise.reject(error);
   }
+);
 
-  async createRecipe(recipeData: RecipeCreateInput): Promise<Recipe> {
-    const response: AxiosResponse<ApiResponse<Recipe>> = await this.client.post(
-      '/api/recipes',
-      recipeData
-    );
-    return response.data.data;
-  }
+// Recipe API
+export const api = {
+  // Recipes
+  getRecipes: (filters?: SearchFilters): Promise<ApiResponse<Recipe[]>> =>
+    apiClient.get('/recipes', { params: filters }).then(res => res.data),
+  
+  getRecipesPaginated: (params?: SearchFilters & { page?: number }): Promise<ApiResponse<PaginatedResponse<Recipe>>> =>
+    apiClient.get('/recipes/paginated', { params }).then(res => res.data),
+  
+  getRecipe: (id: string): Promise<ApiResponse<Recipe>> =>
+    apiClient.get(`/recipes/${id}`).then(res => res.data),
+  
+  createRecipe: (recipe: Omit<Recipe, 'id' | 'createdAt' | 'updatedAt'>): Promise<ApiResponse<Recipe>> =>
+    apiClient.post('/recipes', recipe).then(res => res.data),
+  
+  updateRecipe: (id: string, recipe: Partial<Recipe>): Promise<ApiResponse<Recipe>> =>
+    apiClient.put(`/recipes/${id}`, recipe).then(res => res.data),
+  
+  deleteRecipe: (id: string): Promise<ApiResponse<void>> =>
+    apiClient.delete(`/recipes/${id}`).then(res => res.data),
 
-  async updateRecipe(id: number, recipeData: RecipeUpdateInput): Promise<Recipe> {
-    const response: AxiosResponse<ApiResponse<Recipe>> = await this.client.put(
-      `/api/recipes/${id}`,
-      recipeData
-    );
-    return response.data.data;
-  }
+  // Recipe stats
+  getRecipeStats: (): Promise<ApiResponse<any>> =>
+    apiClient.get('/recipes/stats').then(res => res.data),
 
-  async deleteRecipe(id: number): Promise<void> {
-    await this.client.delete(`/api/recipes/${id}`);
-  }
+  getPopularRecipes: (limit: number): Promise<ApiResponse<Recipe[]>> =>
+    apiClient.get(`/recipes/popular?limit=${limit}`).then(res => res.data),
 
-  // ユーザーのレシピ取得
-  async getUserRecipes(userId: number): Promise<Recipe[]> {
-    const response: AxiosResponse<ApiResponse<Recipe[]>> = await this.client.get(
-      `/api/users/${userId}/recipes`
-    );
-    return response.data.data;
-  }
+  getRecentRecipes: (limit: number): Promise<ApiResponse<Recipe[]>> =>
+    apiClient.get(`/recipes/recent?limit=${limit}`).then(res => res.data),
 
-  // 外部サービス統合
-  async getExternalIntegrations(recipeId: number): Promise<ExternalIntegration> {
-    const response: AxiosResponse<ApiResponse<ExternalIntegration>> = await this.client.get(
-      `/api/recipes/${recipeId}/external`
-    );
-    return response.data.data;
-  }
+  // System
+  getSystemStatus: (): Promise<ApiResponse<SystemStatus>> =>
+    apiClient.get('/system/status').then(res => res.data),
 
-  // YouTube検索
-  async searchYouTube(query: string): Promise<any> {
-    const response: AxiosResponse<ApiResponse<any>> = await this.client.get(
-      `/api/youtube/search?q=${encodeURIComponent(query)}`
-    );
-    return response.data.data;
-  }
+  getSystemLogs: (limit: number): Promise<ApiResponse<any[]>> =>
+    apiClient.get(`/system/logs?limit=${limit}`).then(res => res.data),
 
-  // Notion統合
-  async getNotionPages(): Promise<any> {
-    const response: AxiosResponse<ApiResponse<any>> = await this.client.get('/api/notion/pages');
-    return response.data.data;
-  }
+  getSystemMetrics: (): Promise<ApiResponse<any>> =>
+    apiClient.get('/system/metrics').then(res => res.data),
 
-  // Gmail統合
-  async sendRecipeEmail(recipeId: number, to: string): Promise<void> {
-    await this.client.post('/api/gmail/send-recipe', { recipeId, to });
-  }
+  healthCheck: (): Promise<ApiResponse<any>> =>
+    apiClient.get('/system/health').then(res => res.data),
 
-  // ファイルアップロード
-  async uploadImage(file: File): Promise<{ url: string }> {
-    const formData = new FormData();
-    formData.append('image', file);
+  restartSystem: (): Promise<ApiResponse<void>> =>
+    apiClient.post('/system/restart').then(res => res.data),
 
-    const response: AxiosResponse<ApiResponse<{ url: string }>> = await this.client.post(
-      '/api/upload/image',
-      formData,
-      {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      }
-    );
-    
-    return response.data.data;
-  }
-}
+  clearErrors: (errorIds?: string[]): Promise<ApiResponse<void>> =>
+    apiClient.post('/system/clear-errors', { errorIds }).then(res => res.data),
 
-export const apiService = new ApiService();
-export default apiService;
+  // Channels
+  getChannels: (): Promise<ApiResponse<Channel[]>> =>
+    apiClient.get('/channels').then(res => res.data),
+
+  getChannel: (id: string): Promise<ApiResponse<Channel>> =>
+    apiClient.get(`/channels/${id}`).then(res => res.data),
+
+  updateChannel: (id: string, channel: Partial<Channel>): Promise<ApiResponse<Channel>> =>
+    apiClient.put(`/channels/${id}`, channel).then(res => res.data),
+
+  refreshChannel: (id: string): Promise<ApiResponse<void>> =>
+    apiClient.post(`/channels/${id}/refresh`).then(res => res.data),
+
+  // Search
+  searchRecipes: (query: string, filters?: SearchFilters): Promise<ApiResponse<Recipe[]>> =>
+    apiClient.get('/search', { params: { q: query, ...filters } }).then(res => res.data),
+
+  // YouTube integration
+  getYouTubeVideo: (videoId: string): Promise<ApiResponse<any>> =>
+    apiClient.get(`/youtube/video/${videoId}`).then(res => res.data),
+
+  // Notion integration
+  getNotionPages: (): Promise<ApiResponse<any[]>> =>
+    apiClient.get('/notion/pages').then(res => res.data),
+
+  importFromNotion: (pageId: string): Promise<ApiResponse<Recipe>> =>
+    apiClient.post(`/notion/import/${pageId}`).then(res => res.data),
+
+  // Gmail integration
+  sendRecipeEmail: (recipeId: string, email: string): Promise<ApiResponse<void>> =>
+    apiClient.post('/gmail/send-recipe', { recipeId, email }).then(res => res.data),
+};
+
+export default api;

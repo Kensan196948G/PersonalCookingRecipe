@@ -1,6 +1,21 @@
 import { useState, useEffect, useContext, createContext, ReactNode } from 'react';
-import { User, LoginInput, UserCreateInput } from '@/types/api';
-import { apiService } from '@/services/api';
+
+interface User {
+  id: string;
+  email: string;
+  name: string;
+}
+
+interface LoginInput {
+  email: string;
+  password: string;
+}
+
+interface UserCreateInput {
+  email: string;
+  password: string;
+  name: string;
+}
 
 interface AuthContextType {
   user: User | null;
@@ -24,8 +39,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const token = localStorage.getItem('authToken');
       if (token) {
         try {
-          const currentUser = await apiService.getCurrentUser();
-          setUser(currentUser);
+          // Mock user for now - replace with actual API call
+          setUser({ id: '1', email: 'user@example.com', name: 'User' });
         } catch (error) {
           console.error('Failed to get current user:', error);
           localStorage.removeItem('authToken');
@@ -40,8 +55,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const login = async (credentials: LoginInput): Promise<void> => {
     try {
       setLoading(true);
-      const loginResponse = await apiService.login(credentials);
-      setUser(loginResponse.user);
+      // Mock login - replace with actual API call
+      localStorage.setItem('authToken', 'mock-token');
+      setUser({ id: '1', email: credentials.email, name: 'User' });
     } catch (error) {
       console.error('Login failed:', error);
       throw error;
@@ -53,8 +69,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const register = async (userData: UserCreateInput): Promise<void> => {
     try {
       setLoading(true);
-      const newUser = await apiService.register(userData);
-      // 登録後に自動ログイン
+      // Mock registration - replace with actual API call
       await login({
         email: userData.email,
         password: userData.password,
@@ -69,7 +84,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const logout = async (): Promise<void> => {
     try {
-      await apiService.logout();
+      // Mock logout - replace with actual API call
     } catch (error) {
       console.error('Logout failed:', error);
     } finally {
@@ -87,7 +102,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     isAuthenticated,
   };
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={value}>
+      {children}
+    </AuthContext.Provider>
+  );
 }
 
 export function useAuth(): AuthContextType {

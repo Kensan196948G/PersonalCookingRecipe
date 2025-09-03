@@ -1,185 +1,222 @@
 import { useState, useEffect } from 'react';
-import { useQuery, useMutation, useQueryClient } from 'react-query';
-import {
-  Recipe,
-  RecipeCreateInput,
-  RecipeUpdateInput,
-  RecipeFilters,
-  PaginatedResponse,
-} from '@/types/api';
-import { apiService } from '@/services/api';
+import { useQuery, useInfiniteQuery, useMutation, useQueryClient } from 'react-query';
+import { Recipe, SearchFilters, PaginatedResponse, ApiResponse } from '@/types/recipe';
+import { api } from '@/services/api';
 
-// レシピ一覧取得フック
-export function useRecipes(filters?: RecipeFilters) {
-  return useQuery(
-    ['recipes', filters],
-    () => apiService.getRecipes(filters),
-    {
-      staleTime: 5 * 60 * 1000, // 5分間キャッシュ
-      cacheTime: 10 * 60 * 1000, // 10分間メモリ保持
-    }
-  );
-}
+export const useRecipes = (filters?: SearchFilters) => {
+  const {
+    data,
+    error,
+    isLoading,
+    refetch,
+  } = useQuery({
+    queryKey: ['recipes', filters],
+    queryFn: () => api.getRecipes(filters),
+    staleTime: 5 * 60 * 1000, // 5 minutes
+    cacheTime: 10 * 60 * 1000, // 10 minutes
+    keepPreviousData: true,
+  });
 
-// 特定レシピ取得フック
-export function useRecipe(id: number) {
-  return useQuery(
-    ['recipe', id],
-    () => apiService.getRecipe(id),
-    {
-      enabled: !!id,
-      staleTime: 5 * 60 * 1000,
-    }
-  );
-}
+  return {
+    recipes: data?.data || [],
+    error,
+    isLoading,
+    refetch,
+  };
+};
 
-// レシピ作成フック
-export function useCreateRecipe() {
-  const queryClient = useQueryClient();
+export const useInfiniteRecipes = (filters?: SearchFilters) => {
+  const {
+    data,
+    error,
+    isLoading,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = useInfiniteQuery({
+    queryKey: ['infiniteRecipes', filters],
+    queryFn: ({ pageParam = 1 }) => 
+      api.getRecipesPaginated({ ...filters, page: pageParam }),
+    getNextPageParam: (lastPage: ApiResponse<PaginatedResponse<Recipe>>) => 
+      lastPage.data?.pagination?.hasNext ? lastPage.data.pagination.page + 1 : undefined,
+    staleTime: 5 * 60 * 1000,
+    keepPreviousData: true,
+  });
 
-  return useMutation(
-    (recipeData: RecipeCreateInput) => apiService.createRecipe(recipeData),
-    {
-      onSuccess: () => {
-        // レシピ一覧のキャッシュを無効化
-        queryClient.invalidateQueries(['recipes']);
-      },
-    }
-  );
-}
+  const recipes = data?.pages.flatMap(page => page.data?.data || []) || [];
 
-// レシピ更新フック
-export function useUpdateRecipe() {
-  const queryClient = useQueryClient();
+  return {
+    recipes,
+    error,
+    isLoading,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  };
+};
 
-  return useMutation(
-    ({ id, data }: { id: number; data: RecipeUpdateInput }) =>
-      apiService.updateRecipe(id, data),
-    {
-      onSuccess: (updatedRecipe) => {
-        // 特定レシピのキャッシュを更新
-        queryClient.setQueryData(['recipe', updatedRecipe.id], updatedRecipe);
-        // レシピ一覧のキャッシュを無効化
-        queryClient.invalidateQueries(['recipes']);
-      },
-    }
-  );
-}
+export const useRecipe = (id: string) => {
+  const {
+    data,
+    error,
+    isLoading,
+  } = useQuery({
+    queryKey: ['recipe', id],
+    queryFn: () => api.getRecipe(id),
+    enabled: !!id,
+    staleTime: 10 * 60 * 1000, // 10 minutes
+  });
 
-// レシピ削除フック
-export function useDeleteRecipe() {
-  const queryClient = useQueryClient();
+  return {
+    recipe: data?.data,
+    error,
+    isLoading,
+  };
+};
 
-  return useMutation(
-    (id: number) => apiService.deleteRecipe(id),
-    {
-      onSuccess: (_, deletedId) => {
-        // 削除されたレシピのキャッシュを削除
-        queryClient.removeQueries(['recipe', deletedId]);
-        // レシピ一覧のキャッシュを無効化
-        queryClient.invalidateQueries(['recipes']);
-      },
-    }
-  );
-}
+export const useRecipeSearch = () => {
+  const [filters, setFilters] = useState<SearchFilters>({
+    query: '',
+    tags: [],
+  });
 
-// ユーザーのレシピ取得フック
-export function useUserRecipes(userId: number) {
-  return useQuery(
-    ['userRecipes', userId],
-    () => apiService.getUserRecipes(userId),
-    {
-      enabled: !!userId,
-      staleTime: 5 * 60 * 1000,
-    }
-  );
-}
+  const { recipes, isLoading, error, refetch } = useRecipes(filters);
 
-// 外部統合データ取得フック
-export function useExternalIntegrations(recipeId: number) {
-  return useQuery(
-    ['externalIntegrations', recipeId],
-    () => apiService.getExternalIntegrations(recipeId),
-    {
-      enabled: !!recipeId,
-      staleTime: 10 * 60 * 1000, // 外部APIは10分キャッシュ
-    }
-  );
-}
-
-// 画像アップロードフック
-export function useImageUpload() {
-  return useMutation(
-    (file: File) => apiService.uploadImage(file),
-    {
-      onError: (error) => {
-        console.error('Image upload failed:', error);
-      },
-    }
-  );
-}
-
-// レシピフィルタリングフック
-export function useRecipeFilters() {
-  const [filters, setFilters] = useState<RecipeFilters>({});
-
-  const updateFilter = <K extends keyof RecipeFilters>(
-    key: K,
-    value: RecipeFilters[K]
-  ) => {
-    setFilters((prev) => ({
-      ...prev,
-      [key]: value,
-    }));
+  const updateFilters = (newFilters: Partial<SearchFilters>) => {
+    setFilters(prev => ({ ...prev, ...newFilters }));
   };
 
-  const clearFilters = () => {
-    setFilters({});
-  };
-
-  const clearFilter = <K extends keyof RecipeFilters>(key: K) => {
-    setFilters((prev) => {
-      const newFilters = { ...prev };
-      delete newFilters[key];
-      return newFilters;
+  const resetFilters = () => {
+    setFilters({
+      query: '',
+      tags: [],
     });
   };
 
   return {
+    recipes,
     filters,
-    updateFilter,
-    clearFilters,
-    clearFilter,
-    setFilters,
+    isLoading,
+    error,
+    updateFilters,
+    resetFilters,
+    refetch,
   };
-}
+};
 
-// レシピ検索フック
-export function useRecipeSearch() {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [debouncedQuery, setDebouncedQuery] = useState('');
+export const useFavoriteRecipes = () => {
+  const [favorites, setFavorites] = useState<string[]>([]);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setDebouncedQuery(searchQuery);
-    }, 300);
-
-    return () => clearTimeout(timer);
-  }, [searchQuery]);
-
-  const searchResults = useQuery(
-    ['recipeSearch', debouncedQuery],
-    () => apiService.getRecipes({ search: debouncedQuery }),
-    {
-      enabled: debouncedQuery.length > 2,
-      staleTime: 2 * 60 * 1000, // 検索結果は2分キャッシュ
+    const saved = localStorage.getItem('favoriteRecipes');
+    if (saved) {
+      try {
+        setFavorites(JSON.parse(saved));
+      } catch (error) {
+        console.error('Failed to parse favorite recipes:', error);
+        setFavorites([]);
+      }
     }
-  );
+  }, []);
+
+  const toggleFavorite = (recipeId: string) => {
+    setFavorites(prev => {
+      const newFavorites = prev.includes(recipeId)
+        ? prev.filter(id => id !== recipeId)
+        : [...prev, recipeId];
+      
+      localStorage.setItem('favoriteRecipes', JSON.stringify(newFavorites));
+      return newFavorites;
+    });
+  };
+
+  const isFavorite = (recipeId: string) => favorites.includes(recipeId);
+
+  const addFavorite = (recipeId: string) => {
+    if (!favorites.includes(recipeId)) {
+      const newFavorites = [...favorites, recipeId];
+      setFavorites(newFavorites);
+      localStorage.setItem('favoriteRecipes', JSON.stringify(newFavorites));
+    }
+  };
+
+  const removeFavorite = (recipeId: string) => {
+    const newFavorites = favorites.filter(id => id !== recipeId);
+    setFavorites(newFavorites);
+    localStorage.setItem('favoriteRecipes', JSON.stringify(newFavorites));
+  };
+
+  const clearFavorites = () => {
+    setFavorites([]);
+    localStorage.removeItem('favoriteRecipes');
+  };
 
   return {
-    searchQuery,
-    setSearchQuery,
-    searchResults,
-    isSearching: searchResults.isLoading && debouncedQuery.length > 2,
+    favorites,
+    toggleFavorite,
+    isFavorite,
+    addFavorite,
+    removeFavorite,
+    clearFavorites,
   };
-}
+};
+
+export const useCreateRecipe = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (recipe: Omit<Recipe, 'id' | 'createdAt' | 'updatedAt'>) =>
+      api.createRecipe(recipe),
+    onSuccess: () => {
+      queryClient.invalidateQueries(['recipes']);
+    },
+  });
+};
+
+export const useUpdateRecipe = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: ({ id, recipe }: { id: string; recipe: Partial<Recipe> }) =>
+      api.updateRecipe(id, recipe),
+    onSuccess: (_, { id }) => {
+      queryClient.invalidateQueries(['recipe', id]);
+      queryClient.invalidateQueries(['recipes']);
+    },
+  });
+};
+
+export const useDeleteRecipe = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (id: string) => api.deleteRecipe(id),
+    onSuccess: () => {
+      queryClient.invalidateQueries(['recipes']);
+    },
+  });
+};
+
+export const useRecipeStats = () => {
+  return useQuery({
+    queryKey: ['recipe-stats'],
+    queryFn: () => api.getRecipeStats(),
+    staleTime: 10 * 60 * 1000, // 10 minutes
+  });
+};
+
+export const usePopularRecipes = (limit = 10) => {
+  return useQuery({
+    queryKey: ['popular-recipes', limit],
+    queryFn: () => api.getPopularRecipes(limit),
+    staleTime: 30 * 60 * 1000, // 30 minutes
+  });
+};
+
+export const useRecentRecipes = (limit = 10) => {
+  return useQuery({
+    queryKey: ['recent-recipes', limit],
+    queryFn: () => api.getRecentRecipes(limit),
+    staleTime: 5 * 60 * 1000, // 5 minutes
+  });
+};
