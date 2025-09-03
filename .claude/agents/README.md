@@ -1,9 +1,3 @@
----
-name: "agents-directory-overview"
-description: "Overview of Claude Code Agents Directory Structure"
-type: "documentation"
----
-
 # Claude Code Agents Directory Structure
 
 This directory contains sub-agent definitions organized by type and purpose. Each agent has specific capabilities, tool restrictions, and naming conventions that trigger automatic delegation.

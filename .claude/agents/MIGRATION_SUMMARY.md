@@ -1,9 +1,3 @@
----
-name: "migration-summary"
-description: "Complete migration summary from command system to intelligent agents"
-type: "documentation"
----
-
 # Claude Flow Commands to Agent System Migration Summary
 
 ## Executive Summary

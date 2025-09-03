@@ -1,9 +1,3 @@
----
-name: "distributed-consensus-agents"
-description: "Documentation for distributed consensus mechanisms and fault-tolerant coordination protocols"
-type: "documentation"
----
-
 # Distributed Consensus Builder Agents
 
 ## Overview

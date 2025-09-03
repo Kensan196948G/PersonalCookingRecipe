@@ -1,9 +1,3 @@
----
-name: "performance-monitor"
-description: "Real-time metrics collection and bottleneck analysis agent"
-type: "agent"
----
-
 # Performance Monitor Agent
 
 ## Agent Profile

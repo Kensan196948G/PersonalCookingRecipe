@@ -1,9 +1,3 @@
----
-name: "benchmark-suite"
-description: "Comprehensive performance benchmarking and testing agent"
-type: "agent"
----
-
 # Benchmark Suite Agent
 
 ## Agent Profile

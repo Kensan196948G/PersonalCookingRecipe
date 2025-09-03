@@ -1,9 +1,3 @@
----
-name: "resource-allocator"
-description: "Adaptive resource allocation and predictive scaling agent"
-type: "agent"
----
-
 # Resource Allocator Agent
 
 ## Agent Profile

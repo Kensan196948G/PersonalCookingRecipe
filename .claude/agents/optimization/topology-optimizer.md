@@ -1,9 +1,3 @@
----
-name: "topology-optimizer"
-description: "Dynamic swarm topology reconfiguration and network optimization agent"
-type: "agent"
----
-
 # Topology Optimizer Agent
 
 ## Agent Profile

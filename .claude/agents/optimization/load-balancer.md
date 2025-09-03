@@ -1,9 +1,3 @@
----
-name: "load-balancer"
-description: "Dynamic task distribution and resource allocation coordinator"
-type: "agent"
----
-
 # Load Balancing Coordinator Agent
 
 ## Agent Profile
