@@ -348,44 +348,105 @@ jobs:
         fi
 
   # ===============================
-  # システム統合テスト
+  # システム統合テスト (Native)
   # ===============================
   system-integration:
     runs-on: ubuntu-latest
     needs: [database-integration, auth-performance-test, backend-tests]
-    
+
+    services:
+      postgres:
+        image: postgres:15-alpine
+        env:
+          POSTGRES_DB: ${{ env.POSTGRES_DB }}
+          POSTGRES_USER: ${{ env.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+      redis:
+        image: redis:7-alpine
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 3s
+          --health-retries 5
+        ports:
+          - 6379:6379
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-      
-    - name: Start services with docker-compose
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+
+    - name: Install dependencies
       run: |
-        # PostgreSQL版でテスト
-        docker-compose -f docker-compose.postgresql.yml up -d postgres redis
-        
-        # サービス起動待機
-        sleep 30
-        
-    - name: Health check all services
+        cd backend && npm ci
+
+    - name: Health check all services (Native)
+      env:
+        DB_TYPE: postgresql
+        DB_HOST: localhost
+        DB_PORT: 5432
+        DB_NAME: ${{ env.POSTGRES_DB }}
+        DB_USER: ${{ env.POSTGRES_USER }}
+        DB_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
+        REDIS_URL: redis://localhost:6379
       run: |
-        echo "🏥 サービスヘルスチェック開始..."
-        
+        echo "🏥 サービスヘルスチェック開始 (Native Environment)..."
+
         # PostgreSQL接続テスト
-        docker-compose -f docker-compose.postgresql.yml exec -T postgres \
-          psql -U recipe_user -d recipe_db -c "SELECT 1;" || exit 1
-        echo "✅ PostgreSQL接続成功"
-        
+        cd backend
+        node -e "
+          const { Pool } = require('pg');
+          const pool = new Pool({
+            host: process.env.DB_HOST,
+            port: process.env.DB_PORT,
+            database: process.env.DB_NAME,
+            user: process.env.DB_USER,
+            password: process.env.DB_PASSWORD
+          });
+
+          (async () => {
+            try {
+              const result = await pool.query('SELECT 1');
+              console.log('✅ PostgreSQL接続成功');
+              await pool.end();
+            } catch (error) {
+              console.error('❌ PostgreSQL接続失敗:', error.message);
+              process.exit(1);
+            }
+          })();
+        "
+
         # Redis接続テスト
-        docker-compose -f docker-compose.postgresql.yml exec -T redis \
-          redis-cli ping || exit 1
-        echo "✅ Redis接続成功"
-        
-        echo "✅ 全サービス稼働確認完了"
-        
-    - name: Cleanup
-      if: always()
-      run: |
-        docker-compose -f docker-compose.postgresql.yml down -v
+        node -e "
+          const redis = require('redis');
+          const client = redis.createClient({ url: process.env.REDIS_URL });
+
+          (async () => {
+            try {
+              await client.connect();
+              await client.ping();
+              console.log('✅ Redis接続成功');
+              await client.quit();
+            } catch (error) {
+              console.error('❌ Redis接続失敗:', error.message);
+              process.exit(1);
+            }
+          })();
+        "
+
+        echo "✅ 全サービス稼働確認完了 (Native Environment)"
 
   # ===============================
   # 品質サマリーレポート

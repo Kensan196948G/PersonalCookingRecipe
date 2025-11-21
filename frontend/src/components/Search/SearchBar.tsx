@@ -1,22 +1,10 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { 
-  SearchIcon, 
-  FilterIcon, 
-  XIcon 
+import {
+  SearchIcon,
+  FilterIcon,
+  XIcon
 } from 'lucide-react';
-
-interface SearchFilters {
-  query: string;
-  channel?: string;
-  difficulty?: 'easy' | 'medium' | 'hard';
-  cookingTime?: {
-    min: number;
-    max: number;
-  };
-  tags: string[];
-  publishedAfter?: string;
-  publishedBefore?: string;
-}
+import { SearchFilters } from '@/types/recipe';
 
 interface SearchBarProps {
   filters: SearchFilters;
@@ -71,18 +59,20 @@ export const SearchBar: React.FC<SearchBarProps> = ({
   };
 
   const handleTagAdd = (tag: string) => {
-    if (!filters.tags.includes(tag)) {
+    const currentTags = filters.tags || [];
+    if (!currentTags.includes(tag)) {
       onFiltersChange({
         ...filters,
-        tags: [...filters.tags, tag],
+        tags: [...currentTags, tag],
       });
     }
   };
 
   const handleTagRemove = (tagToRemove: string) => {
+    const currentTags = filters.tags || [];
     onFiltersChange({
       ...filters,
-      tags: filters.tags.filter(tag => tag !== tagToRemove),
+      tags: currentTags.filter(tag => tag !== tagToRemove),
     });
   };
 
@@ -101,49 +91,53 @@ export const SearchBar: React.FC<SearchBarProps> = ({
     setQuery('');
   };
 
-  const hasActiveFilters = 
-    filters.channel || 
-    filters.difficulty || 
-    filters.cookingTime || 
-    filters.tags.length > 0;
+  const hasActiveFilters =
+    filters.difficulty ||
+    filters.cookingTime ||
+    (filters.tags && filters.tags.length > 0);
 
   return (
-    <div className="w-full mb-6">
+    <div className="w-full mb-6" role="search">
       {/* Main Search Bar */}
       <div className="flex gap-2 mb-4">
         <div className="flex-1 relative">
-          <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+          <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" aria-hidden="true" />
           <input
-            type="text"
+            type="search"
             placeholder="レシピ、材料、チャンネルを検索..."
             value={query}
             onChange={handleQueryChange}
+            aria-label="レシピ、材料、チャンネルを検索"
             className="w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white"
           />
           {query && (
             <button
               onClick={handleClearSearch}
               className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+              aria-label="検索をクリア"
             >
-              <XIcon className="h-5 w-5" />
+              <XIcon className="h-5 w-5" aria-hidden="true" />
             </button>
           )}
         </div>
-        
+
         <button
           onClick={() => setShowFilters(!showFilters)}
           className={`px-4 py-3 rounded-lg border transition-colors ${
-            hasActiveFilters 
-              ? 'bg-primary-500 text-white border-primary-500' 
+            hasActiveFilters
+              ? 'bg-primary-500 text-white border-primary-500'
               : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
           }`}
+          aria-label={showFilters ? 'フィルターを閉じる' : 'フィルターを開く'}
+          aria-expanded={showFilters}
+          aria-controls="filter-panel"
         >
-          <FilterIcon className="h-5 w-5" />
+          <FilterIcon className="h-5 w-5" aria-hidden="true" />
         </button>
       </div>
 
       {/* Active Tags */}
-      {filters.tags.length > 0 && (
+      {filters.tags && filters.tags.length > 0 && (
         <div className="flex flex-wrap gap-2 mb-4">
           {filters.tags.map((tag) => (
             <span
@@ -164,20 +158,26 @@ export const SearchBar: React.FC<SearchBarProps> = ({
 
       {/* Filter Panel */}
       {showFilters && (
-        <div className="bg-white border border-gray-200 rounded-lg p-6 space-y-6">
+        <div
+          className="bg-white border border-gray-200 rounded-lg p-6 space-y-6"
+          id="filter-panel"
+          role="region"
+          aria-label="検索フィルター"
+        >
           <div className="flex justify-between items-center">
             <h3 className="text-lg font-semibold text-gray-900">フィルター</h3>
             <button
               onClick={() => setShowFilters(false)}
               className="text-gray-400 hover:text-gray-600"
+              aria-label="フィルターパネルを閉じる"
             >
-              <XIcon className="h-6 w-6" />
+              <XIcon className="h-6 w-6" aria-hidden="true" />
             </button>
           </div>
 
           {/* Difficulty Filter */}
-          <div>
-            <h4 className="text-sm font-medium text-gray-700 mb-3">難易度</h4>
+          <div role="group" aria-labelledby="difficulty-filter-label">
+            <h4 id="difficulty-filter-label" className="text-sm font-medium text-gray-700 mb-3">難易度</h4>
             <div className="flex gap-2">
               {DIFFICULTY_OPTIONS.map((option) => (
                 <button
@@ -188,6 +188,8 @@ export const SearchBar: React.FC<SearchBarProps> = ({
                       ? 'bg-primary-500 text-white border-primary-500'
                       : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
                   }`}
+                  aria-pressed={filters.difficulty === option.value}
+                  aria-label={`難易度: ${option.label}`}
                 >
                   {option.label}
                 </button>
@@ -196,18 +198,20 @@ export const SearchBar: React.FC<SearchBarProps> = ({
           </div>
 
           {/* Popular Tags */}
-          <div>
-            <h4 className="text-sm font-medium text-gray-700 mb-3">人気のタグ</h4>
+          <div role="group" aria-labelledby="tags-filter-label">
+            <h4 id="tags-filter-label" className="text-sm font-medium text-gray-700 mb-3">人気のタグ</h4>
             <div className="flex flex-wrap gap-2">
               {POPULAR_TAGS.map((tag) => (
                 <button
                   key={tag}
                   onClick={() => handleTagAdd(tag)}
                   className={`px-3 py-1 rounded-full text-sm border transition-colors ${
-                    filters.tags.includes(tag)
+                    filters.tags && filters.tags.includes(tag)
                       ? 'bg-primary-500 text-white border-primary-500'
                       : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
                   }`}
+                  aria-pressed={filters.tags && filters.tags.includes(tag)}
+                  aria-label={`タグ: ${tag}`}
                 >
                   {tag}
                 </button>

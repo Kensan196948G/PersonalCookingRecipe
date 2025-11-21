@@ -11,7 +11,6 @@ Date: 2025-08-08
 from fastapi import FastAPI, HTTPException, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
-from fastapi.staticfiles import StaticFiles
 from contextlib import asynccontextmanager
 import asyncio
 import json
@@ -70,15 +69,22 @@ app = FastAPI(
 # CORS設定（開発環境用）
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],
+    allow_origins=[
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+        "http://192.168.3.135:3000",
+        "http://192.168.3.135:3002",
+    ],
     allow_credentials=True,
     allow_methods=["GET", "POST", "PUT", "DELETE"],
     allow_headers=["*"],
 )
 
+
 # ==============================================================================
 # API エンドポイント
 # ==============================================================================
+
 
 @app.get("/", response_model=Dict[str, str])
 async def root():
@@ -89,6 +95,7 @@ async def root():
         "status": "healthy",
         "timestamp": datetime.now(timezone.utc).isoformat()
     }
+
 
 @app.get("/api/health", response_model=APIResponse[SystemStatus])
 async def get_system_health():
@@ -105,6 +112,7 @@ async def get_system_health():
     except Exception as e:
         logger.error(f"システムヘルス取得エラー: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+
 
 @app.get("/api/dashboard", response_model=APIResponse[Dict[str, Any]])
 async def get_dashboard_data():
@@ -133,6 +141,7 @@ async def get_dashboard_data():
     except Exception as e:
         logger.error(f"ダッシュボードデータ取得エラー: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+
 
 @app.get("/api/recipes", response_model=APIResponse[List[Recipe]])
 async def get_recipes(
@@ -163,6 +172,7 @@ async def get_recipes(
         logger.error(f"レシピ取得エラー: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
+
 @app.get("/api/recipes/{recipe_id}", response_model=APIResponse[Recipe])
 async def get_recipe_detail(recipe_id: str):
     """レシピ詳細取得"""
@@ -184,6 +194,7 @@ async def get_recipe_detail(recipe_id: str):
         logger.error(f"レシピ詳細取得エラー: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
+
 @app.get("/api/channels/stats", response_model=APIResponse[List[ChannelStats]])
 async def get_channel_stats():
     """チャンネル統計取得"""
@@ -200,6 +211,7 @@ async def get_channel_stats():
         logger.error(f"チャンネル統計取得エラー: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
+
 @app.get("/api/logs", response_model=APIResponse[List[LogEntry]])
 async def get_logs(
     level: Optional[str] = None,
@@ -209,7 +221,11 @@ async def get_logs(
     """ログ取得"""
     try:
         log_service: LogService = app.state.log_service
-        logs = await log_service.get_logs(level=level, component=component, limit=limit)
+        logs = await log_service.get_logs(
+            level=level,
+            component=component,
+            limit=limit,
+        )
         
         return APIResponse(
             data=logs,

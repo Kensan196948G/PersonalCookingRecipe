@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { useMemo, useCallback } from 'react';
 import Image from 'next/image';
 import { Recipe } from '@/types/recipe';
 import { formatDistanceToNow, format } from 'date-fns';
 import { ja } from 'date-fns/locale';
 import { useFavoriteRecipes } from '@/hooks/useRecipes';
-import { 
-  Clock, 
-  Users, 
-  Star, 
-  Heart, 
-  Play, 
-  Eye, 
+import {
+  Clock,
+  Users,
+  Star,
+  Heart,
+  Play,
+  Eye,
   ThumbsUp,
   User
 } from 'lucide-react';
@@ -22,7 +22,41 @@ interface RecipeCardProps {
   variant?: 'default' | 'compact';
 }
 
-export const RecipeCard: React.FC<RecipeCardProps> = ({
+// ユーティリティ関数をコンポーネント外に移動
+const getDifficultyColor = (difficulty: string) => {
+  switch (difficulty) {
+    case 'easy': return 'text-green-600 bg-green-100';
+    case 'medium': return 'text-yellow-600 bg-yellow-100';
+    case 'hard': return 'text-red-600 bg-red-100';
+    default: return 'text-gray-600 bg-gray-100';
+  }
+};
+
+const formatViewCount = (count: number) => {
+  if (count >= 1000000) {
+    return `${(count / 1000000).toFixed(1)}M`;
+  }
+  if (count >= 1000) {
+    return `${(count / 1000).toFixed(1)}K`;
+  }
+  return count.toString();
+};
+
+const formatDuration = (duration: string) => {
+  const match = duration.match(/PT(\d+H)?(\d+M)?(\d+S)?/);
+  if (!match) return duration;
+
+  const hours = match[1] ? parseInt(match[1]) : 0;
+  const minutes = match[2] ? parseInt(match[2]) : 0;
+  const seconds = match[3] ? parseInt(match[3]) : 0;
+
+  if (hours > 0) {
+    return `${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  }
+  return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+};
+
+const RecipeCardComponent: React.FC<RecipeCardProps> = ({
   recipe,
   onClick,
   showChannel = true,
@@ -31,48 +65,20 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
   const { isFavorite, toggleFavorite } = useFavoriteRecipes();
   const isCompact = variant === 'compact';
 
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     onClick?.(recipe);
-  };
+  }, [onClick, recipe]);
 
-  const handleFavoriteClick = (event: React.MouseEvent) => {
+  const handleFavoriteClick = useCallback((event: React.MouseEvent) => {
     event.stopPropagation();
     toggleFavorite(recipe.id);
-  };
+  }, [toggleFavorite, recipe.id]);
 
-  const getDifficultyColor = (difficulty: string) => {
-    switch (difficulty) {
-      case 'easy': return 'text-green-600 bg-green-100';
-      case 'medium': return 'text-yellow-600 bg-yellow-100';
-      case 'hard': return 'text-red-600 bg-red-100';
-      default: return 'text-gray-600 bg-gray-100';
-    }
-  };
-
-  const formatViewCount = (count: number) => {
-    if (count >= 1000000) {
-      return `${(count / 1000000).toFixed(1)}M`;
-    }
-    if (count >= 1000) {
-      return `${(count / 1000).toFixed(1)}K`;
-    }
-    return count.toString();
-  };
-
-  const formatDuration = (duration: string) => {
-    // Convert YouTube duration format PT4M13S to readable format
-    const match = duration.match(/PT(\d+H)?(\d+M)?(\d+S)?/);
-    if (!match) return duration;
-    
-    const hours = match[1] ? parseInt(match[1]) : 0;
-    const minutes = match[2] ? parseInt(match[2]) : 0;
-    const seconds = match[3] ? parseInt(match[3]) : 0;
-    
-    if (hours > 0) {
-      return `${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-    }
-    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
-  };
+  const formattedDuration = useMemo(() => formatDuration(recipe.duration), [recipe.duration]);
+  const formattedViews = useMemo(() => formatViewCount(recipe.viewCount), [recipe.viewCount]);
+  const formattedLikes = useMemo(() => formatViewCount(recipe.likeCount), [recipe.likeCount]);
+  const difficultyColor = useMemo(() => getDifficultyColor(recipe.difficulty), [recipe.difficulty]);
+  const isFav = useMemo(() => isFavorite(recipe.id), [isFavorite, recipe.id]);
 
   return (
     <div
@@ -100,18 +106,19 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
 
         {/* Duration Badge */}
         <div className="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white text-xs px-2 py-1 rounded">
-          {formatDuration(recipe.duration)}
+          {formattedDuration}
         </div>
 
         {/* Favorite Button */}
         <button
           onClick={handleFavoriteClick}
           className="absolute top-2 right-2 bg-white bg-opacity-90 hover:bg-white p-2 rounded-full transition-colors"
+          aria-label={isFav ? "Remove from favorites" : "Add to favorites"}
         >
-          <Heart 
+          <Heart
             className={`h-4 w-4 ${
-              isFavorite(recipe.id) 
-                ? 'text-red-500 fill-current' 
+              isFav
+                ? 'text-red-500 fill-current'
                 : 'text-gray-400'
             }`}
           />
@@ -165,7 +172,7 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
             </span>
           )}
           
-          <span className={`inline-flex items-center gap-1 px-2 py-1 text-xs rounded-full ${getDifficultyColor(recipe.difficulty)}`}>
+          <span className={`inline-flex items-center gap-1 px-2 py-1 text-xs rounded-full ${difficultyColor}`}>
             <Star className="h-3 w-3" />
             {recipe.difficulty}
           </span>
@@ -195,13 +202,13 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
           <div className="flex items-center gap-4 text-xs text-gray-500">
             <div className="flex items-center gap-1">
               <Eye className="h-3 w-3" />
-              {formatViewCount(recipe.viewCount)}
+              {formattedViews}
             </div>
-            
+
             {recipe.likeCount > 0 && (
               <div className="flex items-center gap-1">
                 <ThumbsUp className="h-3 w-3" />
-                {formatViewCount(recipe.likeCount)}
+                {formattedLikes}
               </div>
             )}
           </div>
@@ -214,3 +221,6 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
     </div>
   );
 };
+
+export const RecipeCard = React.memo(RecipeCardComponent);
+RecipeCard.displayName = 'RecipeCard';

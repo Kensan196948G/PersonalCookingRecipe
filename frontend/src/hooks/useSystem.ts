@@ -1,4 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from 'react-query';
+import React, { useState, useEffect } from 'react';
 import { SystemStatus, Channel } from '@/types/recipe';
 import { api } from '@/services/api';
 
@@ -162,9 +163,9 @@ export const useClearErrors = () => {
 
 // Hook for managing notifications
 export const useNotifications = () => {
-  const [permission, setPermission] = React.useState<NotificationPermission>('default');
+  const [permission, setPermission] = useState<NotificationPermission>('default');
 
-  React.useEffect(() => {
+  useEffect(() => {
     if ('Notification' in window) {
       setPermission(Notification.permission);
     }

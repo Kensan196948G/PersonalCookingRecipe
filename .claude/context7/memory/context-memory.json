@@ -1,0 +1,73 @@
+{
+  "context_memory": {
+    "version": "2.0.0",
+    "architecture": "hierarchical_memory_system",
+    "storage": {
+      "primary": "postgresql",
+      "cache": "redis",
+      "persistence": "disk_backup"
+    },
+    "memory_layers": {
+      "immediate": {
+        "type": "redis_cache",
+        "ttl": "1h",
+        "capacity": "1GB",
+        "purpose": "即座のコンテキスト参照"
+      },
+      "session": {
+        "type": "postgresql",
+        "retention": "24h",
+        "purpose": "セッション内コンテキスト維持"
+      },
+      "persistent": {
+        "type": "postgresql + disk",
+        "retention": "unlimited",
+        "purpose": "長期記憶・学習データ"
+      }
+    },
+    "context_types": {
+      "development": {
+        "code_changes": "リアルタイム追跡",
+        "decision_history": "アーキテクチャ決定履歴",
+        "bug_patterns": "バグパターン学習",
+        "optimization_history": "最適化履歴"
+      },
+      "project": {
+        "requirements": "要件変更履歴",
+        "milestones": "マイルストーン進捗",
+        "stakeholder_feedback": "ステークホルダーフィードバック",
+        "technical_debt": "技術的負債追跡"
+      },
+      "ai_collaboration": {
+        "agent_interactions": "エージェント間協調履歴",
+        "learning_patterns": "AI学習パターン",
+        "suggestion_history": "提案・採用履歴",
+        "performance_metrics": "AI協調パフォーマンス"
+      }
+    },
+    "retrieval_strategies": {
+      "semantic_search": {
+        "enabled": true,
+        "embedding_model": "claude-3-haiku",
+        "similarity_threshold": 0.8
+      },
+      "temporal_search": {
+        "enabled": true,
+        "time_decay_factor": 0.95,
+        "relevance_window": "7d"
+      },
+      "contextual_ranking": {
+        "enabled": true,
+        "current_task_weight": 0.6,
+        "project_phase_weight": 0.3,
+        "historical_success_weight": 0.1
+      }
+    },
+    "auto_learning": {
+      "pattern_detection": "enabled",
+      "success_prediction": "enabled",
+      "anomaly_detection": "enabled",
+      "optimization_suggestions": "enabled"
+    }
+  }
+}

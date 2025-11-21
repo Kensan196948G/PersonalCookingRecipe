@@ -46,9 +46,9 @@
 - **WebSocket**: リアルタイム通信サポート
 
 ### インフラストラクチャ
-- **コンテナ化**: Docker + Docker Compose
-- **リバースプロキシ**: Nginx Alpine
-- **監視**: Prometheus + Grafana + Fluentd
+- **プロセス管理**: PM2 + Ecosystem
+- **監視**: ネイティブNode.js監視システム (systeminformation + prom-client)
+- **ログ管理**: Winston
 - **CI/CD**: GitHub Actions品質ゲート実装済み
 
 ## 📋 API エンドポイント
@@ -95,9 +95,20 @@ cp .env.example .env
 ```
 
 ### 4. サーバー起動:
+開発環境を一括で起動する場合（推奨）:
 ```bash
-npm start
-# 開発環境の場合:
+npm run dev
+```
+これにより、バックエンド（ポート5000）とフロントエンド（ポート3000）が同時に起動します。
+
+個別に起動する場合:
+```bash
+# バックエンド
+cd backend
+npm run dev
+
+# フロントエンド
+cd frontend
 npm run dev
 ```
 
@@ -108,19 +119,22 @@ npm run dev
 
 ```
 PersonalCookingRecipe/
-├── src/
-│   ├── server.js           # メインサーバーファイル
-│   ├── config/             # 設定ファイル
-│   ├── models/             # データベースモデル
-│   ├── controllers/        # ルートコントローラー
-│   ├── routes/             # APIルート
-│   └── middleware/         # カスタムミドルウェア
-├── views/                  # EJSテンプレート
-├── public/                 # 静的ファイル
-├── tests/                  # テストファイル
-├── .env.example           # 環境変数テンプレート
-├── package.json           # 依存関係
-└── README.md             # ドキュメント
+├── backend/                # APIサーバー (Node.js + Express + PostgreSQL)
+│   ├── src/
+│   │   ├── server.js       # メインサーバーファイル
+│   │   ├── config/         # 設定ファイル
+│   │   ├── models/         # データベースモデル
+│   │   ├── routes/         # APIルート
+│   │   └── middleware/     # カスタムミドルウェア
+│   └── package.json
+├── frontend/               # フロントエンド (Next.js + Tailwind CSS)
+│   ├── app/                # App Router (Next.js 14)
+│   ├── src/                # コンポーネント・ユーティリティ
+│   └── package.json
+├── _deprecated_*/          # 旧バージョンのバックアップ (src, views, public等)
+├── .env.example            # 環境変数テンプレート
+├── package.json            # ルート依存関係・一括起動スクリプト
+└── README.md               # ドキュメント
 ```
 
 ## 📊 レシピデータ構造
@@ -160,7 +174,7 @@ PersonalCookingRecipe/
 ```env
 # データベース (Phase 1でPostgreSQLに移行済み)
 DB_TYPE=postgresql
-DB_HOST=postgres
+DB_HOST=localhost
 DB_PORT=5432
 DB_NAME=recipe_db
 DB_USER=recipe_user
@@ -178,13 +192,17 @@ JWT_CACHE_ENABLED=true
 JWT_CACHE_TTL=3600
 
 # Redis キャッシング
-REDIS_URL=redis://redis:6379
-REDIS_HOST=redis
+REDIS_URL=redis://localhost:6379
+REDIS_HOST=localhost
 REDIS_PORT=6379
 
 # アップロード
-UPLOAD_PATH=/app/uploads
+UPLOAD_PATH=./uploads
 MAX_FILE_SIZE=10485760
+
+# 監視システム
+MONITORING_ENABLED=true
+MONITORING_PORT=5000
 ```
 
 ## 🧪 テスト
@@ -207,11 +225,11 @@ node scripts/jwt-performance-test.js
 
 - **Node.js**: 18.x 以上（推奨）
 - **npm**: 8.x 以上
-- **PostgreSQL**: 15.x 以上
-- **Redis**: 7.x 以上
-- **Docker**: 最新版（推奨）
-- **ディスク容量**: 最低 1GB
-- **メモリ**: 最低 1GB（推奨 2GB以上）
+- **PostgreSQL**: 15.x 以上（ネイティブインストール）
+- **Redis**: 7.x 以上（ネイティブインストール）
+- **PM2**: 最新版（プロセス管理）
+- **ディスク容量**: 最低 2GB
+- **メモリ**: 最低 2GB（推奨 4GB以上）
 
 ## 🔒 セキュリティ機能
 
@@ -249,7 +267,7 @@ node scripts/jwt-performance-test.js
 2. **データベース接続エラー**: .envファイルのPostgreSQL設定を確認してください
 3. **JWT認証エラー**: JWT_SECRETが.envファイルに設定されていることを確認してください
 4. **モジュールが見つからない**: `npm install`を再実行してください
-5. **Docker起動エラー**: `docker-compose down && docker-compose up -d`を試してください
+5. **プロセス起動エラー**: `pm2 restart all`または`npm run dev`を試してください
 
 ### サポートについて
 
@@ -281,5 +299,5 @@ MIT License
 
 ---
 
-**❤️ Node.js + PostgreSQL + Redis で構築**  
-**🚀 Claude-Flow/SPARC方法論による高効率開発**
+**❤️ Node.js + PostgreSQL + Redis で構築**
+**🚀 高効率開発フレームワーク採用**

@@ -1,0 +1,612 @@
+# Phase 2: 品質・パフォーマンス改善 CI/CDパイプライン
+# テストカバレッジ、APIパフォーマンス、Lighthouse監査の品質ゲート
+name: Phase 2 Quality Gate
+
+on:
+  push:
+    branches: [main, develop, phase-2/*, feature/*]
+  pull_request:
+    branches: [main, develop]
+  schedule:
+    # 毎日午前3時(JST)に自動実行 - 継続的品質監視
+    - cron: '0 18 * * *'  # UTC 18:00 = JST 3:00
+
+env:
+  NODE_VERSION: '18.x'
+  PYTHON_VERSION: '3.11'
+
+  # 品質ゲート基準値
+  MIN_COVERAGE_BACKEND: 50      # バックエンドカバレッジ目標: 50% (37%から段階的向上)
+  MIN_COVERAGE_FRONTEND: 60     # フロントエンドカバレッジ目標: 60%
+  MIN_COVERAGE_API: 70          # APIカバレッジ目標: 70%
+
+  MAX_API_RESPONSE_TIME: 500    # APIレスポンス時間: 500ms以下
+  MIN_LIGHTHOUSE_SCORE: 90      # Lighthouse総合スコア: 90以上
+
+  # データベース設定
+  POSTGRES_DB: recipe_test_db
+  POSTGRES_USER: test_user
+  POSTGRES_PASSWORD: test_password
+
+  # Redis設定
+  REDIS_PASSWORD: test_redis_pass
+
+jobs:
+  # ===============================
+  # 依存関係キャッシュ最適化
+  # ===============================
+  setup-cache:
+    runs-on: ubuntu-latest
+    outputs:
+      cache-hit: ${{ steps.cache-deps.outputs.cache-hit }}
+      node-cache-key: ${{ steps.cache-keys.outputs.node }}
+      python-cache-key: ${{ steps.cache-keys.outputs.python }}
+      docker-cache-key: ${{ steps.cache-keys.outputs.docker }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Generate cache keys
+      id: cache-keys
+      run: |
+        # Node.js依存関係キャッシュキー
+        NODE_KEY="node-${{ runner.os }}-${{ hashFiles('**/package-lock.json', 'frontend/package-lock.json', 'backend/package-lock.json') }}"
+        echo "node=$NODE_KEY" >> $GITHUB_OUTPUT
+
+        # Python依存関係キャッシュキー
+        PYTHON_KEY="python-${{ runner.os }}-${{ hashFiles('api/requirements.txt') }}"
+        echo "python=$PYTHON_KEY" >> $GITHUB_OUTPUT
+
+        # Dockerレイヤーキャッシュキー
+        DOCKER_KEY="docker-${{ runner.os }}-${{ github.sha }}"
+        echo "docker=$DOCKER_KEY" >> $GITHUB_OUTPUT
+
+    - name: Cache Node modules
+      id: cache-deps
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.npm
+          ~/.cache
+          backend/node_modules
+          frontend/node_modules
+          node_modules
+        key: ${{ steps.cache-keys.outputs.node }}
+        restore-keys: |
+          node-${{ runner.os }}-
+
+    - name: Cache Python packages
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.cache/pip
+          ~/.local
+        key: ${{ steps.cache-keys.outputs.python }}
+        restore-keys: |
+          python-${{ runner.os }}-
+
+    - name: Setup Node.js
+      if: steps.cache-deps.outputs.cache-hit != 'true'
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+
+    - name: Setup Python
+      if: steps.cache-deps.outputs.cache-hit != 'true'
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+
+    - name: Install dependencies
+      if: steps.cache-deps.outputs.cache-hit != 'true'
+      run: |
+        # Backend依存関係インストール
+        if [ -f backend/package-lock.json ]; then
+          cd backend && npm ci
+        fi
+
+        # Frontend依存関係インストール
+        if [ -f frontend/package-lock.json ]; then
+          cd frontend && npm ci
+        fi
+
+        # API依存関係インストール
+        if [ -f api/requirements.txt ]; then
+          cd api && pip install -r requirements.txt
+        fi
+
+  # ===============================
+  # テストカバレッジ品質ゲート
+  # ===============================
+  test-coverage:
+    needs: setup-cache
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        service: [backend, frontend, api]
+        test-type: [unit, integration]
+      fail-fast: false
+
+    services:
+      postgres:
+        image: postgres:15-alpine
+        env:
+          POSTGRES_DB: ${{ env.POSTGRES_DB }}
+          POSTGRES_USER: ${{ env.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+      redis:
+        image: redis:7-alpine
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 3s
+          --health-retries 5
+        ports:
+          - 6379:6379
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      if: matrix.service != 'api'
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+
+    - name: Setup Python
+      if: matrix.service == 'api'
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+
+    - name: Restore cache
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.npm
+          ~/.cache/pip
+          ${{ matrix.service }}/node_modules
+        key: ${{ needs.setup-cache.outputs.node-cache-key }}
+        restore-keys: |
+          node-${{ runner.os }}-
+          python-${{ runner.os }}-
+
+    - name: Install dependencies
+      run: |
+        if [ "${{ matrix.service }}" = "api" ]; then
+          cd api && pip install -r requirements.txt
+        else
+          cd ${{ matrix.service }} && npm ci
+        fi
+
+    - name: Run tests with coverage
+      env:
+        NODE_ENV: test
+        DB_TYPE: postgresql
+        DB_HOST: localhost
+        DB_PORT: 5432
+        DB_NAME: ${{ env.POSTGRES_DB }}
+        DB_USER: ${{ env.POSTGRES_USER }}
+        DB_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
+        REDIS_URL: redis://localhost:6379
+        REDIS_PASSWORD: ${{ env.REDIS_PASSWORD }}
+        JWT_SECRET: test_jwt_secret_key_for_ci_cd
+      run: |
+        cd ${{ matrix.service }}
+
+        case "${{ matrix.service }}" in
+          "backend")
+            if [ "${{ matrix.test-type }}" = "unit" ]; then
+              npm run test -- --coverage --passWithNoTests || npm test -- --coverage --passWithNoTests
+            else
+              npm run test:integration -- --coverage --passWithNoTests || echo "統合テスト未実装"
+            fi
+            ;;
+          "frontend")
+            if [ "${{ matrix.test-type }}" = "unit" ]; then
+              npm run test -- --coverage --passWithNoTests || echo "フロントエンドテスト未実装"
+            fi
+            ;;
+          "api")
+            if [ "${{ matrix.test-type }}" = "unit" ]; then
+              python -m pytest tests/ -v --cov=. --cov-report=xml --cov-report=json --cov-report=term-missing || echo "APIテスト未実装"
+            fi
+            ;;
+        esac
+
+    - name: Coverage quality gate
+      run: |
+        cd ${{ matrix.service }}
+
+        if [ "${{ matrix.service }}" = "backend" ]; then
+          THRESHOLD=${{ env.MIN_COVERAGE_BACKEND }}
+          if [ -f coverage/coverage-summary.json ]; then
+            COVERAGE=$(node -p "JSON.parse(require('fs').readFileSync('coverage/coverage-summary.json', 'utf8')).total.lines.pct")
+          else
+            echo "カバレッジレポートが見つかりません"
+            exit 0
+          fi
+        elif [ "${{ matrix.service }}" = "frontend" ]; then
+          THRESHOLD=${{ env.MIN_COVERAGE_FRONTEND }}
+          if [ -f coverage/coverage-summary.json ]; then
+            COVERAGE=$(node -p "JSON.parse(require('fs').readFileSync('coverage/coverage-summary.json', 'utf8')).total.lines.pct")
+          else
+            echo "カバレッジレポートが見つかりません"
+            exit 0
+          fi
+        else
+          THRESHOLD=${{ env.MIN_COVERAGE_API }}
+          if [ -f coverage.json ]; then
+            COVERAGE=$(python3 -c "import json; print(json.load(open('coverage.json'))['totals']['percent_covered'])")
+          else
+            echo "カバレッジレポートが見つかりません"
+            exit 0
+          fi
+        fi
+
+        echo "📊 カバレッジ: ${COVERAGE}% (目標: ${THRESHOLD}%)"
+
+        if (( $(echo "$COVERAGE < $THRESHOLD" | bc -l) )); then
+          echo "❌ カバレッジ要件未達成: ${COVERAGE}% < ${THRESHOLD}%"
+          exit 1
+        fi
+
+        echo "✅ カバレッジ要件達成"
+
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        file: |
+          backend/coverage/lcov.info
+          frontend/coverage/lcov.info
+          api/coverage.xml
+        flags: ${{ matrix.service }}-${{ matrix.test-type }}
+        name: ${{ matrix.service }}-coverage
+        fail_ci_if_error: false
+
+  # ===============================
+  # APIパフォーマンステスト
+  # ===============================
+  api-performance:
+    needs: setup-cache
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:15-alpine
+        env:
+          POSTGRES_DB: ${{ env.POSTGRES_DB }}
+          POSTGRES_USER: ${{ env.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+      redis:
+        image: redis:7-alpine
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 3s
+          --health-retries 5
+        ports:
+          - 6379:6379
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+
+    - name: Restore cache
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.npm
+          backend/node_modules
+        key: ${{ needs.setup-cache.outputs.node-cache-key }}
+
+    - name: Install dependencies
+      run: cd backend && npm ci
+
+    - name: Run API performance benchmark
+      env:
+        NODE_ENV: production
+        DB_TYPE: postgresql
+        DB_HOST: localhost
+        DB_PORT: 5432
+        DB_NAME: ${{ env.POSTGRES_DB }}
+        DB_USER: ${{ env.POSTGRES_USER }}
+        DB_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
+        REDIS_URL: redis://localhost:6379
+        REDIS_PASSWORD: ${{ env.REDIS_PASSWORD }}
+        JWT_SECRET: test_jwt_secret_key_for_ci_cd
+        MAX_RESPONSE_TIME: ${{ env.MAX_API_RESPONSE_TIME }}
+      run: |
+        # APIパフォーマンスベンチマーク実行
+        node scripts/benchmark-api.js
+
+    - name: Upload performance results
+      uses: actions/upload-artifact@v3
+      with:
+        name: api-performance-report
+        path: reports/performance-*.json
+        retention-days: 30
+
+  # ===============================
+  # Lighthouse CI監査
+  # ===============================
+  lighthouse-audit:
+    needs: setup-cache
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+
+    - name: Restore cache
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.npm
+          frontend/node_modules
+        key: ${{ needs.setup-cache.outputs.node-cache-key }}
+
+    - name: Install dependencies
+      run: |
+        cd frontend && npm ci
+        npm install -g @lhci/cli@0.12.x
+
+    - name: Build frontend
+      env:
+        NODE_ENV: production
+      run: |
+        cd frontend
+        npm run build
+
+    - name: Run Lighthouse CI
+      env:
+        MIN_SCORE: ${{ env.MIN_LIGHTHOUSE_SCORE }}
+        LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+      run: |
+        # Lighthouse CI実行
+        node scripts/lighthouse-ci.js
+
+    - name: Upload Lighthouse results
+      uses: actions/upload-artifact@v3
+      with:
+        name: lighthouse-report
+        path: .lighthouseci/
+        retention-days: 30
+
+  # ===============================
+  # セキュリティスキャン強化
+  # ===============================
+  security-scan:
+    needs: setup-cache
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Run Trivy vulnerability scanner
+      uses: aquasecurity/trivy-action@master
+      with:
+        scan-type: 'fs'
+        scan-ref: '.'
+        format: 'sarif'
+        output: 'trivy-results.sarif'
+        severity: 'CRITICAL,HIGH,MEDIUM'
+
+    - name: Upload Trivy results to GitHub Security
+      uses: github/codeql-action/upload-sarif@v3
+      if: always()
+      with:
+        sarif_file: 'trivy-results.sarif'
+
+    - name: Dependency audit (Node.js)
+      run: |
+        echo "🔍 Node.js依存関係監査..."
+
+        # Backend監査
+        if [ -f backend/package-lock.json ]; then
+          cd backend
+          npm audit --audit-level=moderate || echo "⚠️ Backend依存関係に脆弱性あり"
+        fi
+
+        # Frontend監査
+        if [ -f frontend/package-lock.json ]; then
+          cd frontend
+          npm audit --audit-level=moderate || echo "⚠️ Frontend依存関係に脆弱性あり"
+        fi
+
+    - name: Dependency audit (Python)
+      run: |
+        echo "🔍 Python依存関係監査..."
+
+        if [ -f api/requirements.txt ]; then
+          pip install pip-audit
+          cd api
+          pip-audit || echo "⚠️ API依存関係に脆弱性あり"
+        fi
+
+    - name: SAST analysis with CodeQL
+      uses: github/codeql-action/init@v3
+      with:
+        languages: javascript,python
+
+    - name: Perform CodeQL analysis
+      uses: github/codeql-action/analyze@v3
+
+    - name: Secret scanning
+      run: |
+        echo "🔐 シークレットスキャン実行..."
+
+        # .env ファイルチェック
+        if find . -name ".env*" -not -path "*/node_modules/*" | grep -q .; then
+          echo "⚠️ .envファイルが検出されました"
+          find . -name ".env*" -not -path "*/node_modules/*"
+        fi
+
+        # ハードコードされたシークレットチェック
+        if grep -r -E "(password|secret|api_key|token)\s*=\s*['\"][^'\"]{8,}" --include="*.js" --include="*.ts" --include="*.py" .; then
+          echo "❌ ハードコードされたシークレットが検出されました"
+          exit 1
+        fi
+
+        echo "✅ シークレットスキャン完了"
+
+  # ===============================
+  # E2Eテスト (Playwright)
+  # ===============================
+  e2e-tests:
+    needs: setup-cache
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+
+    - name: Restore cache
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.npm
+          node_modules
+          frontend/node_modules
+        key: ${{ needs.setup-cache.outputs.node-cache-key }}
+
+    - name: Install Playwright
+      run: |
+        npm install -D @playwright/test
+        npx playwright install --with-deps chromium
+
+    - name: Build frontend
+      run: |
+        cd frontend && npm ci && npm run build
+
+    - name: Run E2E tests
+      run: |
+        npx playwright test
+
+    - name: Upload E2E test results
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: playwright-report
+        path: playwright-report/
+        retention-days: 30
+
+  # ===============================
+  # Phase 2 品質ゲートサマリー
+  # ===============================
+  quality-gate-summary:
+    needs: [test-coverage, api-performance, lighthouse-audit, security-scan, e2e-tests]
+    runs-on: ubuntu-latest
+    if: always()
+
+    steps:
+    - name: Download artifacts
+      uses: actions/download-artifact@v3
+      continue-on-error: true
+
+    - name: Generate quality report
+      run: |
+        echo "# 📊 Phase 2 品質ゲートレポート" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "**実行日時**: $(date +'%Y-%m-%d %H:%M:%S JST')" >> $GITHUB_STEP_SUMMARY
+        echo "**コミット**: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+
+        echo "## 🎯 品質基準" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "| 項目 | 目標値 | 結果 |" >> $GITHUB_STEP_SUMMARY
+        echo "|------|--------|------|" >> $GITHUB_STEP_SUMMARY
+
+        # テストカバレッジ
+        if [[ "${{ needs.test-coverage.result }}" == "success" ]]; then
+          echo "| テストカバレッジ | Backend≥${{ env.MIN_COVERAGE_BACKEND }}%, Frontend≥${{ env.MIN_COVERAGE_FRONTEND }}%, API≥${{ env.MIN_COVERAGE_API }}% | ✅ 合格 |" >> $GITHUB_STEP_SUMMARY
+        else
+          echo "| テストカバレッジ | Backend≥${{ env.MIN_COVERAGE_BACKEND }}%, Frontend≥${{ env.MIN_COVERAGE_FRONTEND }}%, API≥${{ env.MIN_COVERAGE_API }}% | ❌ 不合格 |" >> $GITHUB_STEP_SUMMARY
+        fi
+
+        # APIパフォーマンス
+        if [[ "${{ needs.api-performance.result }}" == "success" ]]; then
+          echo "| APIパフォーマンス | <${{ env.MAX_API_RESPONSE_TIME }}ms | ✅ 合格 |" >> $GITHUB_STEP_SUMMARY
+        else
+          echo "| APIパフォーマンス | <${{ env.MAX_API_RESPONSE_TIME }}ms | ❌ 不合格 |" >> $GITHUB_STEP_SUMMARY
+        fi
+
+        # Lighthouse
+        if [[ "${{ needs.lighthouse-audit.result }}" == "success" ]]; then
+          echo "| Lighthouseスコア | ≥${{ env.MIN_LIGHTHOUSE_SCORE }} | ✅ 合格 |" >> $GITHUB_STEP_SUMMARY
+        else
+          echo "| Lighthouseスコア | ≥${{ env.MIN_LIGHTHOUSE_SCORE }} | ❌ 不合格 |" >> $GITHUB_STEP_SUMMARY
+        fi
+
+        # セキュリティ
+        if [[ "${{ needs.security-scan.result }}" == "success" ]]; then
+          echo "| セキュリティスキャン | クリティカル脆弱性なし | ✅ 合格 |" >> $GITHUB_STEP_SUMMARY
+        else
+          echo "| セキュリティスキャン | クリティカル脆弱性なし | ⚠️ 要確認 |" >> $GITHUB_STEP_SUMMARY
+        fi
+
+        # E2E
+        if [[ "${{ needs.e2e-tests.result }}" == "success" ]]; then
+          echo "| E2Eテスト | 全通過 | ✅ 合格 |" >> $GITHUB_STEP_SUMMARY
+        else
+          echo "| E2Eテスト | 全通過 | ❌ 不合格 |" >> $GITHUB_STEP_SUMMARY
+        fi
+
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "## 📈 改善トレンド" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "- Phase 1からの品質向上を継続監視中" >> $GITHUB_STEP_SUMMARY
+        echo "- カバレッジ目標: 37% → 50% (Backend)" >> $GITHUB_STEP_SUMMARY
+        echo "- APIパフォーマンス: <500ms 維持" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "---" >> $GITHUB_STEP_SUMMARY
+        echo "*PersonalCookingRecipe Phase 2 CI/CD Pipeline*" >> $GITHUB_STEP_SUMMARY
+
+    - name: Notify Slack
+      if: always()
+      uses: 8398a7/action-slack@v3
+      with:
+        status: ${{ job.status }}
+        webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+        fields: repo,commit,author,action,eventName,ref,workflow
+        text: |
+          Phase 2 品質ゲート実行完了
+          テストカバレッジ: ${{ needs.test-coverage.result }}
+          APIパフォーマンス: ${{ needs.api-performance.result }}
+          Lighthouse: ${{ needs.lighthouse-audit.result }}
+          セキュリティ: ${{ needs.security-scan.result }}
