@@ -1,0 +1,30 @@
+setup	Setup Node.js	﻿2025-11-21T07:01:00.9091167Z ##[group]Run actions/setup-node@v4
+setup	Setup Node.js	2025-11-21T07:01:00.9091485Z with:
+setup	Setup Node.js	2025-11-21T07:01:00.9091704Z   node-version: 18
+setup	Setup Node.js	2025-11-21T07:01:00.9091924Z   cache: npm
+setup	Setup Node.js	2025-11-21T07:01:00.9092301Z   cache-dependency-path: backend/package-lock.json
+setup	Setup Node.js	frontend/package-lock.json
+setup	Setup Node.js	
+setup	Setup Node.js	2025-11-21T07:01:00.9092739Z   always-auth: false
+setup	Setup Node.js	2025-11-21T07:01:00.9092965Z   check-latest: false
+setup	Setup Node.js	2025-11-21T07:01:00.9093315Z   token: ***
+setup	Setup Node.js	2025-11-21T07:01:00.9093523Z env:
+setup	Setup Node.js	2025-11-21T07:01:00.9093720Z   NODE_VERSION: 18
+setup	Setup Node.js	2025-11-21T07:01:00.9093940Z   PYTHON_VERSION: 3.12
+setup	Setup Node.js	2025-11-21T07:01:00.9094183Z   POSTGRES_DB: recipe_test_db
+setup	Setup Node.js	2025-11-21T07:01:00.9094439Z   POSTGRES_USER: test_user
+setup	Setup Node.js	2025-11-21T07:01:00.9094688Z   POSTGRES_PASSWORD: test_password
+setup	Setup Node.js	2025-11-21T07:01:00.9094954Z ##[endgroup]
+setup	Setup Node.js	2025-11-21T07:01:01.0872524Z Attempting to download 18...
+setup	Setup Node.js	2025-11-21T07:01:01.5918470Z Acquiring 18.20.8 - x64 from https://github.com/actions/node-versions/releases/download/18.20.8-14110393767/node-18.20.8-linux-x64.tar.gz
+setup	Setup Node.js	2025-11-21T07:01:02.0574935Z Extracting ...
+setup	Setup Node.js	2025-11-21T07:01:02.0678592Z [command]/usr/bin/tar xz --strip 1 --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/166fd843-d803-4c76-ac99-af4a3f497dbf -f /home/runner/work/_temp/30341fc2-05a4-496e-a349-4705b10006fd
+setup	Setup Node.js	2025-11-21T07:01:03.0053493Z Adding to the cache ...
+setup	Setup Node.js	2025-11-21T07:01:04.6123057Z ##[group]Environment details
+setup	Setup Node.js	2025-11-21T07:01:04.8414961Z node: v18.20.8
+setup	Setup Node.js	2025-11-21T07:01:04.8415362Z npm: 10.8.2
+setup	Setup Node.js	2025-11-21T07:01:04.8415641Z yarn: 1.22.22
+setup	Setup Node.js	2025-11-21T07:01:04.8416184Z ##[endgroup]
+setup	Setup Node.js	2025-11-21T07:01:04.8436592Z [command]/opt/hostedtoolcache/node/18.20.8/x64/bin/npm config get cache
+setup	Setup Node.js	2025-11-21T07:01:04.9572312Z /home/runner/.npm
+setup	Setup Node.js	2025-11-21T07:01:04.9701959Z ##[error]Some specified paths were not resolved, unable to cache dependencies.
