@@ -1,0 +1,62 @@
+[
+  {
+    "id": "cache-dependency-path",
+    "type": "CACHE_PATH_ERROR",
+    "description": "キャッシュ依存パスエラー",
+    "pattern": "cache-dependency-path|Dependency file.*not found"
+  },
+  {
+    "id": "module-not-found",
+    "type": "MODULE_NOT_FOUND",
+    "description": "モジュール未検出エラー",
+    "pattern": "Module not found|Cannot find module|ERR_MODULE_NOT_FOUND"
+  },
+  {
+    "id": "postgres-connection",
+    "type": "POSTGRES_CONNECTION_ERROR",
+    "description": "PostgreSQL接続エラー",
+    "pattern": "ECONNREFUSED.*5432|PostgreSQL.*connection|database.*not.*ready"
+  },
+  {
+    "id": "redis-connection",
+    "type": "REDIS_CONNECTION_ERROR",
+    "description": "Redis接続エラー",
+    "pattern": "ECONNREFUSED.*6379|Redis.*connection|redis.*not.*ready"
+  },
+  {
+    "id": "timeout",
+    "type": "TIMEOUT_ERROR",
+    "description": "タイムアウトエラー",
+    "pattern": "ETIMEDOUT|timeout|timed out|Test timeout"
+  },
+  {
+    "id": "test-failure",
+    "type": "TEST_FAILURE",
+    "description": "テスト失敗",
+    "pattern": "Test failed|FAIL|AssertionError|Expected.*Received"
+  },
+  {
+    "id": "build-error",
+    "type": "BUILD_ERROR",
+    "description": "ビルドエラー",
+    "pattern": "Build failed|ERROR in|Compilation failed"
+  },
+  {
+    "id": "env-var-missing",
+    "type": "ENV_VAR_MISSING",
+    "description": "環境変数未設定エラー",
+    "pattern": "Environment variable.*not.*set|Missing.*environment.*variable"
+  },
+  {
+    "id": "permission-denied",
+    "type": "PERMISSION_ERROR",
+    "description": "権限エラー",
+    "pattern": "EACCES|Permission denied|permission.*error"
+  },
+  {
+    "id": "port-conflict",
+    "type": "PORT_CONFLICT",
+    "description": "ポート競合エラー",
+    "pattern": "EADDRINUSE|port.*already.*in.*use|address.*already.*in.*use"
+  }
+]

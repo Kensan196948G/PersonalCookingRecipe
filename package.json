@@ -14,7 +14,9 @@
     "check:ports": "node scripts/port-checker.js",
     "check:ip": "bash scripts/get-ip.sh",
     "repair": "node scripts/auto-repair-system.js",
-    "test:e2e": "npx playwright test"
+    "test:e2e": "npx playwright test",
+    "auto-fix": "node scripts/github-actions-auto-fix.js",
+    "auto-fix:dry": "DRY_RUN=true node scripts/github-actions-auto-fix.js"
   },
   "keywords": [
     "recipe",
@@ -30,5 +32,8 @@
     "playwright": "^1.55.0",
     "pm2": "^6.0.10",
     "winston": "^3.17.0"
+  },
+  "dependencies": {
+    "@octokit/rest": "^22.0.1"
   }
 }

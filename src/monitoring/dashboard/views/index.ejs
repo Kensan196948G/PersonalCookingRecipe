@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/monitoring/dashboard/css/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- ヘッダー -->
+        <header class="dashboard-header">
+            <h1>PersonalCookingRecipe - Native Monitoring Dashboard</h1>
+            <div class="header-info">
+                <span>Last Update: <span id="last-update"></span></span>
+                <span class="status-indicator" id="system-status">System OK</span>
+            </div>
+        </header>
+
+        <!-- ナビゲーション -->
+        <nav class="dashboard-nav">
+            <a href="/monitoring/dashboard" class="nav-item active">Overview</a>
+            <a href="/monitoring/dashboard/system" class="nav-item">System</a>
+            <a href="/monitoring/dashboard/application" class="nav-item">Application</a>
+            <a href="/monitoring/dashboard/business" class="nav-item">Business</a>
+            <a href="/monitoring/dashboard/alerts" class="nav-item">Alerts</a>
+        </nav>
+
+        <!-- メインコンテンツ -->
+        <main class="dashboard-main">
+            <!-- システム概要 -->
+            <section class="metrics-section">
+                <h2>System Metrics</h2>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <h3>CPU Usage</h3>
+                        <div class="metric-value" id="cpu-value">
+                            <%= data.currentMetrics.system.system.cpu?.usage.toFixed(2) || 0 %>%
+                        </div>
+                        <canvas id="cpu-chart"></canvas>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Memory Usage</h3>
+                        <div class="metric-value" id="memory-value">
+                            <%= data.currentMetrics.system.system.memory?.usage_percent.toFixed(2) || 0 %>%
+                        </div>
+                        <canvas id="memory-chart"></canvas>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Active Connections</h3>
+                        <div class="metric-value" id="connections-value">
+                            <%= data.currentMetrics.application.http?.activeConnections || 0 %>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Error Rate</h3>
+                        <div class="metric-value" id="error-rate-value">
+                            <%= data.currentMetrics.application.http?.errorRate.toFixed(2) || 0 %>%
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- アプリケーションメトリクス -->
+            <section class="metrics-section">
+                <h2>Application Metrics</h2>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <h3>Total Requests</h3>
+                        <div class="metric-value">
+                            <%= data.currentMetrics.application.http?.totalRequests || 0 %>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Response Time (P95)</h3>
+                        <div class="metric-value">
+                            <%= (data.currentMetrics.application.http?.percentiles?.p95 || 0).toFixed(0) %>ms
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Throughput</h3>
+                        <div class="metric-value">
+                            <%= data.currentMetrics.application.http?.throughput.toFixed(2) || 0 %> req/s
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Cache Hit Rate</h3>
+                        <div class="metric-value">
+                            <%= (data.currentMetrics.application.redis?.hitRate || 0).toFixed(2) %>%
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ビジネスメトリクス -->
+            <section class="metrics-section">
+                <h2>Business Metrics</h2>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <h3>Daily Active Users</h3>
+                        <div class="metric-value">
+                            <%= data.currentMetrics.business.users?.dailyActiveUsers || 0 %>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Recipes Created Today</h3>
+                        <div class="metric-value">
+                            <%= data.currentMetrics.business.recipes?.dailyCreations || 0 %>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Searches Today</h3>
+                        <div class="metric-value">
+                            <%= data.currentMetrics.business.search?.dailyExecutions || 0 %>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Total Users</h3>
+                        <div class="metric-value">
+                            <%= data.currentMetrics.business.users?.totalRegistrations || 0 %>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 最近のアラート -->
+            <section class="metrics-section">
+                <h2>Recent Alerts</h2>
+                <div class="alerts-list">
+                    <% if (data.recentAlerts && data.recentAlerts.length > 0) { %>
+                        <% data.recentAlerts.forEach(alert => { %>
+                            <div class="alert-item severity-<%= alert.severity %>">
+                                <span class="alert-severity"><%= alert.severity.toUpperCase() %></span>
+                                <span class="alert-message"><%= alert.message %></span>
+                                <span class="alert-time"><%= new Date(alert.timestamp).toLocaleString() %></span>
+                            </div>
+                        <% }); %>
+                    <% } else { %>
+                        <p class="no-alerts">No recent alerts</p>
+                    <% } %>
+                </div>
+            </section>
+        </main>
+
+        <!-- フッター -->
+        <footer class="dashboard-footer">
+            <p>PersonalCookingRecipe Native Monitoring System v1.0.0</p>
+            <p>Uptime: <span id="uptime"></span></p>
+        </footer>
+    </div>
+
+    <!-- JavaScriptでリアルタイム更新 -->
+    <script src="/monitoring/dashboard/js/dashboard.js"></script>
+    <script>
+        // ページロード時の初期化
+        const socket = io();
+
+        // リアルタイムメトリクス更新
+        setInterval(async () => {
+            try {
+                const response = await fetch('/monitoring/dashboard/api/metrics/current');
+                const metrics = await response.json();
+                updateDashboard(metrics);
+            } catch (error) {
+                console.error('Failed to update metrics:', error);
+            }
+        }, 5000); // 5秒毎
+
+        function updateDashboard(metrics) {
+            // CPU
+            if (metrics.system?.system?.cpu) {
+                document.getElementById('cpu-value').textContent =
+                    metrics.system.system.cpu.usage.toFixed(2) + '%';
+            }
+
+            // Memory
+            if (metrics.system?.system?.memory) {
+                document.getElementById('memory-value').textContent =
+                    metrics.system.system.memory.usage_percent.toFixed(2) + '%';
+            }
+
+            // Active Connections
+            if (metrics.application?.http) {
+                document.getElementById('connections-value').textContent =
+                    metrics.application.http.activeConnections;
+                document.getElementById('error-rate-value').textContent =
+                    metrics.application.http.errorRate.toFixed(2) + '%';
+            }
+
+            // Last update time
+            document.getElementById('last-update').textContent =
+                new Date().toLocaleTimeString();
+        }
+
+        // 初回データ取得
+        updateDashboard(<%= JSON.stringify(data.currentMetrics) %>);
+    </script>
+</body>
+</html>

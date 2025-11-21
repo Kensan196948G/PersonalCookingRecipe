@@ -1,0 +1,28 @@
+{"dbPath":"/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/data/test-monitoring.db","level":"info","message":"SQLiteMonitoringAdapter作成完了","service":"sqlite-monitoring-adapter","timestamp":"2025-11-21T03:39:50.330Z"}
+{"level":"info","message":"SQLiteMonitoringAdapter初期化開始","service":"sqlite-monitoring-adapter","timestamp":"2025-11-21T03:39:50.332Z"}
+{"dbPath":"/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/data/test-monitoring.db","level":"info","message":"SQLite接続成功","service":"sqlite-monitoring-adapter","timestamp":"2025-11-21T03:39:50.342Z"}
+{"level":"info","message":"テーブル作成開始","service":"sqlite-monitoring-adapter","timestamp":"2025-11-21T03:39:50.343Z"}
+{"level":"info","message":"テーブル作成完了","service":"sqlite-monitoring-adapter","timestamp":"2025-11-21T03:39:51.925Z"}
+{"level":"info","message":"SQLite設定完了","service":"sqlite-monitoring-adapter","settings":["PRAGMA journal_mode = WAL","PRAGMA synchronous = NORMAL","PRAGMA cache_size = 10000","PRAGMA busy_timeout = 5000","PRAGMA foreign_keys = ON"],"timestamp":"2025-11-21T03:39:51.994Z"}
+{"level":"info","message":"SQLiteMonitoringAdapter初期化完了","service":"sqlite-monitoring-adapter","timestamp":"2025-11-21T03:39:51.994Z"}
+{"level":"info","message":"SQLite接続クローズ完了","service":"sqlite-monitoring-adapter","timestamp":"2025-11-21T03:39:52.107Z"}
+{"dbPath":"/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/data/test-monitoring-collector.db","level":"info","message":"SQLiteMonitoringAdapter作成完了","service":"sqlite-monitoring-adapter","timestamp":"2025-11-21T03:40:11.546Z"}
+{"level":"info","message":"SQLiteMonitoringAdapter初期化開始","service":"sqlite-monitoring-adapter","timestamp":"2025-11-21T03:40:11.547Z"}
+{"dbPath":"/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/data/test-monitoring-collector.db","level":"info","message":"SQLite接続成功","service":"sqlite-monitoring-adapter","timestamp":"2025-11-21T03:40:11.570Z"}
+{"level":"info","message":"テーブル作成開始","service":"sqlite-monitoring-adapter","timestamp":"2025-11-21T03:40:11.571Z"}
+{"level":"info","message":"テーブル作成完了","service":"sqlite-monitoring-adapter","timestamp":"2025-11-21T03:40:13.211Z"}
+{"level":"info","message":"SQLite設定完了","service":"sqlite-monitoring-adapter","settings":["PRAGMA journal_mode = WAL","PRAGMA synchronous = NORMAL","PRAGMA cache_size = 10000","PRAGMA busy_timeout = 5000","PRAGMA foreign_keys = ON"],"timestamp":"2025-11-21T03:40:13.302Z"}
+{"level":"info","message":"SQLiteMonitoringAdapter初期化完了","service":"sqlite-monitoring-adapter","timestamp":"2025-11-21T03:40:13.303Z"}
+{"level":"info","message":"SQLite接続クローズ完了","service":"sqlite-monitoring-adapter","timestamp":"2025-11-21T03:40:23.435Z"}
+{"error":"SQLITE_MISUSE: Database handle is closed","level":"error","message":"生メトリクス保存エラー","metricType":"system","service":"sqlite-monitoring-adapter","timestamp":"2025-11-21T03:40:23.437Z"}
+{"dbPath":"/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/data/monitoring.db","level":"info","message":"SQLiteMonitoringAdapter作成完了","service":"sqlite-monitoring-adapter","timestamp":"2025-11-21T03:41:23.931Z"}
+{"level":"info","message":"SQLiteMonitoringAdapter初期化開始","service":"sqlite-monitoring-adapter","timestamp":"2025-11-21T03:41:23.932Z"}
+{"dbPath":"/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/data/monitoring.db","level":"info","message":"SQLite接続成功","service":"sqlite-monitoring-adapter","timestamp":"2025-11-21T03:41:23.937Z"}
+{"level":"info","message":"テーブル作成開始","service":"sqlite-monitoring-adapter","timestamp":"2025-11-21T03:41:23.938Z"}
+{"level":"info","message":"テーブル作成完了","service":"sqlite-monitoring-adapter","timestamp":"2025-11-21T03:41:45.236Z"}
+{"level":"info","message":"SQLite設定完了","service":"sqlite-monitoring-adapter","settings":["PRAGMA journal_mode = WAL","PRAGMA synchronous = NORMAL","PRAGMA cache_size = 10000","PRAGMA busy_timeout = 5000","PRAGMA foreign_keys = ON"],"timestamp":"2025-11-21T03:41:46.993Z"}
+{"level":"info","message":"SQLiteMonitoringAdapter初期化完了","service":"sqlite-monitoring-adapter","timestamp":"2025-11-21T03:41:46.994Z"}
+{"level":"info","message":"時間別集約完了","service":"sqlite-monitoring-adapter","timestamp":"2025-11-21T04:00:00.017Z"}
+{"level":"info","message":"時間別集約完了","service":"sqlite-monitoring-adapter","timestamp":"2025-11-21T05:00:00.026Z"}
+{"level":"info","message":"時間別集約完了","service":"sqlite-monitoring-adapter","timestamp":"2025-11-21T06:00:00.054Z"}
+{"level":"info","message":"時間別集約完了","service":"sqlite-monitoring-adapter","timestamp":"2025-11-21T07:00:00.028Z"}

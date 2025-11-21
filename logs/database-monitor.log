@@ -1,0 +1,4 @@
+{"level":"info","message":"データベース監視停止開始","service":"database-monitor","timestamp":"2025-09-03T03:54:08.957Z"}
+{"level":"info","message":"データベースプール終了完了","service":"database-monitor","timestamp":"2025-09-03T03:54:08.975Z"}
+{"level":"info","message":"データベース監視停止完了","service":"database-monitor","timestamp":"2025-09-03T03:54:08.977Z"}
+{"level":"error","message":"データベース監視初期化失敗 Cannot use a pool after calling end on the pool","service":"database-monitor","stack":"Error: Cannot use a pool after calling end on the pool\n    at BoundPool.connect (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/pg-pool/index.js:184:19)\n    at DatabaseMonitor.connect [as testConnection] (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/src/monitoring/DatabaseMonitor.js:96:40)\n    at DatabaseMonitor.testConnection [as initialize] (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/src/monitoring/DatabaseMonitor.js:55:24)","timestamp":"2025-09-03T03:54:09.000Z"}
