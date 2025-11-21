@@ -1,0 +1,149 @@
+{
+  "database_integration": {
+    "version": "2.0.0",
+    "architecture": "multi_tier_storage",
+    "primary_storage": {
+      "engine": "postgresql",
+      "version": "15+",
+      "configuration": {
+        "shared_buffers": "256MB",
+        "effective_cache_size": "1GB",
+        "work_mem": "4MB",
+        "maintenance_work_mem": "64MB",
+        "max_connections": "100"
+      },
+      "schemas": {
+        "context7_core": {
+          "tables": [
+            "context_layers",
+            "layer_data",
+            "relationships", 
+            "metadata",
+            "audit_log"
+          ]
+        },
+        "multimodal": {
+          "tables": [
+            "processed_content",
+            "analysis_results",
+            "media_metadata",
+            "processing_queue"
+          ]
+        },
+        "agent_coordination": {
+          "tables": [
+            "agent_states",
+            "task_assignments",
+            "communication_log",
+            "performance_metrics"
+          ]
+        },
+        "recipe_specific": {
+          "tables": [
+            "recipe_context",
+            "channel_monitoring",
+            "api_integration_status",
+            "development_progress"
+          ]
+        }
+      }
+    },
+    "cache_storage": {
+      "engine": "redis",
+      "version": "7+",
+      "configuration": {
+        "maxmemory": "512MB",
+        "maxmemory_policy": "allkeys-lru",
+        "save": "900 1 300 10 60 10000",
+        "appendonly": "yes"
+      },
+      "structures": {
+        "context_cache": {
+          "type": "hash",
+          "ttl": "3600s",
+          "purpose": "即座のコンテキスト参照"
+        },
+        "session_state": {
+          "type": "string",
+          "ttl": "86400s", 
+          "purpose": "セッション継続性"
+        },
+        "processing_queue": {
+          "type": "list",
+          "purpose": "非同期処理キュー"
+        },
+        "real_time_metrics": {
+          "type": "sorted_set",
+          "ttl": "1800s",
+          "purpose": "リアルタイムメトリクス"
+        }
+      }
+    },
+    "data_models": {
+      "context_layer": {
+        "id": "uuid PRIMARY KEY",
+        "layer_number": "integer NOT NULL",
+        "layer_name": "varchar(100) NOT NULL",
+        "data_json": "jsonb NOT NULL",
+        "created_at": "timestamp DEFAULT now()",
+        "updated_at": "timestamp DEFAULT now()",
+        "version": "integer DEFAULT 1"
+      },
+      "multimodal_content": {
+        "id": "uuid PRIMARY KEY",
+        "content_type": "varchar(50) NOT NULL",
+        "content_path": "text",
+        "analysis_result": "jsonb",
+        "layer_id": "uuid REFERENCES context_layer(id)",
+        "processed_at": "timestamp DEFAULT now()"
+      },
+      "agent_interaction": {
+        "id": "uuid PRIMARY KEY", 
+        "agent_name": "varchar(100) NOT NULL",
+        "interaction_type": "varchar(50) NOT NULL",
+        "context_data": "jsonb",
+        "result": "jsonb",
+        "created_at": "timestamp DEFAULT now()"
+      }
+    },
+    "performance_optimization": {
+      "indexing": {
+        "btree_indexes": [
+          "context_layer(layer_number)",
+          "context_layer(created_at)",
+          "multimodal_content(content_type)",
+          "agent_interaction(agent_name)"
+        ],
+        "gin_indexes": [
+          "context_layer(data_json)",
+          "multimodal_content(analysis_result)",
+          "agent_interaction(context_data)"
+        ]
+      },
+      "partitioning": {
+        "time_based": [
+          "agent_interaction (monthly)",
+          "audit_log (weekly)"
+        ]
+      },
+      "connection_pooling": {
+        "min_connections": "5",
+        "max_connections": "25",
+        "idle_timeout": "300s"
+      }
+    },
+    "backup_strategy": {
+      "postgresql": {
+        "full_backup": "daily at 02:00",
+        "incremental": "every 6h",
+        "retention": "30 days",
+        "compression": "gzip"
+      },
+      "redis": {
+        "rdb_snapshot": "every 1h",
+        "aof_rewrite": "auto",
+        "retention": "7 days"
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+# Claude Code カスタムプロンプト設定
+# エージェント表示用設定
+
+# 現在のアクティブエージェント
+CLAUDE_ACTIVE_AGENT="recipe-cto"
+
+# プロンプト表示形式
+CLAUDE_PROMPT_FORMAT="@agent-{agent}:{pwd}$ "
+
+# エージェントリスト
+CLAUDE_AGENTS="recipe-cto,recipe-dev,recipe-nlp,recipe-qa,recipe-manager"
+
+# カラー設定
+CLAUDE_AGENT_COLOR="\033[1;36m"  # シアン
+CLAUDE_PATH_COLOR="\033[1;33m"   # 黄色
+CLAUDE_RESET_COLOR="\033[0m"     # リセット

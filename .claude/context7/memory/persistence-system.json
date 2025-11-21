@@ -1,0 +1,180 @@
+{
+  "persistence_system": {
+    "version": "2.0.0",
+    "architecture": "hybrid_storage_with_intelligent_tiering",
+    "storage_tiers": {
+      "hot_storage": {
+        "technology": "redis_cluster",
+        "purpose": "immediate_context_access",
+        "capacity": "2GB",
+        "latency": "< 1ms",
+        "retention": "1h",
+        "data_types": [
+          "active_agent_states",
+          "current_task_context",
+          "real_time_metrics",
+          "session_data"
+        ]
+      },
+      "warm_storage": {
+        "technology": "postgresql_memory_tables",
+        "purpose": "session_persistence",
+        "capacity": "10GB", 
+        "latency": "< 10ms",
+        "retention": "24h",
+        "data_types": [
+          "layer_snapshots",
+          "agent_interaction_history",
+          "decision_trees",
+          "performance_history"
+        ]
+      },
+      "cold_storage": {
+        "technology": "postgresql_disk",
+        "purpose": "long_term_learning",
+        "capacity": "100GB",
+        "latency": "< 100ms", 
+        "retention": "unlimited",
+        "data_types": [
+          "project_evolution_history",
+          "pattern_recognition_data",
+          "success_failure_analysis",
+          "organizational_knowledge"
+        ]
+      },
+      "archive_storage": {
+        "technology": "compressed_json_files",
+        "purpose": "historical_reference",
+        "capacity": "1TB",
+        "latency": "< 1s",
+        "retention": "5_years",
+        "data_types": [
+          "complete_project_snapshots",
+          "compliance_audit_trails",
+          "disaster_recovery_backups"
+        ]
+      }
+    },
+    "intelligent_tiering": {
+      "promotion_criteria": {
+        "access_frequency": "> 10/hour",
+        "recent_modification": "< 30min",
+        "agent_priority": "high",
+        "context_relevance": "> 0.8"
+      },
+      "demotion_criteria": {
+        "access_frequency": "< 1/day",
+        "age": "> 24h",
+        "context_relevance": "< 0.3",
+        "storage_pressure": "> 80%"
+      },
+      "auto_optimization": {
+        "enabled": true,
+        "schedule": "every_5min",
+        "predictive": true,
+        "machine_learning": "pattern_based"
+      }
+    },
+    "data_structures": {
+      "context_graph": {
+        "nodes": "context_elements",
+        "edges": "relationships",
+        "indexing": "graph_database",
+        "traversal": "bfs_dfs_hybrid"
+      },
+      "temporal_index": {
+        "structure": "b_tree",
+        "granularity": "millisecond",
+        "compression": "delta_encoding",
+        "pruning": "lru_with_importance"
+      },
+      "semantic_embeddings": {
+        "model": "claude_3_5_sonnet",
+        "dimensions": 1024,
+        "similarity_threshold": 0.85,
+        "update_frequency": "real_time"
+      }
+    },
+    "consistency_guarantees": {
+      "acid_compliance": {
+        "atomicity": "transaction_based",
+        "consistency": "strong_consistency",
+        "isolation": "serializable",
+        "durability": "write_ahead_log"
+      },
+      "eventual_consistency": {
+        "cross_tier_sync": "< 5s",
+        "conflict_resolution": "last_writer_wins_with_timestamps",
+        "reconciliation": "periodic_background_process"
+      },
+      "distributed_locking": {
+        "technology": "redis_distributed_locks",
+        "timeout": "30s",
+        "retry_strategy": "exponential_backoff",
+        "deadlock_detection": "enabled"
+      }
+    },
+    "backup_and_recovery": {
+      "hot_backup": {
+        "frequency": "continuous_replication",
+        "technology": "redis_sentinel",
+        "rto": "< 1s",
+        "rpo": "0"
+      },
+      "warm_backup": {
+        "frequency": "every_15min",
+        "technology": "postgresql_streaming_replication",
+        "rto": "< 30s",
+        "rpo": "< 15min"
+      },
+      "cold_backup": {
+        "frequency": "every_6h",
+        "technology": "pg_dump_with_compression",
+        "rto": "< 5min",
+        "rpo": "< 6h"
+      },
+      "disaster_recovery": {
+        "cross_region_replication": "enabled",
+        "automated_failover": "true",
+        "data_verification": "checksums_and_integrity_checks",
+        "recovery_testing": "monthly"
+      }
+    },
+    "security_measures": {
+      "encryption_at_rest": {
+        "algorithm": "AES_256_GCM",
+        "key_management": "AWS_KMS_compatible",
+        "rotation": "quarterly"
+      },
+      "encryption_in_transit": {
+        "protocol": "TLS_1_3",
+        "certificate": "letsencrypt_wildcard",
+        "perfect_forward_secrecy": "enabled"
+      },
+      "access_control": {
+        "authentication": "JWT_with_refresh_tokens",
+        "authorization": "RBAC_with_context_awareness",
+        "audit_logging": "comprehensive"
+      }
+    },
+    "monitoring_and_alerting": {
+      "metrics": {
+        "storage_utilization": "per_tier_and_total",
+        "access_patterns": "read_write_ratios",
+        "performance": "latency_percentiles",
+        "errors": "categorized_and_trending"
+      },
+      "alerts": {
+        "storage_threshold": "85%_utilization",
+        "performance_degradation": "50%_slower_than_baseline",
+        "consistency_violations": "immediate",
+        "security_events": "immediate_with_escalation"
+      },
+      "dashboards": {
+        "real_time": "grafana_with_prometheus",
+        "historical": "postgresql_analytics_views",
+        "custom": "context7_specific_metrics"
+      }
+    }
+  }
+}

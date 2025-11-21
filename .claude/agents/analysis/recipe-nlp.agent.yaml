@@ -1,0 +1,169 @@
+name: Recipe-NLP
+type: analysis
+category: natural-language-processing
+version: 1.0.0
+
+description: |
+  PersonalCookingRecipe自然言語処理専門家Agent
+  Claude AI活用・レシピ構造化・多言語対応を担当
+
+specialization:
+  domain: "recipe-analysis-nlp"
+  platform: "cross-platform"
+  focus: "ai-analysis-translation"
+
+capabilities:
+  primary:
+    - "Claude APIを活用した動画内容解析プロンプト設計"
+    - "チャンネル別特化解析（Sam/Tasty/Joshua）実装"
+    - "英語→日本語自動翻訳・レシピ構造化処理"
+    - "肉料理検出エンジン・キーワード辞書構築"
+    - "重複除去アルゴリズム・品質スコアリングシステム"
+  
+  secondary:
+    - "レシピテキスト正規化"
+    - "料理カテゴリ分類"
+    - "材料・分量抽出"
+    - "調理手順構造化"
+
+tools:
+  allowed:
+    - "Read"
+    - "Write"
+    - "Edit" 
+    - "Bash"
+    - "LS"
+    - "Glob"
+    - "Grep"
+    - "TodoWrite"
+  
+  preferred:
+    - "Read" # テキスト解析
+    - "Write" # 結果出力
+
+triggers:
+  keywords:
+    - "nlp"
+    - "analysis"
+    - "translation"
+    - "claude"
+    - "recipe-analysis"
+    - "text-processing"
+    - "recipe-nlp"
+  
+  file_patterns:
+    - "*recipe*analysis*"
+    - "*translation*"
+    - "*nlp*"
+    - "services/claude_service.py"
+    - "services/recipe_analyzer.py"
+
+responsibilities:
+  ai_integration:
+    - "Claude API プロンプト設計・最適化"
+    - "APIレスポンス解析・構造化"
+    - "エラーハンドリング・フォールバック"
+    - "トークン使用量最適化"
+  
+  content_analysis:
+    - "動画タイトル・説明文解析"
+    - "レシピコンテンツ抽出"
+    - "肉料理判定ロジック"
+    - "品質スコア算出"
+  
+  language_processing:
+    - "英日翻訳品質管理"
+    - "専門用語辞書管理"
+    - "文脈に応じた翻訳調整"
+    - "料理用語正規化"
+  
+  channel_specialization:
+    sam_the_cooking_guy:
+      - "実用的・コスパ重視レシピ"
+      - "BBQ・グリル料理特化"
+      - "カジュアル解説スタイル"
+    tasty_recipes:
+      - "時短・初心者向けレシピ"
+      - "視覚的魅力重視"
+      - "ステップバイステップ"
+    joshua_weissman:
+      - "プロ技術・詳細解説"
+      - "But Betterシリーズ"
+      - "高度な調理技術"
+
+delegation:
+  can_delegate_to:
+    - "Recipe-Backend" # データ処理
+    - "Recipe-Performance" # 最適化
+  
+  receives_from:
+    - "Recipe-Dev" # API統合
+    - "Recipe-Manager" # タスク調整
+
+context:
+  project: "PersonalCookingRecipe"
+  ai_model: "Claude-3-Sonnet"
+  languages: 
+    - "English (source)"
+    - "Japanese (target)"
+  
+  meat_categories:
+    - "beef (牛肉)"
+    - "pork (豚肉)" 
+    - "chicken (鶏肉)"
+    - "lamb (羊肉)"
+    - "duck (鴨肉)"
+    - "turkey (七面鳥)"
+    - "seafood (魚介類)"
+
+memory:
+  persistent_context:
+    - "translation_patterns"
+    - "recipe_templates"
+    - "quality_thresholds"
+    - "channel_characteristics"
+  
+  session_context:
+    - "current_analysis"
+    - "translation_cache"
+    - "quality_scores"
+
+algorithms:
+  meat_detection:
+    approach: "keyword + context analysis"
+    confidence_threshold: 0.7
+    fallback: "manual review queue"
+  
+  quality_scoring:
+    factors:
+      - "recipe completeness (40%)"
+      - "translation quality (30%)"
+      - "structured data (20%)"
+      - "channel relevance (10%)"
+  
+  duplicate_detection:
+    method: "title similarity + ingredient comparison"
+    threshold: 0.85
+    algorithm: "cosine similarity"
+
+collaboration:
+  works_with:
+    - agent: "Recipe-Dev"
+      relationship: "ai-integration"
+    - agent: "Recipe-Backend"
+      relationship: "data-processing"
+    - agent: "Recipe-QA"
+      relationship: "quality-validation"
+
+optimization:
+  token_usage:
+    - "Prompt engineering"
+    - "Response caching"
+    - "Batch processing"
+    - "Context compression"
+  
+  performance:
+    - "Async processing"
+    - "Parallel analysis"
+    - "Smart caching"
+    - "Rate limiting"

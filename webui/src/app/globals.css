@@ -1,0 +1,318 @@
+/**
+ * PersonalCookingRecipe WebUI グローバルスタイル
+ * Tailwind CSS + カスタムスタイル
+ * 
+ * Author: Recipe-DevUI Agent
+ * Date: 2025-08-08
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ベーススタイル */
+@layer base {
+  :root {
+    --font-inter: 'Inter', system-ui, sans-serif;
+    --font-jetbrains-mono: 'JetBrains Mono', 'Monaco', 'Cascadia Code', monospace;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* スクロールバースタイリング */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-400 hover:bg-gray-500;
+    border-radius: 4px;
+  }
+
+  /* フォーカススタイル */
+  *:focus {
+    outline: 2px solid theme('colors.primary.500');
+    outline-offset: 2px;
+  }
+
+  /* 選択範囲スタイル */
+  ::selection {
+    @apply bg-primary-100 text-primary-900;
+  }
+
+  ::-moz-selection {
+    @apply bg-primary-100 text-primary-900;
+  }
+}
+
+/* コンポーネントスタイル */
+@layer components {
+  /* ボタンベーススタイル */
+  .btn {
+    @apply inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply btn bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500;
+  }
+
+  .btn-secondary {
+    @apply btn bg-gray-200 text-gray-900 hover:bg-gray-300 focus:ring-gray-500;
+  }
+
+  .btn-success {
+    @apply btn bg-success-600 text-white hover:bg-success-700 focus:ring-success-500;
+  }
+
+  .btn-warning {
+    @apply btn bg-warning-600 text-white hover:bg-warning-700 focus:ring-warning-500;
+  }
+
+  .btn-error {
+    @apply btn bg-error-600 text-white hover:bg-error-700 focus:ring-error-500;
+  }
+
+  .btn-ghost {
+    @apply btn bg-transparent text-gray-700 hover:bg-gray-100 focus:ring-gray-500;
+  }
+
+  /* カードスタイル */
+  .card {
+    @apply bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden;
+  }
+
+  .card-header {
+    @apply px-6 py-4 border-b border-gray-200 bg-gray-50;
+  }
+
+  .card-body {
+    @apply px-6 py-4;
+  }
+
+  .card-footer {
+    @apply px-6 py-4 border-t border-gray-200 bg-gray-50;
+  }
+
+  /* フォームスタイル */
+  .form-input {
+    @apply block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm;
+  }
+
+  .form-textarea {
+    @apply form-input resize-none;
+  }
+
+  .form-select {
+    @apply form-input pr-10 bg-white;
+  }
+
+  .form-checkbox {
+    @apply h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded;
+  }
+
+  .form-radio {
+    @apply h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300;
+  }
+
+  /* バッジスタイル */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-success {
+    @apply badge bg-success-100 text-success-800;
+  }
+
+  .badge-warning {
+    @apply badge bg-warning-100 text-warning-800;
+  }
+
+  .badge-error {
+    @apply badge bg-error-100 text-error-800;
+  }
+
+  .badge-info {
+    @apply badge bg-blue-100 text-blue-800;
+  }
+
+  .badge-gray {
+    @apply badge bg-gray-100 text-gray-800;
+  }
+
+  /* アラートスタイル */
+  .alert {
+    @apply p-4 rounded-md;
+  }
+
+  .alert-success {
+    @apply alert bg-success-50 border border-success-200 text-success-800;
+  }
+
+  .alert-warning {
+    @apply alert bg-warning-50 border border-warning-200 text-warning-800;
+  }
+
+  .alert-error {
+    @apply alert bg-error-50 border border-error-200 text-error-800;
+  }
+
+  .alert-info {
+    @apply alert bg-blue-50 border border-blue-200 text-blue-800;
+  }
+
+  /* ローディングスピナー */
+  .spinner {
+    @apply animate-spin rounded-full border-2 border-gray-300 border-t-primary-600;
+  }
+
+  /* テーブルスタイル */
+  .table {
+    @apply min-w-full divide-y divide-gray-200;
+  }
+
+  .table-header {
+    @apply bg-gray-50 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider;
+  }
+
+  .table-cell {
+    @apply px-6 py-4 whitespace-nowrap text-sm text-gray-900;
+  }
+
+  /* ナビゲーションスタイル */
+  .nav-link {
+    @apply flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors duration-200;
+  }
+
+  .nav-link-active {
+    @apply nav-link bg-primary-100 text-primary-900;
+  }
+
+  .nav-link-inactive {
+    @apply nav-link text-gray-600 hover:text-gray-900 hover:bg-gray-100;
+  }
+
+  /* モーダル背景 */
+  .modal-backdrop {
+    @apply fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity z-40;
+  }
+
+  .modal-panel {
+    @apply bg-white rounded-lg shadow-xl transform transition-all z-50;
+  }
+}
+
+/* ユーティリティスタイル */
+@layer utilities {
+  /* アニメーション */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  .animate-slide-down {
+    animation: slideDown 0.3s ease-out;
+  }
+
+  /* レスポンシブなテキスト省略 */
+  .truncate-2-lines {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .truncate-3-lines {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* グラデーション背景 */
+  .gradient-primary {
+    background: linear-gradient(135deg, theme('colors.primary.600'), theme('colors.primary.700'));
+  }
+
+  .gradient-secondary {
+    background: linear-gradient(135deg, theme('colors.gray.600'), theme('colors.gray.700'));
+  }
+
+  /* シャドウエフェクト */
+  .shadow-glow {
+    box-shadow: 0 0 20px rgba(224, 93, 85, 0.3);
+  }
+
+  /* フォーカススタイルの無効化（必要な場合のみ） */
+  .no-focus-ring:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  /* プリント用スタイル */
+  @media print {
+    .no-print {
+      display: none !important;
+    }
+    
+    .print-break-before {
+      page-break-before: always;
+    }
+  }
+}
+
+/* キーフレーム定義 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ダークモード対応（将来用） */
+@media (prefers-color-scheme: dark) {
+  .dark-mode-auto {
+    /* ダークモードスタイルをここに追加 */
+  }
+}

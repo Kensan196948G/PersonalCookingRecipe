@@ -1,0 +1,38 @@
+# PersonalCookingRecipe FastAPI Dependencies
+# Core FastAPI
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+python-multipart==0.0.6
+
+# Pydantic for data validation
+pydantic==2.5.0
+pydantic-settings==2.1.0
+
+# WebSocket support
+websockets==12.0
+
+# Async HTTP client
+aiohttp==3.9.1
+httpx==0.25.2
+
+# JSON processing
+orjson==3.9.10
+
+# Date/time handling
+python-dateutil==2.8.2
+
+# Authentication (optional for future JWT)
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+
+# Development dependencies
+pytest==7.4.3
+pytest-asyncio==0.21.1
+pytest-httpx==0.26.0
+
+# Type checking
+mypy==1.7.1
+
+# Linting and formatting
+ruff==0.1.6
+black==23.11.0

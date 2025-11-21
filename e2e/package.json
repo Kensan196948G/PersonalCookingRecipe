@@ -1,0 +1,51 @@
+{
+  "name": "personal-cooking-recipe-e2e",
+  "version": "1.0.0",
+  "description": "E2E testing for Personal Cooking Recipe app",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:debug": "playwright test --debug",
+    "test:chrome": "playwright test --project=chromium",
+    "test:firefox": "playwright test --project=firefox",
+    "test:safari": "playwright test --project=webkit",
+    "test:mobile": "playwright test --project='Mobile Chrome' --project='Mobile Safari'",
+    "test:api": "playwright test --grep '@api'",
+    "test:auth": "playwright test --grep '@auth'",
+    "test:recipe": "playwright test --grep '@recipe'",
+    "test:search": "playwright test --grep '@search'",
+    "test:integration": "playwright test --grep '@integration'",
+    "test:performance": "playwright test --grep '@performance'",
+    "test:responsive": "playwright test --grep '@responsive'",
+    "test:parallel": "playwright test --workers=4",
+    "report": "playwright show-report",
+    "install": "playwright install",
+    "install-deps": "playwright install-deps",
+    "codegen": "playwright codegen localhost:3000",
+    "trace": "playwright show-trace",
+    "clean": "rm -rf test-results"
+  },
+  "keywords": [
+    "e2e",
+    "testing",
+    "playwright",
+    "cooking",
+    "recipes"
+  ],
+  "author": "Personal Cooking Recipe Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "@types/node": "^20.8.0",
+    "dotenv": "^16.3.1",
+    "faker": "^5.5.3",
+    "axios": "^1.5.0"
+  },
+  "dependencies": {
+    "csv-parser": "^3.0.0",
+    "lighthouse": "^11.2.0",
+    "pa11y": "^7.0.0"
+  }
+}
