@@ -19,3 +19,4 @@
 {"level":"info","message":"時間別メトリクス集約完了","service":"metrics-collector-sqlite","timestamp":"2025-11-21T05:00:00.027Z"}
 {"level":"info","message":"時間別メトリクス集約完了","service":"metrics-collector-sqlite","timestamp":"2025-11-21T06:00:00.054Z"}
 {"level":"info","message":"時間別メトリクス集約完了","service":"metrics-collector-sqlite","timestamp":"2025-11-21T07:00:00.029Z"}
+{"level":"info","message":"時間別メトリクス集約完了","service":"metrics-collector-sqlite","timestamp":"2025-11-21T08:00:00.022Z"}

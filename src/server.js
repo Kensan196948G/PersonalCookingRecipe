@@ -10,6 +10,7 @@ const db = require('./config/database');
 const authRoutes = require('./routes/authRoutes');
 const recipeRoutes = require('./routes/recipeRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
+const phaseRoutes = require('./routes/phaseRoutes');
 const errorHandler = require('./middleware/errorHandler');
 
 // エラー検知・自動修復システム統合
@@ -62,6 +63,7 @@ app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 app.use('/api/auth', authRoutes);
 app.use('/api/recipes', recipeRoutes);
 app.use('/api/categories', categoryRoutes);
+app.use('/api/phases', phaseRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {
