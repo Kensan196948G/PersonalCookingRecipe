@@ -59,9 +59,7 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
-          cache-dependency-path: |
-            backend/package-lock.json
-            frontend/package-lock.json
+          cache-dependency-path: ${{ matrix.service }}/package-lock.json
 
       # Python依存関係キャッシュ最適化
       - name: Cache Python packages (API)
@@ -171,7 +169,8 @@ jobs:
 
       - name: Upload Trivy scan results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v3
-        if: always()
+        if: github.event_name != 'pull_request' && github.actor != 'dependabot[bot]'
+        continue-on-error: true
         with:
           sarif_file: 'trivy-results.sarif'
 
@@ -346,15 +345,24 @@ jobs:
     if: always()
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ secrets.PRODUCTION_SSH_KEY }}
+
       - name: Clean up old PM2 processes
         run: |
           echo "🧹 Cleaning up old PM2 processes..."
           ssh -o StrictHostKeyChecking=no ${{ secrets.PRODUCTION_USER }}@${{ secrets.PRODUCTION_HOST }} << 'EOF'
             # 30日以上前のログファイル削除
-            find /opt/recipe-app/logs -name "*.log" -mtime +30 -delete
+            find /opt/recipe-app/logs -name "*.log" -mtime +30 -delete || echo "No old log files found"
 
             # PM2プロセスリスト最適化
-            pm2 save
+            pm2 save || echo "PM2 daemon not running"
 
             echo "✅ Cleanup completed"
           EOF
+        continue-on-error: true
