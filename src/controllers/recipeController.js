@@ -3,6 +3,7 @@ const multer = require('multer');
 const sharp = require('sharp');
 const path = require('path');
 const fs = require('fs');
+const { recipeCacheManager } = require('../utils/recipe-cache');
 
 // Configure multer for image uploads
 const storage = multer.memoryStorage();
@@ -79,8 +80,56 @@ exports.getRecipes = async (req, res, next) => {
       search: req.query.search
     };
     
-    const recipes = await Recipe.findAll(req.userId, filters);
-    res.json({ recipes });
+    const pagination = {
+      page: parseInt(req.query.page) || 1,
+      limit: parseInt(req.query.limit) || 20
+    };
+    
+    // キャッシュから検索
+    let recipes;
+    
+    if (req.userId) {
+      // 認証ユーザー: ユーザー別キャッシュ
+      recipes = await recipeCacheManager.getCachedUserRecipes(req.userId, { ...filters, ...pagination });
+    } else {
+      // 未認証ユーザー: パブリックキャッシュ
+      recipes = await recipeCacheManager.getCachedPublicRecipes(filters, pagination);
+    }
+    
+    if (!recipes) {
+      // キャッシュミス: DBから取得
+      const startTime = process.hrtime.bigint();
+      recipes = await Recipe.findAll(req.userId, filters, pagination);
+      const duration = Number(process.hrtime.bigint() - startTime) / 1000000;
+      
+      // パフォーマンスログ
+      if (duration > 100) { // 100ms超過
+        console.warn(`DB検索時間超過: ${duration.toFixed(3)}ms`);
+      }
+      
+      // 結果をキャッシュ
+      if (req.userId) {
+        await recipeCacheManager.cacheUserRecipes(req.userId, recipes, { ...filters, ...pagination });
+      } else {
+        await recipeCacheManager.cachePublicRecipes(recipes, filters, pagination);
+      }
+      
+      res.set('X-Cache', 'MISS');
+    } else {
+      res.set('X-Cache', 'HIT');
+    }
+    
+    res.json({ 
+      recipes,
+      pagination: {
+        page: pagination.page,
+        limit: pagination.limit,
+        total: recipes.length
+      },
+      performance: {
+        cached: !!res.get('X-Cache')?.includes('HIT')
+      }
+    });
   } catch (error) {
     next(error);
   }
@@ -88,12 +137,39 @@ exports.getRecipes = async (req, res, next) => {
 
 exports.getRecipe = async (req, res, next) => {
   try {
-    const recipe = await Recipe.findById(req.params.id, req.userId);
+    const recipeId = req.params.id;
+    
+    // キャッシュから検索
+    let recipe = await recipeCacheManager.getCachedRecipe(recipeId);
+    
     if (!recipe) {
-      return res.status(404).json({ error: 'Recipe not found' });
+      // キャッシュミス: DBから取得
+      const startTime = process.hrtime.bigint();
+      recipe = await Recipe.findById(recipeId, req.userId);
+      const duration = Number(process.hrtime.bigint() - startTime) / 1000000;
+      
+      if (!recipe) {
+        return res.status(404).json({ error: 'Recipe not found' });
+      }
+      
+      // パフォーマンスログ
+      if (duration > 50) { // 50ms超過
+        console.warn(`レシピ詳細取得時間超過: ${duration.toFixed(3)}ms`);
+      }
+      
+      // 結果をキャッシュ
+      await recipeCacheManager.cacheRecipe(recipeId, recipe);
+      res.set('X-Cache', 'MISS');
+    } else {
+      res.set('X-Cache', 'HIT');
     }
     
-    res.json({ recipe });
+    res.json({ 
+      recipe,
+      performance: {
+        cached: !!res.get('X-Cache')?.includes('HIT')
+      }
+    });
   } catch (error) {
     next(error);
   }

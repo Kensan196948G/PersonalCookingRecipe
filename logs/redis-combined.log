@@ -1,0 +1,890 @@
+{"db":0,"host":"localhost","level":"info","message":"Redis接続成功","port":6379,"service":"redis-manager","timestamp":"2025-11-21T01:50:59.705Z"}
+{"level":"warn","message":"Redis already connected","service":"redis-manager","timestamp":"2025-11-21T01:50:59.721Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.726Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.729Z"}
+{"error":"this.client.setex is not a function","key":"test:key","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.731Z","ttl":60}
+{"error":"\"undefined\" is not valid JSON","key":"test:key","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.733Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.749Z"}
+{"error":"this.client.setex is not a function","key":"test:ttl","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.750Z","ttl":10}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.753Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:CJ9.test","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.755Z","ttl":3600}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.759Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:CJ9.test","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.761Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:CJ9.test","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.763Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.764Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:CJ9.test","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.766Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:CJ9.test","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.767Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.769Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:token1","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.776Z","ttl":3600}
+{"error":"this.client.setex is not a function","key":"jwt:123:token2","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.777Z","ttl":3600}
+{"error":"this.client.keys is not a function","level":"error","message":"Redis KEYS エラー","pattern":"jwt:123:*","service":"redis-manager","timestamp":"2025-11-21T01:50:59.778Z"}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:token1","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.779Z"}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:token2","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.779Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.780Z"}
+{"error":"this.client.setex is not a function","key":"user:profile:456","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.781Z","ttl":1800}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.782Z"}
+{"error":"this.client.setex is not a function","key":"user:profile:456","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.783Z","ttl":1800}
+{"error":"\"undefined\" is not valid JSON","key":"user:profile:456","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.784Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.785Z"}
+{"error":"this.client.setex is not a function","key":"user:profile:456","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.786Z","ttl":1800}
+{"error":"\"undefined\" is not valid JSON","key":"user:profile:456","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.787Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.789Z"}
+{"error":"this.client.setex is not a function","key":"recipe:detail:789","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.790Z","ttl":3600}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.792Z"}
+{"error":"this.client.setex is not a function","key":"recipe:detail:789","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.793Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"recipe:detail:789","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.793Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.794Z"}
+{"error":"this.client.setex is not a function","key":"recipe:detail:789","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.795Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"recipe:detail:789","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.796Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.797Z"}
+{"error":"this.client.setex is not a function","key":"recipes:list:82df8735ddd7be7a","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.798Z","ttl":1800}
+{"error":"\"undefined\" is not valid JSON","key":"recipes:list:82df8735ddd7be7a","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.799Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.800Z"}
+{"error":"this.client.setex is not a function","key":"user:dashboard:999","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.801Z","ttl":900}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.802Z"}
+{"error":"this.client.setex is not a function","key":"user:dashboard:999","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.803Z","ttl":900}
+{"error":"\"undefined\" is not valid JSON","key":"user:dashboard:999","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.803Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.804Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.806Z"}
+{"error":"this.client.setex is not a function","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.807Z","ttl":600}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.808Z"}
+{"error":"this.client.setex is not a function","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.815Z","ttl":600}
+{"error":"\"undefined\" is not valid JSON","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.816Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.817Z"}
+{"error":"this.client.setex is not a function","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.818Z","ttl":600}
+{"error":"\"undefined\" is not valid JSON","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.819Z"}
+{"error":"\"undefined\" is not valid JSON","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.819Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.820Z"}
+{"error":"this.client.setex is not a function","key":"categories:all","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.821Z","ttl":7200}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.822Z"}
+{"error":"this.client.setex is not a function","key":"categories:all","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.823Z","ttl":7200}
+{"error":"\"undefined\" is not valid JSON","key":"categories:all","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.824Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.825Z"}
+{"error":"this.client.setex is not a function","key":"categories:all","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.825Z","ttl":7200}
+{"error":"\"undefined\" is not valid JSON","key":"categories:all","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.826Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.827Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.828Z"}
+{"error":"\"undefined\" is not valid JSON","key":"test:hit-rate","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.829Z"}
+{"error":"this.client.setex is not a function","key":"test:hit-rate","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.830Z","ttl":60}
+{"error":"\"undefined\" is not valid JSON","key":"test:hit-rate","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.830Z"}
+{"error":"\"undefined\" is not valid JSON","key":"test:hit-rate","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.831Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:50:59.831Z"}
+{"level":"info","message":"Redis接続クローズ完了","service":"redis-manager","timestamp":"2025-11-21T01:50:59.832Z"}
+{"level":"info","message":"Redis接続クローズ完了","service":"redis-manager","timestamp":"2025-11-21T01:50:59.840Z"}
+{"db":0,"host":"localhost","level":"info","message":"Redis接続成功","port":6379,"service":"redis-manager","timestamp":"2025-11-21T01:51:02.710Z"}
+{"level":"warn","message":"Redis already connected","service":"redis-manager","timestamp":"2025-11-21T01:51:02.745Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.754Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.758Z"}
+{"error":"this.client.setex is not a function","key":"test:key","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.760Z","ttl":60}
+{"error":"\"undefined\" is not valid JSON","key":"test:key","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.762Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.788Z"}
+{"error":"this.client.setex is not a function","key":"test:ttl","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.789Z","ttl":10}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.792Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:CJ9.test","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.794Z","ttl":3600}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.798Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:CJ9.test","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.799Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:CJ9.test","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.801Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.803Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:CJ9.test","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.805Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:CJ9.test","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.806Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.808Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:token1","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.814Z","ttl":3600}
+{"error":"this.client.setex is not a function","key":"jwt:123:token2","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.815Z","ttl":3600}
+{"error":"this.client.keys is not a function","level":"error","message":"Redis KEYS エラー","pattern":"jwt:123:*","service":"redis-manager","timestamp":"2025-11-21T01:51:02.816Z"}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:token1","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.817Z"}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:token2","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.818Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.819Z"}
+{"error":"this.client.setex is not a function","key":"user:profile:456","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.820Z","ttl":1800}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.822Z"}
+{"error":"this.client.setex is not a function","key":"user:profile:456","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.823Z","ttl":1800}
+{"error":"\"undefined\" is not valid JSON","key":"user:profile:456","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.824Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.825Z"}
+{"error":"this.client.setex is not a function","key":"user:profile:456","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.828Z","ttl":1800}
+{"error":"\"undefined\" is not valid JSON","key":"user:profile:456","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.830Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.832Z"}
+{"error":"this.client.setex is not a function","key":"recipe:detail:789","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.835Z","ttl":3600}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.839Z"}
+{"error":"this.client.setex is not a function","key":"recipe:detail:789","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.841Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"recipe:detail:789","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.843Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.846Z"}
+{"error":"this.client.setex is not a function","key":"recipe:detail:789","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.848Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"recipe:detail:789","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.850Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.853Z"}
+{"error":"this.client.setex is not a function","key":"recipes:list:82df8735ddd7be7a","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.855Z","ttl":1800}
+{"error":"\"undefined\" is not valid JSON","key":"recipes:list:82df8735ddd7be7a","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.857Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.860Z"}
+{"error":"this.client.setex is not a function","key":"user:dashboard:999","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.862Z","ttl":900}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.865Z"}
+{"error":"this.client.setex is not a function","key":"user:dashboard:999","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.867Z","ttl":900}
+{"error":"\"undefined\" is not valid JSON","key":"user:dashboard:999","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.869Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.871Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.887Z"}
+{"error":"this.client.setex is not a function","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.888Z","ttl":600}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.890Z"}
+{"error":"this.client.setex is not a function","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.891Z","ttl":600}
+{"error":"\"undefined\" is not valid JSON","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.892Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.893Z"}
+{"error":"this.client.setex is not a function","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.894Z","ttl":600}
+{"error":"\"undefined\" is not valid JSON","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.895Z"}
+{"error":"\"undefined\" is not valid JSON","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.895Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.896Z"}
+{"error":"this.client.setex is not a function","key":"categories:all","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.897Z","ttl":7200}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.899Z"}
+{"error":"this.client.setex is not a function","key":"categories:all","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.900Z","ttl":7200}
+{"error":"\"undefined\" is not valid JSON","key":"categories:all","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.901Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.902Z"}
+{"error":"this.client.setex is not a function","key":"categories:all","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.903Z","ttl":7200}
+{"error":"\"undefined\" is not valid JSON","key":"categories:all","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.904Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.905Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.906Z"}
+{"error":"\"undefined\" is not valid JSON","key":"test:hit-rate","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.907Z"}
+{"error":"this.client.setex is not a function","key":"test:hit-rate","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.908Z","ttl":60}
+{"error":"\"undefined\" is not valid JSON","key":"test:hit-rate","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.908Z"}
+{"error":"\"undefined\" is not valid JSON","key":"test:hit-rate","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.909Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:51:02.910Z"}
+{"level":"info","message":"Redis接続クローズ完了","service":"redis-manager","timestamp":"2025-11-21T01:51:02.912Z"}
+{"level":"info","message":"Redis接続クローズ完了","service":"redis-manager","timestamp":"2025-11-21T01:51:02.924Z"}
+{"db":0,"host":"localhost","level":"info","message":"Redis接続成功","port":6379,"service":"redis-manager","timestamp":"2025-11-21T01:58:13.433Z"}
+{"level":"warn","message":"Redis already connected","service":"redis-manager","timestamp":"2025-11-21T01:58:13.454Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.457Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.460Z"}
+{"error":"this.client.setex is not a function","key":"test:key","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.461Z","ttl":60}
+{"error":"\"undefined\" is not valid JSON","key":"test:key","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.463Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.478Z"}
+{"error":"this.client.setex is not a function","key":"test:ttl","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.479Z","ttl":10}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.481Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:CJ9.test","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.482Z","ttl":3600}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.483Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:CJ9.test","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.485Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:CJ9.test","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.486Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.487Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:CJ9.test","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.488Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:CJ9.test","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.489Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.490Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:token1","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.491Z","ttl":3600}
+{"error":"this.client.setex is not a function","key":"jwt:123:token2","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.492Z","ttl":3600}
+{"error":"this.client.keys is not a function","level":"error","message":"Redis KEYS エラー","pattern":"jwt:123:*","service":"redis-manager","timestamp":"2025-11-21T01:58:13.493Z"}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:token1","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.494Z"}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:token2","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.495Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.496Z"}
+{"error":"this.client.setex is not a function","key":"user:profile:456","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.497Z","ttl":1800}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.499Z"}
+{"error":"this.client.setex is not a function","key":"user:profile:456","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.501Z","ttl":1800}
+{"error":"\"undefined\" is not valid JSON","key":"user:profile:456","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.502Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.509Z"}
+{"error":"this.client.setex is not a function","key":"user:profile:456","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.510Z","ttl":1800}
+{"error":"\"undefined\" is not valid JSON","key":"user:profile:456","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.511Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.512Z"}
+{"error":"this.client.setex is not a function","key":"recipe:detail:789","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.513Z","ttl":3600}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.515Z"}
+{"error":"this.client.setex is not a function","key":"recipe:detail:789","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.516Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"recipe:detail:789","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.516Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.517Z"}
+{"error":"this.client.setex is not a function","key":"recipe:detail:789","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.518Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"recipe:detail:789","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.519Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.520Z"}
+{"error":"this.client.setex is not a function","key":"recipes:list:82df8735ddd7be7a","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.521Z","ttl":1800}
+{"error":"\"undefined\" is not valid JSON","key":"recipes:list:82df8735ddd7be7a","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.522Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.524Z"}
+{"error":"this.client.setex is not a function","key":"user:dashboard:999","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.525Z","ttl":900}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.526Z"}
+{"error":"this.client.setex is not a function","key":"user:dashboard:999","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.527Z","ttl":900}
+{"error":"\"undefined\" is not valid JSON","key":"user:dashboard:999","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.528Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.529Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.531Z"}
+{"error":"this.client.setex is not a function","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.533Z","ttl":600}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.534Z"}
+{"error":"this.client.setex is not a function","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.535Z","ttl":600}
+{"error":"\"undefined\" is not valid JSON","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.536Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.537Z"}
+{"error":"this.client.setex is not a function","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.538Z","ttl":600}
+{"error":"\"undefined\" is not valid JSON","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.539Z"}
+{"error":"\"undefined\" is not valid JSON","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.540Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.541Z"}
+{"error":"this.client.setex is not a function","key":"categories:all","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.543Z","ttl":7200}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.551Z"}
+{"error":"this.client.setex is not a function","key":"categories:all","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.552Z","ttl":7200}
+{"error":"\"undefined\" is not valid JSON","key":"categories:all","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.553Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.555Z"}
+{"error":"this.client.setex is not a function","key":"categories:all","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.556Z","ttl":7200}
+{"error":"\"undefined\" is not valid JSON","key":"categories:all","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.557Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.558Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.560Z"}
+{"error":"\"undefined\" is not valid JSON","key":"test:hit-rate","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.561Z"}
+{"error":"this.client.setex is not a function","key":"test:hit-rate","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.561Z","ttl":60}
+{"error":"\"undefined\" is not valid JSON","key":"test:hit-rate","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.562Z"}
+{"error":"\"undefined\" is not valid JSON","key":"test:hit-rate","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.562Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T01:58:13.563Z"}
+{"level":"info","message":"Redis接続クローズ完了","service":"redis-manager","timestamp":"2025-11-21T01:58:13.564Z"}
+{"level":"info","message":"Redis接続クローズ完了","service":"redis-manager","timestamp":"2025-11-21T01:58:13.574Z"}
+{"db":0,"host":"localhost","level":"info","message":"Redis接続成功","port":6379,"service":"redis-manager","timestamp":"2025-11-21T02:03:27.457Z"}
+{"level":"warn","message":"Redis already connected","service":"redis-manager","timestamp":"2025-11-21T02:03:27.465Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.470Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.472Z"}
+{"error":"this.client.setex is not a function","key":"test:key","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.474Z","ttl":60}
+{"error":"\"undefined\" is not valid JSON","key":"test:key","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.475Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.488Z"}
+{"error":"this.client.setex is not a function","key":"test:ttl","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.490Z","ttl":10}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.492Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:CJ9.test","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.493Z","ttl":3600}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.495Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:CJ9.test","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.496Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:CJ9.test","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.503Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.505Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:CJ9.test","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.506Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:CJ9.test","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.507Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.508Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:token1","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.509Z","ttl":3600}
+{"error":"this.client.setex is not a function","key":"jwt:123:token2","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.509Z","ttl":3600}
+{"error":"this.client.keys is not a function","level":"error","message":"Redis KEYS エラー","pattern":"jwt:123:*","service":"redis-manager","timestamp":"2025-11-21T02:03:27.510Z"}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:token1","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.511Z"}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:token2","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.511Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.512Z"}
+{"error":"this.client.setex is not a function","key":"user:profile:456","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.513Z","ttl":1800}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.514Z"}
+{"error":"this.client.setex is not a function","key":"user:profile:456","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.515Z","ttl":1800}
+{"error":"\"undefined\" is not valid JSON","key":"user:profile:456","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.516Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.517Z"}
+{"error":"this.client.setex is not a function","key":"user:profile:456","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.518Z","ttl":1800}
+{"error":"\"undefined\" is not valid JSON","key":"user:profile:456","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.519Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.520Z"}
+{"error":"this.client.setex is not a function","key":"recipe:detail:789","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.521Z","ttl":3600}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.522Z"}
+{"error":"this.client.setex is not a function","key":"recipe:detail:789","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.523Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"recipe:detail:789","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.524Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.525Z"}
+{"error":"this.client.setex is not a function","key":"recipe:detail:789","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.526Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"recipe:detail:789","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.526Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.527Z"}
+{"error":"this.client.setex is not a function","key":"recipes:list:82df8735ddd7be7a","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.528Z","ttl":1800}
+{"error":"\"undefined\" is not valid JSON","key":"recipes:list:82df8735ddd7be7a","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.529Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.531Z"}
+{"error":"this.client.setex is not a function","key":"user:dashboard:999","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.532Z","ttl":900}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.534Z"}
+{"error":"this.client.setex is not a function","key":"user:dashboard:999","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.535Z","ttl":900}
+{"error":"\"undefined\" is not valid JSON","key":"user:dashboard:999","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.536Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.537Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.543Z"}
+{"error":"this.client.setex is not a function","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.545Z","ttl":600}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.546Z"}
+{"error":"this.client.setex is not a function","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.547Z","ttl":600}
+{"error":"\"undefined\" is not valid JSON","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.548Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.549Z"}
+{"error":"this.client.setex is not a function","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.550Z","ttl":600}
+{"error":"\"undefined\" is not valid JSON","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.551Z"}
+{"error":"\"undefined\" is not valid JSON","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.552Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.553Z"}
+{"error":"this.client.setex is not a function","key":"categories:all","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.554Z","ttl":7200}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.556Z"}
+{"error":"this.client.setex is not a function","key":"categories:all","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.557Z","ttl":7200}
+{"error":"\"undefined\" is not valid JSON","key":"categories:all","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.557Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.559Z"}
+{"error":"this.client.setex is not a function","key":"categories:all","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.560Z","ttl":7200}
+{"error":"\"undefined\" is not valid JSON","key":"categories:all","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.561Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.561Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.564Z"}
+{"error":"\"undefined\" is not valid JSON","key":"test:hit-rate","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.565Z"}
+{"error":"this.client.setex is not a function","key":"test:hit-rate","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.565Z","ttl":60}
+{"error":"\"undefined\" is not valid JSON","key":"test:hit-rate","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.566Z"}
+{"error":"\"undefined\" is not valid JSON","key":"test:hit-rate","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.567Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:03:27.568Z"}
+{"level":"info","message":"Redis接続クローズ完了","service":"redis-manager","timestamp":"2025-11-21T02:03:27.569Z"}
+{"level":"info","message":"Redis接続クローズ完了","service":"redis-manager","timestamp":"2025-11-21T02:03:27.581Z"}
+{"db":0,"host":"localhost","level":"info","message":"Redis接続成功","port":6379,"service":"redis-manager","timestamp":"2025-11-21T02:31:57.020Z"}
+{"level":"warn","message":"Redis already connected","service":"redis-manager","timestamp":"2025-11-21T02:31:57.035Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.049Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.053Z"}
+{"error":"this.client.setex is not a function","key":"test:key","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.055Z","ttl":60}
+{"error":"\"undefined\" is not valid JSON","key":"test:key","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.058Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.077Z"}
+{"error":"this.client.setex is not a function","key":"test:ttl","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.078Z","ttl":10}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.081Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:CJ9.test","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.083Z","ttl":3600}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.085Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:CJ9.test","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.087Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:CJ9.test","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.088Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.090Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:CJ9.test","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.091Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:CJ9.test","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.092Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.093Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:token1","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.095Z","ttl":3600}
+{"error":"this.client.setex is not a function","key":"jwt:123:token2","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.096Z","ttl":3600}
+{"error":"this.client.keys is not a function","level":"error","message":"Redis KEYS エラー","pattern":"jwt:123:*","service":"redis-manager","timestamp":"2025-11-21T02:31:57.096Z"}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:token1","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.097Z"}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:token2","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.098Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.099Z"}
+{"error":"this.client.setex is not a function","key":"user:profile:456","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.100Z","ttl":1800}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.102Z"}
+{"error":"this.client.setex is not a function","key":"user:profile:456","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.103Z","ttl":1800}
+{"error":"\"undefined\" is not valid JSON","key":"user:profile:456","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.104Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.105Z"}
+{"error":"this.client.setex is not a function","key":"user:profile:456","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.106Z","ttl":1800}
+{"error":"\"undefined\" is not valid JSON","key":"user:profile:456","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.107Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.108Z"}
+{"error":"this.client.setex is not a function","key":"recipe:detail:789","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.108Z","ttl":3600}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.115Z"}
+{"error":"this.client.setex is not a function","key":"recipe:detail:789","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.116Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"recipe:detail:789","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.117Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.118Z"}
+{"error":"this.client.setex is not a function","key":"recipe:detail:789","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.119Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"recipe:detail:789","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.119Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.120Z"}
+{"error":"this.client.setex is not a function","key":"recipes:list:82df8735ddd7be7a","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.121Z","ttl":1800}
+{"error":"\"undefined\" is not valid JSON","key":"recipes:list:82df8735ddd7be7a","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.122Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.124Z"}
+{"error":"this.client.setex is not a function","key":"user:dashboard:999","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.125Z","ttl":900}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.126Z"}
+{"error":"this.client.setex is not a function","key":"user:dashboard:999","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.127Z","ttl":900}
+{"error":"\"undefined\" is not valid JSON","key":"user:dashboard:999","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.128Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.129Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.130Z"}
+{"error":"this.client.setex is not a function","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.131Z","ttl":600}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.133Z"}
+{"error":"this.client.setex is not a function","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.134Z","ttl":600}
+{"error":"\"undefined\" is not valid JSON","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.135Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.136Z"}
+{"error":"this.client.setex is not a function","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.137Z","ttl":600}
+{"error":"\"undefined\" is not valid JSON","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.138Z"}
+{"error":"\"undefined\" is not valid JSON","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.139Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.140Z"}
+{"error":"this.client.setex is not a function","key":"categories:all","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.141Z","ttl":7200}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.143Z"}
+{"error":"this.client.setex is not a function","key":"categories:all","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.144Z","ttl":7200}
+{"error":"\"undefined\" is not valid JSON","key":"categories:all","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.145Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.146Z"}
+{"error":"this.client.setex is not a function","key":"categories:all","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.147Z","ttl":7200}
+{"error":"\"undefined\" is not valid JSON","key":"categories:all","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.155Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.156Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.158Z"}
+{"error":"\"undefined\" is not valid JSON","key":"test:hit-rate","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.159Z"}
+{"error":"this.client.setex is not a function","key":"test:hit-rate","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.159Z","ttl":60}
+{"error":"\"undefined\" is not valid JSON","key":"test:hit-rate","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.160Z"}
+{"error":"\"undefined\" is not valid JSON","key":"test:hit-rate","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.161Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:31:57.162Z"}
+{"level":"info","message":"Redis接続クローズ完了","service":"redis-manager","timestamp":"2025-11-21T02:31:57.163Z"}
+{"level":"info","message":"Redis接続クローズ完了","service":"redis-manager","timestamp":"2025-11-21T02:31:57.172Z"}
+{"db":0,"host":"localhost","level":"info","message":"Redis接続成功","port":6379,"service":"redis-manager","timestamp":"2025-11-21T02:39:06.470Z"}
+{"level":"warn","message":"Redis already connected","service":"redis-manager","timestamp":"2025-11-21T02:39:06.477Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.480Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.483Z"}
+{"error":"this.client.setex is not a function","key":"test:key","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.484Z","ttl":60}
+{"error":"\"undefined\" is not valid JSON","key":"test:key","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.485Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.501Z"}
+{"error":"this.client.setex is not a function","key":"test:ttl","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.503Z","ttl":10}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.505Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:CJ9.test","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.507Z","ttl":3600}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.509Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:CJ9.test","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.510Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:CJ9.test","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.511Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.513Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:CJ9.test","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.514Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:CJ9.test","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.515Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.516Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:token1","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.517Z","ttl":3600}
+{"error":"this.client.setex is not a function","key":"jwt:123:token2","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.518Z","ttl":3600}
+{"error":"this.client.keys is not a function","level":"error","message":"Redis KEYS エラー","pattern":"jwt:123:*","service":"redis-manager","timestamp":"2025-11-21T02:39:06.519Z"}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:token1","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.520Z"}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:token2","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.520Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.529Z"}
+{"error":"this.client.setex is not a function","key":"user:profile:456","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.530Z","ttl":1800}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.532Z"}
+{"error":"this.client.setex is not a function","key":"user:profile:456","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.532Z","ttl":1800}
+{"error":"\"undefined\" is not valid JSON","key":"user:profile:456","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.534Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.535Z"}
+{"error":"this.client.setex is not a function","key":"user:profile:456","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.536Z","ttl":1800}
+{"error":"\"undefined\" is not valid JSON","key":"user:profile:456","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.537Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.538Z"}
+{"error":"this.client.setex is not a function","key":"recipe:detail:789","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.539Z","ttl":3600}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.540Z"}
+{"error":"this.client.setex is not a function","key":"recipe:detail:789","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.541Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"recipe:detail:789","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.542Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.543Z"}
+{"error":"this.client.setex is not a function","key":"recipe:detail:789","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.544Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"recipe:detail:789","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.545Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.546Z"}
+{"error":"this.client.setex is not a function","key":"recipes:list:82df8735ddd7be7a","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.547Z","ttl":1800}
+{"error":"\"undefined\" is not valid JSON","key":"recipes:list:82df8735ddd7be7a","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.548Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.549Z"}
+{"error":"this.client.setex is not a function","key":"user:dashboard:999","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.550Z","ttl":900}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.552Z"}
+{"error":"this.client.setex is not a function","key":"user:dashboard:999","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.553Z","ttl":900}
+{"error":"\"undefined\" is not valid JSON","key":"user:dashboard:999","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.553Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.554Z"}
+{"error":"this.client.setex is not a function","key":"user:dashboard:999","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.555Z","ttl":900}
+{"error":"\"undefined\" is not valid JSON","key":"user:dashboard:999","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.556Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.658Z"}
+{"error":"this.client.setex is not a function","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.660Z","ttl":600}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.662Z"}
+{"error":"this.client.setex is not a function","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.663Z","ttl":600}
+{"error":"\"undefined\" is not valid JSON","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.664Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.665Z"}
+{"error":"this.client.setex is not a function","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.666Z","ttl":600}
+{"error":"\"undefined\" is not valid JSON","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.667Z"}
+{"error":"\"undefined\" is not valid JSON","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.668Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.669Z"}
+{"error":"this.client.setex is not a function","key":"categories:all","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.670Z","ttl":7200}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.671Z"}
+{"error":"this.client.setex is not a function","key":"categories:all","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.672Z","ttl":7200}
+{"error":"\"undefined\" is not valid JSON","key":"categories:all","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.673Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.674Z"}
+{"error":"this.client.setex is not a function","key":"categories:all","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.675Z","ttl":7200}
+{"error":"\"undefined\" is not valid JSON","key":"categories:all","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.676Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.677Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.679Z"}
+{"error":"\"undefined\" is not valid JSON","key":"test:hit-rate","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.680Z"}
+{"error":"this.client.setex is not a function","key":"test:hit-rate","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.680Z","ttl":60}
+{"error":"\"undefined\" is not valid JSON","key":"test:hit-rate","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.681Z"}
+{"error":"\"undefined\" is not valid JSON","key":"test:hit-rate","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.681Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:06.683Z"}
+{"level":"info","message":"Redis接続クローズ完了","service":"redis-manager","timestamp":"2025-11-21T02:39:06.684Z"}
+{"level":"info","message":"Redis接続クローズ完了","service":"redis-manager","timestamp":"2025-11-21T02:39:06.696Z"}
+{"db":0,"host":"localhost","level":"info","message":"Redis接続成功","port":6379,"service":"redis-manager","timestamp":"2025-11-21T02:39:25.835Z"}
+{"level":"warn","message":"Redis already connected","service":"redis-manager","timestamp":"2025-11-21T02:39:25.866Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:25.881Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:25.886Z"}
+{"error":"this.client.setex is not a function","key":"test:key","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:25.889Z","ttl":60}
+{"error":"\"undefined\" is not valid JSON","key":"test:key","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:25.891Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:25.932Z"}
+{"error":"this.client.setex is not a function","key":"test:ttl","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:25.935Z","ttl":10}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:25.938Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:CJ9.test","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:25.940Z","ttl":3600}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:25.943Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:CJ9.test","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:25.945Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:CJ9.test","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:25.946Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:25.949Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:CJ9.test","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:25.951Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:CJ9.test","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:25.952Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:25.954Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:token1","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:25.956Z","ttl":3600}
+{"error":"this.client.setex is not a function","key":"jwt:123:token2","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:25.958Z","ttl":3600}
+{"error":"this.client.keys is not a function","level":"error","message":"Redis KEYS エラー","pattern":"jwt:123:*","service":"redis-manager","timestamp":"2025-11-21T02:39:25.959Z"}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:token1","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:25.960Z"}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:token2","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:25.962Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:25.964Z"}
+{"error":"this.client.setex is not a function","key":"user:profile:456","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:25.966Z","ttl":1800}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:25.968Z"}
+{"error":"this.client.setex is not a function","key":"user:profile:456","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:25.970Z","ttl":1800}
+{"error":"\"undefined\" is not valid JSON","key":"user:profile:456","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:25.972Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:25.974Z"}
+{"error":"this.client.setex is not a function","key":"user:profile:456","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:25.976Z","ttl":1800}
+{"error":"\"undefined\" is not valid JSON","key":"user:profile:456","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:25.998Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.001Z"}
+{"error":"this.client.setex is not a function","key":"recipe:detail:789","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.004Z","ttl":3600}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.010Z"}
+{"error":"this.client.setex is not a function","key":"recipe:detail:789","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.015Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"recipe:detail:789","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.016Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.020Z"}
+{"error":"this.client.setex is not a function","key":"recipe:detail:789","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.026Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"recipe:detail:789","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.027Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.032Z"}
+{"error":"this.client.setex is not a function","key":"recipes:list:82df8735ddd7be7a","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.043Z","ttl":1800}
+{"error":"\"undefined\" is not valid JSON","key":"recipes:list:82df8735ddd7be7a","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.045Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.061Z"}
+{"error":"this.client.setex is not a function","key":"user:dashboard:999","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.065Z","ttl":900}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.073Z"}
+{"error":"this.client.setex is not a function","key":"user:dashboard:999","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.076Z","ttl":900}
+{"error":"\"undefined\" is not valid JSON","key":"user:dashboard:999","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.086Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.093Z"}
+{"error":"this.client.setex is not a function","key":"user:dashboard:999","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.095Z","ttl":900}
+{"error":"\"undefined\" is not valid JSON","key":"user:dashboard:999","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.097Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.199Z"}
+{"error":"this.client.setex is not a function","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.201Z","ttl":600}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.203Z"}
+{"error":"this.client.setex is not a function","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.205Z","ttl":600}
+{"error":"\"undefined\" is not valid JSON","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.207Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.209Z"}
+{"error":"this.client.setex is not a function","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.211Z","ttl":600}
+{"error":"\"undefined\" is not valid JSON","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.214Z"}
+{"error":"\"undefined\" is not valid JSON","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.215Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.217Z"}
+{"error":"this.client.setex is not a function","key":"categories:all","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.220Z","ttl":7200}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.222Z"}
+{"error":"this.client.setex is not a function","key":"categories:all","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.224Z","ttl":7200}
+{"error":"\"undefined\" is not valid JSON","key":"categories:all","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.244Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.246Z"}
+{"error":"this.client.setex is not a function","key":"categories:all","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.248Z","ttl":7200}
+{"error":"\"undefined\" is not valid JSON","key":"categories:all","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.249Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.251Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.255Z"}
+{"error":"\"undefined\" is not valid JSON","key":"test:hit-rate","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.257Z"}
+{"error":"this.client.setex is not a function","key":"test:hit-rate","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.258Z","ttl":60}
+{"error":"\"undefined\" is not valid JSON","key":"test:hit-rate","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.259Z"}
+{"error":"\"undefined\" is not valid JSON","key":"test:hit-rate","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.261Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:39:26.266Z"}
+{"level":"info","message":"Redis接続クローズ完了","service":"redis-manager","timestamp":"2025-11-21T02:39:26.268Z"}
+{"level":"info","message":"Redis接続クローズ完了","service":"redis-manager","timestamp":"2025-11-21T02:39:26.298Z"}
+{"db":0,"host":"localhost","level":"info","message":"Redis接続成功","port":6379,"service":"redis-manager","timestamp":"2025-11-21T02:40:02.652Z"}
+{"level":"warn","message":"Redis already connected","service":"redis-manager","timestamp":"2025-11-21T02:40:02.686Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.693Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.698Z"}
+{"error":"this.client.setex is not a function","key":"test:key","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.700Z","ttl":60}
+{"error":"\"undefined\" is not valid JSON","key":"test:key","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.702Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.736Z"}
+{"error":"this.client.setex is not a function","key":"test:ttl","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.758Z","ttl":10}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.762Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:CJ9.test","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.765Z","ttl":3600}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.768Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:CJ9.test","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.770Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:CJ9.test","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.771Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.774Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:CJ9.test","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.776Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:CJ9.test","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.778Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.780Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:token1","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.781Z","ttl":3600}
+{"error":"this.client.setex is not a function","key":"jwt:123:token2","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.783Z","ttl":3600}
+{"error":"this.client.keys is not a function","level":"error","message":"Redis KEYS エラー","pattern":"jwt:123:*","service":"redis-manager","timestamp":"2025-11-21T02:40:02.784Z"}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:token1","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.786Z"}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:token2","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.787Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.789Z"}
+{"error":"this.client.setex is not a function","key":"user:profile:456","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.790Z","ttl":1800}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.793Z"}
+{"error":"this.client.setex is not a function","key":"user:profile:456","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.794Z","ttl":1800}
+{"error":"\"undefined\" is not valid JSON","key":"user:profile:456","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.796Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.798Z"}
+{"error":"this.client.setex is not a function","key":"user:profile:456","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.800Z","ttl":1800}
+{"error":"\"undefined\" is not valid JSON","key":"user:profile:456","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.801Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.804Z"}
+{"error":"this.client.setex is not a function","key":"recipe:detail:789","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.805Z","ttl":3600}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.808Z"}
+{"error":"this.client.setex is not a function","key":"recipe:detail:789","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.809Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"recipe:detail:789","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.811Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.813Z"}
+{"error":"this.client.setex is not a function","key":"recipe:detail:789","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.815Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"recipe:detail:789","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.817Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.819Z"}
+{"error":"this.client.setex is not a function","key":"recipes:list:82df8735ddd7be7a","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.834Z","ttl":1800}
+{"error":"\"undefined\" is not valid JSON","key":"recipes:list:82df8735ddd7be7a","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.837Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.840Z"}
+{"error":"this.client.setex is not a function","key":"user:dashboard:999","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.842Z","ttl":900}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.845Z"}
+{"error":"this.client.setex is not a function","key":"user:dashboard:999","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.847Z","ttl":900}
+{"error":"\"undefined\" is not valid JSON","key":"user:dashboard:999","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.849Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.851Z"}
+{"error":"this.client.setex is not a function","key":"user:dashboard:999","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.853Z","ttl":900}
+{"error":"\"undefined\" is not valid JSON","key":"user:dashboard:999","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.855Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.957Z"}
+{"error":"this.client.setex is not a function","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.962Z","ttl":600}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.967Z"}
+{"error":"this.client.setex is not a function","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.972Z","ttl":600}
+{"error":"\"undefined\" is not valid JSON","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.976Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.981Z"}
+{"error":"this.client.setex is not a function","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.986Z","ttl":600}
+{"error":"\"undefined\" is not valid JSON","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.988Z"}
+{"error":"\"undefined\" is not valid JSON","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.989Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.994Z"}
+{"error":"this.client.setex is not a function","key":"categories:all","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:02.995Z","ttl":7200}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:03.001Z"}
+{"error":"this.client.setex is not a function","key":"categories:all","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:03.005Z","ttl":7200}
+{"error":"\"undefined\" is not valid JSON","key":"categories:all","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:03.007Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:03.020Z"}
+{"error":"this.client.setex is not a function","key":"categories:all","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:03.026Z","ttl":7200}
+{"error":"\"undefined\" is not valid JSON","key":"categories:all","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:03.043Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:03.044Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:03.073Z"}
+{"error":"\"undefined\" is not valid JSON","key":"test:hit-rate","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:03.088Z"}
+{"error":"this.client.setex is not a function","key":"test:hit-rate","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:03.092Z","ttl":60}
+{"error":"\"undefined\" is not valid JSON","key":"test:hit-rate","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:03.098Z"}
+{"error":"\"undefined\" is not valid JSON","key":"test:hit-rate","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:03.099Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:40:03.134Z"}
+{"level":"info","message":"Redis接続クローズ完了","service":"redis-manager","timestamp":"2025-11-21T02:40:03.136Z"}
+{"level":"info","message":"Redis接続クローズ完了","service":"redis-manager","timestamp":"2025-11-21T02:40:03.153Z"}
+{"db":0,"host":"localhost","level":"info","message":"Redis接続成功","port":6379,"service":"redis-manager","timestamp":"2025-11-21T02:42:37.836Z"}
+{"level":"warn","message":"Redis already connected","service":"redis-manager","timestamp":"2025-11-21T02:42:37.864Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:37.871Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:37.891Z"}
+{"error":"this.client.setex is not a function","key":"test:key","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:37.897Z","ttl":60}
+{"error":"\"undefined\" is not valid JSON","key":"test:key","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:37.899Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:37.924Z"}
+{"error":"this.client.setex is not a function","key":"test:ttl","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:37.926Z","ttl":10}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:37.929Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:CJ9.test","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:37.932Z","ttl":3600}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:37.935Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:CJ9.test","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:37.937Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:CJ9.test","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:37.940Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:37.943Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:CJ9.test","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:37.945Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:CJ9.test","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:37.950Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:37.952Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:token1","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:37.954Z","ttl":3600}
+{"error":"this.client.setex is not a function","key":"jwt:123:token2","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:37.956Z","ttl":3600}
+{"error":"this.client.keys is not a function","level":"error","message":"Redis KEYS エラー","pattern":"jwt:123:*","service":"redis-manager","timestamp":"2025-11-21T02:42:37.958Z"}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:token1","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:37.959Z"}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:token2","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:37.960Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:37.962Z"}
+{"error":"this.client.setex is not a function","key":"user:profile:456","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:37.964Z","ttl":1800}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:37.967Z"}
+{"error":"this.client.setex is not a function","key":"user:profile:456","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:37.968Z","ttl":1800}
+{"error":"\"undefined\" is not valid JSON","key":"user:profile:456","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:37.969Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:37.970Z"}
+{"error":"this.client.setex is not a function","key":"user:profile:456","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:37.971Z","ttl":1800}
+{"error":"\"undefined\" is not valid JSON","key":"user:profile:456","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:37.972Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:37.974Z"}
+{"error":"this.client.setex is not a function","key":"recipe:detail:789","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:37.975Z","ttl":3600}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:37.977Z"}
+{"error":"this.client.setex is not a function","key":"recipe:detail:789","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:37.993Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"recipe:detail:789","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:37.995Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:37.997Z"}
+{"error":"this.client.setex is not a function","key":"recipe:detail:789","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:37.999Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"recipe:detail:789","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:38.001Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:38.003Z"}
+{"error":"this.client.setex is not a function","key":"recipes:list:82df8735ddd7be7a","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:38.005Z","ttl":1800}
+{"error":"\"undefined\" is not valid JSON","key":"recipes:list:82df8735ddd7be7a","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:38.007Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:38.010Z"}
+{"error":"this.client.setex is not a function","key":"user:dashboard:999","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:38.012Z","ttl":900}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:38.014Z"}
+{"error":"this.client.setex is not a function","key":"user:dashboard:999","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:38.016Z","ttl":900}
+{"error":"\"undefined\" is not valid JSON","key":"user:dashboard:999","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:38.018Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:38.020Z"}
+{"error":"this.client.setex is not a function","key":"user:dashboard:999","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:38.021Z","ttl":900}
+{"error":"\"undefined\" is not valid JSON","key":"user:dashboard:999","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:38.023Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:38.125Z"}
+{"error":"this.client.setex is not a function","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:38.127Z","ttl":600}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:38.128Z"}
+{"error":"this.client.setex is not a function","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:38.130Z","ttl":600}
+{"error":"\"undefined\" is not valid JSON","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:38.131Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:38.132Z"}
+{"error":"this.client.setex is not a function","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:38.133Z","ttl":600}
+{"error":"\"undefined\" is not valid JSON","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:38.134Z"}
+{"error":"\"undefined\" is not valid JSON","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:38.135Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:38.136Z"}
+{"error":"this.client.setex is not a function","key":"categories:all","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:38.138Z","ttl":7200}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:38.139Z"}
+{"error":"this.client.setex is not a function","key":"categories:all","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:38.140Z","ttl":7200}
+{"error":"\"undefined\" is not valid JSON","key":"categories:all","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:38.141Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:38.143Z"}
+{"error":"this.client.setex is not a function","key":"categories:all","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:38.149Z","ttl":7200}
+{"error":"\"undefined\" is not valid JSON","key":"categories:all","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:38.150Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:38.164Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:38.168Z"}
+{"error":"\"undefined\" is not valid JSON","key":"test:hit-rate","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:38.169Z"}
+{"error":"this.client.setex is not a function","key":"test:hit-rate","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:38.169Z","ttl":60}
+{"error":"\"undefined\" is not valid JSON","key":"test:hit-rate","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:38.170Z"}
+{"error":"\"undefined\" is not valid JSON","key":"test:hit-rate","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:38.170Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T02:42:38.173Z"}
+{"level":"info","message":"Redis接続クローズ完了","service":"redis-manager","timestamp":"2025-11-21T02:42:38.174Z"}
+{"level":"info","message":"Redis接続クローズ完了","service":"redis-manager","timestamp":"2025-11-21T02:42:38.187Z"}
+{"db":0,"host":"localhost","level":"info","message":"Redis接続成功","port":6379,"service":"redis-manager","timestamp":"2025-11-21T03:36:37.095Z"}
+{"level":"warn","message":"Redis already connected","service":"redis-manager","timestamp":"2025-11-21T03:36:37.114Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.118Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.123Z"}
+{"error":"this.client.setex is not a function","key":"test:key","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.124Z","ttl":60}
+{"error":"\"undefined\" is not valid JSON","key":"test:key","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.125Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.139Z"}
+{"error":"this.client.setex is not a function","key":"test:ttl","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.140Z","ttl":10}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.142Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:CJ9.test","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.143Z","ttl":3600}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.145Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:CJ9.test","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.146Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:CJ9.test","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.147Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.148Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:CJ9.test","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.150Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:CJ9.test","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.151Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.153Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:token1","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.161Z","ttl":3600}
+{"error":"this.client.setex is not a function","key":"jwt:123:token2","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.162Z","ttl":3600}
+{"error":"this.client.keys is not a function","level":"error","message":"Redis KEYS エラー","pattern":"jwt:123:*","service":"redis-manager","timestamp":"2025-11-21T03:36:37.163Z"}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:token1","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.164Z"}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:token2","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.165Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.167Z"}
+{"error":"this.client.setex is not a function","key":"user:profile:456","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.169Z","ttl":1800}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.171Z"}
+{"error":"this.client.setex is not a function","key":"user:profile:456","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.173Z","ttl":1800}
+{"error":"\"undefined\" is not valid JSON","key":"user:profile:456","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.175Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.176Z"}
+{"error":"this.client.setex is not a function","key":"user:profile:456","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.177Z","ttl":1800}
+{"error":"\"undefined\" is not valid JSON","key":"user:profile:456","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.178Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.179Z"}
+{"error":"this.client.setex is not a function","key":"recipe:detail:789","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.180Z","ttl":3600}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.182Z"}
+{"error":"this.client.setex is not a function","key":"recipe:detail:789","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.183Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"recipe:detail:789","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.184Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.185Z"}
+{"error":"this.client.setex is not a function","key":"recipe:detail:789","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.186Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"recipe:detail:789","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.187Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.188Z"}
+{"error":"this.client.setex is not a function","key":"recipes:list:82df8735ddd7be7a","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.189Z","ttl":1800}
+{"error":"\"undefined\" is not valid JSON","key":"recipes:list:82df8735ddd7be7a","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.190Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.192Z"}
+{"error":"this.client.setex is not a function","key":"user:dashboard:999","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.193Z","ttl":900}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.195Z"}
+{"error":"this.client.setex is not a function","key":"user:dashboard:999","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.196Z","ttl":900}
+{"error":"\"undefined\" is not valid JSON","key":"user:dashboard:999","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.197Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.198Z"}
+{"error":"this.client.setex is not a function","key":"user:dashboard:999","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.199Z","ttl":900}
+{"error":"\"undefined\" is not valid JSON","key":"user:dashboard:999","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.200Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.301Z"}
+{"error":"this.client.setex is not a function","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.303Z","ttl":600}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.305Z"}
+{"error":"this.client.setex is not a function","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.307Z","ttl":600}
+{"error":"\"undefined\" is not valid JSON","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.309Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.312Z"}
+{"error":"this.client.setex is not a function","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.313Z","ttl":600}
+{"error":"\"undefined\" is not valid JSON","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.315Z"}
+{"error":"\"undefined\" is not valid JSON","key":"search:bc58fbe05a5c44b9","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.316Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.318Z"}
+{"error":"this.client.setex is not a function","key":"categories:all","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.320Z","ttl":7200}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.322Z"}
+{"error":"this.client.setex is not a function","key":"categories:all","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.323Z","ttl":7200}
+{"error":"\"undefined\" is not valid JSON","key":"categories:all","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.324Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.327Z"}
+{"error":"this.client.setex is not a function","key":"categories:all","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.331Z","ttl":7200}
+{"error":"\"undefined\" is not valid JSON","key":"categories:all","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.333Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.335Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.339Z"}
+{"error":"\"undefined\" is not valid JSON","key":"test:hit-rate","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.340Z"}
+{"error":"this.client.setex is not a function","key":"test:hit-rate","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.342Z","ttl":60}
+{"error":"\"undefined\" is not valid JSON","key":"test:hit-rate","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.343Z"}
+{"error":"\"undefined\" is not valid JSON","key":"test:hit-rate","level":"error","message":"Redis GET エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.344Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:36:37.346Z"}
+{"level":"info","message":"Redis接続クローズ完了","service":"redis-manager","timestamp":"2025-11-21T03:36:37.348Z"}
+{"level":"info","message":"Redis接続クローズ完了","service":"redis-manager","timestamp":"2025-11-21T03:36:37.369Z"}
+{"db":0,"host":"localhost","level":"info","message":"Redis接続成功","port":6379,"service":"redis-manager","timestamp":"2025-11-21T03:44:26.912Z"}
+{"level":"warn","message":"Redis already connected","service":"redis-manager","timestamp":"2025-11-21T03:44:26.920Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:26.927Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:26.934Z"}
+{"error":"this.client.setex is not a function","key":"test:key","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:26.937Z","ttl":60}
+{"error":"\"undefined\" is not valid JSON","key":"test:key","level":"error","message":"JSON parse error in cache data","service":"redis-manager","timestamp":"2025-11-21T03:44:26.941Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:26.957Z"}
+{"error":"this.client.setex is not a function","key":"test:ttl","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:26.958Z","ttl":10}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:26.960Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:CJ9.test","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:26.970Z","ttl":3600}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:26.972Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:CJ9.test","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:26.973Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:CJ9.test","level":"error","message":"JSON parse error in cache data","service":"redis-manager","timestamp":"2025-11-21T03:44:26.975Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:26.977Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:CJ9.test","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:26.979Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:CJ9.test","level":"error","message":"JSON parse error in cache data","service":"redis-manager","timestamp":"2025-11-21T03:44:26.981Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:26.983Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:token1","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:26.984Z","ttl":3600}
+{"error":"this.client.setex is not a function","key":"jwt:123:token2","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:26.985Z","ttl":3600}
+{"error":"this.client.scan is not a function","level":"error","message":"Redis SCAN エラー","pattern":"jwt:123:*","service":"redis-manager","timestamp":"2025-11-21T03:44:26.986Z"}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:token1","level":"error","message":"JSON parse error in cache data","service":"redis-manager","timestamp":"2025-11-21T03:44:26.987Z"}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:token2","level":"error","message":"JSON parse error in cache data","service":"redis-manager","timestamp":"2025-11-21T03:44:26.988Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:26.989Z"}
+{"error":"this.client.setex is not a function","key":"user:profile:456","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:26.990Z","ttl":1800}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:26.992Z"}
+{"error":"this.client.setex is not a function","key":"user:profile:456","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:26.993Z","ttl":1800}
+{"error":"\"undefined\" is not valid JSON","key":"user:profile:456","level":"error","message":"JSON parse error in cache data","service":"redis-manager","timestamp":"2025-11-21T03:44:26.994Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:26.996Z"}
+{"error":"this.client.setex is not a function","key":"user:profile:456","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:26.997Z","ttl":1800}
+{"error":"\"undefined\" is not valid JSON","key":"user:profile:456","level":"error","message":"JSON parse error in cache data","service":"redis-manager","timestamp":"2025-11-21T03:44:26.998Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:27.000Z"}
+{"error":"this.client.setex is not a function","key":"recipe:detail:789","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:27.002Z","ttl":3600}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:27.004Z"}
+{"error":"this.client.setex is not a function","key":"recipe:detail:789","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:27.005Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"recipe:detail:789","level":"error","message":"JSON parse error in cache data","service":"redis-manager","timestamp":"2025-11-21T03:44:27.006Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:27.007Z"}
+{"error":"this.client.setex is not a function","key":"recipe:detail:789","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:27.008Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"recipe:detail:789","level":"error","message":"JSON parse error in cache data","service":"redis-manager","timestamp":"2025-11-21T03:44:27.010Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:27.011Z"}
+{"error":"this.client.setex is not a function","key":"recipes:list:d1879c90c3059ad7f5a2f08ed7e3520985fe93c9a7a745fe2381334bc675b765","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:27.013Z","ttl":1800}
+{"error":"\"undefined\" is not valid JSON","key":"recipes:list:d1879c90c3059ad7f5a2f08ed7e3520985fe93c9a7a745fe2381334bc675b765","level":"error","message":"JSON parse error in cache data","service":"redis-manager","timestamp":"2025-11-21T03:44:27.014Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:27.016Z"}
+{"error":"this.client.setex is not a function","key":"user:dashboard:999","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:27.018Z","ttl":900}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:27.019Z"}
+{"error":"this.client.setex is not a function","key":"user:dashboard:999","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:27.033Z","ttl":900}
+{"error":"\"undefined\" is not valid JSON","key":"user:dashboard:999","level":"error","message":"JSON parse error in cache data","service":"redis-manager","timestamp":"2025-11-21T03:44:27.038Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:27.041Z"}
+{"error":"this.client.setex is not a function","key":"user:dashboard:999","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:27.043Z","ttl":900}
+{"error":"\"undefined\" is not valid JSON","key":"user:dashboard:999","level":"error","message":"JSON parse error in cache data","service":"redis-manager","timestamp":"2025-11-21T03:44:27.046Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:27.149Z"}
+{"error":"this.client.setex is not a function","key":"search:237dfebeca08f681a08a716771ae4ed1e51c1189a9fed216e386c816f4b9b2c2","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:27.154Z","ttl":600}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:27.170Z"}
+{"error":"this.client.setex is not a function","key":"search:237dfebeca08f681a08a716771ae4ed1e51c1189a9fed216e386c816f4b9b2c2","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:27.172Z","ttl":600}
+{"error":"\"undefined\" is not valid JSON","key":"search:237dfebeca08f681a08a716771ae4ed1e51c1189a9fed216e386c816f4b9b2c2","level":"error","message":"JSON parse error in cache data","service":"redis-manager","timestamp":"2025-11-21T03:44:27.183Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:27.193Z"}
+{"error":"this.client.setex is not a function","key":"search:237dfebeca08f681a08a716771ae4ed1e51c1189a9fed216e386c816f4b9b2c2","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:27.204Z","ttl":600}
+{"error":"\"undefined\" is not valid JSON","key":"search:237dfebeca08f681a08a716771ae4ed1e51c1189a9fed216e386c816f4b9b2c2","level":"error","message":"JSON parse error in cache data","service":"redis-manager","timestamp":"2025-11-21T03:44:27.205Z"}
+{"error":"\"undefined\" is not valid JSON","key":"search:237dfebeca08f681a08a716771ae4ed1e51c1189a9fed216e386c816f4b9b2c2","level":"error","message":"JSON parse error in cache data","service":"redis-manager","timestamp":"2025-11-21T03:44:27.213Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:27.221Z"}
+{"error":"this.client.setex is not a function","key":"categories:all","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:27.223Z","ttl":7200}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:27.228Z"}
+{"error":"this.client.setex is not a function","key":"categories:all","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:27.230Z","ttl":7200}
+{"error":"\"undefined\" is not valid JSON","key":"categories:all","level":"error","message":"JSON parse error in cache data","service":"redis-manager","timestamp":"2025-11-21T03:44:27.232Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:27.238Z"}
+{"error":"this.client.setex is not a function","key":"categories:all","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:27.239Z","ttl":7200}
+{"error":"\"undefined\" is not valid JSON","key":"categories:all","level":"error","message":"JSON parse error in cache data","service":"redis-manager","timestamp":"2025-11-21T03:44:27.241Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:27.243Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:27.247Z"}
+{"error":"\"undefined\" is not valid JSON","key":"test:hit-rate","level":"error","message":"JSON parse error in cache data","service":"redis-manager","timestamp":"2025-11-21T03:44:27.252Z"}
+{"error":"this.client.setex is not a function","key":"test:hit-rate","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:27.253Z","ttl":60}
+{"error":"\"undefined\" is not valid JSON","key":"test:hit-rate","level":"error","message":"JSON parse error in cache data","service":"redis-manager","timestamp":"2025-11-21T03:44:27.261Z"}
+{"error":"\"undefined\" is not valid JSON","key":"test:hit-rate","level":"error","message":"JSON parse error in cache data","service":"redis-manager","timestamp":"2025-11-21T03:44:27.262Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:27.269Z"}
+{"level":"info","message":"Redis接続クローズ完了","service":"redis-manager","timestamp":"2025-11-21T03:44:27.275Z"}
+{"level":"info","message":"Redis接続クローズ完了","service":"redis-manager","timestamp":"2025-11-21T03:44:27.331Z"}
+{"db":0,"host":"localhost","level":"info","message":"Redis接続成功","port":6379,"service":"redis-manager","timestamp":"2025-11-21T03:44:54.528Z"}
+{"level":"warn","message":"Redis already connected","service":"redis-manager","timestamp":"2025-11-21T03:44:54.543Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.550Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.554Z"}
+{"error":"this.client.setex is not a function","key":"test:key","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.557Z","ttl":60}
+{"error":"\"undefined\" is not valid JSON","key":"test:key","level":"error","message":"JSON parse error in cache data","service":"redis-manager","timestamp":"2025-11-21T03:44:54.559Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.583Z"}
+{"error":"this.client.setex is not a function","key":"test:ttl","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.585Z","ttl":10}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.588Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:CJ9.test","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.590Z","ttl":3600}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.592Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:CJ9.test","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.594Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:CJ9.test","level":"error","message":"JSON parse error in cache data","service":"redis-manager","timestamp":"2025-11-21T03:44:54.596Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.598Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:CJ9.test","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.600Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:CJ9.test","level":"error","message":"JSON parse error in cache data","service":"redis-manager","timestamp":"2025-11-21T03:44:54.602Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.612Z"}
+{"error":"this.client.setex is not a function","key":"jwt:123:token1","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.614Z","ttl":3600}
+{"error":"this.client.setex is not a function","key":"jwt:123:token2","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.615Z","ttl":3600}
+{"error":"this.client.scan is not a function","level":"error","message":"Redis SCAN エラー","pattern":"jwt:123:*","service":"redis-manager","timestamp":"2025-11-21T03:44:54.616Z"}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:token1","level":"error","message":"JSON parse error in cache data","service":"redis-manager","timestamp":"2025-11-21T03:44:54.618Z"}
+{"error":"\"undefined\" is not valid JSON","key":"jwt:123:token2","level":"error","message":"JSON parse error in cache data","service":"redis-manager","timestamp":"2025-11-21T03:44:54.619Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.621Z"}
+{"error":"this.client.setex is not a function","key":"user:profile:456","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.622Z","ttl":1800}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.624Z"}
+{"error":"this.client.setex is not a function","key":"user:profile:456","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.626Z","ttl":1800}
+{"error":"\"undefined\" is not valid JSON","key":"user:profile:456","level":"error","message":"JSON parse error in cache data","service":"redis-manager","timestamp":"2025-11-21T03:44:54.628Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.631Z"}
+{"error":"this.client.setex is not a function","key":"user:profile:456","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.632Z","ttl":1800}
+{"error":"\"undefined\" is not valid JSON","key":"user:profile:456","level":"error","message":"JSON parse error in cache data","service":"redis-manager","timestamp":"2025-11-21T03:44:54.634Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.636Z"}
+{"error":"this.client.setex is not a function","key":"recipe:detail:789","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.637Z","ttl":3600}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.639Z"}
+{"error":"this.client.setex is not a function","key":"recipe:detail:789","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.640Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"recipe:detail:789","level":"error","message":"JSON parse error in cache data","service":"redis-manager","timestamp":"2025-11-21T03:44:54.641Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.642Z"}
+{"error":"this.client.setex is not a function","key":"recipe:detail:789","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.643Z","ttl":3600}
+{"error":"\"undefined\" is not valid JSON","key":"recipe:detail:789","level":"error","message":"JSON parse error in cache data","service":"redis-manager","timestamp":"2025-11-21T03:44:54.644Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.645Z"}
+{"error":"this.client.setex is not a function","key":"recipes:list:d1879c90c3059ad7f5a2f08ed7e3520985fe93c9a7a745fe2381334bc675b765","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.646Z","ttl":1800}
+{"error":"\"undefined\" is not valid JSON","key":"recipes:list:d1879c90c3059ad7f5a2f08ed7e3520985fe93c9a7a745fe2381334bc675b765","level":"error","message":"JSON parse error in cache data","service":"redis-manager","timestamp":"2025-11-21T03:44:54.647Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.649Z"}
+{"error":"this.client.setex is not a function","key":"user:dashboard:999","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.650Z","ttl":900}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.652Z"}
+{"error":"this.client.setex is not a function","key":"user:dashboard:999","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.652Z","ttl":900}
+{"error":"\"undefined\" is not valid JSON","key":"user:dashboard:999","level":"error","message":"JSON parse error in cache data","service":"redis-manager","timestamp":"2025-11-21T03:44:54.654Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.655Z"}
+{"error":"this.client.setex is not a function","key":"user:dashboard:999","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.656Z","ttl":900}
+{"error":"\"undefined\" is not valid JSON","key":"user:dashboard:999","level":"error","message":"JSON parse error in cache data","service":"redis-manager","timestamp":"2025-11-21T03:44:54.657Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.758Z"}
+{"error":"this.client.setex is not a function","key":"search:237dfebeca08f681a08a716771ae4ed1e51c1189a9fed216e386c816f4b9b2c2","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.760Z","ttl":600}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.762Z"}
+{"error":"this.client.setex is not a function","key":"search:237dfebeca08f681a08a716771ae4ed1e51c1189a9fed216e386c816f4b9b2c2","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.764Z","ttl":600}
+{"error":"\"undefined\" is not valid JSON","key":"search:237dfebeca08f681a08a716771ae4ed1e51c1189a9fed216e386c816f4b9b2c2","level":"error","message":"JSON parse error in cache data","service":"redis-manager","timestamp":"2025-11-21T03:44:54.765Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.767Z"}
+{"error":"this.client.setex is not a function","key":"search:237dfebeca08f681a08a716771ae4ed1e51c1189a9fed216e386c816f4b9b2c2","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.769Z","ttl":600}
+{"error":"\"undefined\" is not valid JSON","key":"search:237dfebeca08f681a08a716771ae4ed1e51c1189a9fed216e386c816f4b9b2c2","level":"error","message":"JSON parse error in cache data","service":"redis-manager","timestamp":"2025-11-21T03:44:54.770Z"}
+{"error":"\"undefined\" is not valid JSON","key":"search:237dfebeca08f681a08a716771ae4ed1e51c1189a9fed216e386c816f4b9b2c2","level":"error","message":"JSON parse error in cache data","service":"redis-manager","timestamp":"2025-11-21T03:44:54.771Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.773Z"}
+{"error":"this.client.setex is not a function","key":"categories:all","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.775Z","ttl":7200}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.777Z"}
+{"error":"this.client.setex is not a function","key":"categories:all","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.779Z","ttl":7200}
+{"error":"\"undefined\" is not valid JSON","key":"categories:all","level":"error","message":"JSON parse error in cache data","service":"redis-manager","timestamp":"2025-11-21T03:44:54.780Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.782Z"}
+{"error":"this.client.setex is not a function","key":"categories:all","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.784Z","ttl":7200}
+{"error":"\"undefined\" is not valid JSON","key":"categories:all","level":"error","message":"JSON parse error in cache data","service":"redis-manager","timestamp":"2025-11-21T03:44:54.785Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.787Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.790Z"}
+{"error":"\"undefined\" is not valid JSON","key":"test:hit-rate","level":"error","message":"JSON parse error in cache data","service":"redis-manager","timestamp":"2025-11-21T03:44:54.792Z"}
+{"error":"this.client.setex is not a function","key":"test:hit-rate","level":"error","message":"Redis SET エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.793Z","ttl":60}
+{"error":"\"undefined\" is not valid JSON","key":"test:hit-rate","level":"error","message":"JSON parse error in cache data","service":"redis-manager","timestamp":"2025-11-21T03:44:54.793Z"}
+{"error":"\"undefined\" is not valid JSON","key":"test:hit-rate","level":"error","message":"JSON parse error in cache data","service":"redis-manager","timestamp":"2025-11-21T03:44:54.794Z"}
+{"error":"this.client.flushdb is not a function","level":"error","message":"Redis FLUSHDB エラー","service":"redis-manager","timestamp":"2025-11-21T03:44:54.796Z"}
+{"level":"info","message":"Redis接続クローズ完了","service":"redis-manager","timestamp":"2025-11-21T03:44:54.797Z"}
+{"level":"info","message":"Redis接続クローズ完了","service":"redis-manager","timestamp":"2025-11-21T03:44:54.812Z"}

@@ -22,11 +22,16 @@ class DatabaseManager {
                 user: process.env.DB_USER || 'recipe_user',
                 password: process.env.DB_PASSWORD,
                 
-                // 接続プール最適化 (20-50接続)
-                min: parseInt(process.env.DB_CONNECTION_POOL_MIN || '5'),
-                max: parseInt(process.env.DB_CONNECTION_POOL_MAX || '50'),
+                // 接続プール最適化 (動的調整 10-100接続)
+                min: parseInt(process.env.DB_CONNECTION_POOL_MIN || '10'),
+                max: parseInt(process.env.DB_CONNECTION_POOL_MAX || '100'),
                 idleTimeoutMillis: parseInt(process.env.DB_CONNECTION_TIMEOUT || '30000'),
-                connectionTimeoutMillis: 10000,
+                connectionTimeoutMillis: 5000, // 高速接続
+                acquireTimeoutMillis: 60000, // 接続取得タイムアウト
+                createTimeoutMillis: 30000, // 作成タイムアウト
+                destroyTimeoutMillis: 5000, // 切断タイムアウト
+                reapIntervalMillis: 1000, // プール管理間隔
+                createRetryIntervalMillis: 200, // 再試行間隔
                 
                 // パフォーマンス設定
                 statement_timeout: 30000,

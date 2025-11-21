@@ -1,0 +1,74 @@
+{"level":"info","message":"エラー検知システム初期化開始","service":"error-detection-system","timestamp":"2025-09-03T03:54:08.489Z"}
+{"level":"info","message":"監視開始: Memory Usage Monitor","service":"error-detection-system","timestamp":"2025-09-03T03:54:08.540Z"}
+{"level":"info","message":"監視モジュール登録: Memory Usage Monitor (memory)","service":"error-detection-system","timestamp":"2025-09-03T03:54:08.549Z"}
+{"level":"info","message":"修復戦略登録: データベース接続リトライ (Level 1)","service":"error-detection-system","timestamp":"2025-09-03T03:54:08.564Z"}
+{"level":"info","message":"修復戦略登録: Redis接続リトライ (Level 1)","service":"error-detection-system","timestamp":"2025-09-03T03:54:08.584Z"}
+{"level":"info","message":"修復戦略登録: データベースプール再初期化 (Level 2)","service":"error-detection-system","timestamp":"2025-09-03T03:54:08.597Z"}
+{"level":"info","message":"修復戦略登録: Redisクライアントリセット (Level 2)","service":"error-detection-system","timestamp":"2025-09-03T03:54:08.612Z"}
+{"level":"info","message":"修復戦略登録: 強制ガベージコレクション実行 (Level 3)","service":"error-detection-system","timestamp":"2025-09-03T03:54:08.620Z"}
+{"level":"info","message":"修復戦略登録: サービス再起動 (Level 3)","service":"error-detection-system","timestamp":"2025-09-03T03:54:08.631Z"}
+{"level":"info","message":"エラー検知システム初期化完了","service":"error-detection-system","timestamp":"2025-09-03T03:54:08.648Z"}
+{"level":"info","message":"エラー検知システム初期化開始","service":"error-detection-system","timestamp":"2025-09-03T03:54:08.745Z"}
+{"level":"info","message":"監視開始: Memory Usage Monitor","service":"error-detection-system","timestamp":"2025-09-03T03:54:08.752Z"}
+{"level":"info","message":"監視モジュール登録: Memory Usage Monitor (memory)","service":"error-detection-system","timestamp":"2025-09-03T03:54:08.755Z"}
+{"level":"info","message":"修復戦略登録: データベース接続リトライ (Level 1)","service":"error-detection-system","timestamp":"2025-09-03T03:54:08.756Z"}
+{"level":"info","message":"修復戦略登録: Redis接続リトライ (Level 1)","service":"error-detection-system","timestamp":"2025-09-03T03:54:08.757Z"}
+{"level":"info","message":"修復戦略登録: データベースプール再初期化 (Level 2)","service":"error-detection-system","timestamp":"2025-09-03T03:54:08.759Z"}
+{"level":"info","message":"修復戦略登録: Redisクライアントリセット (Level 2)","service":"error-detection-system","timestamp":"2025-09-03T03:54:08.761Z"}
+{"level":"info","message":"修復戦略登録: 強制ガベージコレクション実行 (Level 3)","service":"error-detection-system","timestamp":"2025-09-03T03:54:08.763Z"}
+{"level":"info","message":"修復戦略登録: サービス再起動 (Level 3)","service":"error-detection-system","timestamp":"2025-09-03T03:54:08.765Z"}
+{"level":"info","message":"エラー検知システム初期化完了","service":"error-detection-system","timestamp":"2025-09-03T03:54:08.767Z"}
+{"level":"error","message":"エラー検出 テストエラー","service":"error-detection-system","severity":"warning","timestamp":"2025-09-03T03:54:08.781Z","type":"test"}
+{"consecutiveFailures":1,"level":"error","message":"エラー検出 統合テストエラー","service":"error-detection-system","severity":"warning","timestamp":"2025-09-03T03:54:09.020Z","type":"integration_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 0","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.031Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 1","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.033Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 2","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.039Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 3","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.047Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 4","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.053Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 5","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.061Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 6","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.067Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 7","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.070Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 8","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.078Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 9","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.089Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 10","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.091Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 11","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.093Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 12","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.096Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 13","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.098Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 14","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.122Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 15","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.129Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 16","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.130Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 17","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.139Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 18","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.147Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 19","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.149Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 20","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.160Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 21","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.166Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 22","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.171Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 23","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.181Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 24","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.182Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 25","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.195Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 26","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.200Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 27","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.203Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 28","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.204Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 29","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.211Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 30","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.219Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 31","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.229Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 32","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.234Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 33","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.243Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 34","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.249Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 35","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.256Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 36","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.262Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 37","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.273Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 38","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.275Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 39","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.280Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 40","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.285Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 41","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.295Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 42","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.298Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 43","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.306Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 44","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.331Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 45","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.337Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 46","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.342Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 47","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.347Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 48","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.350Z","type":"performance_test"}
+{"level":"error","message":"エラー検出 パフォーマンステストエラー 49","service":"error-detection-system","severity":"info","timestamp":"2025-09-03T03:54:09.354Z","type":"performance_test"}
+{"level":"info","message":"エラー検知システム停止開始","service":"error-detection-system","timestamp":"2025-09-03T03:54:09.371Z"}
+{"level":"info","message":"エラー検知システム停止完了","service":"error-detection-system","timestamp":"2025-09-03T03:54:09.377Z"}

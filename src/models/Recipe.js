@@ -265,6 +265,100 @@ class Recipe {
       throw error;
     }
   }
+  // Additional methods needed for tests
+  static async findByUserId(userId) {
+    if (!userId) {
+      throw new Error('User ID is required');
+    }
+    
+    try {
+      const rows = await dbManager.executeWithRetry(`
+        SELECT r.*, 
+               GROUP_CONCAT(i.name || '|' || i.amount || '|' || COALESCE(i.unit, '')) as ingredients_data
+        FROM recipes r 
+        LEFT JOIN ingredients i ON r.id = i.recipe_id 
+        WHERE r.user_id = ? 
+        GROUP BY r.id
+        ORDER BY r.created_at DESC
+      `, [userId]);
+      
+      return rows.map(row => ({
+        ...row,
+        ingredients: row.ingredients_data 
+          ? row.ingredients_data.split(',').map(item => {
+              const [name, amount, unit] = item.split('|');
+              return { name, amount, unit: unit || null };
+            })
+          : []
+      }));
+    } catch (error) {
+      console.error('Error finding recipes by user ID:', error);
+      throw error;
+    }
+  }
+
+  static async findByIdWithIngredients(id) {
+    if (!id) {
+      throw new Error('Recipe ID is required');
+    }
+    
+    try {
+      const recipeRows = await dbManager.executeWithRetry('SELECT * FROM recipes WHERE id = ?', [id]);
+      if (!recipeRows || recipeRows.length === 0) {
+        return null;
+      }
+      
+      const recipe = recipeRows[0];
+      const ingredientRows = await dbManager.executeWithRetry(
+        'SELECT * FROM ingredients WHERE recipe_id = ? ORDER BY order_index',
+        [id]
+      );
+      
+      recipe.ingredients = ingredientRows || [];
+      return recipe;
+    } catch (error) {
+      console.error('Error finding recipe with ingredients:', error);
+      throw error;
+    }
+  }
+
+  static async searchByTitle(searchTerm) {
+    if (!searchTerm) {
+      return [];
+    }
+    
+    try {
+      const rows = await dbManager.executeWithRetry(`
+        SELECT * FROM recipes 
+        WHERE title LIKE ? 
+        ORDER BY created_at DESC
+      `, [`%${searchTerm}%`]);
+      
+      return rows || [];
+    } catch (error) {
+      console.error('Error searching recipes by title:', error);
+      throw error;
+    }
+  }
+
+  static async findFavoritesByUserId(userId) {
+    if (!userId) {
+      throw new Error('User ID is required');
+    }
+    
+    try {
+      const rows = await dbManager.executeWithRetry(`
+        SELECT * FROM recipes 
+        WHERE user_id = ? AND is_favorite = 1 
+        ORDER BY created_at DESC
+      `, [userId]);
+      
+      return rows || [];
+    } catch (error) {
+      console.error('Error finding favorite recipes:', error);
+      throw error;
+    }
+  }
 }
 
 module.exports = Recipe;

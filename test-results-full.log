@@ -1,0 +1,2279 @@
+
+> recipe-backend@2.0.0 test
+> jest
+
+FAIL src/tests/security/security.test.js (31.487 s)
+  ● Security Tests › SQL Injection Protection › should prevent SQL injection in login endpoint
+
+    thrown: "Exceeded timeout of 30000 ms for a hook.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      14 |   let testUserId;
+      15 |
+    > 16 |   beforeAll(async () => {
+         |   ^
+      17 |     await initialize();
+      18 |     
+      19 |     // Setup Express app with security middleware
+
+      at beforeAll (src/tests/security/security.test.js:16:3)
+      at Object.describe (src/tests/security/security.test.js:11:1)
+
+  ● Security Tests › SQL Injection Protection › should sanitize recipe search parameters
+
+    thrown: "Exceeded timeout of 30000 ms for a hook.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      14 |   let testUserId;
+      15 |
+    > 16 |   beforeAll(async () => {
+         |   ^
+      17 |     await initialize();
+      18 |     
+      19 |     // Setup Express app with security middleware
+
+      at beforeAll (src/tests/security/security.test.js:16:3)
+      at Object.describe (src/tests/security/security.test.js:11:1)
+
+  ● Security Tests › SQL Injection Protection › should prevent SQL injection in recipe creation
+
+    thrown: "Exceeded timeout of 30000 ms for a hook.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      14 |   let testUserId;
+      15 |
+    > 16 |   beforeAll(async () => {
+         |   ^
+      17 |     await initialize();
+      18 |     
+      19 |     // Setup Express app with security middleware
+
+      at beforeAll (src/tests/security/security.test.js:16:3)
+      at Object.describe (src/tests/security/security.test.js:11:1)
+
+  ● Security Tests › XSS (Cross-Site Scripting) Protection › should sanitize HTML/JavaScript in recipe titles
+
+    thrown: "Exceeded timeout of 30000 ms for a hook.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      14 |   let testUserId;
+      15 |
+    > 16 |   beforeAll(async () => {
+         |   ^
+      17 |     await initialize();
+      18 |     
+      19 |     // Setup Express app with security middleware
+
+      at beforeAll (src/tests/security/security.test.js:16:3)
+      at Object.describe (src/tests/security/security.test.js:11:1)
+
+  ● Security Tests › XSS (Cross-Site Scripting) Protection › should sanitize XSS in recipe descriptions and instructions
+
+    thrown: "Exceeded timeout of 30000 ms for a hook.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      14 |   let testUserId;
+      15 |
+    > 16 |   beforeAll(async () => {
+         |   ^
+      17 |     await initialize();
+      18 |     
+      19 |     // Setup Express app with security middleware
+
+      at beforeAll (src/tests/security/security.test.js:16:3)
+      at Object.describe (src/tests/security/security.test.js:11:1)
+
+  ● Security Tests › XSS (Cross-Site Scripting) Protection › should prevent XSS in user registration fields
+
+    thrown: "Exceeded timeout of 30000 ms for a hook.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      14 |   let testUserId;
+      15 |
+    > 16 |   beforeAll(async () => {
+         |   ^
+      17 |     await initialize();
+      18 |     
+      19 |     // Setup Express app with security middleware
+
+      at beforeAll (src/tests/security/security.test.js:16:3)
+      at Object.describe (src/tests/security/security.test.js:11:1)
+
+  ● Security Tests › JWT Security Tests › should reject tampered JWT tokens
+
+    thrown: "Exceeded timeout of 30000 ms for a hook.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      14 |   let testUserId;
+      15 |
+    > 16 |   beforeAll(async () => {
+         |   ^
+      17 |     await initialize();
+      18 |     
+      19 |     // Setup Express app with security middleware
+
+      at beforeAll (src/tests/security/security.test.js:16:3)
+      at Object.describe (src/tests/security/security.test.js:11:1)
+
+  ● Security Tests › JWT Security Tests › should reject expired JWT tokens
+
+    thrown: "Exceeded timeout of 30000 ms for a hook.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      14 |   let testUserId;
+      15 |
+    > 16 |   beforeAll(async () => {
+         |   ^
+      17 |     await initialize();
+      18 |     
+      19 |     // Setup Express app with security middleware
+
+      at beforeAll (src/tests/security/security.test.js:16:3)
+      at Object.describe (src/tests/security/security.test.js:11:1)
+
+  ● Security Tests › JWT Security Tests › should reject tokens with wrong secret
+
+    thrown: "Exceeded timeout of 30000 ms for a hook.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      14 |   let testUserId;
+      15 |
+    > 16 |   beforeAll(async () => {
+         |   ^
+      17 |     await initialize();
+      18 |     
+      19 |     // Setup Express app with security middleware
+
+      at beforeAll (src/tests/security/security.test.js:16:3)
+      at Object.describe (src/tests/security/security.test.js:11:1)
+
+  ● Security Tests › JWT Security Tests › should reject malformed JWT tokens
+
+    thrown: "Exceeded timeout of 30000 ms for a hook.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      14 |   let testUserId;
+      15 |
+    > 16 |   beforeAll(async () => {
+         |   ^
+      17 |     await initialize();
+      18 |     
+      19 |     // Setup Express app with security middleware
+
+      at beforeAll (src/tests/security/security.test.js:16:3)
+      at Object.describe (src/tests/security/security.test.js:11:1)
+
+  ● Security Tests › JWT Security Tests › should implement proper token refresh security
+
+    thrown: "Exceeded timeout of 30000 ms for a hook.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      14 |   let testUserId;
+      15 |
+    > 16 |   beforeAll(async () => {
+         |   ^
+      17 |     await initialize();
+      18 |     
+      19 |     // Setup Express app with security middleware
+
+      at beforeAll (src/tests/security/security.test.js:16:3)
+      at Object.describe (src/tests/security/security.test.js:11:1)
+
+  ● Security Tests › CORS Security Tests › should enforce CORS policy for API endpoints
+
+    thrown: "Exceeded timeout of 30000 ms for a hook.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      14 |   let testUserId;
+      15 |
+    > 16 |   beforeAll(async () => {
+         |   ^
+      17 |     await initialize();
+      18 |     
+      19 |     // Setup Express app with security middleware
+
+      at beforeAll (src/tests/security/security.test.js:16:3)
+      at Object.describe (src/tests/security/security.test.js:11:1)
+
+  ● Security Tests › CORS Security Tests › should allow authorized origins
+
+    thrown: "Exceeded timeout of 30000 ms for a hook.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      14 |   let testUserId;
+      15 |
+    > 16 |   beforeAll(async () => {
+         |   ^
+      17 |     await initialize();
+      18 |     
+      19 |     // Setup Express app with security middleware
+
+      at beforeAll (src/tests/security/security.test.js:16:3)
+      at Object.describe (src/tests/security/security.test.js:11:1)
+
+  ● Security Tests › CORS Security Tests › should handle preflight requests correctly
+
+    thrown: "Exceeded timeout of 30000 ms for a hook.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      14 |   let testUserId;
+      15 |
+    > 16 |   beforeAll(async () => {
+         |   ^
+      17 |     await initialize();
+      18 |     
+      19 |     // Setup Express app with security middleware
+
+      at beforeAll (src/tests/security/security.test.js:16:3)
+      at Object.describe (src/tests/security/security.test.js:11:1)
+
+  ● Security Tests › Input Validation Security › should reject oversized requests
+
+    thrown: "Exceeded timeout of 30000 ms for a hook.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      14 |   let testUserId;
+      15 |
+    > 16 |   beforeAll(async () => {
+         |   ^
+      17 |     await initialize();
+      18 |     
+      19 |     // Setup Express app with security middleware
+
+      at beforeAll (src/tests/security/security.test.js:16:3)
+      at Object.describe (src/tests/security/security.test.js:11:1)
+
+  ● Security Tests › Input Validation Security › should validate email format strictly
+
+    thrown: "Exceeded timeout of 30000 ms for a hook.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      14 |   let testUserId;
+      15 |
+    > 16 |   beforeAll(async () => {
+         |   ^
+      17 |     await initialize();
+      18 |     
+      19 |     // Setup Express app with security middleware
+
+      at beforeAll (src/tests/security/security.test.js:16:3)
+      at Object.describe (src/tests/security/security.test.js:11:1)
+
+  ● Security Tests › Input Validation Security › should enforce password complexity
+
+    thrown: "Exceeded timeout of 30000 ms for a hook.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      14 |   let testUserId;
+      15 |
+    > 16 |   beforeAll(async () => {
+         |   ^
+      17 |     await initialize();
+      18 |     
+      19 |     // Setup Express app with security middleware
+
+      at beforeAll (src/tests/security/security.test.js:16:3)
+      at Object.describe (src/tests/security/security.test.js:11:1)
+
+  ● Security Tests › Input Validation Security › should sanitize file upload names
+
+    thrown: "Exceeded timeout of 30000 ms for a hook.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      14 |   let testUserId;
+      15 |
+    > 16 |   beforeAll(async () => {
+         |   ^
+      17 |     await initialize();
+      18 |     
+      19 |     // Setup Express app with security middleware
+
+      at beforeAll (src/tests/security/security.test.js:16:3)
+      at Object.describe (src/tests/security/security.test.js:11:1)
+
+  ● Security Tests › Rate Limiting and DoS Protection › should implement rate limiting for authentication endpoints
+
+    thrown: "Exceeded timeout of 30000 ms for a hook.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      14 |   let testUserId;
+      15 |
+    > 16 |   beforeAll(async () => {
+         |   ^
+      17 |     await initialize();
+      18 |     
+      19 |     // Setup Express app with security middleware
+
+      at beforeAll (src/tests/security/security.test.js:16:3)
+      at Object.describe (src/tests/security/security.test.js:11:1)
+
+  ● Security Tests › Rate Limiting and DoS Protection › should handle request flooding gracefully
+
+    thrown: "Exceeded timeout of 30000 ms for a hook.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      14 |   let testUserId;
+      15 |
+    > 16 |   beforeAll(async () => {
+         |   ^
+      17 |     await initialize();
+      18 |     
+      19 |     // Setup Express app with security middleware
+
+      at beforeAll (src/tests/security/security.test.js:16:3)
+      at Object.describe (src/tests/security/security.test.js:11:1)
+
+  ● Security Tests › Authorization Tests › should prevent access to other users' recipes
+
+    thrown: "Exceeded timeout of 30000 ms for a hook.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      14 |   let testUserId;
+      15 |
+    > 16 |   beforeAll(async () => {
+         |   ^
+      17 |     await initialize();
+      18 |     
+      19 |     // Setup Express app with security middleware
+
+      at beforeAll (src/tests/security/security.test.js:16:3)
+      at Object.describe (src/tests/security/security.test.js:11:1)
+
+  ● Security Tests › Authorization Tests › should prevent unauthorized recipe modification
+
+    thrown: "Exceeded timeout of 30000 ms for a hook.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      14 |   let testUserId;
+      15 |
+    > 16 |   beforeAll(async () => {
+         |   ^
+      17 |     await initialize();
+      18 |     
+      19 |     // Setup Express app with security middleware
+
+      at beforeAll (src/tests/security/security.test.js:16:3)
+      at Object.describe (src/tests/security/security.test.js:11:1)
+
+  ● Security Tests › Data Privacy and Compliance › should not expose sensitive user data in API responses
+
+    thrown: "Exceeded timeout of 30000 ms for a hook.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      14 |   let testUserId;
+      15 |
+    > 16 |   beforeAll(async () => {
+         |   ^
+      17 |     await initialize();
+      18 |     
+      19 |     // Setup Express app with security middleware
+
+      at beforeAll (src/tests/security/security.test.js:16:3)
+      at Object.describe (src/tests/security/security.test.js:11:1)
+
+  ● Security Tests › Data Privacy and Compliance › should log security events appropriately
+
+    thrown: "Exceeded timeout of 30000 ms for a hook.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      14 |   let testUserId;
+      15 |
+    > 16 |   beforeAll(async () => {
+         |   ^
+      17 |     await initialize();
+      18 |     
+      19 |     // Setup Express app with security middleware
+
+      at beforeAll (src/tests/security/security.test.js:16:3)
+      at Object.describe (src/tests/security/security.test.js:11:1)
+
+FAIL src/tests/unit/jwt-auth.test.js
+  ● JWT Authentication Unit Tests › Auth Middleware Tests › should authenticate valid token in middleware
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 123
+    Received: undefined
+
+       96 |       auth(req, res, next);
+       97 |
+    >  98 |       expect(req.userId).toBe(123);
+          |                          ^
+       99 |       expect(next).toHaveBeenCalled();
+      100 |       expect(res.status).not.toHaveBeenCalled();
+      101 |     });
+
+      at Object.toBe (src/tests/unit/jwt-auth.test.js:98:26)
+
+  ● JWT Authentication Unit Tests › Auth Middleware Tests › should reject request with invalid token
+
+    expect(jest.fn()).toHaveBeenCalledWith(...expected)
+
+    Expected: 401
+
+    Number of calls: 0
+
+      130 |       auth(req, res, next);
+      131 |
+    > 132 |       expect(res.status).toHaveBeenCalledWith(401);
+          |                          ^
+      133 |       expect(res.json).toHaveBeenCalledWith({ error: 'Invalid token' });
+      134 |       expect(next).not.toHaveBeenCalled();
+      135 |     });
+
+      at Object.toHaveBeenCalledWith (src/tests/unit/jwt-auth.test.js:132:26)
+
+  ● JWT Authentication Unit Tests › Auth Middleware Tests › should handle malformed Authorization header
+
+    expect(jest.fn()).toHaveBeenCalledWith(...expected)
+
+    Expected: 401
+
+    Number of calls: 0
+
+      147 |       auth(req, res, next);
+      148 |
+    > 149 |       expect(res.status).toHaveBeenCalledWith(401);
+          |                          ^
+      150 |       expect(res.json).toHaveBeenCalledWith({ error: 'Invalid token' });
+      151 |     });
+      152 |   });
+
+      at Object.toHaveBeenCalledWith (src/tests/unit/jwt-auth.test.js:149:26)
+
+
+  ●  Cannot log after tests are done. Did you forget to wait for something async in your test?
+    Attempted to log "Registration error: Error: SQLITE_BUSY: database is locked
+    --> in Statement#run([
+      'testuser_1763692285948',
+      'test_1763692285948@example.com',
+      '$2a$10$R00oodcVlowpRnfioapHe.UAFh8NYrnQ4t.ZaqxZZMwhT.6tIERKq'
+    ], [Function: replacement])
+        at Database.<anonymous> (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/sqlite3/lib/sqlite3.js:76:19)
+        at Database.<anonymous> (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/sqlite3/lib/sqlite3.js:20:19)
+        at run (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/src/config/database.js:118:16)
+        at new Promise (<anonymous>)
+        at DatabaseManager.executeWithRetry (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/src/config/database.js:111:30)
+        at Function.create (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/src/models/User.js:24:22)
+        at Object.<anonymous>.exports.register (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/src/controllers/authController.js:20:18) {
+      errno: 5,
+      code: 'SQLITE_BUSY',
+      __augmented: true
+    }".
+
+      116 |             });
+      117 |           } else {
+    > 118 |             db.run(query, params, function(err) {
+          |                ^
+      119 |               if (err) reject(err);
+      120 |               else resolve({ changes: this.changes, lastID: this.lastID });
+      121 |             });
+
+      at Database.<anonymous> (node_modules/sqlite3/lib/sqlite3.js:76:19)
+      at Database.<anonymous> (node_modules/sqlite3/lib/sqlite3.js:20:19)
+      at run (src/config/database.js:118:16)
+      at DatabaseManager.executeWithRetry (src/config/database.js:111:30)
+      at Function.create (src/models/User.js:24:22)
+      at Object.<anonymous>.exports.register (src/controllers/authController.js:20:18) {
+        errno: 5,
+        code: 'SQLITE_BUSY',
+        __augmented: true
+      }".
+      at console.error (node_modules/@jest/console/build/BufferedConsole.js:127:10)
+      at error (src/controllers/authController.js:43:13)
+
+FAIL src/tests/integration/api-endpoints.test.js
+  ● API Endpoints Integration Tests › Authentication Endpoints › POST /api/auth/register › should register new user successfully
+
+    TypeError: Cannot read properties of undefined (reading 'id')
+
+      40 |       .send(testUser);
+      41 |     
+    > 42 |     testUserId = registerResponse.body.user.id;
+         |                                             ^
+      43 |     authToken = registerResponse.body.token;
+      44 |   });
+      45 |
+
+      at Object.id (src/tests/integration/api-endpoints.test.js:42:45)
+
+  ● API Endpoints Integration Tests › Authentication Endpoints › POST /api/auth/register › should reject registration with invalid email
+
+    TypeError: Cannot read properties of undefined (reading 'id')
+
+      40 |       .send(testUser);
+      41 |     
+    > 42 |     testUserId = registerResponse.body.user.id;
+         |                                             ^
+      43 |     authToken = registerResponse.body.token;
+      44 |   });
+      45 |
+
+      at Object.id (src/tests/integration/api-endpoints.test.js:42:45)
+
+  ● API Endpoints Integration Tests › Authentication Endpoints › POST /api/auth/register › should reject registration with weak password
+
+    TypeError: Cannot read properties of undefined (reading 'id')
+
+      40 |       .send(testUser);
+      41 |     
+    > 42 |     testUserId = registerResponse.body.user.id;
+         |                                             ^
+      43 |     authToken = registerResponse.body.token;
+      44 |   });
+      45 |
+
+      at Object.id (src/tests/integration/api-endpoints.test.js:42:45)
+
+  ● API Endpoints Integration Tests › Authentication Endpoints › POST /api/auth/register › should reject duplicate email registration
+
+    TypeError: Cannot read properties of undefined (reading 'id')
+
+      40 |       .send(testUser);
+      41 |     
+    > 42 |     testUserId = registerResponse.body.user.id;
+         |                                             ^
+      43 |     authToken = registerResponse.body.token;
+      44 |   });
+      45 |
+
+      at Object.id (src/tests/integration/api-endpoints.test.js:42:45)
+
+  ● API Endpoints Integration Tests › Authentication Endpoints › POST /api/auth/login › should login with valid credentials
+
+    TypeError: Cannot read properties of undefined (reading 'id')
+
+      40 |       .send(testUser);
+      41 |     
+    > 42 |     testUserId = registerResponse.body.user.id;
+         |                                             ^
+      43 |     authToken = registerResponse.body.token;
+      44 |   });
+      45 |
+
+      at Object.id (src/tests/integration/api-endpoints.test.js:42:45)
+
+  ● API Endpoints Integration Tests › Authentication Endpoints › POST /api/auth/login › should reject login with invalid credentials
+
+    TypeError: Cannot read properties of undefined (reading 'id')
+
+      40 |       .send(testUser);
+      41 |     
+    > 42 |     testUserId = registerResponse.body.user.id;
+         |                                             ^
+      43 |     authToken = registerResponse.body.token;
+      44 |   });
+      45 |
+
+      at Object.id (src/tests/integration/api-endpoints.test.js:42:45)
+
+  ● API Endpoints Integration Tests › Recipe Endpoints › POST /api/recipes › should create recipe with valid token
+
+    TypeError: Cannot read properties of undefined (reading 'id')
+
+      40 |       .send(testUser);
+      41 |     
+    > 42 |     testUserId = registerResponse.body.user.id;
+         |                                             ^
+      43 |     authToken = registerResponse.body.token;
+      44 |   });
+      45 |
+
+      at Object.id (src/tests/integration/api-endpoints.test.js:42:45)
+
+  ● API Endpoints Integration Tests › Recipe Endpoints › POST /api/recipes › should reject recipe creation without token
+
+    TypeError: Cannot read properties of undefined (reading 'id')
+
+      40 |       .send(testUser);
+      41 |     
+    > 42 |     testUserId = registerResponse.body.user.id;
+         |                                             ^
+      43 |     authToken = registerResponse.body.token;
+      44 |   });
+      45 |
+
+      at Object.id (src/tests/integration/api-endpoints.test.js:42:45)
+
+  ● API Endpoints Integration Tests › Recipe Endpoints › POST /api/recipes › should reject recipe with invalid data
+
+    TypeError: Cannot read properties of undefined (reading 'id')
+
+      40 |       .send(testUser);
+      41 |     
+    > 42 |     testUserId = registerResponse.body.user.id;
+         |                                             ^
+      43 |     authToken = registerResponse.body.token;
+      44 |   });
+      45 |
+
+      at Object.id (src/tests/integration/api-endpoints.test.js:42:45)
+
+  ● API Endpoints Integration Tests › Recipe Endpoints › GET /api/recipes › should retrieve user recipes with valid token
+
+    TypeError: Cannot read properties of undefined (reading 'id')
+
+      40 |       .send(testUser);
+      41 |     
+    > 42 |     testUserId = registerResponse.body.user.id;
+         |                                             ^
+      43 |     authToken = registerResponse.body.token;
+      44 |   });
+      45 |
+
+      at Object.id (src/tests/integration/api-endpoints.test.js:42:45)
+
+  ● API Endpoints Integration Tests › Recipe Endpoints › GET /api/recipes › should reject recipe retrieval without token
+
+    TypeError: Cannot read properties of undefined (reading 'id')
+
+      40 |       .send(testUser);
+      41 |     
+    > 42 |     testUserId = registerResponse.body.user.id;
+         |                                             ^
+      43 |     authToken = registerResponse.body.token;
+      44 |   });
+      45 |
+
+      at Object.id (src/tests/integration/api-endpoints.test.js:42:45)
+
+  ● API Endpoints Integration Tests › Recipe Endpoints › GET /api/recipes/:id › should retrieve specific recipe by ID
+
+    TypeError: Cannot read properties of undefined (reading 'id')
+
+      40 |       .send(testUser);
+      41 |     
+    > 42 |     testUserId = registerResponse.body.user.id;
+         |                                             ^
+      43 |     authToken = registerResponse.body.token;
+      44 |   });
+      45 |
+
+      at Object.id (src/tests/integration/api-endpoints.test.js:42:45)
+
+  ● API Endpoints Integration Tests › Recipe Endpoints › GET /api/recipes/:id › should return 404 for non-existent recipe
+
+    TypeError: Cannot read properties of undefined (reading 'id')
+
+      40 |       .send(testUser);
+      41 |     
+    > 42 |     testUserId = registerResponse.body.user.id;
+         |                                             ^
+      43 |     authToken = registerResponse.body.token;
+      44 |   });
+      45 |
+
+      at Object.id (src/tests/integration/api-endpoints.test.js:42:45)
+
+  ● API Endpoints Integration Tests › Recipe Endpoints › PUT /api/recipes/:id › should update recipe successfully
+
+    TypeError: Cannot read properties of undefined (reading 'id')
+
+      40 |       .send(testUser);
+      41 |     
+    > 42 |     testUserId = registerResponse.body.user.id;
+         |                                             ^
+      43 |     authToken = registerResponse.body.token;
+      44 |   });
+      45 |
+
+      at Object.id (src/tests/integration/api-endpoints.test.js:42:45)
+
+  ● API Endpoints Integration Tests › Recipe Endpoints › PUT /api/recipes/:id › should reject update with invalid data
+
+    TypeError: Cannot read properties of undefined (reading 'id')
+
+      40 |       .send(testUser);
+      41 |     
+    > 42 |     testUserId = registerResponse.body.user.id;
+         |                                             ^
+      43 |     authToken = registerResponse.body.token;
+      44 |   });
+      45 |
+
+      at Object.id (src/tests/integration/api-endpoints.test.js:42:45)
+
+  ● API Endpoints Integration Tests › Recipe Endpoints › DELETE /api/recipes/:id › should delete recipe successfully
+
+    TypeError: Cannot read properties of undefined (reading 'id')
+
+      40 |       .send(testUser);
+      41 |     
+    > 42 |     testUserId = registerResponse.body.user.id;
+         |                                             ^
+      43 |     authToken = registerResponse.body.token;
+      44 |   });
+      45 |
+
+      at Object.id (src/tests/integration/api-endpoints.test.js:42:45)
+
+  ● API Endpoints Integration Tests › Performance Tests › should handle API requests within acceptable time
+
+    TypeError: Cannot read properties of undefined (reading 'id')
+
+      40 |       .send(testUser);
+      41 |     
+    > 42 |     testUserId = registerResponse.body.user.id;
+         |                                             ^
+      43 |     authToken = registerResponse.body.token;
+      44 |   });
+      45 |
+
+      at Object.id (src/tests/integration/api-endpoints.test.js:42:45)
+
+  ● API Endpoints Integration Tests › Performance Tests › should handle concurrent API requests
+
+    TypeError: Cannot read properties of undefined (reading 'id')
+
+      40 |       .send(testUser);
+      41 |     
+    > 42 |     testUserId = registerResponse.body.user.id;
+         |                                             ^
+      43 |     authToken = registerResponse.body.token;
+      44 |   });
+      45 |
+
+      at Object.id (src/tests/integration/api-endpoints.test.js:42:45)
+
+  ● API Endpoints Integration Tests › Error Handling › should handle malformed JSON requests
+
+    TypeError: Cannot read properties of undefined (reading 'id')
+
+      40 |       .send(testUser);
+      41 |     
+    > 42 |     testUserId = registerResponse.body.user.id;
+         |                                             ^
+      43 |     authToken = registerResponse.body.token;
+      44 |   });
+      45 |
+
+      at Object.id (src/tests/integration/api-endpoints.test.js:42:45)
+
+  ● API Endpoints Integration Tests › Error Handling › should handle missing required fields
+
+    TypeError: Cannot read properties of undefined (reading 'id')
+
+      40 |       .send(testUser);
+      41 |     
+    > 42 |     testUserId = registerResponse.body.user.id;
+         |                                             ^
+      43 |     authToken = registerResponse.body.token;
+      44 |   });
+      45 |
+
+      at Object.id (src/tests/integration/api-endpoints.test.js:42:45)
+
+  ● API Endpoints Integration Tests › Error Handling › should handle invalid JWT tokens
+
+    TypeError: Cannot read properties of undefined (reading 'id')
+
+      40 |       .send(testUser);
+      41 |     
+    > 42 |     testUserId = registerResponse.body.user.id;
+         |                                             ^
+      43 |     authToken = registerResponse.body.token;
+      44 |   });
+      45 |
+
+      at Object.id (src/tests/integration/api-endpoints.test.js:42:45)
+
+FAIL src/tests/cache-integration.test.js
+  ● Console
+
+    console.log
+      [32minfo[39m: Redis接続成功 {"db":0,"host":"localhost","port":6379,"service":"redis-manager","timestamp":"2025-11-21T02:31:57.020Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [33mwarn[39m: Redis already connected {"service":"redis-manager","timestamp":"2025-11-21T02:31:57.035Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis FLUSHDB エラー {"error":"this.client.flushdb is not a function","service":"redis-manager","timestamp":"2025-11-21T02:31:57.049Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis FLUSHDB エラー {"error":"this.client.flushdb is not a function","service":"redis-manager","timestamp":"2025-11-21T02:31:57.053Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis SET エラー {"error":"this.client.setex is not a function","key":"test:key","service":"redis-manager","timestamp":"2025-11-21T02:31:57.055Z","ttl":60}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis GET エラー {"error":"\"undefined\" is not valid JSON","key":"test:key","service":"redis-manager","timestamp":"2025-11-21T02:31:57.058Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis FLUSHDB エラー {"error":"this.client.flushdb is not a function","service":"redis-manager","timestamp":"2025-11-21T02:31:57.077Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis SET エラー {"error":"this.client.setex is not a function","key":"test:ttl","service":"redis-manager","timestamp":"2025-11-21T02:31:57.078Z","ttl":10}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis FLUSHDB エラー {"error":"this.client.flushdb is not a function","service":"redis-manager","timestamp":"2025-11-21T02:31:57.081Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis SET エラー {"error":"this.client.setex is not a function","key":"jwt:123:CJ9.test","service":"redis-manager","timestamp":"2025-11-21T02:31:57.083Z","ttl":3600}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis FLUSHDB エラー {"error":"this.client.flushdb is not a function","service":"redis-manager","timestamp":"2025-11-21T02:31:57.085Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis SET エラー {"error":"this.client.setex is not a function","key":"jwt:123:CJ9.test","service":"redis-manager","timestamp":"2025-11-21T02:31:57.087Z","ttl":3600}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis GET エラー {"error":"\"undefined\" is not valid JSON","key":"jwt:123:CJ9.test","service":"redis-manager","timestamp":"2025-11-21T02:31:57.088Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis FLUSHDB エラー {"error":"this.client.flushdb is not a function","service":"redis-manager","timestamp":"2025-11-21T02:31:57.090Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis SET エラー {"error":"this.client.setex is not a function","key":"jwt:123:CJ9.test","service":"redis-manager","timestamp":"2025-11-21T02:31:57.091Z","ttl":3600}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis GET エラー {"error":"\"undefined\" is not valid JSON","key":"jwt:123:CJ9.test","service":"redis-manager","timestamp":"2025-11-21T02:31:57.092Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis FLUSHDB エラー {"error":"this.client.flushdb is not a function","service":"redis-manager","timestamp":"2025-11-21T02:31:57.093Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis SET エラー {"error":"this.client.setex is not a function","key":"jwt:123:token1","service":"redis-manager","timestamp":"2025-11-21T02:31:57.095Z","ttl":3600}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis SET エラー {"error":"this.client.setex is not a function","key":"jwt:123:token2","service":"redis-manager","timestamp":"2025-11-21T02:31:57.096Z","ttl":3600}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis KEYS エラー {"error":"this.client.keys is not a function","pattern":"jwt:123:*","service":"redis-manager","timestamp":"2025-11-21T02:31:57.096Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis GET エラー {"error":"\"undefined\" is not valid JSON","key":"jwt:123:token1","service":"redis-manager","timestamp":"2025-11-21T02:31:57.097Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis GET エラー {"error":"\"undefined\" is not valid JSON","key":"jwt:123:token2","service":"redis-manager","timestamp":"2025-11-21T02:31:57.098Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis FLUSHDB エラー {"error":"this.client.flushdb is not a function","service":"redis-manager","timestamp":"2025-11-21T02:31:57.099Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis SET エラー {"error":"this.client.setex is not a function","key":"user:profile:456","service":"redis-manager","timestamp":"2025-11-21T02:31:57.100Z","ttl":1800}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis FLUSHDB エラー {"error":"this.client.flushdb is not a function","service":"redis-manager","timestamp":"2025-11-21T02:31:57.102Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis SET エラー {"error":"this.client.setex is not a function","key":"user:profile:456","service":"redis-manager","timestamp":"2025-11-21T02:31:57.103Z","ttl":1800}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis GET エラー {"error":"\"undefined\" is not valid JSON","key":"user:profile:456","service":"redis-manager","timestamp":"2025-11-21T02:31:57.104Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis FLUSHDB エラー {"error":"this.client.flushdb is not a function","service":"redis-manager","timestamp":"2025-11-21T02:31:57.105Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis SET エラー {"error":"this.client.setex is not a function","key":"user:profile:456","service":"redis-manager","timestamp":"2025-11-21T02:31:57.106Z","ttl":1800}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis GET エラー {"error":"\"undefined\" is not valid JSON","key":"user:profile:456","service":"redis-manager","timestamp":"2025-11-21T02:31:57.107Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis FLUSHDB エラー {"error":"this.client.flushdb is not a function","service":"redis-manager","timestamp":"2025-11-21T02:31:57.108Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis SET エラー {"error":"this.client.setex is not a function","key":"recipe:detail:789","service":"redis-manager","timestamp":"2025-11-21T02:31:57.108Z","ttl":3600}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis FLUSHDB エラー {"error":"this.client.flushdb is not a function","service":"redis-manager","timestamp":"2025-11-21T02:31:57.115Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis SET エラー {"error":"this.client.setex is not a function","key":"recipe:detail:789","service":"redis-manager","timestamp":"2025-11-21T02:31:57.116Z","ttl":3600}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis GET エラー {"error":"\"undefined\" is not valid JSON","key":"recipe:detail:789","service":"redis-manager","timestamp":"2025-11-21T02:31:57.117Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis FLUSHDB エラー {"error":"this.client.flushdb is not a function","service":"redis-manager","timestamp":"2025-11-21T02:31:57.118Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis SET エラー {"error":"this.client.setex is not a function","key":"recipe:detail:789","service":"redis-manager","timestamp":"2025-11-21T02:31:57.119Z","ttl":3600}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis GET エラー {"error":"\"undefined\" is not valid JSON","key":"recipe:detail:789","service":"redis-manager","timestamp":"2025-11-21T02:31:57.119Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis FLUSHDB エラー {"error":"this.client.flushdb is not a function","service":"redis-manager","timestamp":"2025-11-21T02:31:57.120Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis SET エラー {"error":"this.client.setex is not a function","key":"recipes:list:82df8735ddd7be7a","service":"redis-manager","timestamp":"2025-11-21T02:31:57.121Z","ttl":1800}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis GET エラー {"error":"\"undefined\" is not valid JSON","key":"recipes:list:82df8735ddd7be7a","service":"redis-manager","timestamp":"2025-11-21T02:31:57.122Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis FLUSHDB エラー {"error":"this.client.flushdb is not a function","service":"redis-manager","timestamp":"2025-11-21T02:31:57.124Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis SET エラー {"error":"this.client.setex is not a function","key":"user:dashboard:999","service":"redis-manager","timestamp":"2025-11-21T02:31:57.125Z","ttl":900}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis FLUSHDB エラー {"error":"this.client.flushdb is not a function","service":"redis-manager","timestamp":"2025-11-21T02:31:57.126Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis SET エラー {"error":"this.client.setex is not a function","key":"user:dashboard:999","service":"redis-manager","timestamp":"2025-11-21T02:31:57.127Z","ttl":900}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis GET エラー {"error":"\"undefined\" is not valid JSON","key":"user:dashboard:999","service":"redis-manager","timestamp":"2025-11-21T02:31:57.128Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis FLUSHDB エラー {"error":"this.client.flushdb is not a function","service":"redis-manager","timestamp":"2025-11-21T02:31:57.129Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis FLUSHDB エラー {"error":"this.client.flushdb is not a function","service":"redis-manager","timestamp":"2025-11-21T02:31:57.130Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis SET エラー {"error":"this.client.setex is not a function","key":"search:bc58fbe05a5c44b9","service":"redis-manager","timestamp":"2025-11-21T02:31:57.131Z","ttl":600}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis FLUSHDB エラー {"error":"this.client.flushdb is not a function","service":"redis-manager","timestamp":"2025-11-21T02:31:57.133Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis SET エラー {"error":"this.client.setex is not a function","key":"search:bc58fbe05a5c44b9","service":"redis-manager","timestamp":"2025-11-21T02:31:57.134Z","ttl":600}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis GET エラー {"error":"\"undefined\" is not valid JSON","key":"search:bc58fbe05a5c44b9","service":"redis-manager","timestamp":"2025-11-21T02:31:57.135Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis FLUSHDB エラー {"error":"this.client.flushdb is not a function","service":"redis-manager","timestamp":"2025-11-21T02:31:57.136Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis SET エラー {"error":"this.client.setex is not a function","key":"search:bc58fbe05a5c44b9","service":"redis-manager","timestamp":"2025-11-21T02:31:57.137Z","ttl":600}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis GET エラー {"error":"\"undefined\" is not valid JSON","key":"search:bc58fbe05a5c44b9","service":"redis-manager","timestamp":"2025-11-21T02:31:57.138Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis GET エラー {"error":"\"undefined\" is not valid JSON","key":"search:bc58fbe05a5c44b9","service":"redis-manager","timestamp":"2025-11-21T02:31:57.139Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis FLUSHDB エラー {"error":"this.client.flushdb is not a function","service":"redis-manager","timestamp":"2025-11-21T02:31:57.140Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis SET エラー {"error":"this.client.setex is not a function","key":"categories:all","service":"redis-manager","timestamp":"2025-11-21T02:31:57.141Z","ttl":7200}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis FLUSHDB エラー {"error":"this.client.flushdb is not a function","service":"redis-manager","timestamp":"2025-11-21T02:31:57.143Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis SET エラー {"error":"this.client.setex is not a function","key":"categories:all","service":"redis-manager","timestamp":"2025-11-21T02:31:57.144Z","ttl":7200}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis GET エラー {"error":"\"undefined\" is not valid JSON","key":"categories:all","service":"redis-manager","timestamp":"2025-11-21T02:31:57.145Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis FLUSHDB エラー {"error":"this.client.flushdb is not a function","service":"redis-manager","timestamp":"2025-11-21T02:31:57.146Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis SET エラー {"error":"this.client.setex is not a function","key":"categories:all","service":"redis-manager","timestamp":"2025-11-21T02:31:57.147Z","ttl":7200}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis GET エラー {"error":"\"undefined\" is not valid JSON","key":"categories:all","service":"redis-manager","timestamp":"2025-11-21T02:31:57.155Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis FLUSHDB エラー {"error":"this.client.flushdb is not a function","service":"redis-manager","timestamp":"2025-11-21T02:31:57.156Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis FLUSHDB エラー {"error":"this.client.flushdb is not a function","service":"redis-manager","timestamp":"2025-11-21T02:31:57.158Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis GET エラー {"error":"\"undefined\" is not valid JSON","key":"test:hit-rate","service":"redis-manager","timestamp":"2025-11-21T02:31:57.159Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis SET エラー {"error":"this.client.setex is not a function","key":"test:hit-rate","service":"redis-manager","timestamp":"2025-11-21T02:31:57.159Z","ttl":60}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis GET エラー {"error":"\"undefined\" is not valid JSON","key":"test:hit-rate","service":"redis-manager","timestamp":"2025-11-21T02:31:57.160Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis GET エラー {"error":"\"undefined\" is not valid JSON","key":"test:hit-rate","service":"redis-manager","timestamp":"2025-11-21T02:31:57.161Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [31merror[39m: Redis FLUSHDB エラー {"error":"this.client.flushdb is not a function","service":"redis-manager","timestamp":"2025-11-21T02:31:57.162Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [32minfo[39m: Redis接続クローズ完了 {"service":"redis-manager","timestamp":"2025-11-21T02:31:57.163Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+    console.log
+      [32minfo[39m: Redis接続クローズ完了 {"service":"redis-manager","timestamp":"2025-11-21T02:31:57.172Z"}
+
+      at Console.log (node_modules/winston/lib/winston/transports/console.js:87:23)
+
+  ● Redis統合キャッシングシステムテスト › 1. Redis接続テスト › 基本的なGET/SET操作が動作すること
+
+    expect(received).toEqual(expected) // deep equality
+
+    Expected: {"message": "Hello Redis"}
+    Received: null
+
+      61 |             const result = await redisManager.get(testKey);
+      62 |
+    > 63 |             expect(result).toEqual(testValue);
+         |                            ^
+      64 |         });
+      65 |
+      66 |         it('TTLが正しく設定されること', async () => {
+
+      at Object.toEqual (src/tests/cache-integration.test.js:63:28)
+
+  ● Redis統合キャッシングシステムテスト › 1. Redis接続テスト › TTLが正しく設定されること
+
+    TypeError: Cannot read properties of undefined (reading 'be')
+
+      72 |             const remainingTTL = await redisManager.ttl(testKey);
+      73 |
+    > 74 |             expect(remainingTTL).to.be.at.most(ttl);
+         |                                    ^
+      75 |             expect(remainingTTL).to.be.at.least(1);
+      76 |         });
+      77 |     });
+
+      at Object.<anonymous> (src/tests/cache-integration.test.js:74:36)
+
+  ● Redis統合キャッシングシステムテスト › 2. JWT認証キャッシングテスト (Strategy: Cache-Aside) › JWTがキャッシュに保存されること
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+      88 |         it('JWTがキャッシュに保存されること', async () => {
+      89 |             const result = await cacheService.cacheJWT(userId, token, payload);
+    > 90 |             expect(result).toBe(true);
+         |                            ^
+      91 |         });
+      92 |
+      93 |         it('キャッシュされたJWTが取得できること', async () => {
+
+      at Object.toBe (src/tests/cache-integration.test.js:90:28)
+
+  ● Redis統合キャッシングシステムテスト › 2. JWT認証キャッシングテスト (Strategy: Cache-Aside) › キャッシュされたJWTが取得できること
+
+    expect(received).toEqual(expected) // deep equality
+
+    Expected: {"email": "test@example.com", "userId": 123, "username": "testuser"}
+    Received: null
+
+       95 |             const cached = await cacheService.getCachedJWT(userId, token);
+       96 |
+    >  97 |             expect(cached).toEqual(payload);
+          |                            ^
+       98 |         });
+       99 |
+      100 |         it('JWT無効化が動作すること', async () => {
+
+      at Object.toEqual (src/tests/cache-integration.test.js:97:28)
+
+  ● Redis統合キャッシングシステムテスト › 3. ユーザープロファイルキャッシングテスト (Strategy: Cache-Aside) › ユーザープロファイルがキャッシュに保存されること
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+      134 |         it('ユーザープロファイルがキャッシュに保存されること', async () => {
+      135 |             const result = await cacheService.cacheUserProfile(userId, profile);
+    > 136 |             expect(result).toBe(true);
+          |                            ^
+      137 |         });
+      138 |
+      139 |         it('キャッシュされたプロファイルが取得できること', async () => {
+
+      at Object.toBe (src/tests/cache-integration.test.js:136:28)
+
+  ● Redis統合キャッシングシステムテスト › 3. ユーザープロファイルキャッシングテスト (Strategy: Cache-Aside) › キャッシュされたプロファイルが取得できること
+
+    TypeError: Cannot read properties of undefined (reading 'include')
+
+      141 |             const cached = await cacheService.getCachedUserProfile(userId);
+      142 |
+    > 143 |             expect(cached).to.include(profile);
+          |                              ^
+      144 |             expect(cached.cached_at).toBeDefined();
+      145 |         });
+      146 |
+
+      at Object.<anonymous> (src/tests/cache-integration.test.js:143:30)
+
+  ● Redis統合キャッシングシステムテスト › 4. レシピキャッシングテスト (Strategy: Write-Through) › レシピがキャッシュに保存されること (Write-Through)
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+      167 |         it('レシピがキャッシュに保存されること (Write-Through)', async () => {
+      168 |             const result = await cacheService.cacheRecipe(recipeId, recipe);
+    > 169 |             expect(result).toBe(true);
+          |                            ^
+      170 |         });
+      171 |
+      172 |         it('キャッシュされたレシピが取得できること', async () => {
+
+      at Object.toBe (src/tests/cache-integration.test.js:169:28)
+
+  ● Redis統合キャッシングシステムテスト › 4. レシピキャッシングテスト (Strategy: Write-Through) › キャッシュされたレシピが取得できること
+
+    TypeError: Cannot read properties of undefined (reading 'include')
+
+      174 |             const cached = await cacheService.getCachedRecipe(recipeId);
+      175 |
+    > 176 |             expect(cached).to.include(recipe);
+          |                              ^
+      177 |             expect(cached.cache_strategy).toBe('write-through');
+      178 |         });
+      179 |
+
+      at Object.<anonymous> (src/tests/cache-integration.test.js:176:30)
+
+  ● Redis統合キャッシングシステムテスト › 4. レシピキャッシングテスト (Strategy: Write-Through) › レシピリストがキャッシュされること (Cache-Aside)
+
+    expect(received).toEqual(expected) // deep equality
+
+    Expected: [{"description": "テスト用のレシピです", "id": 789, "ingredients": ["材料A", "材料B"], "instructions": ["手順1", "手順2"], "title": "テストレシピ", "userId": 123}]
+    Received: null
+
+      195 |             const cached = await cacheService.getCachedRecipeList(userId, filters, pagination);
+      196 |
+    > 197 |             expect(cached).toEqual(recipes);
+          |                            ^
+      198 |         });
+      199 |     });
+      200 |
+
+      at Object.toEqual (src/tests/cache-integration.test.js:197:28)
+
+  ● Redis統合キャッシングシステムテスト › 5. ダッシュボードキャッシングテスト (Strategy: Refresh-Ahead) › ダッシュボードデータがキャッシュされること
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+      209 |         it('ダッシュボードデータがキャッシュされること', async () => {
+      210 |             const result = await cacheService.cacheDashboard(userId, dashboardData);
+    > 211 |             expect(result).toBe(true);
+          |                            ^
+      212 |         });
+      213 |
+      214 |         it('キャッシュされたダッシュボードが取得できること', async () => {
+
+      at Object.toBe (src/tests/cache-integration.test.js:211:28)
+
+  ● Redis統合キャッシングシステムテスト › 5. ダッシュボードキャッシングテスト (Strategy: Refresh-Ahead) › キャッシュされたダッシュボードが取得できること
+
+    TypeError: Cannot read properties of undefined (reading 'include')
+
+      216 |             const cached = await cacheService.getCachedDashboard(userId);
+      217 |
+    > 218 |             expect(cached).to.include(dashboardData);
+          |                              ^
+      219 |             expect(cached.cache_strategy).toBe('refresh-ahead');
+      220 |         });
+      221 |
+
+      at Object.<anonymous> (src/tests/cache-integration.test.js:218:30)
+
+  ● Redis統合キャッシングシステムテスト › 5. ダッシュボードキャッシングテスト (Strategy: Refresh-Ahead) › Refresh-Aheadコールバックが動作すること
+
+    ReferenceError: sinon is not defined
+
+      221 |
+      222 |         it('Refresh-Aheadコールバックが動作すること', async () => {
+    > 223 |             const refreshCallback = sinon.stub().resolves({
+          |                                     ^
+      224 |                 ...dashboardData,
+      225 |                 refreshed: true
+      226 |             });
+
+      at Object.sinon (src/tests/cache-integration.test.js:223:37)
+
+  ● Redis統合キャッシングシステムテスト › 6. 検索結果キャッシングテスト (Strategy: Cache-Aside) › 検索結果がキャッシュされること
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+      255 |         it('検索結果がキャッシュされること', async () => {
+      256 |             const result = await cacheService.cacheSearchResults(query, filters, results);
+    > 257 |             expect(result).toBe(true);
+          |                            ^
+      258 |         });
+      259 |
+      260 |         it('キャッシュされた検索結果が取得できること', async () => {
+
+      at Object.toBe (src/tests/cache-integration.test.js:257:28)
+
+  ● Redis統合キャッシングシステムテスト › 6. 検索結果キャッシングテスト (Strategy: Cache-Aside) › キャッシュされた検索結果が取得できること
+
+    expect(received).toEqual(expected) // deep equality
+
+    Expected: [{"id": 1, "title": "カレーライス"}, {"id": 2, "title": "スープカレー"}]
+    Received: null
+
+      262 |             const cached = await cacheService.getCachedSearchResults(query, filters);
+      263 |
+    > 264 |             expect(cached).toEqual(results);
+          |                            ^
+      265 |         });
+      266 |
+      267 |         it('異なるフィルターで異なるキャッシュキーが生成されること', async () => {
+
+      at Object.toEqual (src/tests/cache-integration.test.js:264:28)
+
+  ● Redis統合キャッシングシステムテスト › 6. 検索結果キャッシングテスト (Strategy: Cache-Aside) › 異なるフィルターで異なるキャッシュキーが生成されること
+
+    expect(received).toEqual(expected) // deep equality
+
+    Expected: [{"id": 1, "title": "カレーライス"}, {"id": 2, "title": "スープカレー"}]
+    Received: null
+
+      273 |             const cached2 = await cacheService.getCachedSearchResults(query, filters2);
+      274 |
+    > 275 |             expect(cached1).toEqual(results);
+          |                             ^
+      276 |             expect(cached2).toBeNull();
+      277 |         });
+      278 |     });
+
+      at Object.toEqual (src/tests/cache-integration.test.js:275:29)
+
+  ● Redis統合キャッシングシステムテスト › 7. カテゴリキャッシングテスト (Strategy: Cache-Aside) › カテゴリがキャッシュされること
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+      287 |         it('カテゴリがキャッシュされること', async () => {
+      288 |             const result = await cacheService.cacheCategories(categories);
+    > 289 |             expect(result).toBe(true);
+          |                            ^
+      290 |         });
+      291 |
+      292 |         it('キャッシュされたカテゴリが取得できること', async () => {
+
+      at Object.toBe (src/tests/cache-integration.test.js:289:28)
+
+  ● Redis統合キャッシングシステムテスト › 7. カテゴリキャッシングテスト (Strategy: Cache-Aside) › キャッシュされたカテゴリが取得できること
+
+    expect(received).toEqual(expected) // deep equality
+
+    Expected: [{"id": 1, "name": "和食"}, {"id": 2, "name": "洋食"}, {"id": 3, "name": "中華"}]
+    Received: null
+
+      294 |             const cached = await cacheService.getCachedCategories();
+      295 |
+    > 296 |             expect(cached).toEqual(categories);
+          |                            ^
+      297 |         });
+      298 |
+      299 |         it('カテゴリ無効化が動作すること', async () => {
+
+      at Object.toEqual (src/tests/cache-integration.test.js:296:28)
+
+  ● Redis統合キャッシングシステムテスト › 8. キャッシュ統計テスト › キャッシュヒット率が計算されること
+
+    TypeError: Cannot read properties of undefined (reading 'be')
+
+      331 |
+      332 |             const stats = await cacheService.getStats();
+    > 333 |             expect(stats.metrics.hits).to.be.at.least(2);
+          |                                          ^
+      334 |             expect(stats.metrics.misses).to.be.at.least(1);
+      335 |         });
+      336 |     });
+
+      at Object.<anonymous> (src/tests/cache-integration.test.js:333:42)
+
+  ● Redis統合キャッシングシステムテスト › 9. エラーハンドリングテスト › Redis切断時にnullを返すこと
+
+    Redis not connected
+
+      177 |     async get(key, parse = true) {
+      178 |         if (!this.isConnected) {
+    > 179 |             throw new Error('Redis not connected');
+          |                   ^
+      180 |         }
+      181 |
+      182 |         const startTime = Date.now();
+
+      at RedisManager.get (src/config/redis.js:179:19)
+      at Object.get (src/tests/cache-integration.test.js:343:47)
+
+  ● Redis統合キャッシングシステムテスト › 9. エラーハンドリングテスト › 無効なデータでもエラーにならないこと
+
+    Redis not connected
+
+      219 |     async set(key, value, ttl = this.TTL.API_RESPONSE, stringify = true) {
+      220 |         if (!this.isConnected) {
+    > 221 |             throw new Error('Redis not connected');
+          |                   ^
+      222 |         }
+      223 |
+      224 |         const startTime = Date.now();
+
+      at RedisManager.set (src/config/redis.js:221:19)
+      at Object.set (src/tests/cache-integration.test.js:354:32)
+
+  ● Redis統合キャッシングシステムテスト › 10. パフォーマンステスト › 大量のキャッシュ操作が高速であること
+
+    Redis not connected
+
+      219 |     async set(key, value, ttl = this.TTL.API_RESPONSE, stringify = true) {
+      220 |         if (!this.isConnected) {
+    > 221 |             throw new Error('Redis not connected');
+          |                   ^
+      222 |         }
+      223 |
+      224 |         const startTime = Date.now();
+
+      at RedisManager.set (src/config/redis.js:221:19)
+      at Object.set (src/tests/cache-integration.test.js:372:34)
+
+  ● Redis統合キャッシングシステムテスト › 10. パフォーマンステスト › 並列読み込みが高速であること
+
+    Redis not connected
+
+      219 |     async set(key, value, ttl = this.TTL.API_RESPONSE, stringify = true) {
+      220 |         if (!this.isConnected) {
+    > 221 |             throw new Error('Redis not connected');
+          |                   ^
+      222 |         }
+      223 |
+      224 |         const startTime = Date.now();
+
+      at RedisManager.set (src/config/redis.js:221:19)
+      at Object.set (src/tests/cache-integration.test.js:387:36)
+
+FAIL src/tests/performance/performance.test.js
+  ● Performance Tests › JWT Authentication Performance › should verify JWT token within 1.44ms target
+
+    TypeError: Cannot read properties of undefined (reading 'id')
+
+      35 |       .send(testUser);
+      36 |     
+    > 37 |     testUserId = registerResponse.body.user.id;
+         |                                             ^
+      38 |     authToken = registerResponse.body.token;
+      39 |   });
+      40 |
+
+      at Object.id (src/tests/performance/performance.test.js:37:45)
+
+  ● Performance Tests › JWT Authentication Performance › should generate JWT token efficiently
+
+    TypeError: Cannot read properties of undefined (reading 'id')
+
+      35 |       .send(testUser);
+      36 |     
+    > 37 |     testUserId = registerResponse.body.user.id;
+         |                                             ^
+      38 |     authToken = registerResponse.body.token;
+      39 |   });
+      40 |
+
+      at Object.id (src/tests/performance/performance.test.js:37:45)
+
+  ● Performance Tests › JWT Authentication Performance › should handle concurrent JWT operations efficiently
+
+    TypeError: Cannot read properties of undefined (reading 'id')
+
+      35 |       .send(testUser);
+      36 |     
+    > 37 |     testUserId = registerResponse.body.user.id;
+         |                                             ^
+      38 |     authToken = registerResponse.body.token;
+      39 |   });
+      40 |
+
+      at Object.id (src/tests/performance/performance.test.js:37:45)
+
+  ● Performance Tests › Database Performance Tests › should execute database queries within acceptable time
+
+    TypeError: Cannot read properties of undefined (reading 'id')
+
+      35 |       .send(testUser);
+      36 |     
+    > 37 |     testUserId = registerResponse.body.user.id;
+         |                                             ^
+      38 |     authToken = registerResponse.body.token;
+      39 |   });
+      40 |
+
+      at Object.id (src/tests/performance/performance.test.js:37:45)
+
+  ● Performance Tests › Database Performance Tests › should handle concurrent database operations
+
+    TypeError: Cannot read properties of undefined (reading 'id')
+
+      35 |       .send(testUser);
+      36 |     
+    > 37 |     testUserId = registerResponse.body.user.id;
+         |                                             ^
+      38 |     authToken = registerResponse.body.token;
+      39 |   });
+      40 |
+
+      at Object.id (src/tests/performance/performance.test.js:37:45)
+
+  ● Performance Tests › Database Performance Tests › should optimize database connection pooling
+
+    TypeError: Cannot read properties of undefined (reading 'id')
+
+      35 |       .send(testUser);
+      36 |     
+    > 37 |     testUserId = registerResponse.body.user.id;
+         |                                             ^
+      38 |     authToken = registerResponse.body.token;
+      39 |   });
+      40 |
+
+      at Object.id (src/tests/performance/performance.test.js:37:45)
+
+  ● Performance Tests › API Response Time Tests › should respond to health checks quickly
+
+    TypeError: Cannot read properties of undefined (reading 'id')
+
+      35 |       .send(testUser);
+      36 |     
+    > 37 |     testUserId = registerResponse.body.user.id;
+         |                                             ^
+      38 |     authToken = registerResponse.body.token;
+      39 |   });
+      40 |
+
+      at Object.id (src/tests/performance/performance.test.js:37:45)
+
+  ● Performance Tests › API Response Time Tests › should handle authenticated requests within target time
+
+    TypeError: Cannot read properties of undefined (reading 'id')
+
+      35 |       .send(testUser);
+      36 |     
+    > 37 |     testUserId = registerResponse.body.user.id;
+         |                                             ^
+      38 |     authToken = registerResponse.body.token;
+      39 |   });
+      40 |
+
+      at Object.id (src/tests/performance/performance.test.js:37:45)
+
+  ● Performance Tests › API Response Time Tests › should handle recipe creation efficiently
+
+    TypeError: Cannot read properties of undefined (reading 'id')
+
+      35 |       .send(testUser);
+      36 |     
+    > 37 |     testUserId = registerResponse.body.user.id;
+         |                                             ^
+      38 |     authToken = registerResponse.body.token;
+      39 |   });
+      40 |
+
+      at Object.id (src/tests/performance/performance.test.js:37:45)
+
+  ● Performance Tests › Load Testing Simulation › should handle multiple concurrent users
+
+    TypeError: Cannot read properties of undefined (reading 'id')
+
+      35 |       .send(testUser);
+      36 |     
+    > 37 |     testUserId = registerResponse.body.user.id;
+         |                                             ^
+      38 |     authToken = registerResponse.body.token;
+      39 |   });
+      40 |
+
+      at Object.id (src/tests/performance/performance.test.js:37:45)
+
+  ● Performance Tests › Load Testing Simulation › should maintain performance under sustained load
+
+    TypeError: Cannot read properties of undefined (reading 'id')
+
+      35 |       .send(testUser);
+      36 |     
+    > 37 |     testUserId = registerResponse.body.user.id;
+         |                                             ^
+      38 |     authToken = registerResponse.body.token;
+      39 |   });
+      40 |
+
+      at Object.id (src/tests/performance/performance.test.js:37:45)
+
+  ● Performance Tests › Memory and Resource Usage › should not leak memory during extended operations
+
+    TypeError: Cannot read properties of undefined (reading 'id')
+
+      35 |       .send(testUser);
+      36 |     
+    > 37 |     testUserId = registerResponse.body.user.id;
+         |                                             ^
+      38 |     authToken = registerResponse.body.token;
+      39 |   });
+      40 |
+
+      at Object.id (src/tests/performance/performance.test.js:37:45)
+
+  ● Performance Tests › Performance Benchmarks › should meet overall performance targets
+
+    TypeError: Cannot read properties of undefined (reading 'id')
+
+      35 |       .send(testUser);
+      36 |     
+    > 37 |     testUserId = registerResponse.body.user.id;
+         |                                             ^
+      38 |     authToken = registerResponse.body.token;
+      39 |   });
+      40 |
+
+      at Object.id (src/tests/performance/performance.test.js:37:45)
+
+FAIL src/tests/unit/errorHandler.test.js
+  ● Error Handler Middleware - Complete Test Suite › ⚡ パフォーマンステスト › 大量のエラーを短時間で処理できる
+
+    expect(received).toBeLessThan(expected)
+
+    Expected: < 100
+    Received:   236
+
+      358 |
+      359 |       // 1000件のエラー処理が100ms以内
+    > 360 |       expect(endTime - startTime).toBeLessThan(100);
+          |                                   ^
+      361 |     });
+      362 |   });
+      363 |
+
+      at Object.toBeLessThan (src/tests/unit/errorHandler.test.js:360:35)
+
+PASS src/tests/integration/youtube-api.test.js
+PASS src/tests/unit/validation.test.js
+PASS src/tests/unit/authController.test.js
+  ● Console
+
+    console.error
+      Registration error: Error: Database connection failed
+          at Object.<anonymous> (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/src/tests/unit/authController.test.js:120:37)
+          at Promise.then.completed (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/jest-circus/build/utils.js:298:28)
+          at new Promise (<anonymous>)
+          at callAsyncCircusFn (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/jest-circus/build/utils.js:231:10)
+          at _callCircusTest (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/jest-circus/build/run.js:316:40)
+          at processTicksAndRejections (node:internal/process/task_queues:105:5)
+          at _runTest (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/jest-circus/build/run.js:252:3)
+          at _runTestsForDescribeBlock (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/jest-circus/build/run.js:126:9)
+          at _runTestsForDescribeBlock (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/jest-circus/build/run.js:121:9)
+          at _runTestsForDescribeBlock (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/jest-circus/build/run.js:121:9)
+          at run (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/jest-circus/build/run.js:71:3)
+          at runAndTransformResultsToJestFormat (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)
+          at jestAdapter (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
+          at runTestInternal (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/jest-runner/build/runTest.js:367:16)
+          at runTest (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/jest-runner/build/runTest.js:444:34)
+          at Object.worker (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/jest-runner/build/testWorker.js:106:12)
+
+      41 |     );
+      42 |   } catch (error) {
+    > 43 |     console.error('Registration error:', error);
+         |             ^
+      44 |     res.status(ERROR_CODES.INTERNAL_SERVER_ERROR.status).json(
+      45 |       createErrorResponse(ERROR_CODES.INTERNAL_SERVER_ERROR, error.message)
+      46 |     );
+
+      at Object.error [as register] (src/controllers/authController.js:43:13)
+      at Object.<anonymous> (src/tests/unit/authController.test.js:122:7)
+
+PASS src/tests/unit/cache.test.js
+PASS src/tests/unit/redis.test.js
+FAIL src/tests/unit/recipe-crud.test.js (61.073 s)
+  ● Console
+
+    console.error
+      Rollback failed: Error: SQLITE_ERROR: cannot rollback - no transaction is active
+      --> in Statement#run([], [Function: replacement])
+          at Database.<anonymous> (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/sqlite3/lib/sqlite3.js:76:19)
+          at Database.<anonymous> (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/sqlite3/lib/sqlite3.js:20:19)
+          at run (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/src/config/database.js:118:16)
+          at new Promise (<anonymous>)
+          at DatabaseManager.executeWithRetry (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/src/config/database.js:111:30)
+          at Function.executeWithRetry [as create] (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/src/models/Recipe.js:48:23)
+          at async Promise.all (index 0)
+          at Object.<anonymous> (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/src/tests/unit/recipe-crud.test.js:256:23) {
+        errno: 1,
+        code: 'SQLITE_ERROR',
+        __augmented: true
+      }
+
+      47 |     } catch (error) {
+      48 |       await dbManager.executeWithRetry('ROLLBACK').catch(rollbackErr => {
+    > 49 |         console.error('Rollback failed:', rollbackErr);
+         |                 ^
+      50 |       });
+      51 |       
+      52 |       // Enhance error messages for better debugging
+
+      at error (src/models/Recipe.js:49:17)
+      at Function.create (src/models/Recipe.js:48:7)
+          at async Promise.all (index 0)
+      at Object.<anonymous> (src/tests/unit/recipe-crud.test.js:256:23)
+
+    console.error
+      Rollback failed: Error: SQLITE_ERROR: cannot rollback - no transaction is active
+      --> in Statement#run([], [Function: replacement])
+          at Database.<anonymous> (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/sqlite3/lib/sqlite3.js:76:19)
+          at Database.<anonymous> (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/sqlite3/lib/sqlite3.js:20:19)
+          at run (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/src/config/database.js:118:16)
+          at new Promise (<anonymous>)
+          at DatabaseManager.executeWithRetry (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/src/config/database.js:111:30)
+          at Function.executeWithRetry [as create] (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/src/models/Recipe.js:48:23)
+          at async Promise.all (index 3) {
+        errno: 1,
+        code: 'SQLITE_ERROR',
+        __augmented: true
+      }
+
+      47 |     } catch (error) {
+      48 |       await dbManager.executeWithRetry('ROLLBACK').catch(rollbackErr => {
+    > 49 |         console.error('Rollback failed:', rollbackErr);
+         |                 ^
+      50 |       });
+      51 |       
+      52 |       // Enhance error messages for better debugging
+
+      at error (src/models/Recipe.js:49:17)
+      at Function.create (src/models/Recipe.js:48:7)
+          at async Promise.all (index 3)
+
+    console.error
+      Rollback failed: Error: SQLITE_ERROR: cannot rollback - no transaction is active
+      --> in Statement#run([], [Function: replacement])
+          at Database.<anonymous> (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/sqlite3/lib/sqlite3.js:76:19)
+          at Database.<anonymous> (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/sqlite3/lib/sqlite3.js:20:19)
+          at run (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/src/config/database.js:118:16)
+          at new Promise (<anonymous>)
+          at DatabaseManager.executeWithRetry (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/src/config/database.js:111:30)
+          at Function.executeWithRetry [as create] (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/src/models/Recipe.js:48:23)
+          at async Promise.all (index 6) {
+        errno: 1,
+        code: 'SQLITE_ERROR',
+        __augmented: true
+      }
+
+      47 |     } catch (error) {
+      48 |       await dbManager.executeWithRetry('ROLLBACK').catch(rollbackErr => {
+    > 49 |         console.error('Rollback failed:', rollbackErr);
+         |                 ^
+      50 |       });
+      51 |       
+      52 |       // Enhance error messages for better debugging
+
+      at error (src/models/Recipe.js:49:17)
+      at Function.create (src/models/Recipe.js:48:7)
+          at async Promise.all (index 6)
+
+    console.error
+      Rollback failed: Error: SQLITE_ERROR: cannot rollback - no transaction is active
+      --> in Statement#run([], [Function: replacement])
+          at Database.<anonymous> (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/sqlite3/lib/sqlite3.js:76:19)
+          at Database.<anonymous> (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/sqlite3/lib/sqlite3.js:20:19)
+          at run (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/src/config/database.js:118:16)
+          at new Promise (<anonymous>)
+          at DatabaseManager.executeWithRetry (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/src/config/database.js:111:30)
+          at Function.executeWithRetry [as create] (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/src/models/Recipe.js:48:23)
+          at async Promise.all (index 5) {
+        errno: 1,
+        code: 'SQLITE_ERROR',
+        __augmented: true
+      }
+
+      47 |     } catch (error) {
+      48 |       await dbManager.executeWithRetry('ROLLBACK').catch(rollbackErr => {
+    > 49 |         console.error('Rollback failed:', rollbackErr);
+         |                 ^
+      50 |       });
+      51 |       
+      52 |       // Enhance error messages for better debugging
+
+      at error (src/models/Recipe.js:49:17)
+      at Function.create (src/models/Recipe.js:48:7)
+          at async Promise.all (index 5)
+
+  ● Recipe CRUD Operations Unit Tests › Recipe Creation › should validate recipe data constraints
+
+    expect(received).rejects.toThrow()
+
+    Received promise resolved instead of rejected
+    Resolved to value: {"cook_time": 30, "description": "A test recipe for unit testing", "difficulty": "easy", "id": 2, "ingredients": [{"amount": "1 cup", "name": "Test Ingredient 1", "unit": "cup"}, {"amount": "2 tbsp", "name": "Test Ingredient 2", "unit": "tbsp"}], "instructions": "Test instructions for the recipe", "prep_time": 15, "servings": 0, "title": "Test Recipe 1763692285332", "user_id": 1}
+
+      62 |
+      63 |       for (const data of invalidData) {
+    > 64 |         await expect(Recipe.create(data, testUserId)).rejects.toThrow();
+         |               ^
+      65 |       }
+      66 |     });
+      67 |   });
+
+      at expect (node_modules/expect/build/index.js:113:15)
+      at Object.expect (src/tests/unit/recipe-crud.test.js:64:15)
+
+  ● Recipe CRUD Operations Unit Tests › Recipe Retrieval › should retrieve recipe by ID successfully
+
+    Recipe ID and User ID are required
+
+      120 |   static async findById(id, userId) {
+      121 |     if (!id || !userId) {
+    > 122 |       throw new Error('Recipe ID and User ID are required');
+          |             ^
+      123 |     }
+      124 |
+      125 |     try {
+
+      at Function.findById (src/models/Recipe.js:122:13)
+      at Object.findById (src/tests/unit/recipe-crud.test.js:78:35)
+
+  ● Recipe CRUD Operations Unit Tests › Recipe Retrieval › should return null for non-existent recipe ID
+
+    Recipe ID and User ID are required
+
+      120 |   static async findById(id, userId) {
+      121 |     if (!id || !userId) {
+    > 122 |       throw new Error('Recipe ID and User ID are required');
+          |             ^
+      123 |     }
+      124 |
+      125 |     try {
+
+      at Function.findById (src/models/Recipe.js:122:13)
+      at Object.findById (src/tests/unit/recipe-crud.test.js:87:35)
+
+  ● Recipe CRUD Operations Unit Tests › Recipe Update › should update recipe successfully with valid data
+
+    TypeError: Cannot destructure property 'title' of 'recipeData' as it is undefined.
+
+      154 |
+      155 |   static async update(id, userId, recipeData) {
+    > 156 |     const { title, description, category_id, prep_time, cook_time, servings, difficulty, instructions, notes, ingredients } = recipeData;
+          |             ^
+      157 |     
+      158 |     if (!id || !userId) {
+      159 |       throw new Error('Recipe ID and User ID are required');
+
+      at Function.title [as update] (src/models/Recipe.js:156:13)
+      at Object.update (src/tests/unit/recipe-crud.test.js:147:36)
+
+  ● Recipe CRUD Operations Unit Tests › Recipe Update › should return false for non-existent recipe update
+
+    TypeError: Cannot destructure property 'title' of 'recipeData' as it is undefined.
+
+      154 |
+      155 |   static async update(id, userId, recipeData) {
+    > 156 |     const { title, description, category_id, prep_time, cook_time, servings, difficulty, instructions, notes, ingredients } = recipeData;
+          |             ^
+      157 |     
+      158 |     if (!id || !userId) {
+      159 |       throw new Error('Recipe ID and User ID are required');
+
+      at Function.title [as update] (src/models/Recipe.js:156:13)
+      at Object.update (src/tests/unit/recipe-crud.test.js:170:36)
+
+  ● Recipe CRUD Operations Unit Tests › Recipe Update › should update only provided fields
+
+    TypeError: Cannot destructure property 'title' of 'recipeData' as it is undefined.
+
+      154 |
+      155 |   static async update(id, userId, recipeData) {
+    > 156 |     const { title, description, category_id, prep_time, cook_time, servings, difficulty, instructions, notes, ingredients } = recipeData;
+          |             ^
+      157 |     
+      158 |     if (!id || !userId) {
+      159 |       throw new Error('Recipe ID and User ID are required');
+
+      at Function.title [as update] (src/models/Recipe.js:156:13)
+      at Object.update (src/tests/unit/recipe-crud.test.js:178:20)
+
+  ● Recipe CRUD Operations Unit Tests › Recipe Deletion › should delete recipe successfully
+
+    Recipe ID and User ID are required
+
+      214 |   static async delete(id, userId) {
+      215 |     if (!id || !userId) {
+    > 216 |       throw new Error('Recipe ID and User ID are required');
+          |             ^
+      217 |     }
+      218 |
+      219 |     try {
+
+      at Function.delete (src/models/Recipe.js:216:13)
+      at Object.<anonymous> (src/tests/unit/recipe-crud.test.js:195:42)
+
+  ● Recipe CRUD Operations Unit Tests › Recipe Deletion › should return false for non-existent recipe deletion
+
+    Recipe ID and User ID are required
+
+      214 |   static async delete(id, userId) {
+      215 |     if (!id || !userId) {
+    > 216 |       throw new Error('Recipe ID and User ID are required');
+          |             ^
+      217 |     }
+      218 |
+      219 |     try {
+
+      at Function.delete (src/models/Recipe.js:216:13)
+      at Object.<anonymous> (src/tests/unit/recipe-crud.test.js:203:42)
+
+  ● Recipe CRUD Operations Unit Tests › Recipe Deletion › should cascade delete ingredients when recipe is deleted
+
+    Recipe ID and User ID are required
+
+      214 |   static async delete(id, userId) {
+      215 |     if (!id || !userId) {
+    > 216 |       throw new Error('Recipe ID and User ID are required');
+          |             ^
+      217 |     }
+      218 |
+      219 |     try {
+
+      at Function.delete (src/models/Recipe.js:216:13)
+      at Object.<anonymous> (src/tests/unit/recipe-crud.test.js:211:26)
+
+  ● Recipe CRUD Operations Unit Tests › Recipe Performance Tests › should retrieve recipe within acceptable time
+
+    Recipe ID and User ID are required
+
+      120 |   static async findById(id, userId) {
+      121 |     if (!id || !userId) {
+    > 122 |       throw new Error('Recipe ID and User ID are required');
+          |             ^
+      123 |     }
+      124 |
+      125 |     try {
+
+      at Function.findById (src/models/Recipe.js:122:13)
+      at Object.findById (src/tests/unit/recipe-crud.test.js:240:20)
+
+  ● Recipe CRUD Operations Unit Tests › Recipe Performance Tests › should handle concurrent recipe operations
+
+    thrown: "Exceeded timeout of 30000 ms for a test.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      245 |     });
+      246 |
+    > 247 |     test('should handle concurrent recipe operations', async () => {
+          |     ^
+      248 |       const operations = [];
+      249 |
+      250 |       // Create 10 recipes concurrently
+
+      at test (src/tests/unit/recipe-crud.test.js:247:5)
+      at describe (src/tests/unit/recipe-crud.test.js:223:3)
+      at Object.describe (src/tests/unit/recipe-crud.test.js:5:1)
+
+  ● Recipe CRUD Operations Unit Tests › Recipe Business Logic › should calculate total recipe time correctly
+
+    thrown: "Exceeded timeout of 30000 ms for a test.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      265 |
+      266 |   describe('Recipe Business Logic', () => {
+    > 267 |     test('should calculate total recipe time correctly', async () => {
+          |     ^
+      268 |       const recipeData = {
+      269 |         ...global.testUtils.createTestRecipe(testUserId),
+      270 |         prep_time: 15,
+
+      at test (src/tests/unit/recipe-crud.test.js:267:5)
+      at describe (src/tests/unit/recipe-crud.test.js:266:3)
+      at Object.describe (src/tests/unit/recipe-crud.test.js:5:1)
+
+  ● Recipe CRUD Operations Unit Tests › Recipe Business Logic › should handle favorite recipes functionality
+
+    SQLITE_ERROR: cannot start a transaction within a transaction
+    --> in Statement#run([], [Function: replacement])
+
+      116 |             });
+      117 |           } else {
+    > 118 |             db.run(query, params, function(err) {
+          |                ^
+      119 |               if (err) reject(err);
+      120 |               else resolve({ changes: this.changes, lastID: this.lastID });
+      121 |             });
+
+      at Database.<anonymous> (node_modules/sqlite3/lib/sqlite3.js:76:19)
+      at Database.<anonymous> (node_modules/sqlite3/lib/sqlite3.js:20:19)
+      at run (src/config/database.js:118:16)
+      at DatabaseManager.executeWithRetry (src/config/database.js:111:30)
+      at Function.executeWithRetry [as create] (src/models/Recipe.js:17:23)
+      at Object.create (src/tests/unit/recipe-crud.test.js:282:35)
+
+
+  ●  Cannot log after tests are done. Did you forget to wait for something async in your test?
+    Attempted to log "Rollback failed: Error: SQLITE_ERROR: cannot rollback - no transaction is active
+    --> in Statement#run([], [Function: replacement])
+        at Database.<anonymous> (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/sqlite3/lib/sqlite3.js:76:19)
+        at Database.<anonymous> (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/sqlite3/lib/sqlite3.js:20:19)
+        at run (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/src/config/database.js:118:16)
+        at new Promise (<anonymous>)
+        at DatabaseManager.executeWithRetry (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/src/config/database.js:111:30)
+        at Function.executeWithRetry [as create] (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/src/models/Recipe.js:48:23)
+        at async Promise.all (index 9) {
+      errno: 1,
+      code: 'SQLITE_ERROR',
+      __augmented: true
+    }".
+
+      116 |             });
+      117 |           } else {
+    > 118 |             db.run(query, params, function(err) {
+          |                ^
+      119 |               if (err) reject(err);
+      120 |               else resolve({ changes: this.changes, lastID: this.lastID });
+      121 |             });
+
+      at Database.<anonymous> (node_modules/sqlite3/lib/sqlite3.js:76:19)
+      at Database.<anonymous> (node_modules/sqlite3/lib/sqlite3.js:20:19)
+      at run (src/config/database.js:118:16)
+      at DatabaseManager.executeWithRetry (src/config/database.js:111:30)
+      at Function.executeWithRetry [as create] (src/models/Recipe.js:48:23)
+          at async Promise.all (index 9) {
+        errno: 1,
+        code: 'SQLITE_ERROR',
+        __augmented: true
+      }".
+      at console.error (node_modules/@jest/console/build/BufferedConsole.js:127:10)
+      at error (src/models/Recipe.js:49:17)
+      at Function.create (src/models/Recipe.js:48:7)
+          at async Promise.all (index 9)
+
+
+  ●  Cannot log after tests are done. Did you forget to wait for something async in your test?
+    Attempted to log "Rollback failed: Error: SQLITE_ERROR: cannot rollback - no transaction is active
+    --> in Statement#run([], [Function: replacement])
+        at Database.<anonymous> (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/sqlite3/lib/sqlite3.js:76:19)
+        at Database.<anonymous> (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/sqlite3/lib/sqlite3.js:20:19)
+        at run (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/src/config/database.js:118:16)
+        at new Promise (<anonymous>)
+        at DatabaseManager.executeWithRetry (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/src/config/database.js:111:30)
+        at Function.executeWithRetry [as create] (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/src/models/Recipe.js:48:23)
+        at async Promise.all (index 8) {
+      errno: 1,
+      code: 'SQLITE_ERROR',
+      __augmented: true
+    }".
+
+      116 |             });
+      117 |           } else {
+    > 118 |             db.run(query, params, function(err) {
+          |                ^
+      119 |               if (err) reject(err);
+      120 |               else resolve({ changes: this.changes, lastID: this.lastID });
+      121 |             });
+
+      at Database.<anonymous> (node_modules/sqlite3/lib/sqlite3.js:76:19)
+      at Database.<anonymous> (node_modules/sqlite3/lib/sqlite3.js:20:19)
+      at run (src/config/database.js:118:16)
+      at DatabaseManager.executeWithRetry (src/config/database.js:111:30)
+      at Function.executeWithRetry [as create] (src/models/Recipe.js:48:23)
+          at async Promise.all (index 8) {
+        errno: 1,
+        code: 'SQLITE_ERROR',
+        __augmented: true
+      }".
+      at console.error (node_modules/@jest/console/build/BufferedConsole.js:127:10)
+      at error (src/models/Recipe.js:49:17)
+      at Function.create (src/models/Recipe.js:48:7)
+          at async Promise.all (index 8)
+
+
+  ●  Cannot log after tests are done. Did you forget to wait for something async in your test?
+    Attempted to log "Rollback failed: Error: SQLITE_ERROR: cannot rollback - no transaction is active
+    --> in Statement#run([], [Function: replacement])
+        at Database.<anonymous> (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/sqlite3/lib/sqlite3.js:76:19)
+        at Database.<anonymous> (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/sqlite3/lib/sqlite3.js:20:19)
+        at run (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/src/config/database.js:118:16)
+        at new Promise (<anonymous>)
+        at DatabaseManager.executeWithRetry (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/src/config/database.js:111:30)
+        at Function.executeWithRetry [as create] (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/src/models/Recipe.js:48:23)
+        at Object.<anonymous> (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/src/tests/unit/recipe-crud.test.js:274:22) {
+      errno: 1,
+      code: 'SQLITE_ERROR',
+      __augmented: true
+    }".
+
+      116 |             });
+      117 |           } else {
+    > 118 |             db.run(query, params, function(err) {
+          |                ^
+      119 |               if (err) reject(err);
+      120 |               else resolve({ changes: this.changes, lastID: this.lastID });
+      121 |             });
+
+      at Database.<anonymous> (node_modules/sqlite3/lib/sqlite3.js:76:19)
+      at Database.<anonymous> (node_modules/sqlite3/lib/sqlite3.js:20:19)
+      at run (src/config/database.js:118:16)
+      at DatabaseManager.executeWithRetry (src/config/database.js:111:30)
+      at Function.executeWithRetry [as create] (src/models/Recipe.js:48:23)
+      at Object.<anonymous> (src/tests/unit/recipe-crud.test.js:274:22) {
+        errno: 1,
+        code: 'SQLITE_ERROR',
+        __augmented: true
+      }".
+      at console.error (node_modules/@jest/console/build/BufferedConsole.js:127:10)
+      at error (src/models/Recipe.js:49:17)
+      at Function.create (src/models/Recipe.js:48:7)
+      at Object.<anonymous> (src/tests/unit/recipe-crud.test.js:274:22)
+
+FAIL src/tests/unit/database.test.js (121.317 s)
+  ● Database Unit Tests › PostgreSQL Connection Pool › should retry database operations on SQLITE_BUSY
+
+    expect(received).resolves.toBeDefined()
+
+    Received promise rejected instead of resolved
+    Rejected to value: [Error: Database is locked]
+
+      62 |
+      63 |       // リトライ機能をテスト
+    > 64 |       await expect(
+         |             ^
+      65 |         dbManager.executeWithRetry('SELECT 1 as test', [], 3)
+      66 |       ).resolves.toBeDefined();
+      67 |
+
+      at expect (node_modules/expect/build/index.js:113:15)
+      at Object.expect (src/tests/unit/database.test.js:64:13)
+
+  ● Database Unit Tests › Database Query Operations › should execute SELECT queries successfully
+
+    Database is locked
+
+      52 |           const originalAll = db.all.bind(db);
+      53 |           db.all = (query, params, callback) => {
+    > 54 |             const error = new Error('Database is locked');
+         |                           ^
+      55 |             error.code = 'SQLITE_BUSY';
+      56 |             callback(error);
+      57 |           };
+
+      at Database.db.all (src/tests/unit/database.test.js:54:27)
+      at all (src/config/database.js:113:16)
+      at DatabaseManager.executeWithRetry (src/config/database.js:111:30)
+      at Object.<anonymous> (src/tests/unit/database.test.js:78:22)
+
+  ● Database Unit Tests › Database Query Operations › should execute INSERT queries successfully
+
+    thrown: "Exceeded timeout of 30000 ms for a test.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      81 |     });
+      82 |
+    > 83 |     test('should execute INSERT queries successfully', async () => {
+         |     ^
+      84 |       const result = await dbManager.executeWithRetry(
+      85 |         'INSERT INTO users (username, email, password) VALUES (?, ?, ?)',
+      86 |         ['testuser', 'test@example.com', 'hashedpassword123']
+
+      at test (src/tests/unit/database.test.js:83:5)
+      at describe (src/tests/unit/database.test.js:76:3)
+      at Object.describe (src/tests/unit/database.test.js:5:1)
+
+  ● Database Unit Tests › Database Query Operations › should handle database constraints properly
+
+    thrown: "Exceeded timeout of 30000 ms for a test.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      90 |     });
+      91 |
+    > 92 |     test('should handle database constraints properly', async () => {
+         |     ^
+      93 |       await expect(
+      94 |         dbManager.executeWithRetry(
+      95 |           'INSERT INTO users (username, email, password) VALUES (?, ?, ?)',
+
+      at test (src/tests/unit/database.test.js:92:5)
+      at describe (src/tests/unit/database.test.js:76:3)
+      at Object.describe (src/tests/unit/database.test.js:5:1)
+
+  ● Database Unit Tests › Database Integrity › should enforce foreign key constraints
+
+    thrown: "Exceeded timeout of 30000 ms for a test.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      126 |
+      127 |   describe('Database Integrity', () => {
+    > 128 |     test('should enforce foreign key constraints', async () => {
+          |     ^
+      129 |       // Test foreign key constraint for recipes table
+      130 |       await expect(
+      131 |         dbManager.executeWithRetry(
+
+      at test (src/tests/unit/database.test.js:128:5)
+      at describe (src/tests/unit/database.test.js:127:3)
+      at Object.describe (src/tests/unit/database.test.js:5:1)
+
+  ● Database Unit Tests › Database Integrity › should enforce NOT NULL constraints
+
+    thrown: "Exceeded timeout of 30000 ms for a test.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      136 |     });
+      137 |
+    > 138 |     test('should enforce NOT NULL constraints', async () => {
+          |     ^
+      139 |       await expect(
+      140 |         dbManager.executeWithRetry(
+      141 |           'INSERT INTO users (username, email) VALUES (?, ?)',
+
+      at test (src/tests/unit/database.test.js:138:5)
+      at describe (src/tests/unit/database.test.js:127:3)
+      at Object.describe (src/tests/unit/database.test.js:5:1)
+
+Test Suites: 8 failed, 5 passed, 13 total
+Tests:       103 failed, 190 passed, 293 total
+Snapshots:   0 total
+Time:        121.62 s, estimated 122 s
+Ran all test suites.

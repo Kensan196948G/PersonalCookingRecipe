@@ -1,42 +1,36 @@
-// Test setup configuration
+// Test setup configuration - PostgreSQL対応
 process.env.NODE_ENV = 'test';
-process.env.DATABASE_PATH = './data/test-recipes.db';
+process.env.DB_TYPE = 'postgresql';
+process.env.DB_HOST = 'localhost';
+process.env.DB_PORT = '5433'; // テスト用ポート
+process.env.DB_NAME = 'recipe_test_db';
+process.env.DB_USER = 'recipe_test_user';
+process.env.DB_PASSWORD = 'test_password';
 process.env.JWT_SECRET = 'test-secret-key-for-testing';
 process.env.PORT = 0; // Use random available port
 
 const fs = require('fs');
 const path = require('path');
-const { closeConnections } = require('../src/config/database');
 
-// Clean test database before each test run
-const testDbPath = path.join(__dirname, '../data/test-recipes.db');
-const testDbWalPath = testDbPath + '-wal';
-const testDbShmPath = testDbPath + '-shm';
+// PostgreSQL テスト用設定 - SQLite削除済み
+const { close } = require('../src/config/database-postgresql');
 
-// Helper function to clean test database files
-const cleanTestDatabase = () => {
-  const filesToRemove = [testDbPath, testDbWalPath, testDbShmPath];
-  filesToRemove.forEach(file => {
-    if (fs.existsSync(file)) {
-      try {
-        fs.unlinkSync(file);
-      } catch (err) {
-        console.warn(`Could not remove test database file: ${file}`, err.message);
-      }
-    }
-  });
+// Helper function for PostgreSQL test cleanup
+const cleanTestDatabase = async () => {
+  // PostgreSQL テスト環境のクリーンアップはDBレベルで実行
+  console.log('PostgreSQL test environment - no file cleanup needed');
 };
 
 // Clean database before tests start
-beforeAll(() => {
-  cleanTestDatabase();
+beforeAll(async () => {
+  await cleanTestDatabase();
 });
 
 // Clean up after each test
 afterEach(async () => {
-  // Close any open database connections
+  // Close any open PostgreSQL connections
   try {
-    await closeConnections();
+    if (close) await close();
   } catch (err) {
     console.warn('Error closing database connections:', err.message);
   }
@@ -46,14 +40,14 @@ afterEach(async () => {
 afterAll(async () => {
   // Close database connections
   try {
-    await closeConnections();
+    if (close) await close();
   } catch (err) {
     console.warn('Error closing database connections in afterAll:', err.message);
   }
   
-  // Clean up test database files
-  setTimeout(() => {
-    cleanTestDatabase();
+  // Clean up test database
+  setTimeout(async () => {
+    await cleanTestDatabase();
   }, 100);
   
   // Restore original console

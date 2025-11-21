@@ -1,0 +1,12 @@
+{"level":"info","message":"安全対策コントローラー初期化開始","service":"safety-controller","timestamp":"2025-09-03T03:54:08.465Z"}
+{"level":"info","message":"安全対策コントローラー初期化開始","service":"safety-controller","timestamp":"2025-09-03T03:54:08.697Z"}
+{"level":"info","message":"バックアップディレクトリ確保: /tmp/test-backups","service":"safety-controller","timestamp":"2025-09-03T03:54:08.704Z"}
+{"level":"info","message":"安全対策コントローラー初期化完了","service":"safety-controller","timestamp":"2025-09-03T03:54:08.706Z"}
+{"level":"info","message":"バックアップディレクトリ確保: /tmp/test-backups","service":"safety-controller","timestamp":"2025-09-03T03:54:08.738Z"}
+{"level":"info","message":"安全対策コントローラー初期化完了","service":"safety-controller","timestamp":"2025-09-03T03:54:08.743Z"}
+{"attemptNumber":1,"componentType":"test-component","level":"info","message":"修復試行記録","service":"safety-controller","success":false,"timestamp":"2025-09-03T03:54:08.881Z"}
+{"attemptNumber":2,"componentType":"test-component","level":"info","message":"修復試行記録","service":"safety-controller","success":false,"timestamp":"2025-09-03T03:54:08.891Z"}
+{"level":"info","message":"バックアップ作成完了: test_2025-09-03T03-54-08-900Z","service":"safety-controller","timestamp":"2025-09-03T03:54:08.918Z"}
+{"level":"info","message":"安全対策コントローラー停止開始","service":"safety-controller","timestamp":"2025-09-03T03:54:09.388Z"}
+{"level":"info","message":"バックアップ作成完了: system_state_2025-09-03T03-54-09-389Z","service":"safety-controller","timestamp":"2025-09-03T03:54:09.405Z"}
+{"level":"info","message":"安全対策コントローラー停止完了","service":"safety-controller","timestamp":"2025-09-03T03:54:09.406Z"}

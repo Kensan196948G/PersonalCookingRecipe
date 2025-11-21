@@ -1,0 +1,812 @@
+
+> recipe-backend@2.0.0 test
+> jest
+
+FAIL src/tests/unit/authController.test.js
+  ● Console
+
+    console.error
+      Registration error: Error: Database connection failed
+          at Object.<anonymous> (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/src/tests/unit/authController.test.js:120:37)
+          at Promise.then.completed (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/jest-circus/build/utils.js:298:28)
+          at new Promise (<anonymous>)
+          at callAsyncCircusFn (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/jest-circus/build/utils.js:231:10)
+          at _callCircusTest (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/jest-circus/build/run.js:316:40)
+          at processTicksAndRejections (node:internal/process/task_queues:105:5)
+          at _runTest (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/jest-circus/build/run.js:252:3)
+          at _runTestsForDescribeBlock (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/jest-circus/build/run.js:126:9)
+          at _runTestsForDescribeBlock (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/jest-circus/build/run.js:121:9)
+          at _runTestsForDescribeBlock (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/jest-circus/build/run.js:121:9)
+          at run (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/jest-circus/build/run.js:71:3)
+          at runAndTransformResultsToJestFormat (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)
+          at jestAdapter (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
+          at runTestInternal (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/jest-runner/build/runTest.js:367:16)
+          at runTest (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/jest-runner/build/runTest.js:444:34)
+          at Object.worker (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/jest-runner/build/testWorker.js:106:12)
+
+      41 |     );
+      42 |   } catch (error) {
+    > 43 |     console.error('Registration error:', error);
+         |             ^
+      44 |     res.status(ERROR_CODES.INTERNAL_SERVER_ERROR.status).json(
+      45 |       createErrorResponse(ERROR_CODES.INTERNAL_SERVER_ERROR, error.message)
+      46 |     );
+
+      at Object.error [as register] (src/controllers/authController.js:43:13)
+      at Object.<anonymous> (src/tests/unit/authController.test.js:122:7)
+
+  ● Authentication Controller - Complete Test Suite › 🔄 トークンリフレッシュ (refreshToken) › リフレッシュトークンが未実装のため501エラー
+
+    expect(jest.fn()).toHaveBeenCalledWith(...expected)
+
+    Expected: ObjectContaining {"error": ObjectContaining {"code": "INTERNAL_SERVER_ERROR", "message": StringContaining "Refresh token"}, "success": false}
+    Received: {"error": {"code": "INTERNAL_SERVER_ERROR", "details": "Refresh token functionality coming soon", "message": "An internal server error occurred", "metadata": {}, "statusCode": 500, "timestamp": "2025-11-21T01:45:27.409Z"}, "success": false}
+
+    Number of calls: 1
+
+      426 |
+      427 |       expect(mockRes.status).toHaveBeenCalledWith(501);
+    > 428 |       expect(mockRes.json).toHaveBeenCalledWith(
+          |                            ^
+      429 |         expect.objectContaining({
+      430 |           success: false,
+      431 |           error: expect.objectContaining({
+
+      at Object.toHaveBeenCalledWith (src/tests/unit/authController.test.js:428:28)
+
+  ● Authentication Controller - Complete Test Suite › 🔄 トークンリフレッシュ (refreshToken) › リフレッシュトークンが提供されていない場合
+
+    expect(jest.fn()).toHaveBeenCalledWith(...expected)
+
+    Expected: ObjectContaining {"error": ObjectContaining {"code": "AUTH_NO_TOKEN", "message": StringContaining "Refresh token"}, "success": false}
+    Received: {"error": {"code": "AUTH_NO_TOKEN", "details": "Refresh token is required", "message": "No authentication token provided", "metadata": {}, "statusCode": 401, "timestamp": "2025-11-21T01:45:27.414Z"}, "success": false}
+
+    Number of calls: 1
+
+      443 |
+      444 |       expect(mockRes.status).toHaveBeenCalledWith(ERROR_CODES.AUTH_NO_TOKEN.status);
+    > 445 |       expect(mockRes.json).toHaveBeenCalledWith(
+          |                            ^
+      446 |         expect.objectContaining({
+      447 |           success: false,
+      448 |           error: expect.objectContaining({
+
+      at Object.toHaveBeenCalledWith (src/tests/unit/authController.test.js:445:28)
+
+FAIL src/tests/unit/jwt-auth.test.js
+  ● JWT Authentication Unit Tests › Auth Middleware Tests › should authenticate valid token in middleware
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 123
+    Received: undefined
+
+       96 |       auth(req, res, next);
+       97 |
+    >  98 |       expect(req.userId).toBe(123);
+          |                          ^
+       99 |       expect(next).toHaveBeenCalled();
+      100 |       expect(res.status).not.toHaveBeenCalled();
+      101 |     });
+
+      at Object.toBe (src/tests/unit/jwt-auth.test.js:98:26)
+
+  ● JWT Authentication Unit Tests › Auth Middleware Tests › should reject request with invalid token
+
+    expect(jest.fn()).toHaveBeenCalledWith(...expected)
+
+    Expected: 401
+
+    Number of calls: 0
+
+      130 |       auth(req, res, next);
+      131 |
+    > 132 |       expect(res.status).toHaveBeenCalledWith(401);
+          |                          ^
+      133 |       expect(res.json).toHaveBeenCalledWith({ error: 'Invalid token' });
+      134 |       expect(next).not.toHaveBeenCalled();
+      135 |     });
+
+      at Object.toHaveBeenCalledWith (src/tests/unit/jwt-auth.test.js:132:26)
+
+  ● JWT Authentication Unit Tests › Auth Middleware Tests › should handle malformed Authorization header
+
+    expect(jest.fn()).toHaveBeenCalledWith(...expected)
+
+    Expected: 401
+
+    Number of calls: 0
+
+      147 |       auth(req, res, next);
+      148 |
+    > 149 |       expect(res.status).toHaveBeenCalledWith(401);
+          |                          ^
+      150 |       expect(res.json).toHaveBeenCalledWith({ error: 'Invalid token' });
+      151 |     });
+      152 |   });
+
+      at Object.toHaveBeenCalledWith (src/tests/unit/jwt-auth.test.js:149:26)
+
+FAIL src/tests/unit/errorHandler.test.js
+  ● Error Handler Middleware - Complete Test Suite › ⚡ パフォーマンステスト › エラー処理が高速 (<1ms)
+
+    expect(received).toBeLessThan(expected)
+
+    Expected: < 1
+    Received:   1
+
+      339 |       const endTime = Date.now();
+      340 |
+    > 341 |       expect(endTime - startTime).toBeLessThan(1);
+          |                                   ^
+      342 |     });
+      343 |
+      344 |     test('大量のエラーを短時間で処理できる', () => {
+
+      at Object.toBeLessThan (src/tests/unit/errorHandler.test.js:341:35)
+
+  ● Error Handler Middleware - Complete Test Suite › ⚡ パフォーマンステスト › 大量のエラーを短時間で処理できる
+
+    expect(received).toBeLessThan(expected)
+
+    Expected: < 100
+    Received:   297
+
+      358 |
+      359 |       // 1000件のエラー処理が100ms以内
+    > 360 |       expect(endTime - startTime).toBeLessThan(100);
+          |                                   ^
+      361 |     });
+      362 |   });
+      363 |
+
+      at Object.toBeLessThan (src/tests/unit/errorHandler.test.js:360:35)
+
+FAIL src/tests/unit/recipe-crud.test.js
+  ● Console
+
+    console.error
+      Database initialization failed: Error: SQLITE_ERROR: no such table: main.recipes
+      --> in Database#run('CREATE INDEX IF NOT EXISTS idx_recipes_user_id ON recipes(user_id)', [], [Function (anonymous)])
+          at run (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/src/config/database.js:118:16)
+          at new Promise (<anonymous>)
+          at DatabaseManager.executeWithRetry (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/src/config/database.js:111:30)
+          at executeWithRetry (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/src/config/database.js:240:23)
+          at Object.<anonymous> (/mnt/Linux-ExHDD/PersonalCookingRecipe/backend/src/tests/unit/recipe-crud.test.js:10:5) {
+        errno: 1,
+        code: 'SQLITE_ERROR',
+        __augmented: true
+      }
+
+      246 |     
+      247 |   } catch (error) {
+    > 248 |     console.error('Database initialization failed:', error);
+          |             ^
+      249 |     throw error;
+      250 |   }
+      251 | };
+
+      at error (src/config/database.js:248:13)
+      at Object.<anonymous> (src/tests/unit/recipe-crud.test.js:10:5)
+
+  ● Recipe CRUD Operations Unit Tests › Recipe Creation › should create recipe successfully with valid data
+
+    SQLITE_ERROR: no such table: main.recipes
+    --> in Database#run('CREATE INDEX IF NOT EXISTS idx_recipes_user_id ON recipes(user_id)', [], [Function (anonymous)])
+
+      116 |             });
+      117 |           } else {
+    > 118 |             db.run(query, params, function(err) {
+          |                ^
+      119 |               if (err) reject(err);
+      120 |               else resolve({ changes: this.changes, lastID: this.lastID });
+      121 |             });
+
+      at run (src/config/database.js:118:16)
+      at DatabaseManager.executeWithRetry (src/config/database.js:111:30)
+      at executeWithRetry (src/config/database.js:240:23)
+      at Object.<anonymous> (src/tests/unit/recipe-crud.test.js:10:5)
+
+  ● Recipe CRUD Operations Unit Tests › Recipe Creation › should reject recipe creation with missing required fields
+
+    SQLITE_ERROR: no such table: main.recipes
+    --> in Database#run('CREATE INDEX IF NOT EXISTS idx_recipes_user_id ON recipes(user_id)', [], [Function (anonymous)])
+
+      116 |             });
+      117 |           } else {
+    > 118 |             db.run(query, params, function(err) {
+          |                ^
+      119 |               if (err) reject(err);
+      120 |               else resolve({ changes: this.changes, lastID: this.lastID });
+      121 |             });
+
+      at run (src/config/database.js:118:16)
+      at DatabaseManager.executeWithRetry (src/config/database.js:111:30)
+      at executeWithRetry (src/config/database.js:240:23)
+      at Object.<anonymous> (src/tests/unit/recipe-crud.test.js:10:5)
+
+  ● Recipe CRUD Operations Unit Tests › Recipe Creation › should reject recipe creation with invalid user_id
+
+    SQLITE_ERROR: no such table: main.recipes
+    --> in Database#run('CREATE INDEX IF NOT EXISTS idx_recipes_user_id ON recipes(user_id)', [], [Function (anonymous)])
+
+      116 |             });
+      117 |           } else {
+    > 118 |             db.run(query, params, function(err) {
+          |                ^
+      119 |               if (err) reject(err);
+      120 |               else resolve({ changes: this.changes, lastID: this.lastID });
+      121 |             });
+
+      at run (src/config/database.js:118:16)
+      at DatabaseManager.executeWithRetry (src/config/database.js:111:30)
+      at executeWithRetry (src/config/database.js:240:23)
+      at Object.<anonymous> (src/tests/unit/recipe-crud.test.js:10:5)
+
+  ● Recipe CRUD Operations Unit Tests › Recipe Creation › should validate recipe data constraints
+
+    SQLITE_ERROR: no such table: main.recipes
+    --> in Database#run('CREATE INDEX IF NOT EXISTS idx_recipes_user_id ON recipes(user_id)', [], [Function (anonymous)])
+
+      116 |             });
+      117 |           } else {
+    > 118 |             db.run(query, params, function(err) {
+          |                ^
+      119 |               if (err) reject(err);
+      120 |               else resolve({ changes: this.changes, lastID: this.lastID });
+      121 |             });
+
+      at run (src/config/database.js:118:16)
+      at DatabaseManager.executeWithRetry (src/config/database.js:111:30)
+      at executeWithRetry (src/config/database.js:240:23)
+      at Object.<anonymous> (src/tests/unit/recipe-crud.test.js:10:5)
+
+  ● Recipe CRUD Operations Unit Tests › Recipe Retrieval › should retrieve recipe by ID successfully
+
+    SQLITE_ERROR: no such table: main.recipes
+    --> in Database#run('CREATE INDEX IF NOT EXISTS idx_recipes_user_id ON recipes(user_id)', [], [Function (anonymous)])
+
+      116 |             });
+      117 |           } else {
+    > 118 |             db.run(query, params, function(err) {
+          |                ^
+      119 |               if (err) reject(err);
+      120 |               else resolve({ changes: this.changes, lastID: this.lastID });
+      121 |             });
+
+      at run (src/config/database.js:118:16)
+      at DatabaseManager.executeWithRetry (src/config/database.js:111:30)
+      at executeWithRetry (src/config/database.js:240:23)
+      at Object.<anonymous> (src/tests/unit/recipe-crud.test.js:10:5)
+
+  ● Recipe CRUD Operations Unit Tests › Recipe Retrieval › should return null for non-existent recipe ID
+
+    SQLITE_ERROR: no such table: main.recipes
+    --> in Database#run('CREATE INDEX IF NOT EXISTS idx_recipes_user_id ON recipes(user_id)', [], [Function (anonymous)])
+
+      116 |             });
+      117 |           } else {
+    > 118 |             db.run(query, params, function(err) {
+          |                ^
+      119 |               if (err) reject(err);
+      120 |               else resolve({ changes: this.changes, lastID: this.lastID });
+      121 |             });
+
+      at run (src/config/database.js:118:16)
+      at DatabaseManager.executeWithRetry (src/config/database.js:111:30)
+      at executeWithRetry (src/config/database.js:240:23)
+      at Object.<anonymous> (src/tests/unit/recipe-crud.test.js:10:5)
+
+  ● Recipe CRUD Operations Unit Tests › Recipe Retrieval › should retrieve recipes by user ID
+
+    SQLITE_ERROR: no such table: main.recipes
+    --> in Database#run('CREATE INDEX IF NOT EXISTS idx_recipes_user_id ON recipes(user_id)', [], [Function (anonymous)])
+
+      116 |             });
+      117 |           } else {
+    > 118 |             db.run(query, params, function(err) {
+          |                ^
+      119 |               if (err) reject(err);
+      120 |               else resolve({ changes: this.changes, lastID: this.lastID });
+      121 |             });
+
+      at run (src/config/database.js:118:16)
+      at DatabaseManager.executeWithRetry (src/config/database.js:111:30)
+      at executeWithRetry (src/config/database.js:240:23)
+      at Object.<anonymous> (src/tests/unit/recipe-crud.test.js:10:5)
+
+  ● Recipe CRUD Operations Unit Tests › Recipe Retrieval › should retrieve recipes with ingredients
+
+    SQLITE_ERROR: no such table: main.recipes
+    --> in Database#run('CREATE INDEX IF NOT EXISTS idx_recipes_user_id ON recipes(user_id)', [], [Function (anonymous)])
+
+      116 |             });
+      117 |           } else {
+    > 118 |             db.run(query, params, function(err) {
+          |                ^
+      119 |               if (err) reject(err);
+      120 |               else resolve({ changes: this.changes, lastID: this.lastID });
+      121 |             });
+
+      at run (src/config/database.js:118:16)
+      at DatabaseManager.executeWithRetry (src/config/database.js:111:30)
+      at executeWithRetry (src/config/database.js:240:23)
+      at Object.<anonymous> (src/tests/unit/recipe-crud.test.js:10:5)
+
+  ● Recipe CRUD Operations Unit Tests › Recipe Retrieval › should search recipes by title
+
+    SQLITE_ERROR: no such table: main.recipes
+    --> in Database#run('CREATE INDEX IF NOT EXISTS idx_recipes_user_id ON recipes(user_id)', [], [Function (anonymous)])
+
+      116 |             });
+      117 |           } else {
+    > 118 |             db.run(query, params, function(err) {
+          |                ^
+      119 |               if (err) reject(err);
+      120 |               else resolve({ changes: this.changes, lastID: this.lastID });
+      121 |             });
+
+      at run (src/config/database.js:118:16)
+      at DatabaseManager.executeWithRetry (src/config/database.js:111:30)
+      at executeWithRetry (src/config/database.js:240:23)
+      at Object.<anonymous> (src/tests/unit/recipe-crud.test.js:10:5)
+
+  ● Recipe CRUD Operations Unit Tests › Recipe Update › should update recipe successfully with valid data
+
+    SQLITE_ERROR: no such table: main.recipes
+    --> in Database#run('CREATE INDEX IF NOT EXISTS idx_recipes_user_id ON recipes(user_id)', [], [Function (anonymous)])
+
+      116 |             });
+      117 |           } else {
+    > 118 |             db.run(query, params, function(err) {
+          |                ^
+      119 |               if (err) reject(err);
+      120 |               else resolve({ changes: this.changes, lastID: this.lastID });
+      121 |             });
+
+      at run (src/config/database.js:118:16)
+      at DatabaseManager.executeWithRetry (src/config/database.js:111:30)
+      at executeWithRetry (src/config/database.js:240:23)
+      at Object.<anonymous> (src/tests/unit/recipe-crud.test.js:10:5)
+
+  ● Recipe CRUD Operations Unit Tests › Recipe Update › should reject update with invalid data
+
+    SQLITE_ERROR: no such table: main.recipes
+    --> in Database#run('CREATE INDEX IF NOT EXISTS idx_recipes_user_id ON recipes(user_id)', [], [Function (anonymous)])
+
+      116 |             });
+      117 |           } else {
+    > 118 |             db.run(query, params, function(err) {
+          |                ^
+      119 |               if (err) reject(err);
+      120 |               else resolve({ changes: this.changes, lastID: this.lastID });
+      121 |             });
+
+      at run (src/config/database.js:118:16)
+      at DatabaseManager.executeWithRetry (src/config/database.js:111:30)
+      at executeWithRetry (src/config/database.js:240:23)
+      at Object.<anonymous> (src/tests/unit/recipe-crud.test.js:10:5)
+
+  ● Recipe CRUD Operations Unit Tests › Recipe Update › should return false for non-existent recipe update
+
+    SQLITE_ERROR: no such table: main.recipes
+    --> in Database#run('CREATE INDEX IF NOT EXISTS idx_recipes_user_id ON recipes(user_id)', [], [Function (anonymous)])
+
+      116 |             });
+      117 |           } else {
+    > 118 |             db.run(query, params, function(err) {
+          |                ^
+      119 |               if (err) reject(err);
+      120 |               else resolve({ changes: this.changes, lastID: this.lastID });
+      121 |             });
+
+      at run (src/config/database.js:118:16)
+      at DatabaseManager.executeWithRetry (src/config/database.js:111:30)
+      at executeWithRetry (src/config/database.js:240:23)
+      at Object.<anonymous> (src/tests/unit/recipe-crud.test.js:10:5)
+
+  ● Recipe CRUD Operations Unit Tests › Recipe Update › should update only provided fields
+
+    SQLITE_ERROR: no such table: main.recipes
+    --> in Database#run('CREATE INDEX IF NOT EXISTS idx_recipes_user_id ON recipes(user_id)', [], [Function (anonymous)])
+
+      116 |             });
+      117 |           } else {
+    > 118 |             db.run(query, params, function(err) {
+          |                ^
+      119 |               if (err) reject(err);
+      120 |               else resolve({ changes: this.changes, lastID: this.lastID });
+      121 |             });
+
+      at run (src/config/database.js:118:16)
+      at DatabaseManager.executeWithRetry (src/config/database.js:111:30)
+      at executeWithRetry (src/config/database.js:240:23)
+      at Object.<anonymous> (src/tests/unit/recipe-crud.test.js:10:5)
+
+  ● Recipe CRUD Operations Unit Tests › Recipe Deletion › should delete recipe successfully
+
+    SQLITE_ERROR: no such table: main.recipes
+    --> in Database#run('CREATE INDEX IF NOT EXISTS idx_recipes_user_id ON recipes(user_id)', [], [Function (anonymous)])
+
+      116 |             });
+      117 |           } else {
+    > 118 |             db.run(query, params, function(err) {
+          |                ^
+      119 |               if (err) reject(err);
+      120 |               else resolve({ changes: this.changes, lastID: this.lastID });
+      121 |             });
+
+      at run (src/config/database.js:118:16)
+      at DatabaseManager.executeWithRetry (src/config/database.js:111:30)
+      at executeWithRetry (src/config/database.js:240:23)
+      at Object.<anonymous> (src/tests/unit/recipe-crud.test.js:10:5)
+
+  ● Recipe CRUD Operations Unit Tests › Recipe Deletion › should return false for non-existent recipe deletion
+
+    SQLITE_ERROR: no such table: main.recipes
+    --> in Database#run('CREATE INDEX IF NOT EXISTS idx_recipes_user_id ON recipes(user_id)', [], [Function (anonymous)])
+
+      116 |             });
+      117 |           } else {
+    > 118 |             db.run(query, params, function(err) {
+          |                ^
+      119 |               if (err) reject(err);
+      120 |               else resolve({ changes: this.changes, lastID: this.lastID });
+      121 |             });
+
+      at run (src/config/database.js:118:16)
+      at DatabaseManager.executeWithRetry (src/config/database.js:111:30)
+      at executeWithRetry (src/config/database.js:240:23)
+      at Object.<anonymous> (src/tests/unit/recipe-crud.test.js:10:5)
+
+  ● Recipe CRUD Operations Unit Tests › Recipe Deletion › should cascade delete ingredients when recipe is deleted
+
+    SQLITE_ERROR: no such table: main.recipes
+    --> in Database#run('CREATE INDEX IF NOT EXISTS idx_recipes_user_id ON recipes(user_id)', [], [Function (anonymous)])
+
+      116 |             });
+      117 |           } else {
+    > 118 |             db.run(query, params, function(err) {
+          |                ^
+      119 |               if (err) reject(err);
+      120 |               else resolve({ changes: this.changes, lastID: this.lastID });
+      121 |             });
+
+      at run (src/config/database.js:118:16)
+      at DatabaseManager.executeWithRetry (src/config/database.js:111:30)
+      at executeWithRetry (src/config/database.js:240:23)
+      at Object.<anonymous> (src/tests/unit/recipe-crud.test.js:10:5)
+
+  ● Recipe CRUD Operations Unit Tests › Recipe Performance Tests › should create recipe within acceptable time
+
+    SQLITE_ERROR: no such table: main.recipes
+    --> in Database#run('CREATE INDEX IF NOT EXISTS idx_recipes_user_id ON recipes(user_id)', [], [Function (anonymous)])
+
+      116 |             });
+      117 |           } else {
+    > 118 |             db.run(query, params, function(err) {
+          |                ^
+      119 |               if (err) reject(err);
+      120 |               else resolve({ changes: this.changes, lastID: this.lastID });
+      121 |             });
+
+      at run (src/config/database.js:118:16)
+      at DatabaseManager.executeWithRetry (src/config/database.js:111:30)
+      at executeWithRetry (src/config/database.js:240:23)
+      at Object.<anonymous> (src/tests/unit/recipe-crud.test.js:10:5)
+
+  ● Recipe CRUD Operations Unit Tests › Recipe Performance Tests › should retrieve recipe within acceptable time
+
+    SQLITE_ERROR: no such table: main.recipes
+    --> in Database#run('CREATE INDEX IF NOT EXISTS idx_recipes_user_id ON recipes(user_id)', [], [Function (anonymous)])
+
+      116 |             });
+      117 |           } else {
+    > 118 |             db.run(query, params, function(err) {
+          |                ^
+      119 |               if (err) reject(err);
+      120 |               else resolve({ changes: this.changes, lastID: this.lastID });
+      121 |             });
+
+      at run (src/config/database.js:118:16)
+      at DatabaseManager.executeWithRetry (src/config/database.js:111:30)
+      at executeWithRetry (src/config/database.js:240:23)
+      at Object.<anonymous> (src/tests/unit/recipe-crud.test.js:10:5)
+
+  ● Recipe CRUD Operations Unit Tests › Recipe Performance Tests › should handle concurrent recipe operations
+
+    SQLITE_ERROR: no such table: main.recipes
+    --> in Database#run('CREATE INDEX IF NOT EXISTS idx_recipes_user_id ON recipes(user_id)', [], [Function (anonymous)])
+
+      116 |             });
+      117 |           } else {
+    > 118 |             db.run(query, params, function(err) {
+          |                ^
+      119 |               if (err) reject(err);
+      120 |               else resolve({ changes: this.changes, lastID: this.lastID });
+      121 |             });
+
+      at run (src/config/database.js:118:16)
+      at DatabaseManager.executeWithRetry (src/config/database.js:111:30)
+      at executeWithRetry (src/config/database.js:240:23)
+      at Object.<anonymous> (src/tests/unit/recipe-crud.test.js:10:5)
+
+  ● Recipe CRUD Operations Unit Tests › Recipe Business Logic › should calculate total recipe time correctly
+
+    SQLITE_ERROR: no such table: main.recipes
+    --> in Database#run('CREATE INDEX IF NOT EXISTS idx_recipes_user_id ON recipes(user_id)', [], [Function (anonymous)])
+
+      116 |             });
+      117 |           } else {
+    > 118 |             db.run(query, params, function(err) {
+          |                ^
+      119 |               if (err) reject(err);
+      120 |               else resolve({ changes: this.changes, lastID: this.lastID });
+      121 |             });
+
+      at run (src/config/database.js:118:16)
+      at DatabaseManager.executeWithRetry (src/config/database.js:111:30)
+      at executeWithRetry (src/config/database.js:240:23)
+      at Object.<anonymous> (src/tests/unit/recipe-crud.test.js:10:5)
+
+  ● Recipe CRUD Operations Unit Tests › Recipe Business Logic › should handle favorite recipes functionality
+
+    SQLITE_ERROR: no such table: main.recipes
+    --> in Database#run('CREATE INDEX IF NOT EXISTS idx_recipes_user_id ON recipes(user_id)', [], [Function (anonymous)])
+
+      116 |             });
+      117 |           } else {
+    > 118 |             db.run(query, params, function(err) {
+          |                ^
+      119 |               if (err) reject(err);
+      120 |               else resolve({ changes: this.changes, lastID: this.lastID });
+      121 |             });
+
+      at run (src/config/database.js:118:16)
+      at DatabaseManager.executeWithRetry (src/config/database.js:111:30)
+      at executeWithRetry (src/config/database.js:240:23)
+      at Object.<anonymous> (src/tests/unit/recipe-crud.test.js:10:5)
+
+FAIL src/tests/unit/redis.test.js
+  ● Redis Unit Tests › Redis Security › should sanitize cache keys
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: "user:1:datamalicious"
+    Received: "use:1:daamalicious"
+
+      202 |       
+      203 |       expect(safeKey).not.toContain('\\n');
+    > 204 |       expect(safeKey).toBe('user:1:datamalicious');
+          |                       ^
+      205 |     });
+      206 |
+      207 |     test('should implement proper key namespacing', () => {
+
+      at Object.toBe (src/tests/unit/redis.test.js:204:23)
+
+PASS src/tests/unit/validation.test.js
+PASS src/tests/unit/cache.test.js
+FAIL src/tests/security/security.test.js
+  ● Test suite failed to run
+
+
+    Something went wrong installing the "sharp" module
+
+    Cannot find module '../build/Release/sharp-linux-x64.node' from 'node_modules/sharp/lib/sharp.js'
+
+    Possible solutions:
+    - Install with verbose logging and look for errors: "npm install --ignore-scripts=false --foreground-scripts --verbose sharp"
+    - Install for the current linux-x64 runtime: "npm install --platform=linux --arch=x64 sharp"
+    - Consult the installation documentation: https://sharp.pixelplumbing.com/install
+
+      1 | const Recipe = require('../models/Recipe');
+      2 | const multer = require('multer');
+    > 3 | const sharp = require('sharp');
+        |               ^
+      4 | const path = require('path');
+      5 | const fs = require('fs');
+      6 | const { recipeCacheManager } = require('../utils/recipe-cache');
+
+      at Object.<anonymous> (node_modules/sharp/lib/sharp.js:37:9)
+      at Object.<anonymous> (node_modules/sharp/lib/constructor.js:11:1)
+      at Object.<anonymous> (node_modules/sharp/lib/index.js:6:15)
+      at Object.require (src/controllers/recipeController.js:3:15)
+      at Object.require (src/routes/recipeRoutes.js:3:26)
+      at Object.require (src/tests/security/security.test.js:8:22)
+
+FAIL src/tests/integration/api-endpoints.test.js
+  ● Test suite failed to run
+
+
+    Something went wrong installing the "sharp" module
+
+    Cannot find module '../build/Release/sharp-linux-x64.node' from 'node_modules/sharp/lib/sharp.js'
+
+    Possible solutions:
+    - Install with verbose logging and look for errors: "npm install --ignore-scripts=false --foreground-scripts --verbose sharp"
+    - Install for the current linux-x64 runtime: "npm install --platform=linux --arch=x64 sharp"
+    - Consult the installation documentation: https://sharp.pixelplumbing.com/install
+
+      1 | const Recipe = require('../models/Recipe');
+      2 | const multer = require('multer');
+    > 3 | const sharp = require('sharp');
+        |               ^
+      4 | const path = require('path');
+      5 | const fs = require('fs');
+      6 | const { recipeCacheManager } = require('../utils/recipe-cache');
+
+      at Object.<anonymous> (node_modules/sharp/lib/sharp.js:37:9)
+      at Object.<anonymous> (node_modules/sharp/lib/constructor.js:11:1)
+      at Object.<anonymous> (node_modules/sharp/lib/index.js:6:15)
+      at Object.require (src/controllers/recipeController.js:3:15)
+      at Object.require (src/routes/recipeRoutes.js:3:26)
+      at Object.require (src/tests/integration/api-endpoints.test.js:7:22)
+
+FAIL src/tests/performance/performance.test.js
+  ● Test suite failed to run
+
+
+    Something went wrong installing the "sharp" module
+
+    Cannot find module '../build/Release/sharp-linux-x64.node' from 'node_modules/sharp/lib/sharp.js'
+
+    Possible solutions:
+    - Install with verbose logging and look for errors: "npm install --ignore-scripts=false --foreground-scripts --verbose sharp"
+    - Install for the current linux-x64 runtime: "npm install --platform=linux --arch=x64 sharp"
+    - Consult the installation documentation: https://sharp.pixelplumbing.com/install
+
+      1 | const Recipe = require('../models/Recipe');
+      2 | const multer = require('multer');
+    > 3 | const sharp = require('sharp');
+        |               ^
+      4 | const path = require('path');
+      5 | const fs = require('fs');
+      6 | const { recipeCacheManager } = require('../utils/recipe-cache');
+
+      at Object.<anonymous> (node_modules/sharp/lib/sharp.js:37:9)
+      at Object.<anonymous> (node_modules/sharp/lib/constructor.js:11:1)
+      at Object.<anonymous> (node_modules/sharp/lib/index.js:6:15)
+      at Object.require (src/controllers/recipeController.js:3:15)
+      at Object.require (src/routes/recipeRoutes.js:3:26)
+      at Object.require (src/tests/performance/performance.test.js:8:22)
+
+FAIL src/tests/cache-integration.test.js
+  ● Test suite failed to run
+
+    Jest encountered an unexpected token
+
+    Jest failed to parse a file. This happens e.g. when your code or its dependencies use non-standard JavaScript syntax, or when Jest is not configured to support such syntax.
+
+    Out of the box Jest supports Babel, which will be used to transform your files into valid JS based on your Babel configuration.
+
+    By default "node_modules" folder is ignored by transformers.
+
+    Here's what you can do:
+     • If you are trying to use ECMAScript Modules, see https://jestjs.io/docs/ecmascript-modules for how to enable it.
+     • If you are trying to use TypeScript, see https://jestjs.io/docs/getting-started#using-typescript
+     • To have some of your "node_modules" files transformed, you can specify a custom "transformIgnorePatterns" in your config.
+     • If you need a custom transformation specify a "transform" option in your config.
+     • If you simply want to mock your non-JS modules (e.g. binary assets) you can stub them out with the "moduleNameMapper" config option.
+
+    You'll find more details and examples of these config options in the docs:
+    https://jestjs.io/docs/configuration
+    For information about custom transformations, see:
+    https://jestjs.io/docs/code-transformation
+
+    Details:
+
+    /mnt/Linux-ExHDD/PersonalCookingRecipe/backend/node_modules/chai/index.js:4162
+    export {
+    ^^^^^^
+
+    SyntaxError: Unexpected token 'export'
+
+       7 |  */
+       8 |
+    >  9 | const { expect } = require('chai');
+         |                    ^
+      10 | const sinon = require('sinon');
+      11 | const { redisManager } = require('../config/redis');
+      12 | const { cacheService } = require('../services/cacheService');
+
+      at Runtime.createScriptFromCode (node_modules/jest-runtime/build/index.js:1505:14)
+      at Object.require (src/tests/cache-integration.test.js:9:20)
+
+FAIL src/tests/unit/database.test.js
+  ● Database Unit Tests › PostgreSQL Connection Pool › should retry database operations on SQLITE_BUSY
+
+    expect(received).resolves.toBeDefined()
+
+    Received promise rejected instead of resolved
+    Rejected to value: [Error: Database is locked]
+
+      62 |
+      63 |       // リトライ機能をテスト
+    > 64 |       await expect(
+         |             ^
+      65 |         dbManager.executeWithRetry('SELECT 1 as test', [], 3)
+      66 |       ).resolves.toBeDefined();
+      67 |
+
+      at expect (node_modules/expect/build/index.js:113:15)
+      at Object.expect (src/tests/unit/database.test.js:64:13)
+
+  ● Database Unit Tests › Database Query Operations › should execute SELECT queries successfully
+
+    Database is locked
+
+      52 |           const originalAll = db.all.bind(db);
+      53 |           db.all = (query, params, callback) => {
+    > 54 |             const error = new Error('Database is locked');
+         |                           ^
+      55 |             error.code = 'SQLITE_BUSY';
+      56 |             callback(error);
+      57 |           };
+
+      at Database.db.all (src/tests/unit/database.test.js:54:27)
+      at all (src/config/database.js:113:16)
+      at DatabaseManager.executeWithRetry (src/config/database.js:111:30)
+      at Object.<anonymous> (src/tests/unit/database.test.js:78:22)
+
+  ● Database Unit Tests › Database Query Operations › should execute INSERT queries successfully
+
+    SQLITE_READONLY: attempt to write a readonly database
+    --> in Statement#run([ 'testuser', 'test@example.com', 'hashedpassword123' ], [Function: replacement])
+
+      116 |             });
+      117 |           } else {
+    > 118 |             db.run(query, params, function(err) {
+          |                ^
+      119 |               if (err) reject(err);
+      120 |               else resolve({ changes: this.changes, lastID: this.lastID });
+      121 |             });
+
+      at Database.<anonymous> (node_modules/sqlite3/lib/sqlite3.js:76:19)
+      at Database.<anonymous> (node_modules/sqlite3/lib/sqlite3.js:20:19)
+      at run (src/config/database.js:118:16)
+      at DatabaseManager.executeWithRetry (src/config/database.js:111:30)
+      at Object.<anonymous> (src/tests/unit/database.test.js:81:38)
+
+  ● Database Unit Tests › Database Performance › should execute queries within acceptable time limits
+
+    Database is locked
+
+      52 |           const originalAll = db.all.bind(db);
+      53 |           db.all = (query, params, callback) => {
+    > 54 |             const error = new Error('Database is locked');
+         |                           ^
+      55 |             error.code = 'SQLITE_BUSY';
+      56 |             callback(error);
+      57 |           };
+
+      at Database.db.all (src/tests/unit/database.test.js:54:27)
+      at all (src/config/database.js:113:16)
+      at DatabaseManager.executeWithRetry (src/config/database.js:111:30)
+      at Object.<anonymous> (src/tests/unit/database.test.js:105:7)
+
+  ● Database Unit Tests › Database Performance › should handle concurrent operations
+
+    Database is locked
+
+      52 |           const originalAll = db.all.bind(db);
+      53 |           db.all = (query, params, callback) => {
+    > 54 |             const error = new Error('Database is locked');
+         |                           ^
+      55 |             error.code = 'SQLITE_BUSY';
+      56 |             callback(error);
+      57 |           };
+
+      at Database.db.all (src/tests/unit/database.test.js:54:27)
+      at all (src/config/database.js:113:16)
+      at DatabaseManager.executeWithRetry (src/config/database.js:111:30)
+          at async Promise.all (index 0)
+      at Object.<anonymous> (src/tests/unit/database.test.js:119:23)
+
+PASS src/tests/integration/youtube-api.test.js
+
+Test Suites: 10 failed, 3 passed, 13 total
+Tests:       34 failed, 171 passed, 205 total
+Snapshots:   0 total
+Time:        4.484 s
+Ran all test suites.
