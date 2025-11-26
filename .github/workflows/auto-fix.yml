@@ -1,4 +1,4 @@
-name: GitHub Actions Auto Fix System
+name: 🔧 GitHub Actions エラー自動修復システム
 
 on:
   schedule:
@@ -37,10 +37,10 @@ jobs:
           echo "Detecting failed workflows..."
 
           FAILURES=$(gh api repos/${{ github.repository }}/actions/runs \
-            --jq '.workflow_runs | map(select(.conclusion == "failure" and .name != "GitHub Actions Auto Fix System")) | length')
+            --jq '.workflow_runs | map(select(.conclusion == "failure" and .name != "🔧 GitHub Actions エラー自動修復システム")) | length')
 
           FAILED_NAMES=$(gh api repos/${{ github.repository }}/actions/runs \
-            --jq '[.workflow_runs | map(select(.conclusion == "failure" and .name != "GitHub Actions Auto Fix System")) | .[0:5] | .[].name] | unique | join(", ")')
+            --jq '[.workflow_runs | map(select(.conclusion == "failure" and .name != "🔧 GitHub Actions エラー自動修復システム")) | .[0:5] | .[].name] | unique | join(", ")')
 
           echo "failure_count=$FAILURES" >> $GITHUB_OUTPUT
           echo "failed_workflows=$FAILED_NAMES" >> $GITHUB_OUTPUT
@@ -89,7 +89,7 @@ jobs:
           * [ ] Verify results
 
           ---
-          This issue is automatically managed by GitHub Actions Auto Fix System."
+          This issue is automatically managed by 🔧 GitHub Actions エラー自動修復システム."
 
           if [ -n "$EXISTING_ISSUE" ]; then
             echo "Updating existing Issue #$EXISTING_ISSUE"
@@ -166,7 +166,7 @@ jobs:
             echo "========================================="
 
             CURRENT_FAILURES=$(gh api repos/${{ github.repository }}/actions/runs \
-              --jq '.workflow_runs | map(select(.conclusion == "failure" and .name != "GitHub Actions Auto Fix System")) | length')
+              --jq '.workflow_runs | map(select(.conclusion == "failure" and .name != "🔧 GitHub Actions エラー自動修復システム")) | length')
 
             if [ "$CURRENT_FAILURES" -eq 0 ]; then
               echo "All workflows successful!"
@@ -234,7 +234,7 @@ jobs:
       - name: Summary
         if: always()
         run: |
-          echo "## GitHub Actions Auto Fix System Results" >> $GITHUB_STEP_SUMMARY
+          echo "## 🔧 GitHub Actions エラー自動修復システム Results" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "| Item | Value |" >> $GITHUB_STEP_SUMMARY
           echo "|------|-------|" >> $GITHUB_STEP_SUMMARY
