@@ -51,7 +51,7 @@ jobs:
       id: cache-keys
       run: |
         # Node.js依存関係キャッシュキー
-        NODE_KEY="node-${{ runner.os }}-${{ hashFiles('**/package-lock.json', 'frontend/package-lock.json', 'backend/package-lock.json') }}"
+        NODE_KEY="node-${{ runner.os }}-${{ hashFiles('**/package-lock.json', 'frontend/package-lock.json', 'src/package-lock.json') }}"
         echo "node=$NODE_KEY" >> $GITHUB_OUTPUT
 
         # Python依存関係キャッシュキー
@@ -102,8 +102,8 @@ jobs:
       if: steps.cache-deps.outputs.cache-hit != 'true'
       run: |
         # Backend依存関係インストール
-        if [ -f backend/package-lock.json ]; then
-          cd backend && npm ci
+        if [ -f src/package-lock.json ]; then
+          cd src && npm ci
         fi
 
         # Frontend依存関係インストール
@@ -324,7 +324,7 @@ jobs:
         key: ${{ needs.setup-cache.outputs.node-cache-key }}
 
     - name: Install dependencies
-      run: cd backend && npm ci
+      run: cd src && npm ci
 
     - name: Run API performance benchmark
       env:
@@ -432,8 +432,8 @@ jobs:
         echo "🔍 Node.js依存関係監査..."
 
         # Backend監査
-        if [ -f backend/package-lock.json ]; then
-          cd backend
+        if [ -f src/package-lock.json ]; then
+          cd src
           npm audit --audit-level=moderate || echo "⚠️ Backend依存関係に脆弱性あり"
         fi
 

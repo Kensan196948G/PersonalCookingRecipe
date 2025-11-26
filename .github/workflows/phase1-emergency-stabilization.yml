@@ -63,7 +63,7 @@ jobs:
     - name: Install dependencies
       run: |
         # Backend
-        cd backend && npm ci
+        cd src && npm ci
         
         # Frontend
         cd ../frontend && npm ci
@@ -121,7 +121,7 @@ jobs:
         key: ${{ needs.dependencies.outputs.cache-key }}
         
     - name: Install dependencies
-      run: cd backend && npm ci
+      run: cd src && npm ci
       
     - name: Database migration test
       env:
@@ -135,7 +135,7 @@ jobs:
         REDIS_PASSWORD: ${{ env.REDIS_PASSWORD }}
         JWT_SECRET: test_jwt_secret_key_for_ci_cd
       run: |
-        cd backend
+        cd src
         node -e "
           const db = require('./src/config/database-postgresql');
           (async () => {
@@ -188,7 +188,7 @@ jobs:
         key: ${{ needs.dependencies.outputs.cache-key }}
         
     - name: Install dependencies
-      run: cd backend && npm ci
+      run: cd src && npm ci
       
     - name: JWT認証パフォーマンステスト
       env:
@@ -198,7 +198,7 @@ jobs:
         JWT_CACHE_ENABLED: 'true'
         JWT_CACHE_TTL: '3600'
       run: |
-        cd backend
+        cd src
         timeout 60s node -e "
           const auth = require('./src/middleware/auth-optimized');
           (async () => {
@@ -308,7 +308,7 @@ jobs:
         key: ${{ needs.dependencies.outputs.cache-key }}
         
     - name: Install dependencies
-      run: cd backend && npm ci
+      run: cd src && npm ci
       
     - name: Run tests with coverage
       env:
@@ -323,12 +323,12 @@ jobs:
         REDIS_PASSWORD: ${{ env.REDIS_PASSWORD }}
         JWT_SECRET: test_jwt_secret_key_for_ci_cd
       run: |
-        cd backend
+        cd src
         npm test -- --coverage --passWithNoTests
         
     - name: Coverage quality gate
       run: |
-        cd backend
+        cd src
         if [ -f coverage/coverage-summary.json ]; then
           node -e "
             const fs = require('fs');
@@ -390,7 +390,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        cd backend && npm ci
+        cd src && npm ci
 
     - name: Health check all services (Native)
       env:
@@ -405,7 +405,7 @@ jobs:
         echo "🏥 サービスヘルスチェック開始 (Native Environment)..."
 
         # PostgreSQL接続テスト
-        cd backend
+        cd src
         node -e "
           const { Pool } = require('pg');
           const pool = new Pool({

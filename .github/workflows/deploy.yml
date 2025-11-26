@@ -118,7 +118,7 @@ jobs:
       - name: Run tests (Backend)
         if: matrix.service == 'backend'
         run: |
-          cd backend
+          cd src
 
           case "${{ matrix.test-type }}" in
             "unit")
@@ -204,7 +204,7 @@ jobs:
 
             # 依存関係更新
             npm install
-            cd backend && npm install
+            cd src && npm install
             cd ../frontend && npm install
             cd ../api && pip install -r requirements.txt
 
@@ -265,7 +265,7 @@ jobs:
 
             # 依存関係更新
             npm install
-            cd backend && npm install
+            cd src && npm install
             cd ../frontend && npm install
             cd ../api && pip install -r requirements.txt
 

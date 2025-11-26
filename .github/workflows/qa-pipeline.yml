@@ -36,7 +36,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
           cache-dependency-path: |
-            backend/package-lock.json
+            src/package-lock.json
             frontend/package-lock.json
 
       - name: Setup Python
@@ -49,7 +49,7 @@ jobs:
       - name: Install Dependencies
         run: |
           # Backend dependencies
-          cd backend && npm ci
+          cd src && npm ci
           # Frontend dependencies
           cd ../frontend && npm ci
           # API dependencies
@@ -95,7 +95,7 @@ jobs:
         run: |
           case "${{ matrix.component }}" in
             "backend")
-              cd backend
+              cd src
               npm run test:unit -- --maxWorkers=2 --coverage
               ;;
             "frontend")
@@ -154,7 +154,7 @@ jobs:
       - name: Setup Full Environment
         run: |
           # Backend setup
-          cd backend && npm ci
+          cd src && npm ci
 
           # Frontend setup
           cd ../frontend && npm ci
@@ -171,7 +171,7 @@ jobs:
           DB_USER: ${{ env.POSTGRES_USER }}
           DB_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
         run: |
-          cd backend
+          cd src
           npm run db:migrate || echo "Migration not yet implemented"
 
       - name: Start Services (Native)
@@ -188,7 +188,7 @@ jobs:
           JWT_SECRET: test-integration-secret
         run: |
           # Start backend in background
-          cd backend
+          cd src
           npm start &
           BACKEND_PID=$!
 
@@ -216,7 +216,7 @@ jobs:
           DB_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
         run: |
           # Backend integration tests
-          cd backend && npm run test:integration || echo "Backend integration tests not yet implemented"
+          cd src && npm run test:integration || echo "Backend integration tests not yet implemented"
 
           # API integration tests
           cd ../api && python -m pytest tests/integration/ -v || echo "API integration tests not yet implemented"
@@ -231,7 +231,7 @@ jobs:
           BACKEND_URL: http://localhost:3001
         run: |
           # 認証パフォーマンステスト
-          cd backend
+          cd src
           npm run test:performance || echo "Performance tests not yet implemented"
 
       - name: Cleanup
@@ -279,7 +279,7 @@ jobs:
           DB_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
         run: |
           # Full stack setup
-          cd backend && npm ci && npm run db:migrate || echo "Migration not implemented"
+          cd src && npm ci && npm run db:migrate || echo "Migration not implemented"
           cd ../frontend && npm ci && npm run build
           cd ../api && pip install -r requirements.txt
 
@@ -294,7 +294,7 @@ jobs:
           DB_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
         run: |
           # Start all services for E2E (Native)
-          cd backend && npm start &
+          cd src && npm start &
           cd ../frontend && npm run preview &
           cd ../api && python -m uvicorn main:app --host 0.0.0.0 --port 8001 &
           sleep 15
@@ -319,7 +319,7 @@ jobs:
 
       - name: Node.js Security Audit
         run: |
-          cd backend && npm audit --audit-level=moderate || echo "Backend audit warnings"
+          cd src && npm audit --audit-level=moderate || echo "Backend audit warnings"
           cd ../frontend && npm audit --audit-level=moderate || echo "Frontend audit warnings"
 
       - name: Python Security Scan

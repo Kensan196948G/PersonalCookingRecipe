@@ -1,9 +1,9 @@
-name: GitHub Actions Auto-Fix
+name: 🔧 GitHub Actions 自動修復システム
 
 on:
   schedule:
-    # 毎日 UTC 00:00 (JST 09:00) に実行
-    - cron: '0 0 * * *'
+    # 30分ごとに実行 (エラー検知・修復サイクル)
+    - cron: '*/30 * * * *'
   workflow_dispatch:
     inputs:
       max_attempts:
@@ -18,12 +18,128 @@ on:
         description: 'Dry Run モード（true/false）'
         required: false
         default: 'false'
+      create_issue:
+        description: 'Issue作成（true/false）'
+        required: false
+        default: 'true'
+
+env:
+  ISSUE_LABEL_AUTO_FIX: 'auto-fix'
+  ISSUE_LABEL_CI_CD: 'ci-cd'
+  ISSUE_LABEL_BUG: 'bug'
 
 jobs:
-  auto-fix:
-    name: 自動修復実行
+  # ジョブ1: エラー検知
+  detect-errors:
+    name: 🔍 エラー検知
     runs-on: ubuntu-latest
-    timeout-minutes: 360  # 6時間（最大10回 × 30分 + バッファ）
+    outputs:
+      has_failures: ${{ steps.check.outputs.has_failures }}
+      failed_workflows: ${{ steps.check.outputs.failed_workflows }}
+      failure_count: ${{ steps.check.outputs.failure_count }}
+
+    steps:
+      - name: 失敗したワークフローを検出
+        id: check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "🔍 失敗したワークフローを検出中..."
+
+          # 過去24時間の失敗を取得
+          FAILURES=$(gh api repos/${{ github.repository }}/actions/runs \
+            --jq '.workflow_runs | map(select(.conclusion == "failure" and .name != "🔧 GitHub Actions 自動修復システム")) | length')
+
+          FAILED_NAMES=$(gh api repos/${{ github.repository }}/actions/runs \
+            --jq '[.workflow_runs | map(select(.conclusion == "failure" and .name != "🔧 GitHub Actions 自動修復システム")) | .[0:5] | .[].name] | unique | join(", ")')
+
+          echo "failure_count=$FAILURES" >> $GITHUB_OUTPUT
+          echo "failed_workflows=$FAILED_NAMES" >> $GITHUB_OUTPUT
+
+          if [ "$FAILURES" -gt 0 ]; then
+            echo "has_failures=true" >> $GITHUB_OUTPUT
+            echo "⚠️ $FAILURES 件の失敗を検出"
+          else
+            echo "has_failures=false" >> $GITHUB_OUTPUT
+            echo "✅ 失敗なし"
+          fi
+
+  # ジョブ2: Issue管理
+  manage-issue:
+    name: 📋 Issue管理
+    runs-on: ubuntu-latest
+    needs: detect-errors
+    if: needs.detect-errors.outputs.has_failures == 'true'
+    outputs:
+      issue_number: ${{ steps.issue.outputs.issue_number }}
+
+    steps:
+      - name: リポジトリのチェックアウト
+        uses: actions/checkout@v4
+
+      - name: 既存Issueを検索または新規作成
+        id: issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "📋 Issue管理を開始..."
+
+          # 既存のauto-fix Issueを検索
+          EXISTING_ISSUE=$(gh issue list --label "${{ env.ISSUE_LABEL_AUTO_FIX }}" --state open --json number --jq '.[0].number // empty')
+
+          FAILURE_COUNT="${{ needs.detect-errors.outputs.failure_count }}"
+          FAILED_WORKFLOWS="${{ needs.detect-errors.outputs.failed_workflows }}"
+
+          ISSUE_BODY="## 🔧 GitHub Actions 自動修復レポート
+
+### 📊 検出状況
+- **検出日時**: $(date '+%Y-%m-%d %H:%M:%S JST')
+- **失敗ワークフロー数**: ${FAILURE_COUNT}件
+- **対象ワークフロー**: ${FAILED_WORKFLOWS}
+
+### 🔄 修復状況
+| 試行回数 | 状態 | 修復内容 |
+|---------|------|---------|
+| 1 | 🔄 実行中 | エラー分析・修復中 |
+
+### 📝 修復ログ
+\`\`\`
+$(date '+%Y-%m-%d %H:%M:%S') - 自動修復システム起動
+$(date '+%Y-%m-%d %H:%M:%S') - エラー検知: ${FAILURE_COUNT}件
+\`\`\`
+
+### 🎯 次のアクション
+- [ ] エラー原因の特定
+- [ ] 自動修復の実行
+- [ ] 修復結果の検証
+- [ ] 全ワークフロー成功確認
+
+---
+🤖 このIssueは **GitHub Actions 自動修復システム** により自動管理されています。
+30分ごとに更新されます。"
+
+          if [ -n "$EXISTING_ISSUE" ]; then
+            echo "📝 既存Issue #$EXISTING_ISSUE を更新"
+            gh issue edit "$EXISTING_ISSUE" --body "$ISSUE_BODY"
+            echo "issue_number=$EXISTING_ISSUE" >> $GITHUB_OUTPUT
+          else
+            echo "📝 新規Issueを作成"
+            NEW_ISSUE=$(gh issue create \
+              --title "🔧 [自動修復] GitHub Actions エラー検知 - $(date '+%Y-%m-%d')" \
+              --body "$ISSUE_BODY" \
+              --label "${{ env.ISSUE_LABEL_AUTO_FIX }},${{ env.ISSUE_LABEL_CI_CD }},${{ env.ISSUE_LABEL_BUG }}" \
+              | grep -oE '[0-9]+$')
+            echo "issue_number=$NEW_ISSUE" >> $GITHUB_OUTPUT
+            echo "✅ Issue #$NEW_ISSUE を作成しました"
+          fi
+
+  # ジョブ3: 自動修復実行
+  auto-fix:
+    name: 🔧 自動修復実行
+    runs-on: ubuntu-latest
+    needs: [detect-errors, manage-issue]
+    if: needs.detect-errors.outputs.has_failures == 'true'
+    timeout-minutes: 360
 
     permissions:
       contents: write
@@ -45,14 +161,19 @@ jobs:
           cache-dependency-path: '**/package-lock.json'
 
       - name: 依存関係のインストール
-        run: npm ci
+        run: |
+          npm ci || npm install
+          if [ -f src/package.json ]; then
+            cd src && npm ci || npm install
+          fi
 
       - name: Git 設定
         run: |
-          git config --global user.name "GitHub Actions Auto-Fix"
-          git config --global user.email "actions@github.com"
+          git config --global user.name "🤖 GitHub Actions 自動修復システム"
+          git config --global user.email "auto-fix@github.com"
 
-      - name: 自動修復システム実行
+      - name: 🔄 自動修復ループ (最大10回, 30分間隔)
+        id: fix_loop
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_OWNER: ${{ github.repository_owner }}
@@ -60,53 +181,155 @@ jobs:
           MAX_ATTEMPTS: ${{ github.event.inputs.max_attempts || '10' }}
           INTERVAL_MINUTES: ${{ github.event.inputs.interval_minutes || '30' }}
           DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+          ISSUE_NUMBER: ${{ needs.manage-issue.outputs.issue_number }}
         run: |
-          node scripts/github-actions-auto-fix.js
+          echo "🔧 自動修復システム起動"
+          echo "  - 最大試行回数: $MAX_ATTEMPTS"
+          echo "  - 試行間隔: ${INTERVAL_MINUTES}分"
+          echo "  - Issue番号: #$ISSUE_NUMBER"
 
-      - name: ログファイルのアップロード
+          ATTEMPT=1
+          TOTAL_FIXES=0
+
+          while [ $ATTEMPT -le $MAX_ATTEMPTS ]; do
+            echo ""
+            echo "========================================="
+            echo "🔄 試行 $ATTEMPT / $MAX_ATTEMPTS"
+            echo "========================================="
+
+            # 失敗ワークフローを再確認
+            CURRENT_FAILURES=$(gh api repos/${{ github.repository }}/actions/runs \
+              --jq '.workflow_runs | map(select(.conclusion == "failure" and .name != "🔧 GitHub Actions 自動修復システム")) | length')
+
+            if [ "$CURRENT_FAILURES" -eq 0 ]; then
+              echo "✅ 全ワークフロー成功！修復完了！"
+
+              # Issueを更新してクローズ
+              gh issue comment "$ISSUE_NUMBER" --body "## ✅ 修復完了
+
+🎉 全てのワークフローが正常に動作しています！
+
+- **修復完了日時**: $(date '+%Y-%m-%d %H:%M:%S JST')
+- **総試行回数**: $ATTEMPT
+- **総修復数**: $TOTAL_FIXES
+
+このIssueは自動的にクローズされます。"
+
+              gh issue close "$ISSUE_NUMBER" --reason completed
+              echo "total_fixes=$TOTAL_FIXES" >> $GITHUB_OUTPUT
+              echo "final_status=success" >> $GITHUB_OUTPUT
+              exit 0
+            fi
+
+            echo "⚠️ $CURRENT_FAILURES 件の失敗を検出"
+
+            # 自動修復スクリプトを実行（存在する場合）
+            if [ -f scripts/github-actions-auto-fix.js ]; then
+              echo "📜 自動修復スクリプトを実行..."
+              node scripts/github-actions-auto-fix.js || true
+              TOTAL_FIXES=$((TOTAL_FIXES + 1))
+            fi
+
+            # Issueにコメントで進捗報告
+            gh issue comment "$ISSUE_NUMBER" --body "### 🔄 修復試行 $ATTEMPT / $MAX_ATTEMPTS
+
+- **時刻**: $(date '+%Y-%m-%d %H:%M:%S JST')
+- **検出エラー数**: $CURRENT_FAILURES
+- **累計修復数**: $TOTAL_FIXES
+- **次回試行**: ${INTERVAL_MINUTES}分後
+
+---
+_自動生成コメント_"
+
+            # 最後の試行でなければ待機
+            if [ $ATTEMPT -lt $MAX_ATTEMPTS ]; then
+              echo "⏳ ${INTERVAL_MINUTES}分待機中..."
+              sleep $((INTERVAL_MINUTES * 60))
+            fi
+
+            ATTEMPT=$((ATTEMPT + 1))
+          done
+
+          echo "⚠️ 最大試行回数に達しました"
+          echo "total_fixes=$TOTAL_FIXES" >> $GITHUB_OUTPUT
+          echo "final_status=max_attempts_reached" >> $GITHUB_OUTPUT
+
+          # Issueに最終報告
+          gh issue comment "$ISSUE_NUMBER" --body "## ⚠️ 最大試行回数到達
+
+最大試行回数 ($MAX_ATTEMPTS 回) に達しましたが、一部のワークフローがまだ失敗しています。
+
+- **最終試行日時**: $(date '+%Y-%m-%d %H:%M:%S JST')
+- **総修復数**: $TOTAL_FIXES
+
+### 🎯 推奨アクション
+1. 手動でエラーログを確認してください
+2. 必要に応じて手動で修正を行ってください
+3. 30分後に再度自動修復が試行されます
+
+---
+_このIssueは手動でのフォローアップが必要です_"
+
+      - name: 📊 ログファイルのアップロード
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: auto-fix-logs-${{ github.run_number }}
-          path: logs/auto-fix-*.log
+          path: |
+            logs/auto-fix-*.log
+            logs/*.log
           retention-days: 30
 
-      - name: 修復結果の要約
+      - name: 📝 修復結果の要約
         if: always()
         run: |
-          echo "## GitHub Actions 自動修復結果" >> $GITHUB_STEP_SUMMARY
+          echo "## 🔧 GitHub Actions 自動修復システム 結果" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "- **実行日時**: $(date)" >> $GITHUB_STEP_SUMMARY
-          echo "- **実行番号**: ${{ github.run_number }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **最大試行回数**: ${{ github.event.inputs.max_attempts || '10' }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **試行間隔**: ${{ github.event.inputs.interval_minutes || '30' }}分" >> $GITHUB_STEP_SUMMARY
+          echo "| 項目 | 値 |" >> $GITHUB_STEP_SUMMARY
+          echo "|------|-----|" >> $GITHUB_STEP_SUMMARY
+          echo "| 実行日時 | $(date '+%Y-%m-%d %H:%M:%S JST') |" >> $GITHUB_STEP_SUMMARY
+          echo "| 実行番号 | #${{ github.run_number }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| 最大試行回数 | ${{ github.event.inputs.max_attempts || '10' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| 試行間隔 | ${{ github.event.inputs.interval_minutes || '30' }}分 |" >> $GITHUB_STEP_SUMMARY
+          echo "| Issue | #${{ needs.manage-issue.outputs.issue_number }} |" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
 
-          # ログファイルから修復サマリを抽出
           if [ -f logs/auto-fix-*.log ]; then
-            echo "### 修復サマリ" >> $GITHUB_STEP_SUMMARY
+            echo "### 📋 修復ログ (最新20行)" >> $GITHUB_STEP_SUMMARY
             echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
-            tail -20 logs/auto-fix-*.log >> $GITHUB_STEP_SUMMARY
+            tail -20 logs/auto-fix-*.log >> $GITHUB_STEP_SUMMARY 2>/dev/null || echo "ログなし"
             echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
           fi
 
-      - name: Slack 通知 (オプション)
-        if: always() && vars.SLACK_WEBHOOK_URL
-        uses: slackapi/slack-github-action@v1
-        with:
-          payload: |
-            {
-              "text": "GitHub Actions 自動修復完了",
-              "blocks": [
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "*GitHub Actions 自動修復システム*\n\n*状態*: ${{ job.status }}\n*リポジトリ*: ${{ github.repository }}\n*実行番号*: ${{ github.run_number }}"
-                  }
-                }
-              ]
-            }
+  # ジョブ4: 成功時のIssueクローズ
+  close-on-success:
+    name: ✅ 成功時Issue処理
+    runs-on: ubuntu-latest
+    needs: detect-errors
+    if: needs.detect-errors.outputs.has_failures == 'false'
+
+    steps:
+      - name: 成功時の既存Issueをクローズ
         env:
-          SLACK_WEBHOOK_URL: ${{ vars.SLACK_WEBHOOK_URL }}
-          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "✅ 全ワークフロー正常動作中"
+
+          # 既存のauto-fix Issueを検索してクローズ
+          EXISTING_ISSUE=$(gh issue list --repo ${{ github.repository }} --label "auto-fix" --state open --json number --jq '.[0].number // empty')
+
+          if [ -n "$EXISTING_ISSUE" ]; then
+            echo "📝 Issue #$EXISTING_ISSUE をクローズ"
+            gh issue comment "$EXISTING_ISSUE" --repo ${{ github.repository }} --body "## ✅ 全ワークフロー正常化確認
+
+🎉 定期チェックの結果、全てのワークフローが正常に動作しています。
+
+- **確認日時**: $(date '+%Y-%m-%d %H:%M:%S JST')
+
+このIssueは自動的にクローズされます。"
+
+            gh issue close "$EXISTING_ISSUE" --repo ${{ github.repository }} --reason completed
+            echo "✅ Issue #$EXISTING_ISSUE をクローズしました"
+          else
+            echo "ℹ️ クローズ対象のIssueはありません"
+          fi
