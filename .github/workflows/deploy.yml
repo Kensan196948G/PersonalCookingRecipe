@@ -21,14 +21,14 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        service: [frontend, backend, api]
+        service: [frontend, src, api]
         test-type: [unit, integration]
         include:
           # フロントエンド: unit + E2Eテスト
           - service: frontend
             test-type: e2e
           # バックエンド: unit + integrationテスト
-          - service: backend
+          - service: src
             test-type: performance
         exclude:
           # API: integrationテストのみ (unitはintegrationに含まれる)
@@ -116,7 +116,7 @@ jobs:
           esac
 
       - name: Run tests (Backend)
-        if: matrix.service == 'backend'
+        if: matrix.service == 'src'
         run: |
           cd src
 
@@ -145,10 +145,10 @@ jobs:
           esac
 
       - name: Upload coverage to Codecov
-        if: matrix.service == 'backend'
+        if: matrix.service == 'src'
         uses: codecov/codecov-action@v3
         with:
-          file: ./backend/coverage/lcov.info
+          file: ./src/coverage/lcov.info
           flags: backend
           name: backend-coverage
 
