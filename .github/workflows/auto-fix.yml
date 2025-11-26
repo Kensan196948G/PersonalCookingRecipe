@@ -41,11 +41,12 @@ jobs:
         run: |
           echo "Detecting failed workflows..."
 
+          # 各ワークフローの最新実行のみをチェック（履歴全体ではなく）
           FAILURES=$(gh api repos/${{ github.repository }}/actions/runs \
-            --jq '.workflow_runs | map(select(.conclusion == "failure" and .name != "🔧 GitHub Actions エラー自動修復システム")) | length')
+            --jq '[.workflow_runs | group_by(.name) | .[] | sort_by(.created_at) | last | select(.conclusion == "failure" and .name != "🔧 GitHub Actions エラー自動修復システム")] | length')
 
           FAILED_NAMES=$(gh api repos/${{ github.repository }}/actions/runs \
-            --jq '[.workflow_runs | map(select(.conclusion == "failure" and .name != "🔧 GitHub Actions エラー自動修復システム")) | .[0:5] | .[].name] | unique | join(", ")')
+            --jq '[.workflow_runs | group_by(.name) | .[] | sort_by(.created_at) | last | select(.conclusion == "failure" and .name != "🔧 GitHub Actions エラー自動修復システム") | .name] | join(", ")')
 
           echo "failure_count=$FAILURES" >> $GITHUB_OUTPUT
           echo "failed_workflows=$FAILED_NAMES" >> $GITHUB_OUTPUT
@@ -170,8 +171,9 @@ jobs:
             echo "Attempt $ATTEMPT / $MAX_ATTEMPTS"
             echo "========================================="
 
+            # 各ワークフローの最新実行のみをチェック
             CURRENT_FAILURES=$(gh api repos/${{ github.repository }}/actions/runs \
-              --jq '.workflow_runs | map(select(.conclusion == "failure" and .name != "🔧 GitHub Actions エラー自動修復システム")) | length')
+              --jq '[.workflow_runs | group_by(.name) | .[] | sort_by(.created_at) | last | select(.conclusion == "failure" and .name != "🔧 GitHub Actions エラー自動修復システム")] | length')
 
             if [ "$CURRENT_FAILURES" -eq 0 ]; then
               echo "All workflows successful!"
