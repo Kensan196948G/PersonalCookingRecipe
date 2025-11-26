@@ -14,6 +14,11 @@ on:
         required: false
         default: '30'
 
+permissions:
+  contents: read
+  issues: write
+  actions: read
+
 env:
   ISSUE_LABEL_AUTO_FIX: 'auto-fix'
   ISSUE_LABEL_CI_CD: 'ci-cd'
