@@ -137,7 +137,7 @@ jobs:
       run: |
         cd src
         node -e "
-          const db = require('./src/config/database-postgresql');
+          const db = require('./config/database-postgresql');
           (async () => {
             try {
               console.log('🚀 データベース移行テスト開始...');
@@ -200,7 +200,7 @@ jobs:
       run: |
         cd src
         timeout 60s node -e "
-          const auth = require('./src/middleware/auth-optimized');
+          const auth = require('./middleware/auth-optimized');
           (async () => {
             const testUser = { id: 1, username: 'testuser', email: 'test@example.com' };
             const iterations = 100;
