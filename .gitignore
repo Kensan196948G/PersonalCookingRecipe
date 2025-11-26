@@ -1,7 +1,7 @@
 
 # Dependencies
 node_modules/
-package-lock.json
+# package-lock.json  # CI/CDで必要なため追跡
 yarn.lock
 
 # Environment variables
