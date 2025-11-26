@@ -1,0 +1,139 @@
+{
+  "context7": {
+    "version": "2.0.0",
+    "project": "PersonalCookingRecipe",
+    "implementation_date": "2025-09-03T12:28:00Z",
+    "architect": "Recipe-CTO",
+    "layers": {
+      "layer1": {
+        "name": "プロジェクト基本情報",
+        "description": "構成、技術スタック、アーキテクチャ基盤",
+        "storage": "postgresql + redis",
+        "security_level": "high",
+        "components": {
+          "project_metadata": "基本プロジェクト情報",
+          "tech_stack": "Next.js 14, PostgreSQL, Redis, JWT",
+          "api_integration": "YouTube Data API v3, Claude API, Notion API, Gmail API",
+          "architecture": "マイクロサービス + レイヤードアーキテクチャ"
+        }
+      },
+      "layer2": {
+        "name": "コード構造・アーキテクチャ",
+        "description": "コードベース、設計パターン、依存関係",
+        "storage": "postgresql + redis",
+        "security_level": "high",
+        "components": {
+          "code_analysis": "静的解析、品質メトリクス",
+          "dependency_graph": "依存関係マップ",
+          "design_patterns": "使用パターン、ベストプラクティス",
+          "refactoring_history": "リファクタリング履歴"
+        }
+      },
+      "layer3": {
+        "name": "データベース・API設計",
+        "description": "データモデル、API仕様、統合設計",
+        "storage": "postgresql + redis",
+        "security_level": "critical",
+        "components": {
+          "database_schema": "PostgreSQLスキーマ設計",
+          "api_specifications": "RESTful API仕様",
+          "integration_patterns": "外部API統合パターン",
+          "data_flow": "データフロー設計"
+        }
+      },
+      "layer4": {
+        "name": "開発進捗・課題管理",
+        "description": "タスク管理、進捗追跡、課題解決",
+        "storage": "postgresql + redis",
+        "security_level": "medium",
+        "components": {
+          "task_management": "54エージェント連携タスク管理",
+          "progress_tracking": "開発進捗可視化",
+          "issue_resolution": "課題解決履歴",
+          "milestone_tracking": "マイルストーン管理"
+        }
+      },
+      "layer5": {
+        "name": "パフォーマンス・メトリクス",
+        "description": "性能監視、最適化、メトリクス収集",
+        "storage": "postgresql + redis",
+        "security_level": "medium",
+        "components": {
+          "performance_metrics": "JWT認証1.44ms等パフォーマンス指標",
+          "optimization_history": "最適化履歴",
+          "monitoring_data": "リアルタイム監視データ",
+          "benchmarks": "ベンチマーク結果"
+        }
+      },
+      "layer6": {
+        "name": "テスト・品質管理",
+        "description": "テストスイート、品質保証、CI/CD",
+        "storage": "postgresql + redis",
+        "security_level": "high",
+        "components": {
+          "test_suites": "ユニット・統合・E2Eテスト",
+          "quality_gates": "品質ゲート設定",
+          "coverage_analysis": "テストカバレッジ分析",
+          "ci_cd_pipeline": "継続的統合・デプロイ"
+        }
+      },
+      "layer7": {
+        "name": "デプロイ・運用管理",
+        "description": "デプロイメント、運用監視、インフラ管理",
+        "storage": "postgresql + redis",
+        "security_level": "critical",
+        "components": {
+          "deployment_config": "デプロイメント設定",
+          "infrastructure": "インフラストラクチャ管理",
+          "monitoring": "運用監視システム",
+          "incident_management": "インシデント管理"
+        }
+      }
+    },
+    "multimodal": {
+      "text_processing": {
+        "enabled": true,
+        "formats": ["code", "docs", "logs", "json", "yaml"],
+        "analysis": ["sentiment", "complexity", "patterns"]
+      },
+      "image_processing": {
+        "enabled": true,
+        "formats": ["png", "jpg", "svg", "webp"],
+        "analysis": ["ui_screenshots", "error_screenshots", "diagrams"]
+      },
+      "audio_processing": {
+        "enabled": true,
+        "formats": ["mp3", "wav", "m4a"],
+        "analysis": ["meeting_notes", "voice_memos", "transcriptions"]
+      },
+      "video_processing": {
+        "enabled": true,
+        "formats": ["mp4", "webm", "avi"],
+        "analysis": ["demos", "tutorials", "code_reviews"]
+      }
+    },
+    "agent_integration": {
+      "total_agents": 54,
+      "primary_agents": [
+        "Recipe-CTO", "Recipe-Dev", "Recipe-Security", 
+        "Recipe-Performance", "Recipe-DevOps", "Recipe-UI",
+        "Recipe-API", "Recipe-DB", "Recipe-Test"
+      ],
+      "coordination_protocol": "Claude-Flow SPARC",
+      "communication": "context7-aware messaging"
+    },
+    "security": {
+      "encryption": "AES-256-GCM",
+      "access_control": "RBAC with JWT",
+      "audit_logging": "comprehensive",
+      "data_protection": "GDPR compliant",
+      "api_security": "OAuth2 + JWT"
+    },
+    "performance": {
+      "jwt_auth": "1.44ms target",
+      "context_retrieval": "sub-100ms",
+      "memory_optimization": "LRU caching",
+      "parallel_processing": "enabled"
+    }
+  }
+}

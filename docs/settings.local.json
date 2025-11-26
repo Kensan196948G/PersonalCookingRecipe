@@ -1,0 +1,97 @@
+{
+  "ai-agents": {
+    "enabled": true,
+    "mode": "autonomous",
+    "safety": {
+      "maxExecutionTime": 14400,
+      "allowFileModification": true,
+      "restrictedPaths": [
+        "/.git",
+        "/node_modules",
+        "/.env",
+        "/settings.local.json"
+      ]
+    },
+    "agents": {
+      "cto": {
+        "model": "claude-3-opus",
+        "temperature": 0.3,
+        "maxTokens": 4000,
+        "capabilities": [
+          "read",
+          "analyze",
+          "design"
+        ]
+      },
+      "manager": {
+        "model": "claude-3-opus",
+        "temperature": 0.2,
+        "maxTokens": 4000,
+        "capabilities": [
+          "monitor",
+          "coordinate",
+          "report",
+          "fix"
+        ]
+      },
+      "qa": {
+        "model": "claude-3-sonnet",
+        "temperature": 0.6,
+        "maxTokens": 4000,
+        "capabilities": [
+          "design",
+          "review",
+          "accessibility"
+        ]
+      }
+    },
+    "communication": {
+      "messageQueuePath": ".agent-comm",
+      "logPath": "logs/agents",
+      "recoveryPath": ".agent-recovery"
+    },
+    "automation": {
+      "autoStart": true,
+      "autoRecover": true,
+      "parallelExecution": true,
+      "retryOnError": 3,
+      "errorCooldown": 60
+    },
+    "github": {
+      "autoCreateIssues": true,
+      "autoCloseIssues": true,
+      "labelsPrefix": "ai-agent",
+      "assignToManager": true
+    }
+  },
+  "development": {
+    "projectType": "fullstack",
+    "primaryLanguage": "python",
+    "frameworks": {
+      "frontend": "react",
+      "backend": "flask",
+      "testing": "pytest",
+      "style": "tailwindcss"
+    },
+    "buildTools": {
+      "bundler": "vite",
+      "linter": "eslint",
+      "formatter": "prettier"
+    }
+  },
+  "quality": {
+    "testCoverage": {
+      "minimum": 80,
+      "enforce": true
+    },
+    "codeQuality": {
+      "lintOnSave": true,
+      "formatOnSave": true,
+      "strictMode": true
+    },
+    "accessibility": {
+      "wcagLevel": "AA",
+      "enforceStandards": true
+    }
+  }
+}

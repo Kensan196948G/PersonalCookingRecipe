@@ -1,0 +1,74 @@
+{
+  "layer1": {
+    "project_metadata": {
+      "name": "PersonalCookingRecipe",
+      "version": "2.0.0",
+      "description": "AI駆動型料理レシピ管理・配信プラットフォーム",
+      "architecture": "マイクロサービス + レイヤードアーキテクチャ",
+      "created_at": "2025-09-03T12:28:00Z",
+      "last_updated": "2025-09-03T12:28:00Z",
+      "tech_stack": {
+        "frontend": {
+          "framework": "Next.js 14",
+          "ui_library": "Tailwind CSS + shadcn/ui",
+          "state_management": "Zustand",
+          "authentication": "NextAuth.js",
+          "deployment": "Vercel"
+        },
+        "backend": {
+          "runtime": "Node.js",
+          "framework": "Express.js",
+          "database": "PostgreSQL",
+          "cache": "Redis",
+          "authentication": "JWT (1.44ms performance)",
+          "file_storage": "AWS S3 compatible"
+        },
+        "apis": {
+          "youtube": "YouTube Data API v3",
+          "ai": "Claude API (Anthropic)",
+          "productivity": "Notion API",
+          "communication": "Gmail API"
+        },
+        "infrastructure": {
+          "containerization": "Docker",
+          "orchestration": "Docker Compose",
+          "reverse_proxy": "Nginx",
+          "monitoring": "Prometheus + Grafana"
+        }
+      },
+      "channels": {
+        "primary": [
+          "Sam The Cooking Guy",
+          "Tasty Recipes", 
+          "Joshua Weissman"
+        ],
+        "monitoring": {
+          "frequency": "real-time",
+          "update_interval": "15min",
+          "error_recovery": "automatic"
+        }
+      },
+      "features": {
+        "core": [
+          "料理レシピ自動収集・分析",
+          "マルチチャンネル統合監視",
+          "AI駆動コンテンツ分析",
+          "リアルタイム通知システム"
+        ],
+        "advanced": [
+          "Context7統合開発環境",
+          "54専門エージェント連携",
+          "マルチモーダル処理",
+          "自動品質保証"
+        ]
+      },
+      "performance_targets": {
+        "jwt_auth": "< 1.44ms",
+        "api_response": "< 100ms",
+        "database_query": "< 50ms",
+        "cache_hit_ratio": "> 90%",
+        "uptime": "99.9%"
+      }
+    }
+  }
+}

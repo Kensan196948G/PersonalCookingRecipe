@@ -1,0 +1,14 @@
+# robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://recipe-monitor.example.com/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 10
+
+# Disallow admin and API endpoints
+Disallow: /api/
+Disallow: /_next/
+Disallow: /private/

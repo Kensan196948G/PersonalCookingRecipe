@@ -1,0 +1,294 @@
+# エージェント標準化テンプレート
+# PersonalCookingRecipe プロジェクト用
+version: "1.0.0"
+generated_at: "2025-08-30T00:00:00Z"
+
+# エージェント標準定義
+agent_schema:
+  required_fields:
+    - id              # 一意識別子（recipe-xxx形式）
+    - name            # 表示名
+    - role            # 主要役割
+    - goal            # 具体的目標
+    - category        # カテゴリ分類
+    - priority        # 実行優先度（1-4）
+    - status          # 現在状態
+  
+  optional_fields:
+    - color           # プロンプト色設定
+    - dependencies    # 依存エージェントリスト
+    - specializations # 専門分野リスト
+    - tools           # 使用ツールリスト
+    - outputs         # 成果物リスト
+
+# カテゴリ分類
+categories:
+  leadership:
+    description: "戦略・技術リーダーシップ"
+    priority_range: [1, 2]
+    examples: ["recipe-cto", "recipe-manager"]
+  
+  development:
+    description: "開発・実装"
+    priority_range: [2, 3]
+    examples: ["recipe-dev", "recipe-backend", "recipe-frontend"]
+  
+  quality:
+    description: "品質保証・テスト"
+    priority_range: [2, 3] 
+    examples: ["recipe-qa", "recipe-security"]
+  
+  specialized:
+    description: "専門特化"
+    priority_range: [3, 4]
+    examples: ["recipe-nlp", "recipe-performance", "recipe-devops"]
+  
+  management:
+    description: "管理・調整"
+    priority_range: [1, 2]
+    examples: ["recipe-manager"]
+
+# 標準エージェント定義
+agents:
+  recipe-cto:
+    name: "CTO (Chief Technical Officer)"
+    role: "Linux環境技術戦略・設計・セキュリティ統括"
+    goal: |
+      - Linux環境でのシステム設計とアーキテクチャ策定
+      - API仕様確認と著作権・利用規約チェック
+      - 環境変数・暗号化ファイルを活用したセキュリティ設計
+      - systemd設定とシステム統合戦略の策定
+      - API制限・レート制限を考慮した技術要件定義
+    category: "leadership"
+    priority: 1
+    status: "active"
+    color: "\033[1;36m"
+    dependencies: []
+    specializations: ["architecture", "security", "strategy"]
+    tools: ["systemd", "docker", "security-tools"]
+    outputs: ["system-design", "security-policy", "technical-specs"]
+
+  recipe-dev:
+    name: "Developer (統合開発者)"
+    role: "Linux特化システム・API統合・自動化実装"
+    goal: |
+      - Linux環境準備スクリプト実装
+      - YouTube Data API v3による3チャンネル監視システム構築
+      - Claude API統合とチャンネル特化解析ロジック実装
+      - Notion API連携とページテンプレート生成
+      - Gmail API通知システムとLinux通知統合
+      - systemd設定とプロセス自動化
+    category: "development"
+    priority: 2
+    status: "active"
+    color: "\033[1;32m"
+    dependencies: ["recipe-cto"]
+    specializations: ["api-integration", "automation", "linux-systems"]
+    tools: ["python", "systemd", "api-clients"]
+    outputs: ["integration-scripts", "api-connectors", "automation-tools"]
+
+  recipe-nlp:
+    name: "NLP Specialist (自然言語処理専門家)"
+    role: "Claude AI活用・レシピ構造化・多言語対応"
+    goal: |
+      - Claude APIを活用した動画内容解析プロンプト設計
+      - チャンネル別特化解析（Sam/Tasty/Joshua）の実装
+      - 英語→日本語自動翻訳とレシピ構造化処理
+      - 肉料理検出エンジンとキーワード辞書構築
+      - 重複除去アルゴリズムと品質スコアリングシステム
+    category: "specialized"
+    priority: 3
+    status: "active"
+    color: "\033[1;35m"
+    dependencies: ["recipe-dev"]
+    specializations: ["nlp", "machine-learning", "content-analysis"]
+    tools: ["claude-api", "translation-apis", "ml-libraries"]
+    outputs: ["analysis-engine", "translation-system", "quality-scorer"]
+
+  recipe-qa:
+    name: "QA Engineer (品質保証)"
+    role: "Linux環境テスト・UI/UX・システム品質管理"
+    goal: |
+      - Linux環境での動作確認とテストスクリプト作成
+      - API接続テスト（YouTube/Claude/Notion/Gmail）
+      - 認証システム統合テストとセキュリティ検証
+      - systemd動作テストと自動実行確認
+      - エラーハンドリングとログ出力の品質チェック
+      - 通知システム（Linux/Gmail）の動作確認
+    category: "quality"
+    priority: 2
+    status: "active"
+    color: "\033[1;33m"
+    dependencies: ["recipe-dev", "recipe-nlp"]
+    specializations: ["testing", "quality-assurance", "automation-testing"]
+    tools: ["pytest", "integration-test-frameworks", "monitoring-tools"]
+    outputs: ["test-suites", "quality-reports", "validation-scripts"]
+
+  recipe-manager:
+    name: "Project Manager (プロジェクト管理者)"
+    role: "開発進行管理・品質管理・自動化調整"
+    goal: |
+      - 4段階の実装フェーズ管理（環境→認証→監視→統合）
+      - 各Agent間のタスク調整とボトルネック解消
+      - Linux固有問題のトラブルシューティング支援
+      - API使用量監視とコスト管理
+      - 開発ループの継続/終了判断と次フェーズへの移行制御
+      - システムヘルス監視と運用品質の維持
+    category: "management"
+    priority: 1
+    status: "active"
+    color: "\033[1;31m"
+    dependencies: []
+    specializations: ["project-management", "coordination", "monitoring"]
+    tools: ["project-tracking", "monitoring-dashboards", "communication-tools"]
+    outputs: ["project-plans", "progress-reports", "coordination-matrix"]
+
+  recipe-frontend:
+    name: "Frontend Specialist (フロントエンド専門家)"
+    role: "React/Next.js UI開発・UX最適化"
+    goal: |
+      - React + Vite UI開発・最適化
+      - Next.js WebUI実装とページルーティング
+      - Material-UI/Tailwind CSS統合とデザインシステム構築
+      - レスポンシブデザイン・UX改善
+      - WebSocket リアルタイム更新対応
+    category: "specialized"
+    priority: 3
+    status: "active"
+    color: "\033[1;34m"
+    dependencies: ["recipe-dev"]
+    specializations: ["frontend-development", "ui-ux", "responsive-design"]
+    tools: ["react", "nextjs", "tailwindcss", "vite"]
+    outputs: ["ui-components", "web-interface", "design-system"]
+
+  recipe-backend:
+    name: "Backend Specialist (バックエンド専門家)"
+    role: "FastAPI・データベース・API設計"
+    goal: |
+      - FastAPI + Python実装とパフォーマンス最適化
+      - データベース設計・最適化
+      - WebSocket リアルタイム通信実装
+      - API エンドポイント設計・ドキュメント生成
+      - 非同期処理とタスクキュー管理
+    category: "specialized"
+    priority: 3
+    status: "active"
+    color: "\033[1;32m"
+    dependencies: ["recipe-dev"]
+    specializations: ["backend-development", "database-design", "api-design"]
+    tools: ["fastapi", "postgresql", "redis", "celery"]
+    outputs: ["api-endpoints", "database-schema", "backend-services"]
+
+  recipe-devops:
+    name: "DevOps Specialist (DevOps専門家)"
+    role: "インフラ・自動化・監視"
+    goal: |
+      - Docker コンテナ化とmulti-stage build最適化
+      - systemd サービス管理と自動起動設定
+      - CI/CD パイプライン構築（GitHub Actions）
+      - Linux環境自動化・監視・ログ管理
+      - バックアップ・復旧戦略実装
+    category: "specialized"
+    priority: 3
+    status: "active"
+    color: "\033[1;37m"
+    dependencies: ["recipe-cto"]
+    specializations: ["devops", "containerization", "cicd", "infrastructure"]
+    tools: ["docker", "kubernetes", "github-actions", "monitoring-stack"]
+    outputs: ["docker-images", "cicd-pipelines", "infrastructure-code"]
+
+  recipe-security:
+    name: "Security Specialist (セキュリティ専門家)"
+    role: "セキュリティ・認証・暗号化"
+    goal: |
+      - 認証・認可システム設計と実装
+      - 暗号化・脆弱性対策・セキュリティスキャン
+      - API セキュリティ強化（CORS、レート制限）
+      - ログ・監査システム構築
+      - セキュリティベストプラクティス適用
+    category: "quality"
+    priority: 2
+    status: "active"
+    color: "\033[1;31m"
+    dependencies: ["recipe-cto"]
+    specializations: ["security", "encryption", "authentication", "vulnerability-assessment"]
+    tools: ["security-scanners", "encryption-tools", "auth-systems"]
+    outputs: ["security-policies", "auth-systems", "security-audits"]
+
+  recipe-performance:
+    name: "Performance Specialist (パフォーマンス専門家)"
+    role: "パフォーマンス最適化・監視"
+    goal: |
+      - システム最適化・負荷分散・スケーリング
+      - メモリ・CPU使用量監視・プロファイリング
+      - API レート制限・キャッシング戦略
+      - パフォーマンスベンチマーク・ボトルネック分析
+      - データベースクエリ最適化
+    category: "specialized"
+    priority: 3
+    status: "active"
+    color: "\033[1;36m"
+    dependencies: ["recipe-backend", "recipe-dev"]
+    specializations: ["performance-optimization", "monitoring", "profiling", "scaling"]
+    tools: ["profiling-tools", "monitoring-systems", "load-testing", "optimization-tools"]
+    outputs: ["performance-reports", "optimization-recommendations", "monitoring-dashboards"]
+
+# 検証ルール
+validation_rules:
+  id_format:
+    pattern: "^recipe-[a-z]+(-[a-z]+)*$"
+    description: "ID形式: recipe-xxx（小文字、ハイフン区切り）"
+  
+  priority_range:
+    min: 1
+    max: 4
+    description: "優先度: 1（最高）～4（最低）"
+  
+  required_dependencies:
+    leadership_agents: []
+    development_agents: ["recipe-cto"]
+    specialized_agents: ["recipe-dev"]
+  
+  status_values:
+    - "active"
+    - "inactive" 
+    - "pending"
+    - "deprecated"
+
+# 実行設定
+execution:
+  max_iterations: 4
+  no_context: true
+  dangerously_skip_permissions: true
+  parallel_execution: true
+  batch_processing: true
+
+# プロジェクト設定
+project:
+  name: "PersonalCookingRecipe"
+  version: "1.0.0"
+  platform: "Linux (Ubuntu 20.04+, Debian 11+, RHEL 8+)"
+  base_dir: "~/PersonalCookingRecipe"
+
+# 開発目標
+development_goals:
+  - "Linux systemdによる24時間自動監視"
+  - "3チャンネルからの肉料理レシピ自動収集（1日10-17件）"
+  - "Claude AIによるチャンネル特化解析・日本語翻訳"
+  - "Notionデータベース自動登録・検索最適化"
+  - "Gmail/Linux通知による即座な情報配信"
+  - "Linux環境変数・暗号化ファイルによるセキュアな認証情報管理"
+  - "10名体制agents機能による並列自動開発・品質保証"
+
+# 技術スタック
+core_technologies:
+  runtime: "Python 3.10+"
+  process_manager: "systemd"
+  authentication: "環境変数 + 暗号化ファイル"
+  api_layer: "FastAPI"
+  frontend: "React + Vite"
+  webui: "Next.js + Tailwind CSS"
+  containerization: "Docker"
+  orchestration: "Docker Compose"
+  monitoring: "Prometheus + Grafana"
+  logging: "ELK Stack"

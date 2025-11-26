@@ -1,0 +1,44 @@
+{
+  "name": "personal-cooking-recipe",
+  "version": "1.0.0",
+  "description": "Personal cooking recipe management system",
+  "scripts": {
+    "dev": "concurrently \"npm run backend:dev\" \"npm run frontend:dev\"",
+    "backend:dev": "cd backend && npm run dev",
+    "frontend:dev": "cd frontend && npm run dev",
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "build": "cd frontend && npm run build",
+    "start": "cd backend && npm start",
+    "automate": "bash scripts/master-automation.sh",
+    "automate:open": "bash scripts/master-automation.sh --open-browser",
+    "check:ports": "node scripts/port-checker.js",
+    "check:ip": "bash scripts/get-ip.sh",
+    "repair": "node scripts/auto-repair-system.js",
+    "test": "cd src && npm test",
+    "test:coverage": "cd src && npm run test:coverage",
+    "test:unit": "cd src && npm run test:unit",
+    "test:integration": "cd src && npm run test:integration",
+    "install:src": "cd src && npm install",
+    "test:e2e": "npx playwright test",
+    "auto-fix": "node scripts/github-actions-auto-fix.js",
+    "auto-fix:dry": "DRY_RUN=true node scripts/github-actions-auto-fix.js"
+  },
+  "keywords": [
+    "recipe",
+    "cooking",
+    "management"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "chalk": "^5.6.0",
+    "concurrently": "^9.2.1",
+    "playwright": "^1.55.0",
+    "pm2": "^6.0.10",
+    "winston": "^3.17.0"
+  },
+  "dependencies": {
+    "@octokit/rest": "^22.0.1"
+  }
+}

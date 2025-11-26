@@ -1,0 +1,112 @@
+name: GitHub Actions Auto-Fix
+
+on:
+  schedule:
+    # 毎日 UTC 00:00 (JST 09:00) に実行
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+    inputs:
+      max_attempts:
+        description: '最大試行回数'
+        required: false
+        default: '10'
+      interval_minutes:
+        description: '試行間隔（分）'
+        required: false
+        default: '30'
+      dry_run:
+        description: 'Dry Run モード（true/false）'
+        required: false
+        default: 'false'
+
+jobs:
+  auto-fix:
+    name: 自動修復実行
+    runs-on: ubuntu-latest
+    timeout-minutes: 360  # 6時間（最大10回 × 30分 + バッファ）
+
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+
+    steps:
+      - name: リポジトリのチェックアウト
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Node.js セットアップ
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
+
+      - name: 依存関係のインストール
+        run: npm ci
+
+      - name: Git 設定
+        run: |
+          git config --global user.name "GitHub Actions Auto-Fix"
+          git config --global user.email "actions@github.com"
+
+      - name: 自動修復システム実行
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_OWNER: ${{ github.repository_owner }}
+          GITHUB_REPO: ${{ github.event.repository.name }}
+          MAX_ATTEMPTS: ${{ github.event.inputs.max_attempts || '10' }}
+          INTERVAL_MINUTES: ${{ github.event.inputs.interval_minutes || '30' }}
+          DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+        run: |
+          node scripts/github-actions-auto-fix.js
+
+      - name: ログファイルのアップロード
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: auto-fix-logs-${{ github.run_number }}
+          path: logs/auto-fix-*.log
+          retention-days: 30
+
+      - name: 修復結果の要約
+        if: always()
+        run: |
+          echo "## GitHub Actions 自動修復結果" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **実行日時**: $(date)" >> $GITHUB_STEP_SUMMARY
+          echo "- **実行番号**: ${{ github.run_number }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **最大試行回数**: ${{ github.event.inputs.max_attempts || '10' }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **試行間隔**: ${{ github.event.inputs.interval_minutes || '30' }}分" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # ログファイルから修復サマリを抽出
+          if [ -f logs/auto-fix-*.log ]; then
+            echo "### 修復サマリ" >> $GITHUB_STEP_SUMMARY
+            echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+            tail -20 logs/auto-fix-*.log >> $GITHUB_STEP_SUMMARY
+            echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: Slack 通知 (オプション)
+        if: always() && vars.SLACK_WEBHOOK_URL
+        uses: slackapi/slack-github-action@v1
+        with:
+          payload: |
+            {
+              "text": "GitHub Actions 自動修復完了",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*GitHub Actions 自動修復システム*\n\n*状態*: ${{ job.status }}\n*リポジトリ*: ${{ github.repository }}\n*実行番号*: ${{ github.run_number }}"
+                  }
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ vars.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK

@@ -1,0 +1,219 @@
+/* PersonalCookingRecipe - ネイティブ監視ダッシュボードスタイル */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.dashboard-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* ヘッダー */
+.dashboard-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px 30px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dashboard-header h1 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.header-info {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.status-indicator {
+    padding: 5px 15px;
+    background-color: #4CAF50;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* ナビゲーション */
+.dashboard-nav {
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.nav-item {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #666;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+
+.nav-item:hover {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.nav-item.active {
+    background-color: #667eea;
+    color: white;
+}
+
+/* メインコンテンツ */
+.dashboard-main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.metrics-section {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.metrics-section h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #333;
+    border-bottom: 2px solid #667eea;
+    padding-bottom: 10px;
+}
+
+/* メトリクスグリッド */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.metric-card {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    transition: transform 0.2s;
+}
+
+.metric-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.metric-card h3 {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.metric-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: #667eea;
+    margin-bottom: 10px;
+}
+
+.metric-card canvas {
+    width: 100%;
+    height: 100px;
+}
+
+/* アラートリスト */
+.alerts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.alert-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border-left: 4px solid;
+}
+
+.alert-item.severity-critical {
+    background-color: #ffebee;
+    border-left-color: #f44336;
+}
+
+.alert-item.severity-warning {
+    background-color: #fff8e1;
+    border-left-color: #ff9800;
+}
+
+.alert-item.severity-info {
+    background-color: #e3f2fd;
+    border-left-color: #2196f3;
+}
+
+.alert-severity {
+    font-weight: 600;
+    font-size: 12px;
+    padding: 3px 8px;
+    border-radius: 3px;
+    background-color: white;
+}
+
+.alert-message {
+    flex: 1;
+    font-size: 14px;
+}
+
+.alert-time {
+    font-size: 12px;
+    color: #999;
+}
+
+.no-alerts {
+    text-align: center;
+    color: #999;
+    padding: 20px;
+}
+
+/* フッター */
+.dashboard-footer {
+    text-align: center;
+    padding: 20px;
+    color: #999;
+    font-size: 12px;
+    margin-top: 20px;
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+    .dashboard-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .dashboard-nav {
+        flex-direction: column;
+    }
+
+    .metrics-grid {
+        grid-template-columns: 1fr;
+    }
+}
