@@ -11,6 +11,11 @@ on:
     # 毎日午前3時(JST)に自動実行 - 継続的品質監視
     - cron: '0 18 * * *'  # UTC 18:00 = JST 3:00
 
+permissions:
+  contents: read
+  security-events: write
+  actions: read
+
 env:
   NODE_VERSION: '18.x'
   PYTHON_VERSION: '3.11'
@@ -64,7 +69,7 @@ jobs:
 
     - name: Cache Node modules
       id: cache-deps
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: |
           ~/.npm
@@ -77,7 +82,7 @@ jobs:
           node-${{ runner.os }}-
 
     - name: Cache Python packages
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: |
           ~/.cache/pip
@@ -170,7 +175,7 @@ jobs:
         python-version: ${{ env.PYTHON_VERSION }}
 
     - name: Restore cache
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: |
           ~/.npm
@@ -316,7 +321,7 @@ jobs:
         node-version: ${{ env.NODE_VERSION }}
 
     - name: Restore cache
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: |
           ~/.npm
@@ -344,7 +349,7 @@ jobs:
         node scripts/benchmark-api.js
 
     - name: Upload performance results
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: api-performance-report
         path: reports/performance-*.json
@@ -367,7 +372,7 @@ jobs:
         node-version: ${{ env.NODE_VERSION }}
 
     - name: Restore cache
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: |
           ~/.npm
@@ -395,7 +400,7 @@ jobs:
         node scripts/lighthouse-ci.js
 
     - name: Upload Lighthouse results
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: lighthouse-report
         path: .lighthouseci/
@@ -497,7 +502,7 @@ jobs:
         node-version: ${{ env.NODE_VERSION }}
 
     - name: Restore cache
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: |
           ~/.npm
@@ -519,7 +524,7 @@ jobs:
         npx playwright test
 
     - name: Upload E2E test results
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: playwright-report
@@ -536,7 +541,7 @@ jobs:
 
     steps:
     - name: Download artifacts
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       continue-on-error: true
 
     - name: Generate quality report

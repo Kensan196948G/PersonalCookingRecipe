@@ -43,7 +43,7 @@ jobs:
       # キャッシュ戦略最適化: 複数レイヤーでキャッシュを活用
       - name: Cache Node modules (Frontend & Backend)
         if: matrix.service != 'api'
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: |
             ~/.npm
@@ -64,7 +64,7 @@ jobs:
       # Python依存関係キャッシュ最適化
       - name: Cache Python packages (API)
         if: matrix.service == 'api'
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: |
             ~/.cache/pip

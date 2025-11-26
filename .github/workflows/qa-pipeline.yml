@@ -67,14 +67,14 @@ jobs:
 
       - name: Restore Node Cache
         if: matrix.component != 'api'
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.npm
           key: ${{ needs.setup.outputs.cache-key }}
 
       - name: Restore Python Cache
         if: matrix.component == 'api'
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.cache/pip
           key: ${{ needs.setup.outputs.python-cache-key }}
@@ -304,7 +304,7 @@ jobs:
           npx playwright test || echo "E2E tests not fully implemented"
 
       - name: Upload E2E Results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: playwright-report

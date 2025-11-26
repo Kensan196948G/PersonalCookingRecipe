@@ -51,7 +51,7 @@ jobs:
         python-version: ${{ env.PYTHON_VERSION }}
         
     - name: Cache dependencies
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: |
           ~/.npm
@@ -113,7 +113,7 @@ jobs:
         node-version: ${{ env.NODE_VERSION }}
         
     - name: Cache dependencies
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: |
           ~/.npm
@@ -180,7 +180,7 @@ jobs:
         node-version: ${{ env.NODE_VERSION }}
         
     - name: Cache dependencies
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: |
           ~/.npm
@@ -300,7 +300,7 @@ jobs:
         node-version: ${{ env.NODE_VERSION }}
         
     - name: Cache dependencies
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: |
           ~/.npm
