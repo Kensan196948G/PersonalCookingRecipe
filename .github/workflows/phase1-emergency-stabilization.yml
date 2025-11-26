@@ -17,8 +17,8 @@ env:
   POSTGRES_USER: test_user
   POSTGRES_PASSWORD: test_password
   
-  # Redis 設定
-  REDIS_PASSWORD: test_redis_pass
+  # Redis 設定 (CIではパスワードなし)
+  REDIS_PASSWORD: ''
   JWT_CACHE_ENABLED: 'true'
   JWT_CACHE_TTL: '3600'
 

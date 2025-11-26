@@ -33,8 +33,8 @@ env:
   POSTGRES_USER: test_user
   POSTGRES_PASSWORD: test_password
 
-  # Redis設定
-  REDIS_PASSWORD: test_redis_pass
+  # Redis設定 (CIではパスワードなし)
+  REDIS_PASSWORD: ''
 
 jobs:
   # ===============================
