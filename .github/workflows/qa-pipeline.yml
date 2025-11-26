@@ -89,6 +89,7 @@ jobs:
           if [ "${{ matrix.component }}" = "api" ]; then
             python -m pip install --upgrade pip
             pip install -r api/requirements.txt
+            pip install pytest pytest-cov
           elif [ "${{ matrix.component }}" = "backend" ]; then
             cd src && npm ci
           else
@@ -168,7 +169,7 @@ jobs:
           cd ../frontend && npm ci
 
           # API setup
-          cd ../api && pip install -r requirements.txt
+          cd ../api && pip install -r requirements.txt && pip install pytest pytest-cov
 
       - name: Database Migration
         env:
@@ -289,7 +290,7 @@ jobs:
           # Full stack setup
           cd src && npm ci && npm run db:migrate || echo "Migration not implemented"
           cd ../frontend && npm ci && npm run build
-          cd ../api && pip install -r requirements.txt
+          cd ../api && pip install -r requirements.txt && pip install pytest pytest-cov
 
       - name: Start Full Stack (Native)
         env:
@@ -333,7 +334,8 @@ jobs:
       - name: Python Security Scan
         run: |
           cd api
-          pip install safety bandit
+          pip install -r requirements.txt || true
+          pip install safety bandit pytest pytest-cov
           safety check || echo "API security warnings"
           bandit -r . -f json -o bandit-report.json || echo "Bandit warnings"
 

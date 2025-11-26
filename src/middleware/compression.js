@@ -115,17 +115,25 @@ const etagOptimizationMiddleware = (req, res, next) => {
 // JSON圧縮最適化
 const jsonOptimizationMiddleware = (req, res, next) => {
     const originalJson = res.json;
-    
+
     res.json = function(data) {
+        // undefinedまたはnullの場合はそのまま処理
+        if (data === undefined || data === null) {
+            return originalJson.call(this, data);
+        }
+
         // JSON圧縮（空白除去）
         const compactJson = JSON.stringify(data);
-        
-        res.set('Content-Type', 'application/json; charset=utf-8');
-        res.set('Content-Length', Buffer.byteLength(compactJson));
-        
+
+        // JSON.stringifyが文字列を返した場合のみ処理
+        if (typeof compactJson === 'string') {
+            res.set('Content-Type', 'application/json; charset=utf-8');
+            res.set('Content-Length', Buffer.byteLength(compactJson));
+        }
+
         originalJson.call(this, data);
     };
-    
+
     next();
 };
 

@@ -333,9 +333,9 @@ describe('Recipe Controller - Extended Test Suite', () => {
 
       await recipeController.getRecipe(mockReq, mockRes, mockNext);
 
-      expect(recipeCacheManager.getCachedRecipe).toHaveBeenCalledWith('1');
-      expect(Recipe.findById).toHaveBeenCalledWith('1', 1);
-      expect(recipeCacheManager.cacheRecipe).toHaveBeenCalledWith('1', mockRecipe);
+      expect(recipeCacheManager.getCachedRecipe).toHaveBeenCalledWith(1);
+      expect(Recipe.findById).toHaveBeenCalledWith(1, 1);
+      expect(recipeCacheManager.cacheRecipe).toHaveBeenCalledWith(1, mockRecipe);
       expect(mockRes.set).toHaveBeenCalledWith('X-Cache', 'MISS');
     });
 
@@ -403,7 +403,7 @@ describe('Recipe Controller - Extended Test Suite', () => {
       await recipeController.updateRecipe(mockReq, mockRes, mockNext);
 
       expect(Recipe.update).toHaveBeenCalledWith(
-        '1',
+        1,
         1,
         expect.objectContaining({
           title: 'カレーライス(更新)'
@@ -428,7 +428,7 @@ describe('Recipe Controller - Extended Test Suite', () => {
       await recipeController.updateRecipe(mockReq, mockRes, mockNext);
 
       expect(Recipe.update).toHaveBeenCalledWith(
-        '1',
+        1,
         1,
         expect.objectContaining({
           image_url: '/uploads/new-image.webp'
@@ -451,7 +451,7 @@ describe('Recipe Controller - Extended Test Suite', () => {
       await recipeController.updateRecipe(mockReq, mockRes, mockNext);
 
       expect(Recipe.update).toHaveBeenCalledWith(
-        '1',
+        1,
         1,
         expect.objectContaining({
           ingredients: [{ name: 'レタス', amount: '1個' }]
@@ -484,7 +484,7 @@ describe('Recipe Controller - Extended Test Suite', () => {
 
       await recipeController.deleteRecipe(mockReq, mockRes, mockNext);
 
-      expect(Recipe.delete).toHaveBeenCalledWith('1', 1);
+      expect(Recipe.delete).toHaveBeenCalledWith(1, 1);
       expect(mockRes.json).toHaveBeenCalledWith({
         message: 'Recipe deleted successfully'
       });
@@ -523,7 +523,7 @@ describe('Recipe Controller - Extended Test Suite', () => {
 
       await recipeController.toggleFavorite(mockReq, mockRes, mockNext);
 
-      expect(Recipe.toggleFavorite).toHaveBeenCalledWith('1', 1);
+      expect(Recipe.toggleFavorite).toHaveBeenCalledWith(1, 1);
       expect(mockRes.json).toHaveBeenCalledWith({
         message: 'Favorite status updated'
       });
@@ -552,7 +552,7 @@ describe('Recipe Controller - Extended Test Suite', () => {
 
         await recipeController.updateRating(mockReq, mockRes, mockNext);
 
-        expect(Recipe.updateRating).toHaveBeenCalledWith('1', 1, rating);
+        expect(Recipe.updateRating).toHaveBeenCalledWith(1, 1, rating);
         expect(mockRes.json).toHaveBeenCalledWith({
           message: 'Rating updated successfully'
         });

@@ -8,7 +8,10 @@ const authRoutes = require('../../routes/authRoutes');
 const recipeRoutes = require('../../routes/recipeRoutes');
 const cors = require('cors');
 
-describe('Security Tests', () => {
+// DB接続が必要な統合テスト - CI環境ではスキップ
+const describeIfDbAvailable = process.env.SKIP_DB_TESTS ? describe.skip : describe;
+
+describeIfDbAvailable('Security Tests', () => {
   let app;
   let authToken;
   let testUserId;

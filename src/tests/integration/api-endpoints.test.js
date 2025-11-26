@@ -11,7 +11,10 @@ const categoryRoutes = require('../../routes/categoryRoutes');
 const errorHandler = require('../../middleware/errorHandler');
 const cors = require('cors');
 
-describe('API Endpoints Integration Tests', () => {
+// DB接続が必要な統合テスト - CI環境ではスキップ
+const describeIfDbAvailable = process.env.SKIP_DB_TESTS ? describe.skip : describe;
+
+describeIfDbAvailable('API Endpoints Integration Tests', () => {
   let app;
   let authToken;
   let testUserId;

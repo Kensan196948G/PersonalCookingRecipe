@@ -12,7 +12,10 @@
 const { redisManager } = require('../config/redis');
 const { cacheService } = require('../services/cacheService');
 
-describe('Redis統合キャッシングシステムテスト', () => {
+// Redis接続が必要な統合テスト - CI環境ではスキップ
+const describeIfRedisAvailable = process.env.SKIP_DB_TESTS ? describe.skip : describe;
+
+describeIfRedisAvailable('Redis統合キャッシングシステムテスト', () => {
     // Jest形式に変換 (Mocha構文からJest構文へ)
 
     beforeAll(async () => {
