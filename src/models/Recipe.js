@@ -45,9 +45,11 @@ class Recipe {
       return { id: recipeId, ...recipeData };
       
     } catch (error) {
-      await dbManager.executeWithRetry('ROLLBACK').catch(rollbackErr => {
+      try {
+        await dbManager.executeWithRetry('ROLLBACK');
+      } catch (rollbackErr) {
         console.error('Rollback failed:', rollbackErr);
-      });
+      }
       
       // Enhance error messages for better debugging
       if (error.code === 'SQLITE_CONSTRAINT') {
@@ -202,9 +204,11 @@ class Recipe {
       return { id, ...recipeData };
       
     } catch (error) {
-      await dbManager.executeWithRetry('ROLLBACK').catch(rollbackErr => {
+      try {
+        await dbManager.executeWithRetry('ROLLBACK');
+      } catch (rollbackErr) {
         console.error('Rollback failed:', rollbackErr);
-      });
+      }
       
       console.error('Error updating recipe:', error);
       throw error;
