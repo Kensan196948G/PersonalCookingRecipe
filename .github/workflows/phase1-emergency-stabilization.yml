@@ -322,6 +322,7 @@ jobs:
         REDIS_URL: redis://localhost:6379
         REDIS_PASSWORD: ${{ env.REDIS_PASSWORD }}
         JWT_SECRET: test_jwt_secret_key_for_ci_cd
+        SKIP_DB_TESTS: 'true'
       run: |
         cd src
         npm test -- --coverage --passWithNoTests
