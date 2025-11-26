@@ -6,6 +6,11 @@ on:
   pull_request:
     branches: [ main ]
 
+permissions:
+  contents: read
+  security-events: write
+  actions: read
+
 env:
   NODE_VERSION: '18'
   PYTHON_VERSION: '3.12'
@@ -84,6 +89,8 @@ jobs:
           if [ "${{ matrix.component }}" = "api" ]; then
             python -m pip install --upgrade pip
             pip install -r api/requirements.txt
+          elif [ "${{ matrix.component }}" = "backend" ]; then
+            cd src && npm ci
           else
             cd ${{ matrix.component }} && npm ci
           fi
@@ -110,9 +117,10 @@ jobs:
 
       - name: Upload Coverage
         uses: codecov/codecov-action@v3
+        continue-on-error: true
         with:
           file: |
-            backend/coverage/lcov.info
+            src/coverage/lcov.info
             frontend/coverage/lcov.info
             api/coverage.xml
           flags: ${{ matrix.component }}
